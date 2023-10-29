@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sandra Tang</title>
+    <link>https://blist.vercel.app/en/</link>
+    <description>Recent content on Sandra Tang</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 28 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blist.vercel.app/en/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About Me</title>
+      <link>https://blist.vercel.app/en/page/about/</link>
+      <pubDate>Sat, 28 Oct 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://blist.vercel.app/en/page/about/</guid>
+      <description>About this website: I made this website using Hugo and the Template &amp;ldquo;Blist&amp;rdquo;. I hosted it on Github Pages!</description>
+    </item>
+    
+    <item>
+      <title>Handwriting Recognition Model</title>
+      <link>https://blist.vercel.app/en/blog/emoji-support/</link>
+      <pubDate>Wed, 16 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://blist.vercel.app/en/blog/emoji-support/</guid>
+      <description>&lt;p&gt;This model identifies handwritten words. It focuses on training a CRNN (CNN+RNN) model and uses the CTC (Connectionist Temporal Classification) loss.
+&lt;img src=&#34;https://blist.vercel.app/handwriting1.jpg&#34; alt=&#34;Placeholder&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Video Classification Model for Mice Responses to Dynamic Stimuli</title>
+      <link>https://blist.vercel.app/en/blog/math-typesetting/</link>
+      <pubDate>Tue, 15 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://blist.vercel.app/en/blog/math-typesetting/</guid>
+      <description>&lt;p&gt;Mathematical notation in a Hugo project can be enabled by using third party JavaScript libraries.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Red &amp; Black Newspaper Website</title>
+      <link>https://blist.vercel.app/en/blog/markdown-syntax/</link>
+      <pubDate>Fri, 28 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://blist.vercel.app/en/blog/markdown-syntax/</guid>
+      <description>&lt;p&gt;LINK TO WEBSITE: &lt;a href=&#34;https://whsnewspaper.azurewebsites.net/about.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://whsnewspaper.azurewebsites.net/about.html&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;Our school&amp;rsquo;s newspaper, &lt;strong&gt;The Red &amp;amp; Black&lt;/strong&gt;, has over 20 articles a month written by various students. &lt;strong&gt;I am the website manager&lt;/strong&gt;, using SQL and Javascript to put all the articles on a database which is then displayed on the website. I do this monthly, and enjoy the process.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Violin and Piano Duets</title>
+      <link>https://blist.vercel.app/en/blog/rich-content/</link>
+      <pubDate>Wed, 08 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://blist.vercel.app/en/blog/rich-content/</guid>
+      <description>I love to play duets with myself, as I can play both violin and piano. I&amp;rsquo;ve been doing this for 3 years, and love the process every time. I find a song that is meaningful to me, and then I find sheet music for both violin and piano. Sometimes if there isn&amp;rsquo;t an existing part for violin, I have to compose my own. I did this for my &amp;ldquo;The Second Waltz&amp;rdquo; duet.</description>
+    </item>
+    
+    <item>
+      <title>NHD Website</title>
+      <link>https://blist.vercel.app/en/blog/nhs/</link>
+      <pubDate>Tue, 10 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://blist.vercel.app/en/blog/nhs/</guid>
+      <description>This is the Link to the website: https://site.nhd.org/74595508/homeOur Thesis: The Treaty of Nanjing marked the end of the Opium war after Britain&amp;rsquo;s military overpowered China in 1842. Further pressure from Britain resulted in difficulties for Chinese diplomats attempting to negotiate fair terms. Misinterpretations of the treaty along with the emperor&amp;rsquo;s ineptitude hindered further negotiations after the first draft of the treaty. These factors led to major losses for China and marked the beginning of a century of mistreatment from other imperial powers.</description>
+    </item>
+    
+    <item>
+      <title>Google Colabs</title>
+      <link>https://blist.vercel.app/en/blog/placeholder-text/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blist.vercel.app/en/blog/placeholder-text/</guid>
+      <description>I lead our school&amp;rsquo;s AI Club. Our weekly meetings consist of various things, one of them being Google Colab lectures teaching Introductory Machine Learning topics. Here are a few that I have created.
+Open in Google Colab</description>
+    </item>
+    
+  </channel>
+</rss>
