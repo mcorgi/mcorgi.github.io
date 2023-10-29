@@ -13,7 +13,8 @@
       <pubDate>Fri, 28 Jul 2023 00:00:00 +0000</pubDate>
       
       <guid>https://mcorgi.github.io/en/blog/markdown-syntax/</guid>
-      <description>&lt;p&gt;LINK TO WEBSITE: &lt;a href=&#34;https://whsnewspaper.azurewebsites.net/about.html&#34;&gt;https://whsnewspaper.azurewebsites.net/about.html&lt;/a&gt;&lt;/p&gt;
+      <description>&lt;p&gt;LINK TO WEBSITE: &lt;a href=&#34;https://whsnewspaper.azurewebsites.net/about.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://whsnewspaper.azurewebsites.net/about.html&lt;/a&gt;
+&lt;/p&gt;
 &lt;p&gt;Our school&amp;rsquo;s newspaper, &lt;strong&gt;The Red &amp;amp; Black&lt;/strong&gt;, has over 20 articles a month written by various students. &lt;strong&gt;I am the website manager&lt;/strong&gt;, using SQL and Javascript to put all the articles on a database which is then displayed on the website. I do this monthly, and enjoy the process.&lt;/p&gt;</description>
     </item>
     
