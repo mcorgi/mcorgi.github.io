@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Pages on Sandra Tang</title>
-    <link>https://blist.vercel.app/en/page/</link>
+    <link>https://mcorgi.github.io/en/page/</link>
     <description>Recent content in Pages on Sandra Tang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 28 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blist.vercel.app/en/page/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 28 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://mcorgi.github.io/en/page/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About Me</title>
-      <link>https://blist.vercel.app/en/page/about/</link>
+      <link>https://mcorgi.github.io/en/page/about/</link>
       <pubDate>Sat, 28 Oct 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://blist.vercel.app/en/page/about/</guid>
+      <guid>https://mcorgi.github.io/en/page/about/</guid>
       <description>About this website: I made this website using Hugo and the Template &amp;ldquo;Blist&amp;rdquo;. I hosted it on Github Pages!</description>
     </item>
     
