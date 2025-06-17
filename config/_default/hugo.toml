@@ -5,7 +5,8 @@
 theme = "blowfish"
 baseURL = "https://localhost:1313"
 defaultContentLanguage = "en"
-disableLanguages = [] #to allow translation work requiring shipping to production
+disableLanguages = ["it", "ja", "zh-cn"] #to allow translation work requiring shipping to production
+title = "Sandra Tang"
 
 # pluralizeListTitles = "true" # hugo function useful for non-english languages, find out more in  https://gohugo.io/getting-started/configuration/#pluralizelisttitles
 
@@ -38,7 +39,7 @@ googleAnalytics = "G-PEDMYR1V0K"
   priority = 0.5
 
 [outputs]
-  home = ["HTML", "RSS", "JSON"]
+  home = ["HTML"]
 
 [related]
   threshold = 0
@@ -78,3 +79,5 @@ googleAnalytics = "G-PEDMYR1V0K"
   [segments.en_only]
     [[segments.en_only.includes]]
       lang = 'en'
+
+disableImageOptimization = true

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>图标 on Blowfish</title>
+    <link>http://localhost:1313/zh-cn/tags/%E5%9B%BE%E6%A0%87/</link>
+    <description>Recent content in 图标 on Blowfish</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>© 2025 Blowfish</copyright>
+    <lastBuildDate>Fri, 14 Aug 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/zh-cn/tags/%E5%9B%BE%E6%A0%87/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>图标</title>
+      <link>http://localhost:1313/zh-cn/samples/icons/</link>
+      <pubDate>Fri, 14 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/zh-cn/samples/icons/</guid>
+      <description>&lt;p&gt;当然，Blowfish 完全支持自定义图标。只需要将自己的 SVG 文件放在 &lt;code&gt;assets/icons/&lt;/code&gt; 目录下即可。图标目录中的任何图标可以在整个主题中使用。为了实现自动填充颜色，每个 SVG 图标源码中必须添加 &lt;code&gt;fill=&amp;quot;currentColor&amp;quot;&lt;/code&gt; 属性。&lt;/p&gt;</description>
+      
+    </item>
+    
+  </channel>
+</rss>
