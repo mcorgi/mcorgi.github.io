@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Docker on Sandra Tang</title><link>https://localhost:1313/tags/docker/</link><description>Recent content in Docker on Sandra Tang</description><generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>st2232@cornell.edu (Sandra Tang)</managingEditor><webMaster>st2232@cornell.edu (Sandra Tang)</webMaster><copyright>© 2025 Sandra Tang</copyright><atom:link href="https://localhost:1313/tags/docker/index.xml" rel="self" type="application/rss+xml"/><item><title>StudyCentral App</title><link>https://localhost:1313/docs/welcome/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>st2232@cornell.edu (Sandra Tang)</author><guid>https://localhost:1313/docs/welcome/</guid><description>&lt;h2 class="relative group">Overview
+&lt;div id="overview" class="anchor">&lt;/div>
+&lt;span
+class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+&lt;a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+style="text-decoration-line: none !important;" href="#overview" aria-label="Anchor">#&lt;/a>
+&lt;/span>
+&lt;/h2>
+&lt;div class="lead text-neutral-500 dark:text-neutral-400 !mb-9 text-xl">
+StudyCentral is an open-source resource-sharing app designed for Cornell students to streamline their study preparations.
+&lt;/div>
+&lt;p>It allows users to add topics and share resource links for each prelim in every course. The app fosters collaboration and provides centralized access to all study materials in an intuitive and easy-to-use interface.&lt;/p></description><media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://localhost:1313/docs/welcome/featured.jpeg"/></item></channel></rss>

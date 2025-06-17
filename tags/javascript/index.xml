@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>JavaScript on Sandra Tang</title><link>https://localhost:1313/tags/javascript/</link><description>Recent content in JavaScript on Sandra Tang</description><generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>st2232@cornell.edu (Sandra Tang)</managingEditor><webMaster>st2232@cornell.edu (Sandra Tang)</webMaster><copyright>© 2025 Sandra Tang</copyright><atom:link href="https://localhost:1313/tags/javascript/index.xml" rel="self" type="application/rss+xml"/><item><title>Red &amp; Black Newspaper Website</title><link>https://localhost:1313/docs/configuration/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>st2232@cornell.edu (Sandra Tang)</author><guid>https://localhost:1313/docs/configuration/</guid><description>&lt;p>
+&lt;figure>
+&lt;img
+class="my-0 rounded-md" loading="lazy" decoding="async" fetchpriority="low" alt="Red &amp;amp; Black Website Screenshot"
+srcset="
+/docs/configuration/featured_hu_4f5e83ada782e8fe.png 330w,
+/docs/configuration/featured_hu_57bc822218aa956.png 660w,
+/docs/configuration/featured_hu_b9beab067f951312.png 1280w"
+data-zoom-src="https://localhost:1313/docs/configuration/featured.png"
+src="https://localhost:1313/docs/configuration/featured.png"
+/>
+&lt;/figure>
+&lt;/p>
+&lt;h2 class="relative group">Overview
+&lt;div id="overview" class="anchor">&lt;/div>
+&lt;span
+class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+&lt;a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+style="text-decoration-line: none !important;" href="#overview" aria-label="Anchor">#&lt;/a>
+&lt;/span>
+&lt;/h2>
+&lt;div class="lead text-neutral-500 dark:text-neutral-400 !mb-9 text-xl">
+During my time as Website Manager for The Red &amp;amp; Black, our school’s student-run newspaper, I maintained and updated a dynamic website that published over 20 new articles each month. Each article, written by different student contributors, needed to be properly categorized, formatted, and displayed in a clean and readable format.
+&lt;/div>
+&lt;p>To manage this at scale, I built and maintained a MySQL database that stored all article metadata, including titles, authors, timestamps, and full content. I wrote scripts in JavaScript to process and upload article content, and created SQL queries to retrieve and display the correct articles on the site, organized by issue and category. The frontend interface was built to reflect the layout of a traditional newspaper, while remaining accessible and responsive.&lt;/p></description><media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://localhost:1313/docs/configuration/featured.png"/></item></channel></rss>
