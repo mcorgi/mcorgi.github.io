@@ -239,23 +239,129 @@ export const projects: Project[] = [
   },
   {
     slug: "mice-video-classification",
-    title: "Video Classification Model for Mice Responses to Dynamic Stimuli",
-    org: "Sensorium",
+    title: "Dynamic Stimuli Prediction Model (DSPM)",
+    subtitle:
+      "Video-to-neural-activity model for mouse primary visual cortex",
+    org: "NeurIPS 2023 Sensorium Competition",
+    role:
+      "Owned the model architecture and training pipeline: adapting a pretrained ViViT backbone with QLoRA fine-tuning, building the temporal reducer, and writing the multi-mouse training loop.",
     blurb:
-      "Fine-tuned a Video Vision Transformer (ViViT) for high-dimensional video data, with qLoRA optimization for performance + resource constraints.",
+      "A fine-tuned Video Vision Transformer (ViViT + QLoRA) that predicts the spiking activity of tens of thousands of neurons in mouse V1 from the natural video the mice were watching — built for the NeurIPS 2023 Sensorium Competition.",
     description:
-      "Research project at Sensorium pairing video classification with neuroscience. Fine-tuned a ViViT model using qLoRA to predict patterns in neuronal recordings from videos of mice exposed to dynamic visual stimuli — a setup where performance and memory constraints really matter.",
+      "A fine-tuned Video Vision Transformer (ViViT) that predicts spiking activity of tens of thousands of neurons in mouse primary visual cortex (V1) from the natural video stimuli the mice were watching. Built as a submission for the NeurIPS 2023 Sensorium Competition.",
+    problem:
+      "Mouse primary visual cortex (V1) responds to natural video in highly nonlinear ways across tens of thousands of neurons at once, and responses differ from animal to animal. The Sensorium 2023 benchmark asks for a single model that watches the same video the mouse saw and predicts each neuron's response trace through time — across multiple mice with different neuron counts — and it has to generalize to held-out and out-of-distribution clips. Training a video transformer of that scale end-to-end on a normal GPU is not realistic.",
+    solution:
+      "DSPM wraps a pretrained ViViT (google/vivit-b-16x2-kinetics400) in a custom regression head and fine-tunes it with 4-bit QLoRA so the whole pipeline fits on a single GPU. A learned 1D-conv \"reducer\" compresses ViViT's long patch-token sequence down to a fixed temporal window, and a swappable per-mouse linear head maps that to each animal's neuron count. The model is trained jointly across mice by interleaving their dataloaders and switching the active head per batch.",
+    features: [
+      {
+        name: "ViViT backbone fine-tuning",
+        description:
+          "Loads google/vivit-b-16x2-kinetics400 in 4-bit (NF4 + double-quant, bf16 compute) via bitsandbytes and attaches LoRA adapters (r=8, α=32) on the attention query/key/value projections — so only a tiny fraction of parameters are trained.",
+        ownership: "primary",
+      },
+      {
+        name: "Temporal reducer",
+        description:
+          "Custom Reducer module pads the ViViT patch-token sequence to a multiple of the target length and applies a strided 1D convolution to collapse it to a fixed 32-step window aligned with the response window.",
+        ownership: "primary",
+      },
+      {
+        name: "Per-mouse swappable heads",
+        description:
+          "Swappable module holds one Linear(768, neurons × window) head per mouse; the forward pass picks the right head by mouse ID, so all 10 animals share a single backbone but keep animal-specific readouts.",
+        ownership: "primary",
+      },
+      {
+        name: "Multi-mouse training loop",
+        description:
+          "concatenate_dataloaders round-robins batches across mice each epoch, normalizes each clip into the ViViT processor's expected range, samples a random 64-frame window (stride 2), and regresses against log(ReLU(responses)+1) with MSE.",
+        ownership: "primary",
+      },
+      {
+        name: "Memory-efficient training",
+        description:
+          "Gradient checkpointing + prepare_model_for_kbit_training + 8-bit paged AdamW from bitsandbytes, enabling fine-tuning of a video transformer on a single consumer GPU.",
+        ownership: "primary",
+      },
+      {
+        name: "Experiment tracking & checkpointing",
+        description:
+          "Per-step train/val loss logging to Weights & Biases, periodic step checkpoints, per-epoch checkpoints, and a best.pt snapshot kept by lowest validation loss on the oracle split.",
+        ownership: "primary",
+      },
+    ],
+    technicalHighlight:
+      "The hardest part of DSPM is making a 3-D video transformer regress to a different-sized neural population for each mouse, on one GPU. ViViT outputs a long (B, ~3137, 768) patch-token sequence per clip — far longer than the 32-step response window the competition wants — and each mouse has a different number of neurons (tens of thousands), so a single classifier head doesn't fit the task. The pipeline solves this with two pieces: a Reducer that pads the token sequence to a multiple of 32 and uses a strided Conv1d to collapse it into exactly the target window, and a Swappable head that holds one mouse-specific Linear(768, N_neurons × 32) and chooses the right one per batch via the mouse key passed into forward. Combined with 4-bit QLoRA on the attention projections, gradient checkpointing, and an 8-bit paged AdamW optimizer, this lets a billion-parameter-class video model be fine-tuned end-to-end on a single GPU without blowing memory, while still learning per-animal readouts.",
+    outcomes: [
+      "Built an end-to-end fine-tuning pipeline for the Sensorium 2023 dynamic track — predicting per-neuron responses for ~10 mice from raw video.",
+      "Fit a ViViT-scale video transformer onto a single GPU using 4-bit QLoRA, gradient checkpointing, and 8-bit paged optimizers.",
+      "Designed a shared-backbone / per-mouse-head architecture that trains jointly across animals instead of one model per mouse.",
+      "Integrated with the official sensorium_2023 data loaders, image preprocessing, and correlation-score evaluation.",
+    ],
+    learnings: [
+      "Adapting a pretrained video transformer (ViViT) to a neuroscience regression task instead of action classification.",
+      "Practical QLoRA: pairing 4-bit weight quantization with LoRA adapters and a kbit-prepared model so only adapters + heads actually train.",
+      "Sequence-length engineering inside transformers — using strided 1D convs to bridge patch-token length and a fixed prediction window.",
+      "Multi-task training tricks: swappable per-mouse heads, round-robin dataloader concatenation, and consistent log-domain response targets.",
+      "GPU-memory engineering on consumer hardware: gradient checkpointing, paged 8-bit AdamW, and bf16 compute dtype.",
+    ],
+    architecture: `[Sensorium video clips (10 mice, V1 responses)]
+                │
+                ▼
+   [VivitImageProcessor]  ── normalized 32-frame clips ──▶  [ViViT-B/16x2 backbone]
+                                                                │  (4-bit quantized,
+                                                                │   LoRA on q/k/v)
+                                                                ▼
+                                                  [Reducer: Conv1d over tokens]
+                                                                │
+                                                                ▼
+                                       [Swappable per-mouse Linear head]
+                                                                │
+                                                                ▼
+                                           predicted neuron responses
+                                              (N_neurons × time)`,
+    stack: [
+      "Python",
+      "PyTorch",
+      "HuggingFace Transformers (ViViT)",
+      "PEFT / LoRA",
+      "bitsandbytes (4-bit QLoRA)",
+      "Accelerate",
+      "neuralpredictors",
+      "Weights & Biases",
+      "CUDA",
+    ],
     tags: [
       "Computer Vision",
       "PyTorch",
       "ViViT",
+      "QLoRA",
+      "Neuroscience",
       "Deep Learning",
-      "Video Classification",
-      "qLoRA",
+      "HuggingFace",
+      "Research",
     ],
     year: "Summer 2023",
-    readTime: "2 min",
+    readTime: "4 min",
     status: "research",
+    links: [
+      {
+        label: "Paper (NeurIPS 2024 D&B)",
+        href: "https://openreview.net/forum?id=gViJjwRUlM",
+        note: "openreview.net",
+      },
+      {
+        label: "Sensorium Competition",
+        href: "https://www.sensorium-competition.net/",
+        note: "sensorium-competition.net",
+      },
+      {
+        label: "ViViT backbone",
+        href: "https://huggingface.co/google/vivit-b-16x2-kinetics400",
+        note: "google/vivit-b-16x2-kinetics400",
+      },
+    ],
   },
   {
     slug: "red-and-black",

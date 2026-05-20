@@ -169,11 +169,11 @@ export default function AboutPage() {
             },
             {
               when: "Jun — Aug 2023",
-              role: "Video Classification Research",
-              where: "Sensorium · Boston, MA",
+              role: "Dynamic Stimuli Prediction Model (DSPM)",
+              where: "NeurIPS 2023 Sensorium Competition",
               kind: "project",
-              what: "Fine-tuned a Video Vision Transformer (ViViT) for high-dimensional video data, with qLoRA optimization to fit performance and resource constraints.",
-              link: { href: "/projects/mice-video-classification", label: "project page" },
+              what: "Fine-tuned a Video Vision Transformer (ViViT) with 4-bit QLoRA to predict spiking activity in mouse V1 from natural video — work later published in NeurIPS 2024 Datasets & Benchmarks.",
+              link: { href: "/projects/mice-video-classification", label: "case study" },
             },
             {
               when: "Jul 2023",
