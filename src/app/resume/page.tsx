@@ -80,14 +80,14 @@ export default function ResumePage() {
           <Window title="skills.txt" soft>
             <div className="p-5 font-mono text-[13px] leading-relaxed">
               <div className="opacity-60 mb-1"># languages</div>
-              <p>Rust · C++ · C · Python · Java · Go · TS · JS · OCaml · SQL</p>
+              <p>Java · TypeScript · Python · C · C++ · Rust · JS · SQL · OCaml</p>
               <div className="opacity-60 mt-3 mb-1"># systems</div>
+              <p>Embedded Linux · MAVLink · Pixhawk · Bash · Git · Docker</p>
+              <div className="opacity-60 mt-3 mb-1"># cloud + web</div>
               <p>
-                Real-time + async pipelines · fault-tolerant systems · HW/SW
-                interfaces
+                AWS (CDK, Lambda, Step Functions, SNS, S3, DynamoDB) · React ·
+                Node · Flask · Prisma · MongoDB
               </p>
-              <div className="opacity-60 mt-3 mb-1"># tools</div>
-              <p>Linux · Docker · FastAPI · AWS · PyTorch · OpenCV · React</p>
             </div>
           </Window>
         </Reveal>

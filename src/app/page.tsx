@@ -290,15 +290,14 @@ export default function Home() {
             </h2>
             <p className="font-mono text-[15px] leading-relaxed text-ink-soft">
               i study computer science at cornell university engineering. on the
-              side, i lead the onboard software for{" "}
+              side, i lead cuair&apos;s intelligence subteam, which owns the{" "}
               <Link
                 href="/projects/mini-plane-system"
                 className="underline decoration-accent underline-offset-2 hover:text-accent"
               >
-                cuair&apos;s mini-plane subteam
+                onboard imaging pipeline
               </Link>{" "}
-              — embedded python that ties a GoPro and a flight controller
-              together. outside of code, i play piano and violin (mostly duets),
+              that ties a GoPro and a flight controller together. outside of code, i play piano and violin (mostly duets),
               and i&apos;m always trying to learn something new.
             </p>
             <div className="mt-5">

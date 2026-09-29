@@ -42,12 +42,12 @@ export const projects: Project[] = [
   {
     slug: "mini-plane-system",
     title: "Mini Plane System (MPS)",
-    subtitle: "Onboard imaging & telemetry pipeline for competition aircraft",
-    org: "Cornell University Autonomous Aircraft (CUAir)",
+    subtitle: "Onboard imaging & telemetry pipeline for CUAir's competition aircraft",
+    org: "Cornell Unmanned Air Systems (CUAir)",
     role:
       "Point person for the full onboard stack except distance mode and the FastAPI API layer (those were built by teammates).",
     blurb:
-      "Onboard Raspberry Pi software that automates GoPro capture, pairs each photo with Pixhawk GPS/attitude data, and streams geotagged imagery to a ground server — built for CUAir's competition aircraft.",
+      "Onboard Raspberry Pi software that fires a GoPro, pairs each photo with Pixhawk GPS/attitude data on a single clock, and streams geotagged imagery to the ground mid-flight: 1,300+ images per 45-minute flight, flown at SUAS 2026.",
     description:
       "Mini Plane System (MPS) is onboard flight software for CUAir's mini aircraft. It runs on a Raspberry Pi, controls a GoPro Hero 11 over USB, reads telemetry from a Pixhawk flight controller via MAVLink, and uploads each image with a JSON metadata payload (GPS, altitude, yaw, timestamps) to a ground server. I was the point person for the core pipeline: camera capture/download/upload, Pixhawk integration, telemetry buffering and time-alignment, the field CLI, Pi deployment, and operational tooling. Distance mode (geo-fenced capture) and the HTTP API were developed separately by teammates.",
     problem:
@@ -113,7 +113,8 @@ export const projects: Project[] = [
     technicalHighlight:
       "The hardest part of MPS is time alignment. The GoPro stores creation timestamps in media metadata, but Pixhawk telemetry arrives on a separate stream with its own timing. My pipeline records a host timestamp at each shutter press, enqueues it, and the download worker pairs each new file with the nearest telemetry sample within a configurable staleness window before building the ground-server JSON. Uploads are skipped when pairing fails, so the ground station never receives images without position data (with an explicit override only for integration testing). The whole system runs on asyncio so capture, download, telemetry polling, and network upload don't block each other — important on a resource-constrained Pi in the field.",
     outcomes: [
-      "Delivered a field-ready onboard pipeline used on competition aircraft — not a lab prototype.",
+      "Flown at SUAS 2026, where I ran it live as the Intelligence operator.",
+      "Aligns 1,300+ GoPro images per 45-minute flight to GPS and attitude within 125 ms.",
       "Eliminated manual post-flight sync between GoPro SD cards and flight logs.",
       "Enabled near–real-time geotagged image delivery to the ground server during flight.",
       "Packaged software as a single Pi binary plus Docker image for repeatable deployment.",
@@ -125,15 +126,17 @@ export const projects: Project[] = [
       "Operational UX matters on embedded systems — session folders, log streaming, and preflight scripts are as important as core algorithms.",
       "Shipping to embedded Linux: PyInstaller path quirks, ARM builds, and field-debugging docs.",
     ],
-    architecture: `[GoPro Hero 11]  ←── USB HTTP API ──→  [Raspberry Pi: MPS]
-                                            ↑ MAVLink (USB)
-                                      [Pixhawk + GPS]
-                                            ↓ HTTP POST (image + JSON)
-                                      [Ground server]`,
+    architecture: `[Pixhawk] ──USB/MAVLink──┐
+                         ▼
+                 [Raspberry Pi · mps]  ──POST /api/v1/image──▶  [Rocket ⇄ NanoStation]
+                         ▲                                                 │
+[GoPro Hero 11] ─USB/HTTP┘                                                 ▼
+                                                                     [gs-backend] ──▶ [hawk-ai]`,
     stack: [
       "Python",
       "asyncio",
       "pymavlink",
+      "FastAPI",
       "requests",
       "Raspberry Pi",
       "GoPro Open API",
@@ -151,8 +154,8 @@ export const projects: Project[] = [
       "MAVLink",
       "Raspberry Pi",
     ],
-    year: "2025",
-    readTime: "4 min",
+    year: "2025 — present",
+    readTime: "10 min",
     status: "shipped",
     featured: true,
     links: [
@@ -161,9 +164,36 @@ export const projects: Project[] = [
         note: "private team repo — CUAir/mini-plane-system",
       },
       {
-        label: "Organization",
-        href: "https://cuair.org",
-        note: "Cornell CUAir",
+        label: "Hermes, CUAir's 2026 aircraft",
+        href: "https://cuair.org/hermes.html",
+        note: "cuair.org/hermes",
+      },
+      {
+        label: "SUAS 2026",
+        href: "/projects/suas-2026",
+        note: "running this pipeline at competition",
+      },
+    ],
+  },
+  {
+    slug: "suas-2026",
+    title: "SUAS 2026",
+    subtitle: "Intelligence operator on the flightline",
+    org: "Cornell Unmanned Air Systems (CUAir)",
+    role: "Intelligence operator: solely responsible for the onboard imaging pipeline during live missions.",
+    blurb:
+      "At the international Student Unmanned Aerial Systems competition, I ran CUAir's imaging pipeline live from the flightline: bring-up, launch, monitoring over the radio link, and recovery after landing.",
+    description:
+      "SUAS is an international competition where university teams fly autonomous aircraft through a search-and-rescue mission. At SUAS 2026 I was CUAir's Intelligence operator on the flightline, solely responsible for the onboard imaging pipeline during live missions.",
+    tags: ["Competition", "Flight Ops", "UAV", "Embedded Linux", "MAVLink"],
+    year: "2026",
+    readTime: "3 min",
+    status: "shipped",
+    links: [
+      {
+        label: "Mini Plane System",
+        href: "/projects/mini-plane-system",
+        note: "the pipeline I ran",
       },
     ],
   },

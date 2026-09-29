@@ -16,7 +16,7 @@ const facts = [
 ];
 
 const nowList = [
-  "imaging systems software @ CUAir (Cornell UAS)",
+  "leading the intelligence subteam @ CUAir (Cornell UAS)",
   "freelance web dev for Hao Shi Guang Restaurant",
   "studying CS coursework at cornell engineering",
   "playing piano + violin (mostly duets w/ friends)",
@@ -53,14 +53,24 @@ export default function AboutPage() {
               >
                 mini plane system
               </Link>{" "}
-              i lead on cornell&apos;s autonomous aircraft team: onboard
-              python software that ties a GoPro and a flight controller
-              together and streams geotagged imagery to the ground during
-              flight.
+              on cornell&apos;s autonomous aircraft team, where i now lead
+              the intelligence subteam: onboard software that ties a GoPro
+              and a flight controller together and streams geotagged imagery
+              to the ground during flight. i ran it live from the flightline
+              at{" "}
+              <Link
+                href="/projects/suas-2026"
+                className="underline decoration-accent underline-offset-2 hover:text-accent"
+              >
+                SUAS 2026
+              </Link>
+              .
             </p>
             <p>
-              i&apos;ve also worked as a backend engineering intern at data
-              legion ai, a software engineer at cornell engineering world
+              this past summer i was a flight dynamics software developer
+              intern at amazon leo, building a service that runs
+              astrodynamics engineers&apos; analytics scripts on its own. i&apos;ve
+              also worked as a backend engineering intern at data legion ai, a software engineer at cornell engineering world
               health, and a freelance web developer for a family-owned
               restaurant. earlier on, i did computer vision research and
               built a handwriting recognition system.
@@ -128,14 +138,29 @@ export default function AboutPage() {
               role: "B.S. Computer Science",
               where: "Cornell University · College of Engineering",
               kind: "education",
-              what: "Coursework: Computer System Organization & Programming, Analysis of Algorithms, OOP & Data Structures, Discrete Structures, Functional Programming.",
+              what: "Coursework: Systems Programming, Design with Embedded Operating Systems, Digital Systems Design Using Microcontrollers, Computer System Organization & Programming, Analysis of Algorithms, Computer Vision, Machine Learning, Functional Programming.",
+            },
+            {
+              when: "Jun — Aug 2026",
+              role: "Flight Dynamics Software Developer Intern",
+              where: "Amazon Leo (GNC & Propulsion) · Redmond, WA",
+              kind: "work",
+              what: "Built and owned a service that runs astrodynamics engineers' analytics scripts automatically, on a schedule or on satellite events like an ephemeris update. Serverless architecture in TypeScript CDK (Lambda, Step Functions, SNS, S3, DynamoDB) with a Java handler package for triggering, execution, and failure triage. Shipped to production for 100+ engineers.",
+            },
+            {
+              when: "2026",
+              role: "Intelligence Operator — SUAS 2026",
+              where: "Student Unmanned Aerial Systems competition",
+              kind: "project",
+              what: "Solely responsible for CUAir's imaging pipeline on the flightline during live missions.",
+              link: { href: "/projects/suas-2026", label: "read more" },
             },
             {
               when: "Feb 2025 — present",
-              role: "Imaging Systems Software Engineer",
+              role: "Intelligence Subteam Lead (since Aug 2026)",
               where: "Cornell Unmanned Air Systems (CUAir)",
               kind: "work",
-              what: "Owning the onboard imaging pipeline for the mini-plane subteam. Time-aligned, real-time data pipeline that synchronizes GoPro capture with Pixhawk telemetry over MAVLink, with async/fault-tolerant workflows for live flight ops. See the full case study in projects.",
+              what: "Lead a subteam of 15 engineers owning the onboard imaging and telemetry pipeline end to end. Aligns 1,300+ GoPro images per 45-minute flight to GPS and attitude within 125 ms, on a Raspberry Pi bridged to the ground over a Ubiquiti link. Review the subteam's code, onboard new members, and own the data interface with Autopilot.",
               link: { href: "/projects/mini-plane-system", label: "read the case study" },
             },
             {

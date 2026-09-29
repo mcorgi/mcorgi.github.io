@@ -40,12 +40,12 @@ export default function Nav() {
           <span className="inline-flex h-7 w-7 items-center justify-center rounded-md border border-line bg-cream-2 shadow-[2px_2px_0_0_var(--line)] group-hover:translate-x-[-1px] group-hover:translate-y-[-1px] group-hover:shadow-[3px_3px_0_0_var(--line)] transition-all">
             <span className="font-display text-[13px] font-bold">st</span>
           </span>
-          <span className="font-display font-semibold tracking-tight">
+          <span className="hidden sm:inline font-display font-semibold tracking-tight">
             sandra tang
           </span>
         </Link>
 
-        <nav className="flex items-center gap-1">
+        <nav className="flex items-center gap-0.5 sm:gap-1">
           {links.map((l) => {
             const active =
               l.href === "/"
@@ -55,7 +55,7 @@ export default function Nav() {
               <Link
                 key={l.href}
                 href={l.href}
-                className={`relative px-3 py-1.5 text-sm font-mono rounded-md transition-colors ${
+                className={`relative px-1.5 sm:px-3 py-1.5 text-[12px] sm:text-sm font-mono rounded-md transition-colors ${
                   active
                     ? "bg-ink text-cream"
                     : "hover:bg-cream-2"

@@ -4,6 +4,14 @@ import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
 import Window from "@/components/Window";
 import { projects } from "@/data/projects";
+import MiniPlaneSystem from "@/components/case-study/MiniPlaneSystem";
+import Suas2026 from "@/components/case-study/Suas2026";
+
+// Projects with a hand-built long-form page instead of the generic template.
+const caseStudies = {
+  "mini-plane-system": MiniPlaneSystem,
+  "suas-2026": Suas2026,
+} as const;
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -31,6 +39,9 @@ export default async function ProjectDetailPage({
   const { slug } = await params;
   const p = projects.find((x) => x.slug === slug);
   if (!p) notFound();
+
+  const CaseStudy = caseStudies[p.slug as keyof typeof caseStudies];
+  if (CaseStudy) return <CaseStudy project={p} />;
 
   const primaryFeatures = (p.features ?? []).filter(
     (f) => f.ownership === "primary",
