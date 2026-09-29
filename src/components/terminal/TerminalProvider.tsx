@@ -14,7 +14,7 @@ import {
 import { contact } from "@/data/siteMap";
 import { cwdForPathname, FsNode, nodeAt, pathString, resolve, routePath } from "./fs";
 
-export type Tone = "dim" | "accent" | "accent2" | "ok" | "err" | "warn" | "bold";
+export type Tone = "dim" | "accent" | "accent2" | "pink" | "ok" | "err" | "warn" | "bold";
 export type Seg = { t: string; tone?: Tone; href?: string };
 export type Line = { segs: Seg[]; welcome?: boolean };
 
@@ -36,7 +36,7 @@ export const COMMANDS: { name: string; usage: string; about: string }[] = [
 ];
 
 const intro: Line[] = [
-  line(s("sandra@cornell", "accent2"), s(":"), s("~", "accent"), s("$ ./welcome.sh", "dim")),
+  line(s("sandra@cornell", "pink"), s(":"), s("~", "accent"), s("$ ./welcome.sh", "dim")),
   { segs: [s("welcome to my personal website!")], welcome: true },
   line(
     s("this terminal is real. type ", "dim"),
@@ -140,7 +140,7 @@ export default function TerminalProvider({ children }: { children: ReactNode }) 
     (raw: string) => {
       const input = raw.trim();
       const promptLine = line(
-        s("sandra@cornell", "accent2"),
+        s("sandra@cornell", "pink"),
         s(":"),
         s(pathString(cwdRef.current), "accent"),
         s("$ "),

@@ -29,6 +29,14 @@ export default function FeaturedProject({ project, compact = false }: Props) {
         transition={{ type: "spring", stiffness: 200, damping: 22 }}
         className="relative window bg-cream"
       >
+          {/* Invisible layer so clicking anywhere on the card opens the case study.
+            The visible "read the case study" link stays the one keyboard/screen-reader link. */}
+        <Link
+          href={`/projects/${project.slug}`}
+          aria-hidden
+          tabIndex={-1}
+          className="absolute inset-0 z-[5]"
+        />
         <div className="window-title">
           <span className="window-dots" aria-hidden>
             <span />
@@ -39,7 +47,7 @@ export default function FeaturedProject({ project, compact = false }: Props) {
             ~/projects/{project.slug}.md
           </span>
           <span className="ml-auto flex items-center gap-2 font-mono text-[10px]">
-            <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-pink animate-pulse" />
             <span className="uppercase tracking-widest">featured</span>
           </span>
         </div>
@@ -89,7 +97,7 @@ export default function FeaturedProject({ project, compact = false }: Props) {
             <div className="mt-7 flex flex-wrap gap-3">
               <Link
                 href={`/projects/${project.slug}`}
-                className="arrow-link text-sm font-mono"
+                className="arrow-link text-sm font-mono relative z-10"
               >
                 read the case study <span aria-hidden>↗</span>
               </Link>
@@ -98,7 +106,7 @@ export default function FeaturedProject({ project, compact = false }: Props) {
                   href={project.repo}
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="arrow-link text-sm font-mono"
+                  className="arrow-link text-sm font-mono relative z-10"
                 >
                   source ↗
                 </a>
@@ -113,17 +121,18 @@ export default function FeaturedProject({ project, compact = false }: Props) {
             </div>
 
             {project.diagram ? (
-              <a
-                href={project.diagram}
-                target="_blank"
-                rel="noreferrer noopener"
-                className="block window-soft overflow-hidden hover:-translate-x-0.5 hover:-translate-y-0.5 transition-transform"
-                aria-label="Open the system diagram full size"
-              >
+              <div className="window-soft overflow-hidden">
                 <div className="px-3 py-2 border-b border-line flex items-center gap-2 font-mono text-[10px] bg-cream-2">
                   <span className="inline-block h-2 w-2 rounded-full bg-accent" />
                   <span className="opacity-70 truncate">{project.diagram.split("/").pop()}</span>
-                  <span className="ml-auto opacity-60">full size ↗</span>
+                  <a
+                    href={project.diagram}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="relative z-10 ml-auto opacity-60 hover:opacity-100 hover:text-accent"
+                  >
+                    full size ↗
+                  </a>
                 </div>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -131,7 +140,7 @@ export default function FeaturedProject({ project, compact = false }: Props) {
                   alt={`${project.title} system architecture`}
                   className="block w-full h-auto bg-white"
                 />
-              </a>
+              </div>
             ) : (
               project.architecture && (
                 <div className="window-soft overflow-hidden" style={{ background: "var(--ink)" }}>

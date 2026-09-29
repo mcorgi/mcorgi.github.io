@@ -14,8 +14,8 @@ export default function ProjectCard({ project, index }: Props) {
     index % 3 === 0
       ? "var(--accent)"
       : index % 3 === 1
-        ? "var(--accent-2)"
-        : "var(--accent-3)";
+        ? "var(--pink)"
+        : "var(--accent-2)";
 
   return (
     <motion.article
@@ -24,17 +24,25 @@ export default function ProjectCard({ project, index }: Props) {
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.55, delay: index * 0.06, ease: [0.22, 1, 0.36, 1] }}
       whileHover={{ scale: 1.025, rotate: -0.4 }}
-      className="group relative"
+      className="group relative h-full"
       style={{ transformOrigin: "center" }}
     >
       {/* offset color block behind for retro depth */}
       <div
         aria-hidden
-        className="absolute inset-0 translate-x-1.5 translate-y-1.5 rounded-[14px] transition-transform duration-300 group-hover:translate-x-2.5 group-hover:translate-y-2.5"
+        className="absolute inset-0 translate-x-2 translate-y-2 rounded-[14px] border-[1.5px] border-line transition-transform duration-300 group-hover:translate-x-3 group-hover:translate-y-3"
         style={{ background: accent }}
       />
 
-      <div className="relative window bg-cream">
+      <div className="relative window bg-cream h-full flex flex-col !shadow-none">
+        {/* Invisible layer so clicking anywhere on the card opens the project.
+            The visible "read more" link stays the one keyboard/screen-reader link. */}
+        <Link
+          href={`/projects/${project.slug}`}
+          aria-hidden
+          tabIndex={-1}
+          className="absolute inset-0 z-[5]"
+        />
         <div className="window-title">
           <span className="window-dots" aria-hidden>
             <span />
@@ -79,7 +87,7 @@ export default function ProjectCard({ project, index }: Props) {
           <div className="flex items-center justify-between gap-3">
             <Link
               href={`/projects/${project.slug}`}
-              className="arrow-link text-xs font-mono"
+              className="arrow-link text-xs font-mono relative z-10"
             >
               read more <span aria-hidden>↗</span>
             </Link>
@@ -88,7 +96,7 @@ export default function ProjectCard({ project, index }: Props) {
                 href={project.repo}
                 target="_blank"
                 rel="noreferrer noopener"
-                className="text-xs font-mono opacity-70 hover:opacity-100 hover:text-accent"
+                className="relative z-10 text-xs font-mono opacity-70 hover:opacity-100 hover:text-accent"
               >
                 source ↗
               </a>

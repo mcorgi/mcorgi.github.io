@@ -70,7 +70,7 @@ export default function Home() {
           transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
         >
           <div className="relative">
-            <div className="absolute inset-0 translate-x-2 translate-y-2 rounded-2xl bg-accent" />
+            <div className="absolute inset-0 translate-x-2 translate-y-2 rounded-2xl bg-pink" />
             <div className="relative h-24 w-24 lg:h-28 lg:w-28 rounded-2xl border-[1.5px] border-line bg-cream-2 flex items-center justify-center">
               <span className="font-retro text-[38px] lg:text-[44px] leading-none">
                 ♪
@@ -219,7 +219,7 @@ export default function Home() {
       <section className="mx-auto max-w-6xl px-5 mt-24">
         <Reveal>
           <div className="font-mono text-xs uppercase tracking-widest opacity-60 mb-2 flex items-center gap-2">
-            <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent-3 animate-pulse" />
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-pink animate-pulse" />
             /highlight · beyond the code
           </div>
           <h2 className="display text-3xl sm:text-4xl mb-6">
@@ -230,7 +230,7 @@ export default function Home() {
           <Link href="/suas-2026" className="group relative block">
             <div
               aria-hidden
-              className="absolute inset-0 translate-x-2 translate-y-2 rounded-[14px] bg-accent-3 transition-transform duration-300 group-hover:translate-x-3 group-hover:translate-y-3"
+              className="absolute inset-0 translate-x-2 translate-y-2 rounded-[14px] bg-pink transition-transform duration-300 group-hover:translate-x-3 group-hover:translate-y-3"
             />
             <div className="relative window text-cream" style={{ background: "var(--ink)" }}>
               <div className="grid md:grid-cols-[1fr_auto] gap-6 items-center p-6 sm:p-8 lg:p-10">
@@ -324,7 +324,7 @@ export default function Home() {
               side, i lead cuair&apos;s intelligence subteam, which owns the{" "}
               <Link
                 href="/projects/mini-plane-system"
-                className="underline decoration-accent underline-offset-2 hover:text-accent"
+                className="underline decoration-pink underline-offset-2 hover:text-accent"
               >
                 onboard imaging pipeline
               </Link>{" "}
@@ -347,7 +347,7 @@ export default function Home() {
             <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
             /contact
           </div>
-          <h2 className="display text-4xl sm:text-6xl">let&apos;s talk.</h2>
+          <h2 className="display text-4xl sm:text-6xl">let&apos;s talk<span className="text-pink">.</span></h2>
           <p className="mt-4 max-w-2xl font-mono text-[15px] leading-relaxed text-ink-soft">
             whether it&apos;s an internship, a project, or a duet, i&apos;d love to hear from
             you. reach me any of these ways.
@@ -368,14 +368,14 @@ export default function Home() {
               >
                 <div
                   aria-hidden
-                  className="absolute inset-0 translate-x-2 translate-y-2 rounded-[14px] bg-accent transition-transform duration-300 group-hover:translate-x-3 group-hover:translate-y-3"
+                  className={`absolute inset-0 translate-x-2 translate-y-2 rounded-[14px] ${i === 1 ? "bg-pink" : "bg-accent"} transition-transform duration-300 group-hover:translate-x-3 group-hover:translate-y-3`}
                 />
                 <div className="relative window h-full p-6">
                   <div className="font-mono text-[11px] uppercase tracking-widest opacity-60">{c.k}</div>
                   <div className="mt-3 font-display text-xl lg:text-2xl [overflow-wrap:anywhere] group-hover:text-accent transition-colors">
                     {c.v}
                   </div>
-                  <div className="mt-5 font-mono text-[13px] text-accent">{c.cta} →</div>
+                  <div className={`mt-5 font-mono text-[13px] ${i === 1 ? "text-pink-ink" : "text-accent"}`}>{c.cta} →</div>
                 </div>
               </a>
             </Reveal>

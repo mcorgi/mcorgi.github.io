@@ -78,7 +78,7 @@ export default function FloatingTerminal() {
           className="pointer-events-auto arrow-link font-mono text-sm"
           aria-label="Open the site terminal"
         >
-          <span className="text-accent">&gt;_</span> terminal
+          <span className="text-pink-ink">&gt;_</span> terminal
         </button>
       )}
     </div>

@@ -8,6 +8,7 @@ const toneClass: Record<Tone, string> = {
   dim: "opacity-60",
   accent: "text-accent",
   accent2: "text-accent-2",
+  pink: "text-pink-ink",
   ok: "text-[#2e7d32]",
   err: "text-[#c0392b]",
   warn: "text-[#b7791f]",
@@ -116,7 +117,7 @@ export default function TerminalView({
           </div>
         ))}
         <label className="flex items-baseline gap-0 whitespace-pre">
-          <span className="text-accent-2">sandra@cornell</span>
+          <span className="text-pink-ink">sandra@cornell</span>
           <span>:</span>
           <span className="text-accent">{prompt}</span>
           <span>$ </span>
@@ -130,7 +131,7 @@ export default function TerminalView({
             autoCapitalize="off"
             autoCorrect="off"
             spellCheck={false}
-            className="flex-1 min-w-0 bg-transparent outline-none caret-accent text-ink"
+            className="flex-1 min-w-0 bg-transparent outline-none caret-pink text-ink"
           />
         </label>
       </div>

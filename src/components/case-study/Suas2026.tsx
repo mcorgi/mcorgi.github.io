@@ -69,7 +69,7 @@ export default function Suas2026() {
                 and cruises on its wing. Its imaging runs on the{" "}
                 <Link
                   href="/projects/mini-plane-system"
-                  className="underline decoration-accent underline-offset-2 hover:text-accent"
+                  className="underline decoration-pink underline-offset-2 hover:text-accent"
                 >
                   Mini Plane System
                 </Link>

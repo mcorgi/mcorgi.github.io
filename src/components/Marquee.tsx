@@ -13,7 +13,7 @@ export default function Marquee({ items, className = "" }: Props) {
         {doubled.map((it, i) => (
           <span key={i} className="px-6 flex items-center gap-6 shrink-0">
             <span>{it}</span>
-            <span aria-hidden className="text-accent">✦</span>
+            <span aria-hidden className={i % 2 ? "text-pink" : "text-accent"}>✦</span>
           </span>
         ))}
       </div>

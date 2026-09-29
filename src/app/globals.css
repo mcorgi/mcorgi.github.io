@@ -9,6 +9,9 @@
   --accent: #2a5fd0;       /* rich royal blue — primary accent */
   --accent-2: #5fa0d6;     /* lighter sky blue — secondary */
   --accent-3: #54b6bf;     /* cool teal — tertiary for variety */
+  --pink: #e0679a;         /* rosy pink — complements the royal blue */
+  --pink-ink: #c9407c;     /* deeper pink for text on light backgrounds */
+  --pink-soft: #fbe4ef;    /* pale pink for fills */
   --line: #122142;
 }
 
@@ -20,6 +23,9 @@
   --color-accent: var(--accent);
   --color-accent-2: var(--accent-2);
   --color-accent-3: var(--accent-3);
+  --color-pink: var(--pink);
+  --color-pink-ink: var(--pink-ink);
+  --color-pink-soft: var(--pink-soft);
   --color-line: var(--line);
 
   --font-display: var(--font-display);
@@ -183,8 +189,8 @@ body {
 
 /* selection */
 ::selection {
-  background: var(--accent);
-  color: var(--cream);
+  background: var(--pink);
+  color: var(--ink);
 }
 
 /* hide scrollbar styling, keep functionality */

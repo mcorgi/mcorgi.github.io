@@ -97,7 +97,7 @@ export default function MiniPlaneSystem({ project: p }: { project: Project }) {
             which owns MPS end to end, and I ran it live at{" "}
             <Link
               href="/suas-2026"
-              className="underline decoration-accent underline-offset-2 hover:text-accent"
+              className="underline decoration-pink underline-offset-2 hover:text-accent"
             >
               SUAS 2026
             </Link>
@@ -455,7 +455,7 @@ ok = await asyncio.to_thread(self.capture)`}</Pre>
                 </div>
                 <div className="font-mono text-[14px] leading-snug mt-0.5">
                   {m.href ? (
-                    <Link href={m.href} className="underline decoration-accent underline-offset-2 hover:text-accent">
+                    <Link href={m.href} className="underline decoration-pink underline-offset-2 hover:text-accent">
                       {m.title}
                     </Link>
                   ) : (

@@ -49,7 +49,7 @@ export default function AboutPage() {
               actually <em>use</em>. my biggest project right now is the{" "}
               <Link
                 href="/projects/mini-plane-system"
-                className="underline decoration-accent underline-offset-2 hover:text-accent"
+                className="underline decoration-pink underline-offset-2 hover:text-accent"
               >
                 mini plane system
               </Link>{" "}
@@ -60,7 +60,7 @@ export default function AboutPage() {
               at{" "}
               <Link
                 href="/suas-2026"
-                className="underline decoration-accent underline-offset-2 hover:text-accent"
+                className="underline decoration-pink underline-offset-2 hover:text-accent"
               >
                 SUAS 2026
               </Link>
@@ -84,7 +84,7 @@ export default function AboutPage() {
             <p>
               if you&apos;re building something thoughtful, or want to play a
               duet, please{" "}
-              <Link href="/resume" className="underline decoration-accent underline-offset-2">
+              <Link href="/resume" className="underline decoration-pink underline-offset-2">
                 say hi
               </Link>
               .
@@ -212,6 +212,8 @@ export default function AboutPage() {
             const dotColor =
               row.kind === "education"
                 ? "bg-accent-3"
+                : row.kind === "highlight"
+                ? "bg-pink"
                 : row.kind === "work"
                   ? "bg-accent"
                   : "bg-accent-2";
@@ -244,7 +246,7 @@ export default function AboutPage() {
                   {row.link && (
                     <Link
                       href={row.link.href}
-                      className="mt-2 inline-block font-mono text-[12px] underline decoration-accent underline-offset-2 hover:text-accent"
+                      className="mt-2 inline-block font-mono text-[12px] underline decoration-pink underline-offset-2 hover:text-accent"
                     >
                       {row.link.label} ↗
                     </Link>

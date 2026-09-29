@@ -243,7 +243,7 @@ export function Steps({ items }: { items: ReactNode[] }) {
 export function Callout({ children }: { children: ReactNode }) {
   return (
     <Reveal>
-      <div className="max-w-3xl border-l-4 border-accent bg-cream-2/60 rounded-r-lg px-5 py-4 font-mono text-[14px] leading-relaxed text-ink">
+      <div className="max-w-3xl border-l-4 border-pink bg-pink-soft/60 rounded-r-lg px-5 py-4 font-mono text-[14px] leading-relaxed text-ink">
         {children}
       </div>
     </Reveal>

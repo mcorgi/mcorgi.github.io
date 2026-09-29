@@ -68,7 +68,7 @@ export default function Nav() {
         </nav>
 
         <div className="hidden sm:flex items-center gap-2 font-mono text-xs">
-          <span className="inline-block h-2 w-2 rounded-full bg-accent-2 animate-pulse" />
+          <span className="inline-block h-2 w-2 rounded-full bg-pink animate-pulse" />
           <Clock />
         </div>
       </div>

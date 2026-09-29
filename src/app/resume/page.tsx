@@ -55,7 +55,7 @@ export default function ResumePage() {
                 <span className="opacity-60">email</span>
                 <a
                   href="mailto:st2232@cornell.edu"
-                  className="underline decoration-accent underline-offset-2 hover:text-accent break-all"
+                  className="underline decoration-pink underline-offset-2 hover:text-accent break-all"
                 >
                   st2232@cornell.edu
                 </a>
@@ -66,7 +66,7 @@ export default function ResumePage() {
                   href="https://www.linkedin.com/in/sandra-tang-651ab1333/"
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="underline decoration-accent underline-offset-2 hover:text-accent"
+                  className="underline decoration-pink underline-offset-2 hover:text-accent"
                 >
                   sandra-tang
                 </a>
@@ -144,7 +144,7 @@ export default function ResumePage() {
                     your browser can&apos;t display PDFs inline.{" "}
                     <a
                       href={RESUME_PATH}
-                      className="underline decoration-accent underline-offset-2"
+                      className="underline decoration-pink underline-offset-2"
                     >
                       download instead ↗
                     </a>
