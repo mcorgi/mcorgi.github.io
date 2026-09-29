@@ -59,7 +59,7 @@ export default function AboutPage() {
               to the ground during flight. i ran it live from the flightline
               at{" "}
               <Link
-                href="/projects/suas-2026"
+                href="/suas-2026"
                 className="underline decoration-accent underline-offset-2 hover:text-accent"
               >
                 SUAS 2026
@@ -151,9 +151,9 @@ export default function AboutPage() {
               when: "2026",
               role: "Intelligence Operator — SUAS 2026",
               where: "Student Unmanned Aerial Systems competition",
-              kind: "project",
+              kind: "highlight",
               what: "Solely responsible for CUAir's imaging pipeline on the flightline during live missions.",
-              link: { href: "/projects/suas-2026", label: "read more" },
+              link: { href: "/suas-2026", label: "read more" },
             },
             {
               when: "Feb 2025 — present",

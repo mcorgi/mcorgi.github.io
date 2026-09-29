@@ -3,13 +3,14 @@
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import Typewriter from "@/components/Typewriter";
+import TerminalView from "@/components/terminal/TerminalView";
 import Reveal from "@/components/Reveal";
 import Window from "@/components/Window";
 import Marquee from "@/components/Marquee";
 import ProjectCard from "@/components/ProjectCard";
 import FeaturedProject from "@/components/FeaturedProject";
 import { featuredProject, otherProjects } from "@/data/projects";
+import { contact } from "@/data/siteMap";
 
 export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -115,19 +116,8 @@ export default function Home() {
           </p>
 
           <div className="mt-8 max-w-2xl">
-            <Window title="terminal — welcome.sh" scanlines>
-              <div className="p-5 font-mono text-[15px] leading-relaxed">
-                <div className="opacity-60">
-                  <span className="text-accent-2">sandra@cornell</span>:
-                  <span className="text-accent">~</span>$ ./welcome.sh
-                </div>
-                <div className="mt-2">
-                  <Typewriter
-                    text="welcome to my personal website!"
-                    speed={55}
-                  />
-                </div>
-              </div>
+            <Window title="terminal — sandra@cornell (it's real, type in it)" scanlines>
+              <TerminalView heightClass="h-[230px]" />
             </Window>
           </div>
 
@@ -225,6 +215,47 @@ export default function Home() {
         <FeaturedProject project={featuredProject} />
       </section>
 
+      {/* HIGHLIGHT */}
+      <section className="mx-auto max-w-6xl px-5 mt-24">
+        <Reveal>
+          <div className="font-mono text-xs uppercase tracking-widest opacity-60 mb-2 flex items-center gap-2">
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent-3 animate-pulse" />
+            /highlight · beyond the code
+          </div>
+          <h2 className="display text-3xl sm:text-4xl mb-6">
+            on the flightline at SUAS 2026.
+          </h2>
+        </Reveal>
+        <Reveal>
+          <Link href="/suas-2026" className="group relative block">
+            <div
+              aria-hidden
+              className="absolute inset-0 translate-x-2 translate-y-2 rounded-[14px] bg-accent-3 transition-transform duration-300 group-hover:translate-x-3 group-hover:translate-y-3"
+            />
+            <div className="relative window text-cream" style={{ background: "var(--ink)" }}>
+              <div className="grid md:grid-cols-[1fr_auto] gap-6 items-center p-6 sm:p-8 lg:p-10">
+                <div>
+                  <div className="font-mono text-[11px] uppercase tracking-widest opacity-70 mb-3">
+                    Student Unmanned Aerial Systems competition · CUAir
+                  </div>
+                  <p className="font-display text-2xl sm:text-3xl leading-tight">
+                    I was CUAir&apos;s Intelligence operator, the one person running our
+                    imaging pipeline during live missions.
+                  </p>
+                  <p className="mt-4 max-w-2xl font-mono text-[13.5px] leading-relaxed opacity-80">
+                    Bring-up, launch, watching every photo land on the ground over the radio
+                    link, and stepping in when something stalled.
+                  </p>
+                </div>
+                <span className="inline-flex items-center gap-2 self-start md:self-center rounded-lg border-[1.5px] border-cream px-4 py-2 font-mono text-sm group-hover:bg-cream group-hover:text-ink transition-colors">
+                  read the story →
+                </span>
+              </div>
+            </div>
+          </Link>
+        </Reveal>
+      </section>
+
       {/* MORE PROJECTS */}
       <section className="mx-auto max-w-6xl px-5 mt-24">
         <Reveal>
@@ -244,7 +275,7 @@ export default function Home() {
           </div>
         </Reveal>
 
-        <div className="grid sm:grid-cols-2 gap-6 sm:gap-7">
+        <div className="grid sm:grid-cols-2 gap-6 sm:gap-7 [&>*]:min-w-0">
           {otherProjects.slice(0, 4).map((p, i) => (
             <ProjectCard key={p.slug} project={p} index={i} />
           ))}
@@ -306,6 +337,49 @@ export default function Home() {
               </Link>
             </div>
           </Reveal>
+        </div>
+      </section>
+
+      {/* CONTACT */}
+      <section id="contact" className="mx-auto max-w-6xl px-5 mt-28 scroll-mt-24">
+        <Reveal>
+          <div className="font-mono text-xs uppercase tracking-widest opacity-60 mb-2 flex items-center gap-2">
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
+            /contact
+          </div>
+          <h2 className="display text-4xl sm:text-6xl">let&apos;s talk.</h2>
+          <p className="mt-4 max-w-2xl font-mono text-[15px] leading-relaxed text-ink-soft">
+            whether it&apos;s an internship, a project, or a duet, i&apos;d love to hear from
+            you. reach me any of these ways.
+          </p>
+        </Reveal>
+        <div className="mt-8 grid md:grid-cols-3 gap-5">
+          {[
+            { k: "email", v: contact.email, href: `mailto:${contact.email}`, cta: "send an email" },
+            { k: "phone", v: contact.phone, href: contact.phoneHref, cta: "call or text" },
+            { k: "linkedin", v: "in/sandra-tang", href: contact.linkedin, cta: "connect", external: true },
+          ].map((c, i) => (
+            <Reveal key={c.k} delay={i * 0.06}>
+              <a
+                href={c.href}
+                target={c.external ? "_blank" : undefined}
+                rel={c.external ? "noreferrer noopener" : undefined}
+                className="group relative block h-full"
+              >
+                <div
+                  aria-hidden
+                  className="absolute inset-0 translate-x-2 translate-y-2 rounded-[14px] bg-accent transition-transform duration-300 group-hover:translate-x-3 group-hover:translate-y-3"
+                />
+                <div className="relative window h-full p-6">
+                  <div className="font-mono text-[11px] uppercase tracking-widest opacity-60">{c.k}</div>
+                  <div className="mt-3 font-display text-xl lg:text-2xl [overflow-wrap:anywhere] group-hover:text-accent transition-colors">
+                    {c.v}
+                  </div>
+                  <div className="mt-5 font-mono text-[13px] text-accent">{c.cta} →</div>
+                </div>
+              </a>
+            </Reveal>
+          ))}
         </div>
       </section>
     </div>

@@ -112,16 +112,35 @@ export default function FeaturedProject({ project, compact = false }: Props) {
               system diagram
             </div>
 
-            <div className="window-soft bg-ink text-cream">
-              <div className="px-3 py-2 border-b border-cream/20 flex items-center gap-2 font-mono text-[10px]">
-                <span className="inline-block h-2 w-2 rounded-full bg-accent" />
-                <span className="opacity-70">architecture.txt</span>
-              </div>
-              <pre className="p-4 text-[10px] sm:text-[10.5px] leading-[1.55] font-mono whitespace-pre overflow-x-auto">
-                {project.architecture ??
-                  "[no architecture diagram available]"}
-              </pre>
-            </div>
+            {project.diagram ? (
+              <a
+                href={project.diagram}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="block window-soft overflow-hidden hover:-translate-x-0.5 hover:-translate-y-0.5 transition-transform"
+                aria-label="Open the system diagram full size"
+              >
+                <div className="px-3 py-2 border-b border-line flex items-center gap-2 font-mono text-[10px] bg-cream-2">
+                  <span className="inline-block h-2 w-2 rounded-full bg-accent" />
+                  <span className="opacity-70 truncate">{project.diagram.split("/").pop()}</span>
+                  <span className="ml-auto opacity-60">full size ↗</span>
+                </div>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={project.diagram}
+                  alt={`${project.title} system architecture`}
+                  className="block w-full h-auto bg-white"
+                />
+              </a>
+            ) : (
+              project.architecture && (
+                <div className="window-soft overflow-hidden" style={{ background: "var(--ink)" }}>
+                  <pre className="p-4 text-[10px] sm:text-[10.5px] leading-[1.55] font-mono whitespace-pre overflow-x-auto text-cream">
+                    {project.architecture}
+                  </pre>
+                </div>
+              )
+            )}
 
             {/* live status faux-panel */}
             <div className="mt-5 grid grid-cols-2 gap-3 font-mono text-[11px]">

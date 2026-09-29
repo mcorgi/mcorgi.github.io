@@ -41,10 +41,10 @@ export default function ProjectCard({ project, index }: Props) {
             <span />
             <span />
           </span>
-          <span className="ml-2 font-mono text-[11px] truncate">
+          <span className="ml-2 min-w-0 font-mono text-[11px] truncate">
             ~/projects/{project.slug}.md
           </span>
-          <span className="ml-auto font-mono text-[10px] opacity-70">
+          <span className="ml-auto pl-2 shrink-0 whitespace-nowrap font-mono text-[10px] opacity-70">
             {project.year}
           </span>
         </div>

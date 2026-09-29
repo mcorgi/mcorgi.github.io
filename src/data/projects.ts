@@ -35,6 +35,10 @@ export type Project = {
   repo?: string;
   status?: "shipped" | "in-progress" | "research";
   featured?: boolean;
+  // Kept for old links, but left out of every project list.
+  hidden?: boolean;
+  // Image shown in the featured card's "system diagram" panel.
+  diagram?: string;
   links?: ProjectLink[];
 };
 
@@ -158,6 +162,7 @@ export const projects: Project[] = [
     readTime: "10 min",
     status: "shipped",
     featured: true,
+    diagram: "/diagrams/mps-system-architecture.drawio.svg",
     links: [
       {
         label: "GitHub",
@@ -170,30 +175,36 @@ export const projects: Project[] = [
       },
       {
         label: "SUAS 2026",
-        href: "/projects/suas-2026",
+        href: "/suas-2026",
         note: "running this pipeline at competition",
       },
     ],
   },
   {
-    slug: "suas-2026",
-    title: "SUAS 2026",
-    subtitle: "Intelligence operator on the flightline",
-    org: "Cornell Unmanned Air Systems (CUAir)",
-    role: "Intelligence operator: solely responsible for the onboard imaging pipeline during live missions.",
+    slug: "camel-benchmark",
+    title: "Camel Benchmark",
+    subtitle: "A terminal game suite in OCaml, inspired by Human Benchmark",
+    org: "CS 3110 · Cornell University",
+    role: "Software engineer on a team of 4. Built Verbal Memory and rebuilt it as a pure state machine; terminal UI and I/O bug fixing across the app.",
     blurb:
-      "At the international Student Unmanned Aerial Systems competition, I ran CUAir's imaging pipeline live from the flightline: bring-up, launch, monitoring over the radio link, and recovery after landing.",
+      "Five cognitive games that run in the terminal, with logins and a leaderboard. I built Verbal Memory, refactored it into a pure state machine with no Lwt dependency, and wrote 47 tests that play the whole game without a terminal.",
     description:
-      "SUAS is an international competition where university teams fly autonomous aircraft through a search-and-rescue mission. At SUAS 2026 I was CUAir's Intelligence operator on the flightline, solely responsible for the onboard imaging pipeline during live missions.",
-    tags: ["Competition", "Flight Ops", "UAV", "Embedded Linux", "MAVLink"],
-    year: "2026",
-    readTime: "3 min",
+      "Camel Benchmark is the final project for Cornell's CS 3110 (Functional Programming in OCaml): a typing test, number and verbal memory, a reaction test and a Stroop test, tied together with user logins and a per-game leaderboard.",
+    stack: ["OCaml", "Dune", "Lwt", "ANSITerminal", "OUnit2", "Bisect_ppx"],
+    tags: ["OCaml", "Functional Programming", "Testing", "Terminal UI", "State Machines"],
+    year: "Fall 2025",
+    readTime: "6 min",
     status: "shipped",
     links: [
       {
-        label: "Mini Plane System",
-        href: "/projects/mini-plane-system",
-        note: "the pipeline I ran",
+        label: "Watch the demo",
+        href: "https://www.youtube.com/watch?v=VpvceHyf-n0",
+        note: "youtube",
+      },
+      {
+        label: "Source",
+        href: "https://github.coecis.cornell.edu/sd2229/cs3110finalproject",
+        note: "Cornell GitHub (Cornell login)",
       },
     ],
   },
@@ -234,6 +245,7 @@ export const projects: Project[] = [
   },
   {
     slug: "studycentral",
+    hidden: true,
     title: "StudyCentral App",
     org: "Cornell AppDev Hack Challenge",
     role: "Backend Lead",
@@ -248,6 +260,7 @@ export const projects: Project[] = [
   },
   {
     slug: "handwriting-recognition",
+    hidden: true,
     title: "Handwriting Recognition Web App",
     org: "Tufts University",
     blurb:
@@ -395,6 +408,7 @@ export const projects: Project[] = [
   },
   {
     slug: "red-and-black",
+    hidden: true,
     title: "Red & Black Newspaper Website",
     blurb:
       "A modern web home for a student newspaper — articles, opinion pieces, and a layout that actually reads like a newspaper.",
@@ -407,5 +421,6 @@ export const projects: Project[] = [
   },
 ];
 
+export const visibleProjects = projects.filter((p) => !p.hidden);
 export const featuredProject = projects.find((p) => p.featured) ?? projects[0];
-export const otherProjects = projects.filter((p) => !p.featured);
+export const otherProjects = visibleProjects.filter((p) => !p.featured);

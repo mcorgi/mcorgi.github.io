@@ -1,46 +1,43 @@
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import Window from "@/components/Window";
-import type { Project } from "@/data/projects";
 import { placeholderCount, suasPhotos } from "@/data/suas2026";
+import { suasSections } from "@/data/siteMap";
 import { Card, Code, Diagram, Section, SectionNav, Table } from "./Parts";
 
-const nav = [
-  { id: "overview", label: "overview" },
-  { id: "role", label: "my role" },
-  { id: "flightline", label: "flightline ops" },
-  { id: "watching", label: "what i watched" },
-  { id: "photos", label: "photos" },
-];
+const nav = suasSections;
 
-export default function Suas2026({ project: p }: { project: Project }) {
+export default function Suas2026() {
   return (
     <div className="mx-auto max-w-5xl px-5 pt-10 pb-24">
       <Reveal>
         <div className="flex items-center gap-2 font-mono text-xs opacity-70">
-          <Link href="/projects" className="hover:text-accent">
-            ← projects
+          <Link href="/" className="hover:text-accent">
+            ← home
           </Link>
           <span>/</span>
-          <span>{p.slug}</span>
+          <span>highlights</span>
+          <span>/</span>
+          <span>suas-2026</span>
         </div>
       </Reveal>
 
       <Reveal>
         <div className="mt-6">
           <div className="font-mono text-[11px] uppercase tracking-widest opacity-70 mb-3 flex flex-wrap items-center gap-2">
-            <span className="tag !py-0.5 !px-2 text-[10px]">competition</span>
-            {p.org && <span>· {p.org}</span>}
-            <span>· {p.year}</span>
+            <span className="tag !py-0.5 !px-2 text-[10px]">highlight</span>
+            <span>· Cornell Unmanned Air Systems (CUAir)</span>
+            <span>· 2026</span>
           </div>
-          <h1 className="display text-[44px] sm:text-[68px] leading-[0.95]">{p.title}</h1>
-          {p.subtitle && (
-            <p className="mt-3 font-display text-xl sm:text-2xl text-ink-soft max-w-3xl">
-              {p.subtitle}
-            </p>
-          )}
+          <h1 className="display text-[44px] sm:text-[68px] leading-[0.95]">SUAS 2026</h1>
+          <p className="mt-3 font-display text-xl sm:text-2xl text-ink-soft max-w-3xl">
+            Intelligence operator on the flightline
+          </p>
           <p className="mt-5 max-w-3xl font-mono text-[15px] leading-relaxed text-ink-soft">
-            {p.description}
+            SUAS is an international competition where university teams fly autonomous aircraft
+            through a search-and-rescue mission. At SUAS 2026 I was CUAir&apos;s Intelligence
+            operator on the flightline, solely responsible for the onboard imaging pipeline during
+            live missions.
           </p>
         </div>
       </Reveal>
@@ -221,8 +218,8 @@ export default function Suas2026({ project: p }: { project: Project }) {
       </Section>
 
       <div className="mt-20 flex items-center justify-between">
-        <Link href="/projects" className="arrow-link text-sm font-mono">
-          ← all projects
+        <Link href="/" className="arrow-link text-sm font-mono">
+          ← home
         </Link>
         <Link href="/projects/mini-plane-system" className="arrow-link text-sm font-mono">
           the pipeline I ran →

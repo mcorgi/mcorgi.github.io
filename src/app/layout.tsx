@@ -3,6 +3,8 @@ import { Space_Grotesk, JetBrains_Mono, VT323 } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import TerminalProvider from "@/components/terminal/TerminalProvider";
+import FloatingTerminal from "@/components/terminal/FloatingTerminal";
 
 const grotesk = Space_Grotesk({
   variable: "--font-display",
@@ -38,9 +40,12 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-cream text-ink">
         <div className="grain-overlay" aria-hidden />
-        <Nav />
-        <main className="flex-1 w-full">{children}</main>
-        <Footer />
+        <TerminalProvider>
+          <Nav />
+          <main className="flex-1 w-full">{children}</main>
+          <Footer />
+          <FloatingTerminal />
+        </TerminalProvider>
       </body>
     </html>
   );

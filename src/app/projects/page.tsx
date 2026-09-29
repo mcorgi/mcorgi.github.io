@@ -5,7 +5,7 @@ import { useMemo, useState } from "react";
 import Reveal from "@/components/Reveal";
 import ProjectCard from "@/components/ProjectCard";
 import FeaturedProject from "@/components/FeaturedProject";
-import { projects, featuredProject, otherProjects } from "@/data/projects";
+import { visibleProjects, featuredProject, otherProjects } from "@/data/projects";
 
 export default function ProjectsPage() {
   const allTags = useMemo(() => {
@@ -25,7 +25,7 @@ export default function ProjectsPage() {
     <div className="mx-auto max-w-6xl px-5 pt-14 pb-24">
       <Reveal>
         <div className="font-mono text-xs uppercase tracking-widest opacity-60 mb-2">
-          /projects · {projects.length} entries
+          /projects · {visibleProjects.length} entries
         </div>
         <h1 className="display text-5xl sm:text-7xl">things i built.</h1>
         <p className="mt-4 max-w-2xl font-mono text-[14.5px] leading-relaxed text-ink-soft">
@@ -82,7 +82,7 @@ export default function ProjectsPage() {
 
         <motion.div
           layout
-          className="mt-8 grid sm:grid-cols-2 gap-6 sm:gap-7"
+          className="mt-8 grid sm:grid-cols-2 gap-6 sm:gap-7 [&>*]:min-w-0"
         >
           {filtered.map((p, i) => (
             <div key={p.slug} id={p.slug}>

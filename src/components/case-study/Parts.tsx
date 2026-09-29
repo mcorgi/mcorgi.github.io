@@ -211,3 +211,42 @@ export function Pre({ title, children }: { title: string; children: string }) {
     </Reveal>
   );
 }
+
+// Plain reading column: one idea after another, top to bottom.
+export function Prose({ children }: { children: ReactNode }) {
+  return (
+    <Reveal>
+      <div className="max-w-3xl space-y-4 font-mono text-[14.5px] leading-[1.75] text-ink-soft [&_strong]:text-ink [&_strong]:font-semibold">
+        {children}
+      </div>
+    </Reveal>
+  );
+}
+
+export function Steps({ items }: { items: ReactNode[] }) {
+  return (
+    <Reveal>
+      <ol className="max-w-3xl space-y-3 font-mono text-[14px] leading-relaxed">
+        {items.map((it, i) => (
+          <li key={i} className="flex gap-4">
+            <span className="shrink-0 inline-flex h-7 w-7 items-center justify-center rounded-md border-[1.5px] border-line bg-cream-2 text-[12px] font-semibold">
+              {i + 1}
+            </span>
+            <span className="pt-0.5 text-ink-soft [&_strong]:text-ink [&_strong]:font-semibold">{it}</span>
+          </li>
+        ))}
+      </ol>
+    </Reveal>
+  );
+}
+
+export function Callout({ children }: { children: ReactNode }) {
+  return (
+    <Reveal>
+      <div className="max-w-3xl border-l-4 border-accent bg-cream-2/60 rounded-r-lg px-5 py-4 font-mono text-[14px] leading-relaxed text-ink">
+        {children}
+      </div>
+    </Reveal>
+  );
+}
+

@@ -5,12 +5,12 @@ import Reveal from "@/components/Reveal";
 import Window from "@/components/Window";
 import { projects } from "@/data/projects";
 import MiniPlaneSystem from "@/components/case-study/MiniPlaneSystem";
-import Suas2026 from "@/components/case-study/Suas2026";
+import CamelBenchmark from "@/components/case-study/CamelBenchmark";
 
 // Projects with a hand-built long-form page instead of the generic template.
 const caseStudies = {
   "mini-plane-system": MiniPlaneSystem,
-  "suas-2026": Suas2026,
+  "camel-benchmark": CamelBenchmark,
 } as const;
 
 export function generateStaticParams() {

@@ -1,60 +1,10 @@
 import Link from "next/link";
-import { ReactNode } from "react";
 import Reveal from "@/components/Reveal";
 import type { Project } from "@/data/projects";
-import { Code, Diagram, Pre, Section, SectionNav, Stat, Table } from "./Parts";
+import { mpsSections } from "@/data/siteMap";
+import { Callout, Code, Diagram, Pre, Prose, Section, SectionNav, Stat, Steps, Table } from "./Parts";
 
-const nav = [
-  { id: "what", label: "01 what it is" },
-  { id: "hardware", label: "02 hardware" },
-  { id: "software", label: "03 software" },
-  { id: "photo", label: "04 one photo" },
-  { id: "time", label: "05 the time problem" },
-  { id: "concurrency", label: "06 concurrency" },
-  { id: "distance-mode", label: "07 distance mode" },
-  { id: "failures", label: "08 when things break" },
-  { id: "testing", label: "09 testing" },
-  { id: "timeline", label: "10 timeline" },
-  { id: "learned", label: "11 what i learned" },
-];
-
-// Plain reading column: one idea after another, top to bottom.
-function Prose({ children }: { children: ReactNode }) {
-  return (
-    <Reveal>
-      <div className="max-w-3xl space-y-4 font-mono text-[14.5px] leading-[1.75] text-ink-soft [&_strong]:text-ink [&_strong]:font-semibold">
-        {children}
-      </div>
-    </Reveal>
-  );
-}
-
-function Steps({ items }: { items: ReactNode[] }) {
-  return (
-    <Reveal>
-      <ol className="max-w-3xl space-y-3 font-mono text-[14px] leading-relaxed">
-        {items.map((it, i) => (
-          <li key={i} className="flex gap-4">
-            <span className="shrink-0 inline-flex h-7 w-7 items-center justify-center rounded-md border-[1.5px] border-line bg-cream-2 text-[12px] font-semibold">
-              {i + 1}
-            </span>
-            <span className="pt-0.5 text-ink-soft [&_strong]:text-ink [&_strong]:font-semibold">{it}</span>
-          </li>
-        ))}
-      </ol>
-    </Reveal>
-  );
-}
-
-function Callout({ children }: { children: ReactNode }) {
-  return (
-    <Reveal>
-      <div className="max-w-3xl border-l-4 border-accent bg-cream-2/60 rounded-r-lg px-5 py-4 font-mono text-[14px] leading-relaxed text-ink">
-        {children}
-      </div>
-    </Reveal>
-  );
-}
+const nav = mpsSections;
 
 const milestones = [
   { when: "Sep 2025", title: "Learned the old Rust system and the ground-server schema" },
@@ -65,7 +15,7 @@ const milestones = [
   { when: "Jan – Feb 2026", title: "Pixhawk telemetry + pairing on the Pi clock" },
   { when: "Mar 2026", title: "End to end over the radio link to the ground" },
   { when: "Mar – May 2026", title: "Flight tests on the Matrice + distance mode" },
-  { when: "2026", title: "Flown at SUAS 2026, with me as Intelligence operator", href: "/projects/suas-2026" },
+  { when: "2026", title: "Flown at SUAS 2026, with me as Intelligence operator", href: "/suas-2026" },
 ];
 
 export default function MiniPlaneSystem({ project: p }: { project: Project }) {
@@ -146,7 +96,7 @@ export default function MiniPlaneSystem({ project: p }: { project: Project }) {
             the HTTP control API. Since August 2026 I lead the Intelligence subteam (15 engineers),
             which owns MPS end to end, and I ran it live at{" "}
             <Link
-              href="/projects/suas-2026"
+              href="/suas-2026"
               className="underline decoration-accent underline-offset-2 hover:text-accent"
             >
               SUAS 2026
@@ -584,7 +534,7 @@ ok = await asyncio.to_thread(self.capture)`}</Pre>
         <Link href="/projects" className="arrow-link text-sm font-mono">
           ← all projects
         </Link>
-        <Link href="/projects/suas-2026" className="arrow-link text-sm font-mono">
+        <Link href="/suas-2026" className="arrow-link text-sm font-mono">
           SUAS 2026 →
         </Link>
       </div>
