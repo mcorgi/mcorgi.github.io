@@ -117,7 +117,7 @@ export default function FeaturedProject({ project, compact = false }: Props) {
           {/* RIGHT: architecture / system panel */}
           <div className="lg:col-span-2 bg-cream-2/40 p-6 sm:p-8 scanlines">
             <div className="font-mono text-[10.5px] uppercase tracking-widest opacity-70 mb-3">
-              system diagram
+              {project.diagram || project.architecture ? "system diagram" : "at a glance"}
             </div>
 
             {project.diagram ? (
@@ -152,64 +152,25 @@ export default function FeaturedProject({ project, compact = false }: Props) {
             )}
 
             {/* live status faux-panel */}
-            <div className="mt-5 grid grid-cols-2 gap-3 font-mono text-[11px]">
-              <div className="window-soft p-3">
-                <div className="opacity-60 uppercase tracking-widest text-[9.5px] mb-1">
-                  capture
-                </div>
-                <div className="flex items-center gap-2">
-                  <motion.span
-                    className="inline-block h-2 w-2 rounded-full bg-accent-2"
-                    animate={{ opacity: [1, 0.3, 1] }}
-                    transition={{ duration: 1.4, repeat: Infinity }}
-                  />
-                  <span>continuous</span>
-                </div>
+            {project.statusChips && (
+              <div className={`${project.diagram || project.architecture ? "mt-5" : ""} grid grid-cols-2 gap-3 font-mono text-[11px]`}>
+                {project.statusChips.map((c, i) => (
+                  <div key={c.k} className="window-soft p-3">
+                    <div className="opacity-60 uppercase tracking-widest text-[9.5px] mb-1">
+                      {c.k}
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <motion.span
+                        className={`inline-block h-2 w-2 rounded-full ${["bg-accent-2", "bg-pink", "bg-accent", "bg-accent-3"][i % 4]}`}
+                        animate={{ opacity: [1, 0.3, 1] }}
+                        transition={{ duration: 1.2 + i * 0.2, repeat: Infinity, delay: i * 0.4 }}
+                      />
+                      <span>{c.v}</span>
+                    </div>
+                  </div>
+                ))}
               </div>
-              <div className="window-soft p-3">
-                <div className="opacity-60 uppercase tracking-widest text-[9.5px] mb-1">
-                  telemetry
-                </div>
-                <div className="flex items-center gap-2">
-                  <motion.span
-                    className="inline-block h-2 w-2 rounded-full bg-accent"
-                    animate={{ opacity: [1, 0.3, 1] }}
-                    transition={{
-                      duration: 1.2,
-                      repeat: Infinity,
-                      delay: 0.4,
-                    }}
-                  />
-                  <span>MAVLink ok</span>
-                </div>
-              </div>
-              <div className="window-soft p-3">
-                <div className="opacity-60 uppercase tracking-widest text-[9.5px] mb-1">
-                  pairing
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="inline-block h-2 w-2 rounded-full bg-accent-3" />
-                  <span>nearest-neighbor</span>
-                </div>
-              </div>
-              <div className="window-soft p-3">
-                <div className="opacity-60 uppercase tracking-widest text-[9.5px] mb-1">
-                  upload
-                </div>
-                <div className="flex items-center gap-2">
-                  <motion.span
-                    className="inline-block h-2 w-2 rounded-full bg-accent-2"
-                    animate={{ opacity: [1, 0.3, 1] }}
-                    transition={{
-                      duration: 1.6,
-                      repeat: Infinity,
-                      delay: 0.8,
-                    }}
-                  />
-                  <span>geotagged</span>
-                </div>
-              </div>
-            </div>
+            )}
           </div>
         </div>
       </motion.div>

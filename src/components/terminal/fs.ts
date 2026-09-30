@@ -1,6 +1,7 @@
 import { visibleProjects } from "@/data/projects";
 import {
   camelSections,
+  analyticsSections,
   mpsSections,
   suasSections,
   type SectionLink,
@@ -20,6 +21,7 @@ export type FsNode = {
 const projectSections: Record<string, SectionLink[]> = {
   "mini-plane-system": mpsSections,
   "camel-benchmark": camelSections,
+  "automated-analytics": analyticsSections,
 };
 
 const sectionDirs = (base: string, sections: SectionLink[]): FsNode[] =>

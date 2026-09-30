@@ -197,3 +197,23 @@ body {
 html {
   scrollbar-color: var(--ink) var(--cream);
 }
+
+/* Lavender page theme, so a case study doesn't read like the blue MPS page.
+   Re-points the palette tokens, so every component on the page follows. */
+.theme-violet {
+  --cream: #f8f6ff;        /* page background: pale lavender */
+  --cream-2: #ece7fd;      /* panels, title bars */
+  --ink: #221a4d;          /* text: deep indigo */
+  --ink-soft: #4d4580;     /* body text */
+  --accent: #6d4fd8;       /* violet */
+  --accent-2: #9b87f5;     /* light violet */
+  --accent-3: #d06bb8;     /* orchid */
+  --line: #2b2166;         /* indigo outlines + offset shadows */
+  color: var(--ink);
+  background-color: var(--cream);
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(109, 79, 216, 0.13) 1px, transparent 0),
+    radial-gradient(ellipse 70% 40% at 80% 0%, rgba(155, 135, 245, 0.18), transparent 70%);
+  background-size: 22px 22px, 100% 100%;
+}
+.theme-violet ::selection { background: var(--accent-2); color: var(--ink); }

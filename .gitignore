@@ -41,3 +41,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+
+# Full-size SUAS originals stay local; the site uses the resized copies in web/.
+/public/images/suas-2026/*.JPG

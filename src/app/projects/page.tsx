@@ -5,7 +5,7 @@ import { useMemo, useState } from "react";
 import Reveal from "@/components/Reveal";
 import ProjectCard from "@/components/ProjectCard";
 import FeaturedProject from "@/components/FeaturedProject";
-import { visibleProjects, featuredProject, otherProjects } from "@/data/projects";
+import { visibleProjects, featuredProjects, otherProjects } from "@/data/projects";
 
 export default function ProjectsPage() {
   const allTags = useMemo(() => {
@@ -42,7 +42,11 @@ export default function ProjectsPage() {
             /featured
           </div>
         </Reveal>
-        <FeaturedProject project={featuredProject} />
+        <div className="space-y-12">
+          {featuredProjects.map((fp) => (
+            <FeaturedProject key={fp.slug} project={fp} />
+          ))}
+        </div>
       </section>
 
       {/* Tag filter */}

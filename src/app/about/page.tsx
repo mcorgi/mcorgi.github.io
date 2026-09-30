@@ -69,7 +69,7 @@ export default function AboutPage() {
             <p>
               this past summer i was a flight dynamics software developer
               intern at amazon leo, building a service that runs
-              astrodynamics engineers&apos; analytics scripts on its own. i&apos;ve
+              engineers&apos; analysis scripts on its own. i&apos;ve
               also worked as a backend engineering intern at data legion ai, a software engineer at cornell engineering world
               health, and a freelance web developer for a family-owned
               restaurant. earlier on, i did computer vision research and
@@ -143,9 +143,10 @@ export default function AboutPage() {
             {
               when: "Jun — Aug 2026",
               role: "Flight Dynamics Software Developer Intern",
-              where: "Amazon Leo (GNC & Propulsion) · Redmond, WA",
+              where: "Amazon Leo · Redmond, WA",
               kind: "work",
-              what: "Built and owned a service that runs astrodynamics engineers' analytics scripts automatically, on a schedule or on satellite events like an ephemeris update. Serverless architecture in TypeScript CDK (Lambda, Step Functions, SNS, S3, DynamoDB) with a Java handler package for triggering, execution, and failure triage. Shipped to production for 100+ engineers.",
+              what: "Built and owned a serverless service that runs engineers' analysis scripts automatically, on a schedule or when an upstream event lands. Built with TypeScript CDK, Java, and public AWS services (Lambda, Step Functions, SNS, S3, DynamoDB). Shipped to production.",
+              link: { href: "/projects/automated-analytics", label: "read the case study" },
             },
             {
               when: "2026",

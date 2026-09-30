@@ -28,11 +28,23 @@ export const camelSections: SectionLink[] = [
   { id: "team", label: "team + stack" },
 ];
 
-export const suasSections: SectionLink[] = [
+export const analyticsSections: SectionLink[] = [
   { id: "overview", label: "overview" },
+  { id: "skills", label: "what i learned" },
+  { id: "design", label: "the core design choice" },
+  { id: "example", label: "an example" },
+  { id: "lifecycle", label: "life of a script" },
+  { id: "impact", label: "impact" },
+  { id: "takeaways", label: "takeaways" },
+];
+
+export const suasSections: SectionLink[] = [
+  { id: "mission", label: "the mission" },
   { id: "role", label: "my role" },
-  { id: "flightline", label: "flightline ops" },
-  { id: "watching", label: "what i watched" },
+  { id: "flightline", label: "a mission, start to finish" },
+  { id: "week", label: "the week" },
+  { id: "results", label: "results" },
+  { id: "next", label: "what's next" },
   { id: "photos", label: "photos" },
 ];
 

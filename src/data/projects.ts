@@ -39,6 +39,8 @@ export type Project = {
   hidden?: boolean;
   // Image shown in the featured card's "system diagram" panel.
   diagram?: string;
+  // Little status tiles under the featured card's diagram.
+  statusChips?: { k: string; v: string }[];
   links?: ProjectLink[];
 };
 
@@ -163,6 +165,12 @@ export const projects: Project[] = [
     status: "shipped",
     featured: true,
     diagram: "/diagrams/mps-system-architecture.drawio.svg",
+    statusChips: [
+      { k: "capture", v: "continuous" },
+      { k: "telemetry", v: "MAVLink ok" },
+      { k: "pairing", v: "nearest-neighbor" },
+      { k: "upload", v: "geotagged" },
+    ],
     links: [
       {
         label: "GitHub",
@@ -178,6 +186,41 @@ export const projects: Project[] = [
         href: "/suas-2026",
         note: "running this pipeline at competition",
       },
+    ],
+  },
+  {
+    slug: "automated-analytics",
+    title: "Automated Analytics Platform",
+    subtitle: "A serverless service that runs engineers' analysis scripts for them",
+    org: "Amazon Leo · Internship",
+    role:
+      "Flight Dynamics Software Developer Intern. Designed the serverless infrastructure in TypeScript CDK and wrote the Java Lambda handlers for triggering, running, and triaging jobs.",
+    blurb:
+      "A serverless service that runs engineers' analysis scripts automatically, on a schedule or the moment an upstream event lands, and routes any failure to the right person. Designed, built, and shipped to production during my internship.",
+    description:
+      "An automated analytics platform: engineers write an analysis script and a small config, and the platform runs it for them on a schedule or in response to events, stores the results, and tickets the right owner when something breaks.",
+    stack: [
+      "Java",
+      "TypeScript",
+      "AWS CDK",
+      "Step Functions",
+      "Lambda",
+      "EventBridge",
+      "SNS + SQS",
+      "AWS Batch",
+      "DynamoDB",
+      "S3",
+    ],
+    tags: ["AWS", "Serverless", "Java", "TypeScript", "Infrastructure as Code", "Internship"],
+    year: "Summer 2026",
+    readTime: "5 min",
+    status: "shipped",
+    featured: true,
+    statusChips: [
+      { k: "triggers", v: "events + schedules" },
+      { k: "infra", v: "TypeScript CDK" },
+      { k: "orchestration", v: "Step Functions" },
+      { k: "failures", v: "auto-routed" },
     ],
   },
   {
@@ -422,5 +465,6 @@ export const projects: Project[] = [
 ];
 
 export const visibleProjects = projects.filter((p) => !p.hidden);
-export const featuredProject = projects.find((p) => p.featured) ?? projects[0];
+export const featuredProjects = visibleProjects.filter((p) => p.featured);
+export const featuredProject = featuredProjects[0] ?? projects[0];
 export const otherProjects = visibleProjects.filter((p) => !p.featured);

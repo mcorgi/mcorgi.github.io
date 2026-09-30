@@ -6,11 +6,13 @@ import Window from "@/components/Window";
 import { projects } from "@/data/projects";
 import MiniPlaneSystem from "@/components/case-study/MiniPlaneSystem";
 import CamelBenchmark from "@/components/case-study/CamelBenchmark";
+import AnalyticsPlatform from "@/components/case-study/AnalyticsPlatform";
 
 // Projects with a hand-built long-form page instead of the generic template.
 const caseStudies = {
   "mini-plane-system": MiniPlaneSystem,
   "camel-benchmark": CamelBenchmark,
+  "automated-analytics": AnalyticsPlatform,
 } as const;
 
 export function generateStaticParams() {

@@ -37,7 +37,7 @@ export function SectionNav({ items }: { items: { id: string; label: string }[] }
   return (
     <nav
       aria-label="Sections"
-      className="sticky top-[57px] z-30 -mx-5 mt-10 px-5 py-2 bg-[rgba(245,248,253,0.9)] backdrop-blur-sm border-y border-line"
+      className="sticky top-[57px] z-30 -mx-5 mt-10 px-5 py-2 bg-cream/90 backdrop-blur-sm border-y border-line"
     >
       <div className="flex gap-1 overflow-x-auto font-mono text-[12px] whitespace-nowrap">
         {items.map((it) => (

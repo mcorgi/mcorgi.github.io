@@ -4,12 +4,13 @@ import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import TerminalView from "@/components/terminal/TerminalView";
+import { Bubble, CameraIcon, Float, SatelliteIcon } from "@/components/HeroLinks";
 import Reveal from "@/components/Reveal";
 import Window from "@/components/Window";
 import Marquee from "@/components/Marquee";
 import ProjectCard from "@/components/ProjectCard";
 import FeaturedProject from "@/components/FeaturedProject";
-import { featuredProject, otherProjects } from "@/data/projects";
+import { featuredProjects, otherProjects } from "@/data/projects";
 import { contact } from "@/data/siteMap";
 
 export default function Home() {
@@ -26,7 +27,7 @@ export default function Home() {
       {/* HERO */}
       <section
         ref={heroRef}
-        className="relative mx-auto max-w-6xl px-5 pt-14 pb-20 sm:pt-20 sm:pb-28"
+        className="relative mx-auto max-w-6xl px-5 pt-14 pb-20 sm:pt-20 sm:pb-28 overflow-x-clip"
       >
         {/* circular photo */}
         <motion.div
@@ -62,21 +63,15 @@ export default function Home() {
           </motion.a>
         </motion.div>
 
-        {/* big rotating music note bubble */}
+        {/* big rotating music note bubble → music page */}
         <motion.div
-          aria-hidden
-          className="pointer-events-none absolute -top-4 right-4 md:top-8 md:right-6 lg:right-10 hidden md:block"
+          className="absolute -top-4 right-4 md:top-8 md:right-6 lg:right-10 hidden md:block z-10"
           animate={{ rotate: [0, 8, -6, 0] }}
           transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
         >
-          <div className="relative">
-            <div className="absolute inset-0 translate-x-2 translate-y-2 rounded-2xl bg-pink" />
-            <div className="relative h-24 w-24 lg:h-28 lg:w-28 rounded-2xl border-[1.5px] border-line bg-cream-2 flex items-center justify-center">
-              <span className="font-retro text-[38px] lg:text-[44px] leading-none">
-                ♪
-              </span>
-            </div>
-          </div>
+          <Bubble href="/music" label="my music" shadow="bg-pink" size="h-24 w-24 lg:h-28 lg:w-28">
+            <span className="font-retro text-[38px] lg:text-[44px] leading-none">♪</span>
+          </Bubble>
         </motion.div>
 
         {/* small curly-braces CS decoration */}
@@ -95,6 +90,20 @@ export default function Home() {
             </div>
           </div>
         </motion.div>
+
+        {/* camera → Mini Plane System */}
+        <Float className="absolute hidden md:block z-10 md:top-[430px] md:right-10 lg:top-[485px] lg:right-[88px]" delay={1.2}>
+          <Bubble href="/projects/mini-plane-system" label="mini plane system" shadow="bg-accent" size="h-[72px] w-[72px] lg:h-[88px] lg:w-[88px]" round>
+            <CameraIcon className="h-9 w-9 lg:h-11 lg:w-11" />
+          </Bubble>
+        </Float>
+
+        {/* satellite → Amazon Leo analytics platform */}
+        <Float className="absolute hidden md:block z-10 md:top-[535px] md:right-[130px] lg:top-[600px] lg:right-[190px]" delay={1.8}>
+          <Bubble href="/projects/automated-analytics" label="satellite analytics" shadow="bg-accent-3" size="h-[68px] w-[68px] lg:h-20 lg:w-20" round>
+            <SatelliteIcon className="h-8 w-8 lg:h-10 lg:w-10" />
+          </Bubble>
+        </Float>
 
         <motion.div
           style={{ y, opacity }}
@@ -131,6 +140,16 @@ export default function Home() {
             <Link href="/music" className="arrow-link text-sm font-mono">
               my music <span aria-hidden>♪</span>
             </Link>
+          </div>
+
+          {/* phones: the right-side bubbles don't fit, so show them inline */}
+          <div className="mt-10 flex items-center gap-5 md:hidden">
+            <Bubble href="/projects/mini-plane-system" label="mini plane system" shadow="bg-accent" size="h-14 w-14" round>
+              <CameraIcon className="h-7 w-7" />
+            </Bubble>
+            <Bubble href="/projects/automated-analytics" label="satellite analytics" shadow="bg-accent-3" size="h-14 w-14" round>
+              <SatelliteIcon className="h-7 w-7" />
+            </Bubble>
           </div>
         </motion.div>
       </section>
@@ -197,22 +216,20 @@ export default function Home() {
             <div>
               <div className="font-mono text-xs uppercase tracking-widest opacity-60 mb-2 flex items-center gap-2">
                 <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
-                /featured · my biggest project
+                /featured · my biggest projects
               </div>
               <h2 className="display text-3xl sm:text-4xl">
                 what i&apos;m most proud of.
               </h2>
             </div>
-            <Link
-              href={`/projects/${featuredProject.slug}`}
-              className="arrow-link text-xs font-mono hidden sm:inline-flex"
-            >
-              full case study ↗
-            </Link>
           </div>
         </Reveal>
 
-        <FeaturedProject project={featuredProject} />
+        <div className="space-y-12">
+          {featuredProjects.map((fp) => (
+            <FeaturedProject key={fp.slug} project={fp} />
+          ))}
+        </div>
       </section>
 
       {/* HIGHLIGHT */}
