@@ -304,11 +304,11 @@ export default function AnalyticsPlatform({ project: p }: { project: Project }) 
           </Reveal>
         </section>
 
-        {/* LIFE OF A SCRIPT */}
+        {/* HOW A SCRIPT RUNS */}
         <Section
           id="lifecycle"
-          eyebrow="life of a script"
-          title="you are a script + a config."
+          eyebrow="how a script runs"
+          title="from config to results."
           intro="From the script author's side, it's four stages. Only the first one is their job."
         >
           <Steps

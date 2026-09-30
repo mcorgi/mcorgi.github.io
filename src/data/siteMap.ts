@@ -33,7 +33,7 @@ export const analyticsSections: SectionLink[] = [
   { id: "skills", label: "what i learned" },
   { id: "design", label: "the core design choice" },
   { id: "example", label: "an example" },
-  { id: "lifecycle", label: "life of a script" },
+  { id: "lifecycle", label: "how a script runs" },
   { id: "impact", label: "impact" },
   { id: "takeaways", label: "takeaways" },
 ];
