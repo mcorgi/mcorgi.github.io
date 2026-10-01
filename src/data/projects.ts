@@ -224,6 +224,29 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: "birdsong-synthesizer",
+    title: "Birdsong Synthesizer",
+    subtitle: "Real-time audio synthesis in C on an RP2350, played with a slider and a keypad",
+    org: "ECE 4760 · Cornell University",
+    role: "Embedded developer on a team of 3.",
+    blurb:
+      "A synthesizer on a Raspberry Pi Pico 2 that recreates northern cardinal calls. A timer interrupt computes every audio sample at 200 kHz, measured at 3.04 µs out of a 5 µs budget, and a keypad records, plays back and chains slider sweeps at 10× speed.",
+    description:
+      "A birdsong synthesizer for ECE 4760 (Digital Systems Design Using Microcontrollers). A slide potentiometer sets the pitch from 0 to 10 kHz, the RP2350 generates a sine wave with direct digital synthesis at 200,000 samples a second, and an SPI DAC drives a speaker. A 12-key keypad records slider movements onto keys 1–9, plays them back at 10× speed, and chains recordings into a song.",
+    stack: ["C", "RP2350 (Cortex-M33)", "Pico SDK", "Timer interrupts", "SPI", "ADC", "MCP4822 DAC", "Protothreads", "Oscilloscope"],
+    tags: ["Embedded", "C", "Real-Time", "Audio / DSP", "Microcontrollers"],
+    year: "Fall 2026",
+    readTime: "5 min",
+    status: "shipped",
+    links: [
+      {
+        label: "The lab assignment",
+        href: "https://vanhunteradams.com/Pico/Birds/Birdsong.html",
+        note: "ECE 4760 course page",
+      },
+    ],
+  },
+  {
     slug: "camel-benchmark",
     title: "Camel Benchmark",
     subtitle: "A terminal game suite in OCaml, inspired by Human Benchmark",
@@ -243,11 +266,6 @@ export const projects: Project[] = [
         label: "Watch the demo",
         href: "https://www.youtube.com/watch?v=VpvceHyf-n0",
         note: "youtube",
-      },
-      {
-        label: "Source",
-        href: "https://github.coecis.cornell.edu/sd2229/cs3110finalproject",
-        note: "Cornell GitHub (Cornell login)",
       },
     ],
   },

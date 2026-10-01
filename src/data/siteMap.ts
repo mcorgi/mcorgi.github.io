@@ -28,6 +28,17 @@ export const camelSections: SectionLink[] = [
   { id: "team", label: "team + stack" },
 ];
 
+export const birdsongSections: SectionLink[] = [
+  { id: "overview", label: "overview" },
+  { id: "play", label: "play it" },
+  { id: "hardware", label: "hardware" },
+  { id: "software", label: "software" },
+  { id: "realtime", label: "the 5 µs budget" },
+  { id: "input", label: "debouncing" },
+  { id: "results", label: "results" },
+  { id: "problems", label: "what went wrong" },
+];
+
 export const analyticsSections: SectionLink[] = [
   { id: "overview", label: "overview" },
   { id: "skills", label: "what i learned" },

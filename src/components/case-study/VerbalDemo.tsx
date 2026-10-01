@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
-// A JavaScript port of lib/verbal.ml: same states, events and transitions.
+// Verbal Memory for the browser, written for this site with the same rules as the terminal game.
 const WORDS = [
   "apple", "banana", "orange", "table", "chair", "computer", "phone", "window",
   "bottle", "keyboard", "mouse", "headphones", "river", "mountain", "pencil",
