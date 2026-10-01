@@ -30,7 +30,7 @@ function Clock() {
 export default function Nav() {
   const pathname = usePathname();
   return (
-    <header className="sticky top-0 z-40 backdrop-blur-sm bg-[rgba(245,248,253,0.78)] border-b border-line">
+    <header className="sticky top-0 z-40 bg-cream border-b border-line">
       <div className="mx-auto max-w-6xl flex items-center justify-between px-5 py-3">
         <Link
           href="/"

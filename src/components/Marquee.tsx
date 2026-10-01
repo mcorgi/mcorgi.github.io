@@ -7,7 +7,7 @@ export default function Marquee({ items, className = "" }: Props) {
   const doubled = [...items, ...items];
   return (
     <div
-      className={`border-y border-line overflow-hidden bg-cream-2/60 ${className}`}
+      className={`border-y border-line overflow-hidden bg-cream-2 ${className}`}
     >
       <div className="marquee-track py-2.5 font-display text-sm uppercase tracking-widest">
         {doubled.map((it, i) => (

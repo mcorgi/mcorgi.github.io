@@ -39,7 +39,6 @@ export default function RootLayout({
       className={`${grotesk.variable} ${mono.variable} ${retro.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-cream text-ink">
-        <div className="grain-overlay" aria-hidden />
         <TerminalProvider>
           <Nav />
           <main className="flex-1 w-full">{children}</main>

@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="mt-24 border-t border-line bg-cream-2/40">
+    <footer className="mt-24 border-t border-line bg-cream-2">
       <div className="mx-auto max-w-6xl px-5 py-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs font-mono">
         <p>
           © {new Date().getFullYear()} sandra tang · built with next.js +

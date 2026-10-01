@@ -45,20 +45,10 @@ body {
   background-color: var(--cream);
   color: var(--ink);
   font-family: var(--font-mono), ui-monospace, monospace;
+  /* dot-grid notebook paper; anything sitting on the page gets a solid background */
   background-image:
     radial-gradient(circle at 1px 1px, rgba(18, 33, 66, 0.08) 1px, transparent 0);
   background-size: 22px 22px;
-}
-
-/* subtle film grain overlay */
-.grain-overlay {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 50;
-  opacity: 0.08;
-  mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
 }
 
 /* retro window frame */

@@ -37,7 +37,7 @@ export function SectionNav({ items }: { items: { id: string; label: string }[] }
   return (
     <nav
       aria-label="Sections"
-      className="sticky top-[57px] z-30 -mx-5 mt-10 px-5 py-2 bg-cream/90 backdrop-blur-sm border-y border-line"
+      className="sticky top-[57px] z-30 -mx-5 mt-10 px-5 py-2 bg-cream border-y border-line"
     >
       <div className="flex gap-1 overflow-x-auto font-mono text-[12px] whitespace-nowrap">
         {items.map((it) => (
@@ -174,7 +174,7 @@ export function Card({
   accent?: boolean;
 }) {
   return (
-    <div className={`window-soft p-5 h-full ${accent ? "bg-cream-2/50" : ""}`}>
+    <div className={`window-soft p-5 h-full ${accent ? "bg-cream-2" : ""}`}>
       <div className="flex items-start justify-between gap-3">
         <h3 className="font-display text-lg leading-tight">{title}</h3>
         {tag && <span className="tag font-mono !text-[9.5px] shrink-0">{tag}</span>}
@@ -243,7 +243,7 @@ export function Steps({ items }: { items: ReactNode[] }) {
 export function Callout({ children }: { children: ReactNode }) {
   return (
     <Reveal>
-      <div className="max-w-3xl border-l-4 border-pink bg-pink-soft/60 rounded-r-lg px-5 py-4 font-mono text-[14px] leading-relaxed text-ink">
+      <div className="max-w-3xl border-l-4 border-pink bg-pink-soft rounded-r-lg px-5 py-4 font-mono text-[14px] leading-relaxed text-ink">
         {children}
       </div>
     </Reveal>
