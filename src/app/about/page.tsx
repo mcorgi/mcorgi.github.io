@@ -18,7 +18,7 @@ const facts = [
 const nowList = [
   "leading the intelligence subteam @ CUAir (Cornell UAS)",
   "freelance web dev for Hao Shi Guang Restaurant",
-  "studying CS coursework at cornell engineering",
+  "taking embedded systems courses (ECE 4760 + ECE 5725)",
   "playing piano + violin (mostly duets w/ friends)",
 ];
 
@@ -138,14 +138,14 @@ export default function AboutPage() {
               role: "B.S. Computer Science",
               where: "Cornell University · College of Engineering",
               kind: "education",
-              what: "Coursework: Systems Programming, Design with Embedded Operating Systems, Digital Systems Design Using Microcontrollers, Computer System Organization & Programming, Analysis of Algorithms, Computer Vision, Machine Learning, Functional Programming.",
+              what: "Coursework: Systems Programming, Design with Embedded Operating Systems, Digital Systems Design Using Microcontrollers, Computer System Organization & Programming, Analysis of Algorithms, Object-Oriented Programming & Data Structures, Computer Vision, Machine Learning, Functional Programming.",
             },
             {
               when: "Jun — Aug 2026",
               role: "Flight Dynamics Software Developer Intern",
               where: "Amazon Leo · Redmond, WA",
               kind: "work",
-              what: "Built and owned a serverless service that runs engineers' analysis scripts automatically, on a schedule or when an upstream event lands. Built with TypeScript CDK, Java, and public AWS services (Lambda, Step Functions, SNS, S3, DynamoDB). Shipped to production.",
+              what: "Built and owned a service that runs engineers' analytics scripts automatically, on a schedule or when an upstream event lands, so work that had been triggered by hand now runs itself. Designed the serverless architecture in TypeScript CDK (Lambda, Step Functions, SNS, S3, DynamoDB) and wrote the Java handlers for triggering, running, and failure triage that routes a broken run to the script owner or the platform team. Gathered requirements directly from the engineers who use it, and shipped to production in a 12-week internship.",
               link: { href: "/projects/automated-analytics", label: "read the case study" },
             },
             {
@@ -161,15 +161,38 @@ export default function AboutPage() {
               role: "Intelligence Subteam Lead (since Aug 2026)",
               where: "Cornell Unmanned Air Systems (CUAir)",
               kind: "work",
-              what: "Lead a subteam of 15 engineers owning the onboard imaging and telemetry pipeline end to end. Aligns 1,300+ GoPro images per 45-minute flight to GPS and attitude within 125 ms, on a Raspberry Pi bridged to the ground over a Ubiquiti link. Review the subteam's code, onboard new members, and own the data interface with Autopilot.",
+              what: "Lead a subteam of 15 engineers owning the onboard imaging and telemetry pipeline for an autonomous UAV end to end. It aligns 1,300+ GoPro images per 45-minute flight to their GPS and attitude samples within 125 ms, timestamping everything against one onboard clock, and runs on a Raspberry Pi bridged to the ground over a Ubiquiti Rocket and NanoStation link. Every change goes up a staged test ladder (bench, ground rig, test drone, competition aircraft), with a preflight check before each flight. I review the subteam's code, onboard new members each semester, and own the data interface with the Autopilot subteam.",
               link: { href: "/projects/mini-plane-system", label: "read the case study" },
+            },
+            {
+              when: "Fall 2026",
+              role: "Birdsong Synthesizer",
+              where: "ECE 4760 · C · RP2350",
+              kind: "project",
+              what: "A birdsong synthesizer on an RP2350 in C, using direct digital synthesis in a 200 kHz timer interrupt, streamed over SPI to an MCP4822 12-bit DAC configured from its datasheet, with a debounced keypad state machine.",
+              link: { href: "/projects/birdsong-synthesizer", label: "case study" },
+            },
+            {
+              when: "Fall 2026",
+              role: "Embedded Linux Touch Controller",
+              where: "ECE 5725 · Python · Raspberry Pi",
+              kind: "project",
+              what: "GPIO-button and touchscreen controls on a Raspberry Pi 4 for video playback and a PyGame collision animation, replacing polling with interrupt callbacks and profiling both with Linux perf.",
             },
             {
               when: "Jun 2025 — present",
               role: "Freelance Web Developer",
               where: "Hao Shi Guang Restaurant · Boston, MA",
               kind: "work",
-              what: "Built and deployed a full-stack web app with live users — owning development, deployment, and ongoing maintenance.",
+              what: "Sole developer of a live restaurant web app (15+ months): menus, MongoDB reservations, and Toast ordering.",
+            },
+            {
+              when: "Fall 2025",
+              role: "Camel Benchmark",
+              where: "CS 3110 Final Project · OCaml",
+              kind: "project",
+              what: "Refactored a game module into a pure state machine, separating core logic from async I/O so it could be tested in isolation, then wrote tests for state transitions, input parsing, and edge cases to reach 100% Bisect coverage.",
+              link: { href: "/projects/camel-benchmark", label: "case study" },
             },
             {
               when: "Aug 2025 — Nov 2025",
@@ -273,6 +296,10 @@ export default function AboutPage() {
               <span className="inline-block h-2 w-2 rounded-full bg-accent-2" />
               project
             </span>
+            <span className="flex items-center gap-1.5">
+              <span className="inline-block h-2 w-2 rounded-full bg-pink" />
+              highlight
+            </span>
           </div>
         </Reveal>
       </section>
@@ -291,8 +318,8 @@ export default function AboutPage() {
             <Window title="languages.txt" soft>
               <div className="p-5 font-mono text-[12.5px] leading-relaxed">
                 <p>
-                  Rust · C++ · C · Python · Java · Go · JavaScript ·
-                  TypeScript · OCaml · SQL · HTML · CSS
+                  Java · TypeScript · Python · C · C++ · Rust · JavaScript ·
+                  SQL · OCaml · HTML/CSS
                 </p>
               </div>
             </Window>
@@ -301,9 +328,9 @@ export default function AboutPage() {
             <Window title="systems.txt" soft>
               <div className="p-5 font-mono text-[12.5px] leading-relaxed">
                 <p>
-                  Real-time + asynchronous pipelines · fault-tolerant
-                  systems · distributed services · hardware/software
-                  interfaces
+                  Embedded Linux · MAVLink · Pixhawk · Bash/Shell · Git ·
+                  Docker · AWS (CDK, Lambda, Step Functions, SNS, S3,
+                  DynamoDB)
                 </p>
               </div>
             </Window>
@@ -312,9 +339,8 @@ export default function AboutPage() {
             <Window title="tools.txt" soft>
               <div className="p-5 font-mono text-[12.5px] leading-relaxed">
                 <p>
-                  Linux · Docker · Git · FastAPI · REST APIs · AWS · Azure ·
-                  React · Node · Spring Boot · mySQL · OpenCV · NumPy ·
-                  Pandas · TensorFlow · PyTorch · Hugging Face
+                  REST APIs · React.js · Node.js · Flask · Prisma · MongoDB ·
+                  MySQL · PyTorch · OpenCV · NumPy
                 </p>
               </div>
             </Window>

@@ -85,7 +85,7 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
             keypad, and the goal was to recreate the call of a northern cardinal.
           </p>
           <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-1 font-mono text-[13px]">
-            <li><span className="text-accent">▸</span> team of 3</li>
+            <li><span className="text-accent">▸</span> team of 3, with Nathaniel Su and Benson Zhuo</li>
             <li><span className="text-accent">▸</span> RP2350 · C · Pico SDK</li>
             <li><span className="text-accent">▸</span> 3 weeks</li>
           </ul>
@@ -142,6 +142,15 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
             measurements and the results.
           </p>
         </Prose>
+        <Credit>
+          The lab itself (the goal, the requirements and the cardinal song to recreate) comes from V.
+          Hunter Adams&apos;s{" "}
+          <CreditLink href="https://vanhunteradams.com/Pico/Birds/Birdsong.html">
+            ECE 4760 birdsong lab page
+          </CreditLink>
+          , which has much more background on the lab. The implementation, code and design choices
+          were all ours: Nathaniel Su, Benson Zhuo and me.
+        </Credit>
 
         <Reveal>
           <div className="grid md:grid-cols-[auto_1fr] gap-8 items-start [&>*]:min-w-0">
@@ -210,6 +219,7 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
           src={img("hardware-diagram.png")}
           file="hardware-block-diagram.png"
           alt="Hardware block diagram: the keypad connects to Pico pins 12 to 20 through 330 ohm resistors, the slide potentiometer to the ADC on pin 32, the MCP4822 DAC over SPI on pins 7, 9 and 10, the DAC output to a 3.5 mm audio socket and speaker, and an ISR timing pin to the oscilloscope."
+          caption={<span className="text-[11px] opacity-70">Diagram by Benson Zhuo.</span>}
         />
         <div className="grid sm:grid-cols-2 gap-4">
           <Card title="Slider → ADC" tag="input">
@@ -251,7 +261,13 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
           src={img("software-architecture.png")}
           file="software-architecture.drawio"
           alt="Software architecture: the slider feeds the Slider/Record thread, which sets the live slider value for the timer ISR and stores samples at 100 Hz into recording buffers. The keypad thread scans and debounces the keypad and starts recording or playback. The playback thread steps through a key's recording at 10x speed and feeds it to the ISR, which sends samples to the DAC over SPI."
-          caption="Threads on the left and bottom, the interrupt at the top right. Blue boxes yield to each other; the orange one interrupts all of them."
+          caption={
+            <>
+              Threads on the left and bottom, the interrupt at the top right. Blue boxes yield to each
+              other; the orange one interrupts all of them.{" "}
+              <span className="text-[11px] opacity-70">Diagram by me.</span>
+            </>
+          }
         />
         <Table
           file="who-does-what.csv"
@@ -390,7 +406,18 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
             src={img("debounce-fsm.png")}
             file="debounce-fsm.drawio"
             alt="Debouncing state machine with four states: not pressed, maybe pressed, pressed, and maybe not pressed. Each maybe state waits 50 ms and checks the keypad again. The press action happens on entering pressed, and the release action on returning to not pressed."
-            caption="The four-state debouncer, adapted from the course's keypad reference."
+            caption={
+              <>
+                The four-state debouncer.{" "}
+                <span className="text-[11px] opacity-70">
+                  Adapted from V. Hunter Adams&apos;s{" "}
+                  <CreditLink href="https://vanhunteradams.com/Pico/Keypad/Keypad.html">
+                    keypad page
+                  </CreditLink>
+                  .
+                </span>
+              </>
+            }
           />
           <Reveal>
             <div className="space-y-4 font-mono text-[13.5px] leading-relaxed text-ink-soft">
@@ -567,5 +594,27 @@ function Shot({ src, alt, caption, file }: { src: string; alt: string; caption: 
         </figcaption>
       </figure>
     </Reveal>
+  );
+}
+
+// Small attribution text.
+function Credit({ children }: { children: ReactNode }) {
+  return (
+    <Reveal>
+      <p className="max-w-3xl font-mono text-[11.5px] leading-relaxed opacity-70">{children}</p>
+    </Reveal>
+  );
+}
+
+function CreditLink({ href, children }: { href: string; children: ReactNode }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer noopener"
+      className="underline decoration-accent underline-offset-2 hover:text-accent"
+    >
+      {children}
+    </a>
   );
 }
