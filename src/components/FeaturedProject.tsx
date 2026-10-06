@@ -4,7 +4,7 @@ import { MpsScene, SatelliteScene } from "@/components/Illustrations";
 
 export default function FeaturedProject({ project }: { project: Project }) {
   return (
-    <section className="border-t-[1.5px] border-line pt-8 grid lg:grid-cols-[1.15fr_1fr] gap-10 items-start">
+    <section className="border-t-[1.5px] border-line pt-8 grid lg:grid-cols-[1.15fr_1fr] gap-10">
       <div>
         <div className="font-mono text-[12px] opacity-70 mb-4">
           {project.org} · {project.year}
@@ -34,7 +34,7 @@ export default function FeaturedProject({ project }: { project: Project }) {
         {project.illustration === "mps" && (
           <figure className="mt-10">
             <MpsScene className="border-[1.5px] border-line" />
-            <figcaption className="mt-2 font-mono text-[11.5px] opacity-60">
+            <figcaption className="mt-2 font-mono text-[11.5px] opacity-60 lg:min-h-[3lh]">
               Roughly how it works: the GoPro shoots, the Pi pairs each photo with the
               Pixhawk&apos;s position, and the pair goes down to the ground over the radio.
             </figcaption>
@@ -42,7 +42,8 @@ export default function FeaturedProject({ project }: { project: Project }) {
         )}
       </div>
 
-      <div className="space-y-5">
+      {/* On wide screens the photo stretches so its bottom lines up with the left column. */}
+      <div className="flex flex-col gap-5">
         {project.diagram && (
           <figure>
             <a href={project.diagram} target="_blank" rel="noreferrer noopener" title="Open full size">
@@ -60,18 +61,18 @@ export default function FeaturedProject({ project }: { project: Project }) {
         )}
 
         {project.photo && (
-          <figure>
-            <div className="overflow-hidden rounded-lg border-[1.5px] border-line aspect-[16/9]">
+          <figure className="flex flex-col lg:flex-1">
+            <div className="relative overflow-hidden rounded-lg border-[1.5px] border-line aspect-[16/9] lg:aspect-auto lg:flex-1 lg:min-h-[180px]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={project.photo.src}
                 alt={project.photo.alt}
                 loading="lazy"
-                className="block w-full h-full object-cover scale-[2.2]"
+                className="absolute inset-0 block w-full h-full object-cover scale-[2.2]"
                 style={{ objectPosition: "46% 45%" }}
               />
             </div>
-            <figcaption className="mt-2 font-mono text-[11.5px] opacity-60">
+            <figcaption className={`mt-2 font-mono text-[11.5px] opacity-60 ${project.illustration === "mps" ? "lg:min-h-[3lh]" : ""}`}>
               {project.photo.caption}
             </figcaption>
           </figure>
