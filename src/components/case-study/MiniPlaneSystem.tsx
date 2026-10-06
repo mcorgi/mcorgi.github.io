@@ -2,7 +2,7 @@ import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import type { Project } from "@/data/projects";
 import { mpsSections } from "@/data/siteMap";
-import { Callout, Code, Diagram, Pre, Prose, Section, SectionNav, Stat, Steps, Table } from "./Parts";
+import { Callout, Code, Diagram, LinkList, Pre, Prose, Section, SectionNav, Stat, Steps, Table } from "./Parts";
 
 const nav = mpsSections;
 
@@ -61,7 +61,7 @@ export default function MiniPlaneSystem({ project: p }: { project: Project }) {
       <SectionNav items={nav} />
 
       {/* 01 */}
-      <Section id="what" eyebrow="01 · what it is" title="the software that flies with the plane.">
+      <Section id="what" eyebrow="01 · what it is" title="The software that flies with the plane.">
         <Prose>
           <p>
             The Mini Plane System (MPS) is the software that runs onboard CUAir&apos;s aircraft,
@@ -116,11 +116,10 @@ export default function MiniPlaneSystem({ project: p }: { project: Project }) {
       <Section
         id="hardware"
         eyebrow="02 · hardware"
-        title="what's in the air, and what's on the ground."
+        title="What's in the air, and what's on the ground."
       >
         <Diagram
           src="/images/mps/hardware-data-flow.png"
-          file="data-flow-hardware.png"
           alt="Top half, on the plane: a Ubiquiti Rocket radio connects through a PoE injector to the Raspberry Pi, which connects to the Pixhawk (Cube) flight controller and a GoPro. Bottom half, on the ground: a portable power station, a Ubiquiti NanoStation receiving the wifi signal, a PoE injector, a router, and a laptop."
           caption="Top: on the plane. Bottom: the ground station. The only link between them is the 5 GHz signal from the Rocket to the NanoStation."
         />
@@ -138,7 +137,7 @@ export default function MiniPlaneSystem({ project: p }: { project: Project }) {
           </p>
           <p>
             Before anything flies on the competition plane, we test on the{" "}
-            <strong>Matrice</strong>, the team&apos;s testbed drone. Here&apos;s exactly how
+            Matrice, the team&apos;s testbed drone. Here&apos;s exactly how
             it&apos;s wired, including power:
           </p>
         </Prose>
@@ -164,7 +163,7 @@ export default function MiniPlaneSystem({ project: p }: { project: Project }) {
           ]}
         />
         <Reveal>
-          <details className="max-w-3xl window-soft overflow-hidden">
+          <details className="max-w-3xl border-y-[1.5px] border-line">
             <summary className="cursor-pointer px-5 py-3 font-mono text-[13px] hover:bg-cream-2/60">
               see the original sketch from my notebook
             </summary>
@@ -179,17 +178,16 @@ export default function MiniPlaneSystem({ project: p }: { project: Project }) {
       </Section>
 
       {/* 03 */}
-      <Section id="software" eyebrow="03 · software" title="one program, four jobs at once.">
+      <Section id="software" eyebrow="03 · software" title="One program, four jobs at once.">
         <Prose>
           <p>
             MPS runs as a single program, <Code>mps</Code>. When you start it you get an
             interactive command line, and it also starts a small HTTP API so the ground dashboard
             can control it. When capture is running, three tasks run side by side on one{" "}
-            <strong>asyncio</strong>{" "}event loop, plus one separate thread:
+            asyncio event loop, plus one separate thread:
           </p>
         </Prose>
         <Table
-          file="what-runs-during-capture.csv"
           head={["Task", "Kind", "What it does"]}
           rows={[
             [<Code key="1">continuous_capture</Code>, "asyncio task", "Fires the GoPro shutter on an interval (currently every 5 s)."],
@@ -209,7 +207,7 @@ export default function MiniPlaneSystem({ project: p }: { project: Project }) {
       </Section>
 
       {/* 04 */}
-      <Section id="photo" eyebrow="04 · one photo" title="what happens to every photo.">
+      <Section id="photo" eyebrow="04 · one photo" title="What happens to every photo.">
         <Diagram
           src="/diagrams/mps-pipeline.drawio.svg"
           alt="Per-image pipeline: fire shutter, detect new file, download, pair telemetry from the TelemetryBuffer, write JSON, upload. If the nearest telemetry sample is more than 2 seconds away, the upload is skipped."
@@ -261,7 +259,7 @@ export default function MiniPlaneSystem({ project: p }: { project: Project }) {
       <Section
         id="time"
         eyebrow="05 · the time problem"
-        title="where was the plane when the shutter fired?"
+        title="Where was the plane when the shutter fired?"
       >
         <Callout>
           By the time a photo finishes downloading, the plane has already moved. The camera and the
@@ -278,7 +276,6 @@ export default function MiniPlaneSystem({ project: p }: { project: Project }) {
         </Prose>
         <Diagram
           src="/images/mps/two-clocks.png"
-          file="two-clock-problem.png"
           alt="Two timelines. On the Pi clock the shutter fires just after t=3. On the GoPro clock, the file timestamp for the same photo lands slightly later: the drift between the two clocks."
           caption="The same photo, on two clocks. The gap between them is drift, and it changes over time."
         />
@@ -313,17 +310,16 @@ export default function MiniPlaneSystem({ project: p }: { project: Project }) {
       <Section
         id="concurrency"
         eyebrow="06 · concurrency"
-        title="why asyncio, and where threads come in."
+        title="Why asyncio, and where threads come in."
       >
         <Prose>
           <p>
-            Almost everything MPS does is <strong>waiting</strong>: for the GoPro to respond, for
+            Almost everything MPS does is waiting: for the GoPro to respond, for
             the Pixhawk to send a reading, for the ground server to accept an upload. That makes
             asyncio a better fit than running many threads in parallel.
           </p>
         </Prose>
         <Table
-          file="parallelism-vs-concurrency.csv"
           head={["", "Parallelism", "Concurrency (asyncio)"]}
           rows={[
             ["How", "Multiple workers at the same moment", "One worker that switches smartly"],
@@ -370,7 +366,7 @@ ok = await asyncio.to_thread(self.capture)`}</Pre>
       <Section
         id="distance-mode"
         eyebrow="07 · distance mode (teammate-led)"
-        title="only shoot over the search area."
+        title="Only shoot over the search area."
       >
         <Prose>
           <p>
@@ -388,17 +384,16 @@ ok = await asyncio.to_thread(self.capture)`}</Pre>
       </Section>
 
       {/* 08 */}
-      <Section id="failures" eyebrow="08 · when things break" title="what breaks, and what still works.">
+      <Section id="failures" eyebrow="08 · when things break" title="What breaks, and what still works.">
         <Prose>
           <p>
-            Honestly, the hardest part of this project was <strong>hardware</strong>: Rocket
+            Honestly, the hardest part of this project was hardware: Rocket
             connectivity, router issues early on, flaky ethernet cables and PoE injectors, GoPro SD
             cards that were too slow to keep up. The software is built so that any one of these
             failing doesn&apos;t lose the flight:
           </p>
         </Prose>
         <Table
-          file="failure-modes.csv"
           head={["If this fails", "What happens", "What keeps us going"]}
           rows={[
             ["Radio link", "Uploads fail and get counted", "Every image + JSON stays on the Pi, and the GoPro SD keeps the originals. Recover after landing."],
@@ -412,7 +407,7 @@ ok = await asyncio.to_thread(self.capture)`}</Pre>
       </Section>
 
       {/* 09 */}
-      <Section id="testing" eyebrow="09 · testing" title="bench → ground → drone → plane.">
+      <Section id="testing" eyebrow="09 · testing" title="Bench → ground → drone → plane.">
         <Prose>
           <p>
             Each stage needs more hardware and more people, so the goal is to catch problems at the
@@ -444,7 +439,7 @@ ok = await asyncio.to_thread(self.capture)`}</Pre>
       </Section>
 
       {/* 10 */}
-      <Section id="timeline" eyebrow="10 · timeline" title="how it got built.">
+      <Section id="timeline" eyebrow="10 · timeline" title="How it got built.">
         <Reveal>
           <div className="max-w-3xl relative pl-6 border-l-2 border-line">
             {milestones.map((m) => (
@@ -469,7 +464,7 @@ ok = await asyncio.to_thread(self.capture)`}</Pre>
       </Section>
 
       {/* 11 */}
-      <Section id="learned" eyebrow="11 · what i learned" title="takeaways.">
+      <Section id="learned" eyebrow="11 · what i learned" title="Takeaways.">
         <Steps
           items={[
             <>
@@ -497,38 +492,7 @@ ok = await asyncio.to_thread(self.capture)`}</Pre>
         </Prose>
       </Section>
 
-      {/* LINKS */}
-      {p.links && p.links.length > 0 && (
-        <section className="mt-16">
-          <Reveal>
-            <div className="font-mono text-xs uppercase tracking-widest opacity-60 mb-3">/links</div>
-          </Reveal>
-          <div className="grid sm:grid-cols-2 gap-4">
-            {p.links.map((l) => (
-              <Reveal key={l.label}>
-                {l.href ? (
-                  <a
-                    href={l.href}
-                    target={l.href.startsWith("/") ? undefined : "_blank"}
-                    rel="noreferrer noopener"
-                    className="window-soft p-4 block hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0_0_var(--line)] transition-all"
-                  >
-                    <div className="font-display text-lg">
-                      {l.label} <span aria-hidden>↗</span>
-                    </div>
-                    {l.note && <div className="font-mono text-[12px] opacity-70 mt-1">{l.note}</div>}
-                  </a>
-                ) : (
-                  <div className="window-soft p-4 opacity-80">
-                    <div className="font-display text-lg">{l.label}</div>
-                    {l.note && <div className="font-mono text-[12px] opacity-70 mt-1">{l.note}</div>}
-                  </div>
-                )}
-              </Reveal>
-            ))}
-          </div>
-        </section>
-      )}
+      <LinkList links={p.links} />
 
       <div className="mt-20 flex items-center justify-between">
         <Link href="/projects" className="arrow-link text-sm font-mono">

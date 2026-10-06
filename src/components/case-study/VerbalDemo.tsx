@@ -121,12 +121,7 @@ export default function VerbalDemo() {
       className="window focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
     >
       <div className="window-title">
-        <span className="window-dots" aria-hidden>
-          <span />
-          <span />
-          <span />
-        </span>
-        <span className="ml-2 truncate">verbal memory · click here, then press n / s / q</span>
+        <span className="truncate">verbal memory · click here, then press n / s / q</span>
       </div>
       <div style={{ background: "var(--ink)" }} className="text-cream">
         <pre

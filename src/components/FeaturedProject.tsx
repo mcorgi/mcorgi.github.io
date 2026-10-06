@@ -1,179 +1,76 @@
-"use client";
-
 import Link from "next/link";
-import { motion } from "framer-motion";
 import type { Project } from "@/data/projects";
+import { SatelliteScene } from "@/components/Illustrations";
 
-type Props = {
-  project: Project;
-  compact?: boolean;
-};
-
-export default function FeaturedProject({ project, compact = false }: Props) {
+export default function FeaturedProject({ project }: { project: Project }) {
   return (
-    <motion.section
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
-      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-      className="relative group"
-    >
-      {/* offset color block for retro depth */}
-      <div
-        aria-hidden
-        className="absolute inset-0 translate-x-2 translate-y-2 rounded-[14px] bg-accent transition-transform duration-300 group-hover:translate-x-3 group-hover:translate-y-3"
-      />
+    <section className="border-t-[1.5px] border-line pt-8 grid lg:grid-cols-[1.15fr_1fr] gap-10 items-start">
+      <div>
+        <div className="font-mono text-[12px] opacity-70 mb-4">
+          {project.org} · {project.year}
+        </div>
 
-      <motion.div
-        whileHover={{ scale: 1.005 }}
-        transition={{ type: "spring", stiffness: 200, damping: 22 }}
-        className="relative window bg-cream"
-      >
-          {/* Invisible layer so clicking anywhere on the card opens the case study.
-            The visible "read the case study" link stays the one keyboard/screen-reader link. */}
+        <h3 className="display text-[34px] sm:text-[44px] lg:text-[52px] leading-[0.95] mb-5">
+          <Link href={`/projects/${project.slug}`} className="hover:text-accent transition-colors">
+            {project.title}
+          </Link>
+        </h3>
+
+        <p className="font-mono text-[14.5px] leading-relaxed text-ink-soft max-w-2xl">
+          {project.blurb}
+        </p>
+
+        <p className="mt-5 font-mono text-[12px] leading-relaxed opacity-70">
+          {(project.stack ?? project.tags).slice(0, 8).join(" · ")}
+        </p>
+
         <Link
           href={`/projects/${project.slug}`}
-          aria-hidden
-          tabIndex={-1}
-          className="absolute inset-0 z-[5]"
-        />
-        <div className="window-title">
-          <span className="window-dots" aria-hidden>
-            <span />
-            <span />
-            <span />
-          </span>
-          <span className="ml-2 font-mono text-[11px] truncate">
-            ~/projects/{project.slug}.md
-          </span>
-          <span className="ml-auto flex items-center gap-2 font-mono text-[10px]">
-            <span className="inline-block h-1.5 w-1.5 rounded-full bg-pink animate-pulse" />
-            <span className="uppercase tracking-widest">featured</span>
-          </span>
-        </div>
+          className="mt-7 arrow-link text-sm font-mono"
+        >
+          read the case study
+        </Link>
+      </div>
 
-        <div className="grid lg:grid-cols-5 gap-0">
-          {/* LEFT: content */}
-          <div className="lg:col-span-3 p-6 sm:p-8 lg:p-10 border-b lg:border-b-0 lg:border-r border-line">
-            <div className="flex flex-wrap items-center gap-2 font-mono text-[10.5px] uppercase tracking-widest opacity-70 mb-4">
-              <span className="tag !py-0.5 !px-2 text-[10px]">
-                {project.status ?? "project"}
-              </span>
-              {project.org && <span>· {project.org}</span>}
-              <span>· {project.year}</span>
+      <div className="space-y-5">
+        {project.diagram && (
+          <figure>
+            <a href={project.diagram} target="_blank" rel="noreferrer noopener" title="Open full size">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={project.diagram}
+                alt={`${project.title} system architecture`}
+                className="block w-full h-auto bg-white rounded-lg border-[1.5px] border-line"
+              />
+            </a>
+            <figcaption className="mt-2 font-mono text-[11.5px] opacity-60">
+              The system diagram. Click for full size.
+            </figcaption>
+          </figure>
+        )}
+
+        {project.photo && (
+          <figure>
+            <div className="overflow-hidden rounded-lg border-[1.5px] border-line aspect-[16/9]">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={project.photo.src}
+                alt={project.photo.alt}
+                loading="lazy"
+                className="block w-full h-full object-cover scale-[2.2]"
+                style={{ objectPosition: "46% 45%" }}
+              />
             </div>
+            <figcaption className="mt-2 font-mono text-[11.5px] opacity-60">
+              {project.photo.caption}
+            </figcaption>
+          </figure>
+        )}
 
-            <h2 className="display text-[34px] sm:text-[44px] lg:text-[52px] leading-[0.95] mb-3 group-hover:text-accent transition-colors">
-              {project.title}
-            </h2>
-
-            {project.subtitle && (
-              <p className="font-display text-lg sm:text-xl text-ink-soft mb-5">
-                {project.subtitle}
-              </p>
-            )}
-
-            <p className="font-mono text-[14.5px] leading-relaxed text-ink-soft max-w-2xl">
-              {project.blurb}
-            </p>
-
-            {project.role && !compact && (
-              <div className="mt-5 border-l-2 border-accent pl-4 py-1 font-mono text-[13px] leading-relaxed">
-                <span className="opacity-60 uppercase tracking-widest text-[10.5px] block mb-1">
-                  my role
-                </span>
-                {project.role}
-              </div>
-            )}
-
-            <div className="mt-6 flex flex-wrap gap-1.5">
-              {(project.stack ?? project.tags).slice(0, 8).map((t) => (
-                <span key={t} className="tag font-mono">
-                  {t}
-                </span>
-              ))}
-            </div>
-
-            <div className="mt-7 flex flex-wrap gap-3">
-              <Link
-                href={`/projects/${project.slug}`}
-                className="arrow-link text-sm font-mono relative z-10"
-              >
-                read the case study <span aria-hidden>↗</span>
-              </Link>
-              {project.repo && (
-                <a
-                  href={project.repo}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="arrow-link text-sm font-mono relative z-10"
-                >
-                  source ↗
-                </a>
-              )}
-            </div>
-          </div>
-
-          {/* RIGHT: architecture / system panel */}
-          <div className="lg:col-span-2 bg-cream-2/40 p-6 sm:p-8 scanlines">
-            <div className="font-mono text-[10.5px] uppercase tracking-widest opacity-70 mb-3">
-              {project.diagram || project.architecture ? "system diagram" : "at a glance"}
-            </div>
-
-            {project.diagram ? (
-              <div className="window-soft overflow-hidden">
-                <div className="px-3 py-2 border-b border-line flex items-center gap-2 font-mono text-[10px] bg-cream-2">
-                  <span className="inline-block h-2 w-2 rounded-full bg-accent" />
-                  <span className="opacity-70 truncate">{project.diagram.split("/").pop()}</span>
-                  <a
-                    href={project.diagram}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    className="relative z-10 ml-auto opacity-60 hover:opacity-100 hover:text-accent"
-                  >
-                    full size ↗
-                  </a>
-                </div>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={project.diagram}
-                  alt={`${project.title} system architecture`}
-                  className="block w-full h-auto bg-white"
-                />
-              </div>
-            ) : (
-              project.architecture && (
-                <div className="window-soft overflow-hidden" style={{ background: "var(--ink)" }}>
-                  <pre className="p-4 text-[10px] sm:text-[10.5px] leading-[1.55] font-mono whitespace-pre overflow-x-auto text-cream">
-                    {project.architecture}
-                  </pre>
-                </div>
-              )
-            )}
-
-            {/* live status faux-panel */}
-            {project.statusChips && (
-              <div className={`${project.diagram || project.architecture ? "mt-5" : ""} grid grid-cols-2 gap-3 font-mono text-[11px]`}>
-                {project.statusChips.map((c, i) => (
-                  <div key={c.k} className="window-soft p-3">
-                    <div className="opacity-60 uppercase tracking-widest text-[9.5px] mb-1">
-                      {c.k}
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <motion.span
-                        className={`inline-block h-2 w-2 rounded-full ${["bg-accent-2", "bg-pink", "bg-accent", "bg-accent-3"][i % 4]}`}
-                        animate={{ opacity: [1, 0.3, 1] }}
-                        transition={{ duration: 1.2 + i * 0.2, repeat: Infinity, delay: i * 0.4 }}
-                      />
-                      <span>{c.v}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-        </div>
-      </motion.div>
-    </motion.section>
+        {project.illustration === "satellite" && (
+          <SatelliteScene className="border-[1.5px] border-line" />
+        )}
+      </div>
+    </section>
   );
 }

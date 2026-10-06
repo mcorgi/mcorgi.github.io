@@ -1,9 +1,8 @@
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
-import Window from "@/components/Window";
 import type { Project } from "@/data/projects";
 import { camelSections } from "@/data/siteMap";
-import { Callout, Diagram, Prose, Section, SectionNav, Stat, Steps, Table } from "./Parts";
+import { Callout, Diagram, LinkList, Prose, Section, SectionNav, Stat, Steps, Table } from "./Parts";
 import VerbalDemo from "./VerbalDemo";
 
 const games = [
@@ -153,10 +152,10 @@ export default function CamelBenchmark({ project: p }: { project: Project }) {
         </Reveal>
 
         <Reveal delay={0.08}>
-          <Window title="camel benchmark — main menu">
+          <div>
             <pre
               style={{ background: "var(--ink)" }}
-              className="text-cream p-5 font-mono text-[12px] leading-[1.6] overflow-x-auto"
+              className="rounded-lg text-cream p-5 font-mono text-[12px] leading-[1.6] overflow-x-auto"
             >
               <span className="text-[#5FD4E6] font-bold">{`╔══════════════════════════════════╗
 ║   WELCOME TO CAMEL BENCHMARK     ║
@@ -181,7 +180,8 @@ export default function CamelBenchmark({ project: p }: { project: Project }) {
               <span className="text-[#5FD4E6] font-bold">====================</span>
               {"\n"}Choose an option: 3<span className="cursor-blink" aria-hidden />
             </pre>
-          </Window>
+            <div className="mt-2 font-mono text-[12px] text-ink-soft">The main menu, in a terminal.</div>
+          </div>
         </Reveal>
       </div>
 
@@ -197,7 +197,7 @@ export default function CamelBenchmark({ project: p }: { project: Project }) {
       <SectionNav items={camelSections} />
 
       {/* OVERVIEW */}
-      <Section id="overview" eyebrow="the project" title="five games, one camel.">
+      <Section id="overview" eyebrow="the project" title="Five games, one camel.">
         <Prose>
           <p>
             Camel Benchmark is the final project for Cornell&apos;s CS 3110 (Functional
@@ -236,7 +236,7 @@ export default function CamelBenchmark({ project: p }: { project: Project }) {
       <Section
         id="role"
         eyebrow="my contributions"
-        title="what i owned."
+        title="What I owned."
         intro="I built Verbal Memory from scratch, rebuilt it so its logic is fully separate from I/O, and did much of the terminal UI and bug fixing across the app."
       >
         <Steps
@@ -270,7 +270,7 @@ export default function CamelBenchmark({ project: p }: { project: Project }) {
       <Section
         id="architecture"
         eyebrow="how it works"
-        title="pure logic inside, I/O outside."
+        title="Pure logic inside, I/O outside."
         intro="The game modules decide what happens. The I/O layer reads keys, runs timers and prints. Tests talk to the game modules directly, without a terminal."
       >
         <Diagram
@@ -278,7 +278,7 @@ export default function CamelBenchmark({ project: p }: { project: Project }) {
           alt="Architecture: the terminal talks to the I/O layer, which calls the pure game modules, which load data files. User and leaderboard modules save to a JSON file. Tests call the game modules directly."
         />
         <Reveal>
-          <div className="window-soft p-5">
+          <div className="border-t-[1.5px] border-line pt-4">
             <div className="flex flex-wrap gap-4 font-mono text-[12px] text-ink-soft mb-4">
               <span className="inline-flex items-center gap-2">
                 <i className="inline-block h-3.5 w-3.5 rounded-sm border-[1.5px] border-[#0a7c92] bg-[#ddf1f5]" />
@@ -321,7 +321,7 @@ export default function CamelBenchmark({ project: p }: { project: Project }) {
       <Section
         id="verbal"
         eyebrow="inside my module"
-        title="verbal memory as a state machine."
+        title="Verbal memory as a state machine."
         intro="The game has two states and four kinds of input. Every rule lives in one place, and the compiler checks that each case is handled."
       >
         <Diagram
@@ -336,7 +336,7 @@ export default function CamelBenchmark({ project: p }: { project: Project }) {
               ["Tests can play the whole game.", "A test sets up a game with one life, answers \"seen\" for a new word, and checks that the game is over. No keyboard, no scheduler, no timing."],
               ["The display is separate.", "The game logic returns a description of what to show, not printed text, so the same game can run in a web page without changing it. (Which is what the demo below does.)"],
             ].map(([t, b]) => (
-              <div key={t} className="window-soft p-4">
+              <div key={t} className="border-t-[1.5px] border-line pt-3">
                 <h3 className="font-display text-lg leading-tight">{t}</h3>
                 <p className="mt-1.5 font-mono text-[13px] leading-relaxed text-ink-soft">{b}</p>
               </div>
@@ -349,7 +349,7 @@ export default function CamelBenchmark({ project: p }: { project: Project }) {
       <Section
         id="play"
         eyebrow="try it"
-        title="play verbal memory here."
+        title="Play verbal memory here."
         intro="A JavaScript version written for this site, with the same rules and word list. Repeats come up a bit more often than in the original, so it gets harder sooner. Any other key counts as invalid input: the word and your lives stay the same, just like in the terminal version."
       >
         <div className="max-w-2xl">
@@ -361,7 +361,7 @@ export default function CamelBenchmark({ project: p }: { project: Project }) {
       <Section
         id="challenges"
         eyebrow="hard parts"
-        title="challenges, and how i solved them."
+        title="Challenges, and how I solved them."
         intro="An interactive program that reads raw keystrokes, runs timers and redraws the screen is hard to write in a functional language. These were the hardest problems I worked on."
       >
         <div className="border-t border-line/30">
@@ -390,7 +390,7 @@ export default function CamelBenchmark({ project: p }: { project: Project }) {
       </Section>
 
       {/* TIMELINE */}
-      <Section id="timeline" eyebrow="from my commit history" title="how my work progressed.">
+      <Section id="timeline" eyebrow="from my commit history" title="How my work progressed.">
         <Reveal>
           <div className="max-w-3xl relative pl-6 border-l-2 border-line">
             {timeline.map((t) => (
@@ -408,7 +408,7 @@ export default function CamelBenchmark({ project: p }: { project: Project }) {
       </Section>
 
       {/* TEAM + STACK */}
-      <Section id="team" eyebrow="team · group 16" title="who built what.">
+      <Section id="team" eyebrow="team · group 16" title="Who built what.">
         <div className="grid lg:grid-cols-[1.3fr_1fr] gap-10 [&>*]:min-w-0">
           <Reveal>
             <div className="border-t border-line/30">
@@ -429,7 +429,6 @@ export default function CamelBenchmark({ project: p }: { project: Project }) {
             </div>
           </Reveal>
           <Table
-            file="stack.csv"
             head={["", "Built with"]}
             rows={[
               ["Language", "OCaml 5"],
@@ -443,30 +442,7 @@ export default function CamelBenchmark({ project: p }: { project: Project }) {
         </div>
       </Section>
 
-      {p.links && (
-        <section className="mt-16">
-          <Reveal>
-            <div className="font-mono text-xs uppercase tracking-widest opacity-60 mb-3">/links</div>
-          </Reveal>
-          <div className="grid sm:grid-cols-2 gap-4">
-            {p.links.map((l) => (
-              <Reveal key={l.label}>
-                <a
-                  href={l.href}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="window-soft p-4 block hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0_0_var(--line)] transition-all"
-                >
-                  <div className="font-display text-lg">
-                    {l.label} <span aria-hidden>↗</span>
-                  </div>
-                  {l.note && <div className="font-mono text-[12px] opacity-70 mt-1">{l.note}</div>}
-                </a>
-              </Reveal>
-            ))}
-          </div>
-        </section>
-      )}
+      <LinkList links={p.links} />
 
       <div className="mt-20 flex items-center justify-between">
         <Link href="/projects" className="arrow-link text-sm font-mono">

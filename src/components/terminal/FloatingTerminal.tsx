@@ -45,17 +45,7 @@ export default function FloatingTerminal() {
             className="pointer-events-auto w-full sm:w-[540px] window"
           >
             <div className="window-title">
-              <button
-                type="button"
-                onClick={() => setFloatingOpen(false)}
-                className="window-dots"
-                aria-label="Close terminal"
-              >
-                <span />
-                <span />
-                <span />
-              </button>
-              <span className="ml-2 truncate">sandra@cornell: {prompt}</span>
+              <span className="truncate">sandra@cornell: {prompt}</span>
               <button
                 type="button"
                 onClick={() => setFloatingOpen(false)}

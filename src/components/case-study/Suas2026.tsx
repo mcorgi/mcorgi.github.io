@@ -6,16 +6,16 @@ import { Callout, Code, Diagram, Prose, Section, SectionNav, Stat, Steps, Table 
 
 function Figure({ photo, className = "" }: { photo: Photo; className?: string }) {
   return (
-    <figure className={`window-soft overflow-hidden ${className}`}>
+    <figure className={className}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={photo.src}
         alt={photo.alt}
         loading="lazy"
-        className="block w-full aspect-[3/2] object-cover"
+        className="block w-full aspect-[3/2] object-cover rounded-lg border-[1.5px] border-line"
       />
       {photo.caption && (
-        <figcaption className="border-t border-line px-4 py-2.5 font-mono text-[12px] leading-snug text-ink-soft">
+        <figcaption className="mt-2 font-mono text-[12px] leading-snug text-ink-soft">
           {photo.caption}
         </figcaption>
       )}
@@ -145,7 +145,7 @@ export default function Suas2026() {
         <Section
           id="mission"
           eyebrow="the mission"
-          title="storm response, in 45 minutes."
+          title="Storm response, in 45 minutes."
           intro="The 2026 scenario is a storm response. A team gets 45 minutes, starting from nothing powered on, to set up, fly, find what matters on the ground, deliver supplies, and hand in a map."
         >
           <Reveal>
@@ -177,7 +177,7 @@ export default function Suas2026() {
         </Section>
 
         {/* ROLE */}
-        <Section id="role" eyebrow="my role" title="intelligence operator.">
+        <Section id="role" eyebrow="my role" title="Intelligence operator.">
           <div className="grid lg:grid-cols-[1.25fr_1fr] gap-8 items-start [&>*]:min-w-0">
             <Reveal>
               <Figure photo={photos.nanostation} />
@@ -214,7 +214,7 @@ export default function Suas2026() {
                 ["in the air", "Keep the photos flowing", "Load the competition search area so capture starts over it on its own, then watch photos get captured, tagged and uploaded in real time. Step in if anything stalls."],
                 ["after landing", "Nothing gets lost", "Anything that didn't make it down over the link is still saved on the Pi and the GoPro's card, ready to recover and hand in before mission time ends."],
               ].map(([when, title, body], i) => (
-                <div key={when} className="window-soft p-5 h-full">
+                <div key={when} className="border-t-[1.5px] border-line pt-4 h-full">
                   <div className="font-mono text-[11px] uppercase tracking-widest text-pink-ink">
                     {String(i + 1).padStart(2, "0")} · {when}
                   </div>
@@ -236,7 +236,7 @@ export default function Suas2026() {
         <Section
           id="flightline"
           eyebrow="a mission, start to finish"
-          title="on the clock."
+          title="On the clock."
           intro="Nothing can be powered on before the judges start the clock, and setup counts against the same 45 minutes as the flight. So the whole sequence follows a written runbook and one launch script instead of steps from memory."
         >
           <Diagram
@@ -257,7 +257,6 @@ export default function Suas2026() {
             </p>
           </Prose>
           <Table
-            file="signals.csv"
             head={["Signal", "What it means", "What I do"]}
             rows={[
               ["processed climbing, upload_ok keeping pace", "Photos are being taken, paired and delivered.", "Nothing. Confirm they're landing in the targeting software."],
@@ -270,7 +269,7 @@ export default function Suas2026() {
         </Section>
 
         {/* WEEK */}
-        <Section id="week" eyebrow="the week" title="five days in tulsa.">
+        <Section id="week" eyebrow="the week" title="Five days in Tulsa.">
           <div className="relative pl-6 border-l-2 border-line space-y-2">
             {week.map((d) => (
               <Reveal key={d.day}>
@@ -300,7 +299,7 @@ export default function Suas2026() {
         </Section>
 
         {/* RESULTS */}
-        <Section id="results" eyebrow="results" title="how it went.">
+        <Section id="results" eyebrow="results" title="How it went.">
           <Reveal>
             <div className="grid grid-cols-3 gap-4">
               <Stat value="4th" label="best website" />
@@ -326,7 +325,7 @@ export default function Suas2026() {
               </p>
             </Prose>
             <Reveal>
-              <div className="window-soft p-5 h-full">
+              <div className="border-t-[1.5px] border-line pt-4 h-full">
                 <div className="font-mono text-[11px] uppercase tracking-widest text-pink-ink mb-3">firsts for CUAir</div>
                 <ul className="space-y-2 font-mono text-[13.5px] leading-relaxed">
                   {[
@@ -347,7 +346,7 @@ export default function Suas2026() {
         </Section>
 
         {/* NEXT */}
-        <Section id="next" eyebrow="what's next" title="on to SUAS 2027.">
+        <Section id="next" eyebrow="what's next" title="On to SUAS 2027.">
           <Steps
             items={[
               <>
@@ -374,7 +373,7 @@ export default function Suas2026() {
         </Section>
 
         {/* PHOTOS */}
-        <Section id="photos" eyebrow="photos" title="more from the field.">
+        <Section id="photos" eyebrow="photos" title="More from the field.">
           <div className="columns-1 sm:columns-2 gap-5 [&>*]:mb-5 [&>*]:break-inside-avoid">
             {gallery.map((ph) => (
               <Figure key={ph.src} photo={ph} />

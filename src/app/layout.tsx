@@ -23,9 +23,9 @@ const retro = VT323({
 });
 
 export const metadata: Metadata = {
-  title: "Sandra Tang — Personal Site",
+  title: "Sandra Tang",
   description:
-    "Sandra Tang. CS @ Cornell University. Builder, musician, student.",
+    "Sandra Tang: CS at Cornell, Intelligence lead on CUAir, violin and piano. The terminal on the homepage works.",
 };
 
 export default function RootLayout({

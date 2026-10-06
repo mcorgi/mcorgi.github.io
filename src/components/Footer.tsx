@@ -5,8 +5,8 @@ export default function Footer() {
     <footer className="mt-24 border-t border-line bg-cream-2">
       <div className="mx-auto max-w-6xl px-5 py-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs font-mono">
         <p>
-          © {new Date().getFullYear()} sandra tang · built with next.js +
-          framer-motion
+          © {new Date().getFullYear()} sandra tang · press ` on any page to
+          open the terminal
         </p>
         <div className="flex items-center gap-4">
           <Link href="/projects" className="hover:text-accent">

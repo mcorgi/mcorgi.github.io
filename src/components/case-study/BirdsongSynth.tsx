@@ -1,10 +1,9 @@
 import Link from "next/link";
 import { ReactNode } from "react";
 import Reveal from "@/components/Reveal";
-import Window from "@/components/Window";
 import type { Project } from "@/data/projects";
 import { birdsongSections } from "@/data/siteMap";
-import { Callout, Card, Code, Diagram, Prose, Section, SectionNav, Stat, Table } from "./Parts";
+import { Callout, Card, Code, Diagram, LinkList, Prose, Section, SectionNav, Stat, Table } from "./Parts";
 import BirdsongDemo from "./BirdsongDemo";
 
 const img = (name: string) => `/images/birdsong/${name}`;
@@ -100,14 +99,15 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
         </Reveal>
 
         <Reveal delay={0.08}>
-          <Window title="the finished build">
+          <figure>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={img("build.jpg")}
               alt="The finished build on a breadboard: a Raspberry Pi Pico 2 and DAC wired to a 12-key keypad, a slide potentiometer and two speakers, next to a laptop."
-              className="block w-full aspect-[4/3.4] object-cover"
+              className="block w-full aspect-[4/3.4] object-cover rounded-lg border-[1.5px] border-line"
             />
-          </Window>
+            <figcaption className="mt-2 font-mono text-[12px] text-ink-soft">The finished build.</figcaption>
+          </figure>
         </Reveal>
       </div>
 
@@ -123,7 +123,7 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
       <SectionNav items={birdsongSections} />
 
       {/* OVERVIEW */}
-      <Section id="overview" eyebrow="what it is" title="a synthesizer you play with a slider.">
+      <Section id="overview" eyebrow="what it is" title="A synthesizer you play with a slider.">
         <Prose>
           <p>
             Birdsong Synthesizer was the first lab in Cornell&apos;s ECE 4760 (Digital Systems Design
@@ -132,7 +132,7 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
           </p>
           <p>
             A slide potentiometer sets the pitch anywhere from 0 to 10 kHz. The chip generates a sine
-            wave at that pitch, <strong>200,000 samples a second</strong>, and sends it to a DAC that
+            wave at that pitch, 200,000 samples a second, and sends it to a DAC that
             drives a speaker. A 12-key keypad turns the tone on and off, records slider movements
             onto keys 1–9, plays them back, and chains recordings into a song. At the demo, there was
             no resetting or reflashing allowed: everything had to work from the keypad.
@@ -172,7 +172,7 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
             </div>
             <div className="grid sm:grid-cols-2 gap-4">
               {keyHelp.map((h) => (
-                <div key={h.title} className="window-soft p-4">
+                <div key={h.title} className="border-t-[1.5px] border-line pt-3">
                   <div className="flex items-center gap-2">
                     <i className={`inline-block h-3.5 w-3.5 rounded-sm border-[1.5px] border-line ${keyStyle[h.role]}`} />
                     <h3 className="font-display text-lg leading-tight">{h.title}</h3>
@@ -189,7 +189,7 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
       <Section
         id="play"
         eyebrow="try it"
-        title="play it here."
+        title="Play it here."
         intro={
           <>
             A browser version of how the board behaves, written for this page. The slider runs 0 to
@@ -212,12 +212,11 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
       <Section
         id="hardware"
         eyebrow="hardware"
-        title="what's on the breadboard."
+        title="What's on the breadboard."
         intro="A Pico 2, a 12-bit DAC, a keypad, a slider and a pair of speakers. The oscilloscope is part of the design too: one pin exists only so we could measure timing."
       >
         <Diagram
           src={img("hardware-diagram.png")}
-          file="hardware-block-diagram.png"
           alt="Hardware block diagram: the keypad connects to Pico pins 12 to 20 through 330 ohm resistors, the slide potentiometer to the ADC on pin 32, the MCP4822 DAC over SPI on pins 7, 9 and 10, the DAC output to a 3.5 mm audio socket and speaker, and an ISR timing pin to the oscilloscope."
           caption={<span className="text-[11px] opacity-70">Diagram by Benson Zhuo.</span>}
         />
@@ -254,12 +253,11 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
       <Section
         id="software"
         eyebrow="software"
-        title="one interrupt, three threads."
+        title="One interrupt, three threads."
         intro="Everything runs on one core. A hardware timer interrupt produces every audio sample. Three cooperative threads (protothreads) handle everything that isn't time-critical, and they talk to the interrupt through shared variables, mainly the current slider value."
       >
         <Diagram
           src={img("software-architecture.png")}
-          file="software-architecture.drawio"
           alt="Software architecture: the slider feeds the Slider/Record thread, which sets the live slider value for the timer ISR and stores samples at 100 Hz into recording buffers. The keypad thread scans and debounces the keypad and starts recording or playback. The playback thread steps through a key's recording at 10x speed and feeds it to the ISR, which sends samples to the DAC over SPI."
           caption={
             <>
@@ -270,7 +268,6 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
           }
         />
         <Table
-          file="who-does-what.csv"
           head={["Piece", "Runs", "What it does"]}
           rows={[
             ["Timer ISR", "every 5 µs", "Turns the slider value into a frequency, computes the next sine sample, sends it to the DAC."],
@@ -280,7 +277,7 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
           ]}
         />
         <Reveal>
-          <div className="window-soft p-5 max-w-3xl">
+          <div className="border-t-[1.5px] border-line pt-4 max-w-3xl">
             <div className="flex items-baseline justify-between font-mono text-[12px] mb-2">
               <span className="text-ink">RP2350 on-chip SRAM</span>
               <span className="text-ink-soft">520 KB</span>
@@ -306,7 +303,7 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
       <Section
         id="realtime"
         eyebrow="the real-time constraint"
-        title="every sample has 5 microseconds."
+        title="Every sample has 5 microseconds."
         intro="Pitch depends on samples leaving at an exact, constant rate, and ears notice when they don't. So the waveform is generated inside the timer interrupt, which re-arms itself 5 µs ahead each time, and the work inside it has to be tiny."
       >
         <Prose>
@@ -320,7 +317,7 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
         </Prose>
 
         <Reveal>
-          <div className="window-soft p-5">
+          <div className="border-t-[1.5px] border-line pt-4">
             <div className="font-mono text-[12px] text-ink mb-3">one sample, every 5 µs</div>
             <div className="flex flex-wrap items-center gap-2.5 font-mono text-[12.5px]">
               {[
@@ -346,7 +343,7 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
         </Reveal>
 
         <Reveal>
-          <div className="window-soft p-5">
+          <div className="border-t-[1.5px] border-line pt-4">
             <div className="flex items-baseline justify-between font-mono text-[12px] mb-2">
               <span className="text-ink">one sample period</span>
               <span className="text-ink-soft">5.00 µs</span>
@@ -371,7 +368,6 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
         <div className="grid lg:grid-cols-[1.15fr_1fr] gap-8 items-start [&>*]:min-w-0">
           <Shot
             src={img("scope-isr-timing.jpg")}
-            file="scope · ISR timing pin"
             alt="Oscilloscope capture of the timing pin: a square wave whose high time, marked with cursors, is 3.04 microseconds."
             caption="The timing pin on the scope: 3.04 µs inside the interrupt, out of every 5 µs."
           />
@@ -398,13 +394,12 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
       <Section
         id="input"
         eyebrow="input"
-        title="one press means one press."
+        title="One press means one press."
         intro="Mechanical keys bounce: the contacts open and close several times before settling, which looks like several presses."
       >
         <div className="grid lg:grid-cols-[1.2fr_1fr] gap-8 items-start [&>*]:min-w-0">
           <Shot
             src={img("debounce-fsm.png")}
-            file="debounce-fsm.drawio"
             alt="Debouncing state machine with four states: not pressed, maybe pressed, pressed, and maybe not pressed. Each maybe state waits 50 ms and checks the keypad again. The press action happens on entering pressed, and the release action on returning to not pressed."
             caption={
               <>
@@ -424,7 +419,7 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
               <p>
                 A four-state machine (not pressed, maybe pressed, pressed, maybe not pressed) only
                 accepts a press or a release after a second scan agrees, with a{" "}
-                <strong className="text-ink">50 ms wait</strong>{" "}in each &quot;maybe&quot; state.
+                50 ms wait in each &quot;maybe&quot; state.
               </p>
               <p>
                 This mattered more than usual here, because one bounced press could start a
@@ -444,19 +439,17 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
       <Section
         id="results"
         eyebrow="results"
-        title="slow hands, fast birds."
+        title="Slow hands, fast birds."
         intro="A cardinal's chirp sweeps faster than anyone can move a slider. Recording at 100 Hz and playing back at 1 kHz compresses a slow, careful sweep 10× into a real-sounding call."
       >
         <div className="grid md:grid-cols-2 gap-6 [&>*]:min-w-0">
           <Shot
             src={img("spectrogram-chirp.jpg")}
-            file="merlin · chirp"
             alt="Spectrogram of three chirps: each is a fast rising sweep."
             caption="Chirp: a fast rising sweep, repeated."
           />
           <Shot
             src={img("spectrogram-swoop.jpg")}
-            file="merlin · swoop"
             alt="Spectrogram of three swoops: each rises, holds briefly and falls, like an upside-down V."
             caption="Swoop: a broader curved path, up and back down."
           />
@@ -472,13 +465,11 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
         <div className="grid md:grid-cols-2 gap-6 [&>*]:min-w-0">
           <Shot
             src={img("scope-swoop.png")}
-            file="scope · swoop playback"
             alt="Oscilloscope capture of a swoop playing back: flat, then a dense block labeled sustain, then flat again, with the abrupt start and end labeled."
             caption="A swoop on the scope. The abrupt start and end are where the pop comes from."
           />
           <Shot
             src={img("scope-chirp.png")}
-            file="scope · chirp playback"
             alt="Oscilloscope capture of a chirp playing back: a dense rectangular block between two flat lines."
             caption="A chirp. The pitch is changing inside the block; only the spectrogram shows it."
           />
@@ -489,10 +480,9 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
       <Section
         id="problems"
         eyebrow="what went wrong"
-        title="problems, and what we did about them."
+        title="Problems, and what we did about them."
       >
         <Table
-          file="problems.csv"
           head={["Problem", "Cause", "Fix"]}
           rows={[
             [
@@ -527,7 +517,7 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
         </Callout>
       </Section>
 
-      <Section id="stack" eyebrow="built with" title="stack.">
+      <Section id="stack" eyebrow="built with" title="Stack.">
         <div className="flex flex-wrap gap-2">
           {p.stack?.map((s) => (
             <span key={s} className="tag font-mono">
@@ -537,30 +527,7 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
         </div>
       </Section>
 
-      {p.links && (
-        <section className="mt-16">
-          <Reveal>
-            <div className="font-mono text-xs uppercase tracking-widest opacity-60 mb-3">/links</div>
-          </Reveal>
-          <div className="grid sm:grid-cols-2 gap-4">
-            {p.links.map((l) => (
-              <Reveal key={l.label}>
-                <a
-                  href={l.href}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="window-soft p-4 block hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0_0_var(--line)] transition-all"
-                >
-                  <div className="font-display text-lg">
-                    {l.label} <span aria-hidden>↗</span>
-                  </div>
-                  {l.note && <div className="font-mono text-[12px] opacity-70 mt-1">{l.note}</div>}
-                </a>
-              </Reveal>
-            ))}
-          </div>
-        </section>
-      )}
+      <LinkList links={p.links} />
 
       <div className="mt-20 flex items-center justify-between">
         <Link href="/projects" className="arrow-link text-sm font-mono">
@@ -574,22 +541,14 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
   );
 }
 
-// A photo or screenshot in a soft window, with a caption.
-function Shot({ src, alt, caption, file }: { src: string; alt: string; caption: ReactNode; file: string }) {
+// A photo or screenshot with a caption.
+function Shot({ src, alt, caption }: { src: string; alt: string; caption: ReactNode }) {
   return (
     <Reveal>
-      <figure className="window-soft overflow-hidden">
-        <div className="window-title">
-          <span className="window-dots" aria-hidden>
-            <span />
-            <span />
-            <span />
-          </span>
-          <span className="ml-2 truncate">{file}</span>
-        </div>
+      <figure>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={src} alt={alt} className="block w-full h-auto bg-white" />
-        <figcaption className="border-t border-line/40 px-4 py-2.5 font-mono text-[12px] leading-relaxed text-ink-soft">
+        <img src={src} alt={alt} className="block w-full h-auto bg-white rounded-lg border-[1.5px] border-line" />
+        <figcaption className="mt-2 font-mono text-[12px] leading-relaxed text-ink-soft">
           {caption}
         </figcaption>
       </figure>

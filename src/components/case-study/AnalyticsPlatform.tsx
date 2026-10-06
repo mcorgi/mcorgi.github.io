@@ -57,7 +57,7 @@ export default function AnalyticsPlatform({ project: p }: { project: Project }) 
         <SectionNav items={analyticsSections} />
 
         {/* OVERVIEW */}
-        <Section id="overview" eyebrow="overview" title="what it is.">
+        <Section id="overview" eyebrow="overview" title="What it is.">
           <Prose>
             <p>
               Engineers write analysis scripts: check how accurate the latest estimate was, compare
@@ -65,7 +65,7 @@ export default function AnalyticsPlatform({ project: p }: { project: Project }) 
               ran whenever someone remembered to open a notebook and run them.
             </p>
             <p>
-              The platform takes the script and runs it for them, <strong>automatically</strong>,
+              The platform takes the script and runs it for them, automatically,
               either on a schedule or in response to an event published by another team.
             </p>
           </Prose>
@@ -94,7 +94,7 @@ export default function AnalyticsPlatform({ project: p }: { project: Project }) 
               <strong>My role.</strong>{" "}I owned the project end to end over a 12-week internship.
               I gathered requirements directly from the engineers who would use it rather than
               working from a spec, designed the serverless infrastructure as code in{" "}
-              <strong>TypeScript CDK</strong>, and wrote the <strong>Java Lambda handlers</strong>{" "}
+              TypeScript CDK, and wrote the Java Lambda handlers
               that trigger, run, and triage every job.
             </p>
           </Prose>
@@ -104,7 +104,7 @@ export default function AnalyticsPlatform({ project: p }: { project: Project }) 
         <Section
           id="skills"
           eyebrow="what i learned"
-          title="the AWS toolbox i got hands-on with."
+          title="The AWS toolbox I got hands-on with."
           intro="Over the summer I designed, deployed and debugged a production system across all of these public AWS services, most of it defined in code. Here's what I did with each one."
         >
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -120,7 +120,7 @@ export default function AnalyticsPlatform({ project: p }: { project: Project }) 
               ["Code organization", "the glue", "Split the code into packages that build and deploy independently, following the team's existing Java and CDK standards."],
             ].map(([name, kind, what], i) => (
               <Reveal key={name} delay={(i % 3) * 0.05}>
-                <div className="window-soft p-5 h-full">
+                <div className="border-t-[1.5px] border-line pt-4 h-full">
                   <div className="flex items-start justify-between gap-3">
                     <h3 className="font-display text-xl leading-tight text-accent">{name}</h3>
                     <span className="tag font-mono !text-[9.5px] shrink-0">{kind}</span>
@@ -131,7 +131,7 @@ export default function AnalyticsPlatform({ project: p }: { project: Project }) 
             ))}
           </div>
           <Reveal>
-            <div className="window p-6 sm:p-7">
+            <div className="border-y-[1.5px] border-line py-6">
               <div className="font-mono text-[11px] uppercase tracking-widest text-pink-ink mb-4">
                 beyond the services
               </div>
@@ -158,11 +158,10 @@ export default function AnalyticsPlatform({ project: p }: { project: Project }) 
         <Section
           id="design"
           eyebrow="the core design choice"
-          title="put the orchestration in a state machine."
+          title="Put the orchestration in a state machine."
           intro="Every run goes through one AWS Step Functions workflow. It was the biggest piece of the project to figure out, and the major design choice I made was to put the orchestration and all of the error handling inside it."
         >
           <Table
-            file="options.csv"
             head={["Option", "How it would work", "Why it lost / won"]}
             rows={[
               [
@@ -191,9 +190,9 @@ export default function AnalyticsPlatform({ project: p }: { project: Project }) 
           </Prose>
           <Reveal>
             <div className="grid md:grid-cols-2 gap-5">
-              <div className="window-soft p-5 h-full">
+              <div className="border-t-[1.5px] border-line pt-4 h-full">
                 <div className="font-mono text-[11px] uppercase tracking-widest text-accent-3">user error</div>
-                <h3 className="font-display text-xl mt-1">something in the script went wrong</h3>
+                <h3 className="font-display text-xl mt-1">Something in the script went wrong</h3>
                 <ul className="mt-3 space-y-1.5 font-mono text-[13px] leading-relaxed text-ink-soft">
                   <li>› the script&apos;s container reports that the script itself failed</li>
                   <li>› the job is recorded as failed, with the reason</li>
@@ -201,9 +200,9 @@ export default function AnalyticsPlatform({ project: p }: { project: Project }) 
                   <li>› the workflow still ends <strong className="text-ink">successfully</strong>: the platform did its job</li>
                 </ul>
               </div>
-              <div className="window-soft p-5 h-full">
+              <div className="border-t-[1.5px] border-line pt-4 h-full">
                 <div className="font-mono text-[11px] uppercase tracking-widest text-accent">infrastructure failure</div>
-                <h3 className="font-display text-xl mt-1">the platform couldn&apos;t run it</h3>
+                <h3 className="font-display text-xl mt-1">The platform couldn&apos;t run it</h3>
                 <ul className="mt-3 space-y-1.5 font-mono text-[13px] leading-relaxed text-ink-soft">
                   <li>› anything that isn&apos;t the script&apos;s fault</li>
                   <li>› the job is recorded as failed, with the reason</li>
@@ -308,7 +307,7 @@ export default function AnalyticsPlatform({ project: p }: { project: Project }) 
         <Section
           id="lifecycle"
           eyebrow="how a script runs"
-          title="from config to results."
+          title="From config to results."
           intro="From the script author's side, it's four stages. Only the first one is their job."
         >
           <Steps
@@ -336,7 +335,7 @@ export default function AnalyticsPlatform({ project: p }: { project: Project }) 
         </Section>
 
         {/* IMPACT */}
-        <Section id="impact" eyebrow="impact" title="what it changed.">
+        <Section id="impact" eyebrow="impact" title="What it changed.">
           <Steps
             items={[
               <>
@@ -357,7 +356,7 @@ export default function AnalyticsPlatform({ project: p }: { project: Project }) 
         </Section>
 
         {/* TAKEAWAYS */}
-        <Section id="takeaways" eyebrow="takeaways" title="what i took away.">
+        <Section id="takeaways" eyebrow="takeaways" title="What I took away.">
           <div className="grid md:grid-cols-3 gap-5">
             {[
               ["01", "Build for change", "Not just making it work, but building it to grow without breaking. Clean, readable code with abstractions where they earn their place, following the team's existing standards."],
@@ -365,7 +364,7 @@ export default function AnalyticsPlatform({ project: p }: { project: Project }) 
               ["03", "How to ask for help", "I didn't stay stuck. I'd dig into a problem myself first, then bring a clearly outlined question to senior engineers. A failed attempt is just information for the next one."],
             ].map(([n, t, b], i) => (
               <Reveal key={n} delay={i * 0.05}>
-                <div className="window-soft p-5 h-full">
+                <div className="border-t-[1.5px] border-line pt-4 h-full">
                   <div className="font-mono text-[12px] text-pink-ink">{n}</div>
                   <h3 className="font-display text-xl mt-1">{t}</h3>
                   <p className="mt-2 font-mono text-[13px] leading-relaxed text-ink-soft">{b}</p>

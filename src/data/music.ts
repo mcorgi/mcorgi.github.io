@@ -27,7 +27,7 @@ export const videos: Video[] = [
   },
   {
     title: "Merry-Go-Round of Life",
-    subtitle: "Joe Hisaishi — Howl's Moving Castle",
+    subtitle: "Joe Hisaishi, from Howl's Moving Castle",
     youtubeId: "oP4sla_JqY4",
   },
 ];

@@ -1,134 +1,132 @@
 "use client";
 
 import Reveal from "@/components/Reveal";
-import Window from "@/components/Window";
-import { motion } from "framer-motion";
 import Link from "next/link";
 
 const facts = [
-  { k: "name", v: "Sandra Tang" },
-  { k: "school", v: "Cornell University Engineering" },
-  { k: "major", v: "B.S. Computer Science" },
-  { k: "class", v: "2028" },
-  { k: "based in", v: "Boston, MA · Ithaca, NY" },
-  { k: "email", v: "st2232@cornell.edu" },
-  { k: "likes", v: "small UIs, embedded systems, duets" },
+  { k: "Name", v: "Sandra Tang" },
+  { k: "School", v: "Cornell University, College of Engineering" },
+  { k: "Major", v: "B.S. Computer Science" },
+  { k: "Class", v: "2028" },
+  { k: "Based in", v: "Boston, MA · Ithaca, NY" },
+  { k: "Email", v: "st2232@cornell.edu", href: "mailto:st2232@cornell.edu" },
+  { k: "Likes", v: "Small UIs, embedded systems, duets" },
 ];
 
 const nowList = [
-  "leading the intelligence subteam @ CUAir (Cornell UAS)",
-  "freelance web dev for Hao Shi Guang Restaurant",
-  "taking embedded systems courses (ECE 4760 + ECE 5725)",
-  "playing piano + violin (mostly duets w/ friends)",
+  "Leading the Intelligence subteam at CUAir (Cornell UAS)",
+  "Freelance web dev for Hao Shi Guang Restaurant",
+  "Taking embedded systems courses (ECE 4760 and ECE 5725)",
+  "Writing violin and piano duets, and recording both parts myself",
 ];
+
+const skills = [
+  {
+    title: "Languages",
+    items: ["Java", "TypeScript", "Python", "C", "C++", "Rust", "JavaScript", "SQL", "OCaml", "HTML/CSS"],
+  },
+  {
+    title: "Systems",
+    items: ["Embedded Linux", "MAVLink", "Pixhawk", "Bash/Shell", "Git", "Docker", "AWS (CDK, Lambda, Step Functions, SNS, S3, DynamoDB)"],
+  },
+  {
+    title: "Tools",
+    items: ["REST APIs", "React.js", "Node.js", "Flask", "Prisma", "MongoDB", "MySQL", "PyTorch", "OpenCV", "NumPy"],
+  },
+];
+
+const link = "underline decoration-pink underline-offset-2 hover:text-accent";
 
 export default function AboutPage() {
   return (
     <div className="mx-auto max-w-5xl px-5 pt-14 pb-24">
-      <Reveal>
-        <div className="font-mono text-xs uppercase tracking-widest opacity-60 mb-2">
-          /about
+      <h1 className="display text-5xl sm:text-7xl">
+        Hi, I&apos;m <span className="text-accent">Sandra</span>.
+      </h1>
+
+      <div className="mt-10 grid md:grid-cols-5 gap-12">
+        <div className="md:col-span-3 space-y-5 font-mono text-[15px] leading-relaxed">
+          <p>
+            I&apos;m a computer science major at Cornell Engineering, class of 2028. I grew up
+            between keyboards: a piano one since I was little, and a laptop one not long after.
+          </p>
+          <p>
+            The CS I like best ends up touching something physical: a camera, a flight
+            controller, a speaker on a breadboard. My biggest project right now is the{" "}
+            <Link href="/projects/mini-plane-system" className={link}>
+              Mini Plane System
+            </Link>{" "}
+            on Cornell&apos;s autonomous aircraft team, where I now lead the Intelligence
+            subteam. It&apos;s onboard software that ties a GoPro and a flight controller together
+            and streams geotagged photos to the ground during flight. I ran it live from the
+            flightline at{" "}
+            <Link href="/suas-2026" className={link}>
+              SUAS 2026
+            </Link>
+            .
+          </p>
+          <p>
+            This past summer I was a flight dynamics software developer intern at Amazon Leo,
+            building a service that runs engineers&apos; analysis scripts on its own. I&apos;ve
+            also been a backend engineering intern at Data Legion AI, a software engineer at
+            Cornell Engineering World Health, and a freelance web developer for a family-owned
+            restaurant. Earlier on, I did computer vision research and built a handwriting
+            recognition system.
+          </p>
+          <p>
+            Outside of code I play violin and piano. My favorite thing is making duets: I take a
+            piece that usually has one melody, write a second part that sounds the way I want it
+            to, and record both parts myself. I also like newspapers and slow walks across
+            campus.
+          </p>
+          <p>
+            If you want to talk about planes, synthesizers, or music,{" "}
+            <Link href="/#contact" className={link}>
+              say hi
+            </Link>
+            .
+          </p>
         </div>
-        <h1 className="display text-5xl sm:text-7xl">
-          hi, i&apos;m <span className="text-accent">sandra</span>.
-        </h1>
-      </Reveal>
 
-      <div className="mt-10 grid md:grid-cols-5 gap-8">
-        <Reveal className="md:col-span-3" y={20}>
-          <div className="space-y-5 font-mono text-[15px] leading-relaxed">
-            <p>
-              i&apos;m a computer science major at cornell university
-              engineering, class of 2028. i grew up between keyboards
-              — a piano keyboard since i was little, and a laptop keyboard
-              not long after.
-            </p>
-            <p>
-              i love the parts of CS that feel close to the real world —
-              interfaces, tools, embedded systems, anything you can
-              actually <em>use</em>. my biggest project right now is the{" "}
-              <Link
-                href="/projects/mini-plane-system"
-                className="underline decoration-pink underline-offset-2 hover:text-accent"
-              >
-                mini plane system
-              </Link>{" "}
-              on cornell&apos;s autonomous aircraft team, where i now lead
-              the intelligence subteam: onboard software that ties a GoPro
-              and a flight controller together and streams geotagged imagery
-              to the ground during flight. i ran it live from the flightline
-              at{" "}
-              <Link
-                href="/suas-2026"
-                className="underline decoration-pink underline-offset-2 hover:text-accent"
-              >
-                SUAS 2026
-              </Link>
-              .
-            </p>
-            <p>
-              this past summer i was a flight dynamics software developer
-              intern at amazon leo, building a service that runs
-              engineers&apos; analysis scripts on its own. i&apos;ve
-              also worked as a backend engineering intern at data legion ai, a software engineer at cornell engineering world
-              health, and a freelance web developer for a family-owned
-              restaurant. earlier on, i did computer vision research and
-              built a handwriting recognition system.
-            </p>
-            <p>
-              outside of code, i play violin and piano, mostly duets — there
-              is something really special about a piece that needs two people
-              to exist. i also like newspapers, slow walks across campus, and
-              websites that have a little personality.
-            </p>
-            <p>
-              if you&apos;re building something thoughtful, or want to play a
-              duet, please{" "}
-              <Link href="/resume" className="underline decoration-pink underline-offset-2">
-                say hi
-              </Link>
-              .
-            </p>
-          </div>
-        </Reveal>
-
-        <Reveal className="md:col-span-2" x={20}>
-          <Window title="profile.cfg">
-            <div className="p-5 font-mono text-[13px] leading-relaxed">
-              {facts.map((f) => (
-                <div key={f.k} className="grid grid-cols-[90px_1fr] gap-2 py-0.5">
-                  <span className="opacity-60">{f.k}</span>
-                  <span>{f.v}</span>
-                </div>
-              ))}
-            </div>
-          </Window>
-
-          <div className="mt-5">
-            <Window title="now.txt" soft>
-              <div className="p-5 font-mono text-[13px] leading-relaxed">
-                <div className="opacity-60 mb-2"># what i&apos;m up to</div>
-                <ul className="list-none space-y-1">
-                  {nowList.map((n) => (
-                    <li key={n} className="flex gap-2">
-                      <span className="text-accent">›</span>
-                      <span>{n}</span>
-                    </li>
-                  ))}
-                </ul>
+        <aside className="md:col-span-2 space-y-12">
+          <dl className="border-t-[1.5px] border-line font-mono text-[13px] leading-relaxed">
+            {facts.map((f) => (
+              <div key={f.k} className="grid grid-cols-[84px_1fr] gap-3 py-2 border-b border-line/15">
+                <dt className="opacity-55">{f.k}</dt>
+                <dd className="min-w-0 [overflow-wrap:anywhere]">
+                  {f.href ? (
+                    <a href={f.href} className={link}>
+                      {f.v}
+                    </a>
+                  ) : (
+                    f.v
+                  )}
+                </dd>
               </div>
-            </Window>
+            ))}
+          </dl>
+
+          <div>
+            <div className="flex items-baseline justify-between">
+              <h2 className="font-display text-2xl">Right now</h2>
+              <span className="font-mono text-[11.5px] opacity-55">Fall 2026</span>
+            </div>
+            <ul className="mt-3 space-y-2 font-mono text-[13px] leading-relaxed">
+              {nowList.map((n) => (
+                <li key={n} className="flex gap-2">
+                  <span className="text-pink-ink">›</span>
+                  <span>{n}</span>
+                </li>
+              ))}
+            </ul>
           </div>
-        </Reveal>
+        </aside>
       </div>
 
       {/* Timeline */}
       <section className="mt-20">
         <Reveal>
-          <div className="font-mono text-xs uppercase tracking-widest opacity-60 mb-2">
-            /timeline · from resume.pdf
-          </div>
-          <h2 className="display text-3xl sm:text-4xl">how i got here.</h2>
+          <h2 className="display text-3xl sm:text-4xl">How I got here.</h2>
         </Reveal>
 
         <div className="mt-8 relative pl-6 border-l-2 border-line">
@@ -243,19 +241,13 @@ export default function AboutPage() {
                   : "bg-accent-2";
             return (
               <Reveal key={i} delay={i * 0.04}>
-                <motion.div
-                  whileHover={{ x: 4 }}
-                  className="relative pl-4 py-5"
-                >
+                <div className="relative pl-4 py-5">
                   <span
                     className={`absolute -left-[31px] top-7 inline-block h-3 w-3 rounded-full border-2 border-line ${dotColor}`}
                   />
                   <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
                     <span className="font-mono text-[10.5px] uppercase tracking-widest opacity-60">
                       {row.when}
-                    </span>
-                    <span className="tag font-mono !text-[9.5px] !py-0.5 !px-2">
-                      {row.kind}
                     </span>
                   </div>
                   <div className="mt-1.5 font-display text-lg leading-tight">
@@ -272,10 +264,10 @@ export default function AboutPage() {
                       href={row.link.href}
                       className="mt-2 inline-block font-mono text-[12px] underline decoration-pink underline-offset-2 hover:text-accent"
                     >
-                      {row.link.label} ↗
+                      {row.link.label} →
                     </Link>
                   )}
-                </motion.div>
+                </div>
               </Reveal>
             );
           })}
@@ -304,47 +296,20 @@ export default function AboutPage() {
         </Reveal>
       </section>
 
-      {/* Skills section pulled from resume */}
+      {/* Skills, from the resume */}
       <section className="mt-20">
-        <Reveal>
-          <div className="font-mono text-xs uppercase tracking-widest opacity-60 mb-2">
-            /skills · also from resume.pdf
-          </div>
-          <h2 className="display text-3xl sm:text-4xl">stuff i work with.</h2>
-        </Reveal>
-
-        <div className="mt-6 grid md:grid-cols-3 gap-5">
-          <Reveal>
-            <Window title="languages.txt" soft>
-              <div className="p-5 font-mono text-[12.5px] leading-relaxed">
-                <p>
-                  Java · TypeScript · Python · C · C++ · Rust · JavaScript ·
-                  SQL · OCaml · HTML/CSS
-                </p>
-              </div>
-            </Window>
-          </Reveal>
-          <Reveal delay={0.05}>
-            <Window title="systems.txt" soft>
-              <div className="p-5 font-mono text-[12.5px] leading-relaxed">
-                <p>
-                  Embedded Linux · MAVLink · Pixhawk · Bash/Shell · Git ·
-                  Docker · AWS (CDK, Lambda, Step Functions, SNS, S3,
-                  DynamoDB)
-                </p>
-              </div>
-            </Window>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <Window title="tools.txt" soft>
-              <div className="p-5 font-mono text-[12.5px] leading-relaxed">
-                <p>
-                  REST APIs · React.js · Node.js · Flask · Prisma · MongoDB ·
-                  MySQL · PyTorch · OpenCV · NumPy
-                </p>
-              </div>
-            </Window>
-          </Reveal>
+        <h2 className="display text-3xl sm:text-4xl">Stuff I work with.</h2>
+        <div className="mt-8 grid sm:grid-cols-3 gap-x-10 gap-y-8">
+          {skills.map((g) => (
+            <div key={g.title} className="border-t-[1.5px] border-line pt-3">
+              <h3 className="font-mono text-[11px] uppercase tracking-widest opacity-60">{g.title}</h3>
+              <ul className="mt-3 space-y-1 font-mono text-[13.5px] leading-relaxed">
+                {g.items.map((it) => (
+                  <li key={it}>{it}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </section>
     </div>

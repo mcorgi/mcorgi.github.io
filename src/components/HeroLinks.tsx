@@ -36,6 +36,28 @@ export function SatelliteIcon({ className = "" }: { className?: string }) {
   );
 }
 
+// A northern cardinal, crest and all. For the birdsong synthesizer.
+export function BirdIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden>
+      {/* crest */}
+      <path d="M14.6 6.4 13.4 3.6l3.1 2.1" />
+      {/* head, back and belly */}
+      <path d="M18.5 9.6a3.6 3.6 0 0 0-6.7-1.8L8.2 13.2c-1.6 2.5-.1 5.8 3.1 5.8h2.2a5 5 0 0 0 5-5V9.6Z" />
+      {/* beak */}
+      <path d="M18.5 9.4 21.2 10.5 18.5 11.6" />
+      {/* tail */}
+      <path d="M8.4 13 3 15.2l5.4 1.3" />
+      {/* wing */}
+      <path d="M10.6 13.4c1.4 1.9 4 2.2 5.6.6" />
+      {/* eye */}
+      <circle cx="15.9" cy="8.9" r="0.5" fill="currentColor" />
+      {/* legs */}
+      <path d="M12 19v2M14.6 19v2" />
+    </svg>
+  );
+}
+
 // Small label that appears under a bubble on hover / keyboard focus.
 function HoverLabel({ children }: { children: ReactNode }) {
   return (
@@ -74,7 +96,7 @@ export function Bubble({
   );
 }
 
-// Gentle bob so the bubbles feel alive, like the existing { } one.
+// Gentle bob so the bubbles feel alive.
 export function Float({ children, className = "", delay = 0 }: { children: ReactNode; className?: string; delay?: number }) {
   return (
     <motion.div

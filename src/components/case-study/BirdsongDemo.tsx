@@ -174,12 +174,7 @@ export default function BirdsongDemo() {
   return (
     <div className="window">
       <div className="window-title">
-        <span className="window-dots" aria-hidden>
-          <span />
-          <span />
-          <span />
-        </span>
-        <span className="ml-2 truncate">birdsong.synth — in your browser</span>
+        <span className="truncate">birdsong.synth — in your browser</span>
         <span className="ml-auto text-[11px] opacity-70 hidden sm:inline">turn your volume down a little</span>
       </div>
 

@@ -39,8 +39,10 @@ export type Project = {
   hidden?: boolean;
   // Image shown in the featured card's "system diagram" panel.
   diagram?: string;
-  // Little status tiles under the featured card's diagram.
-  statusChips?: { k: string; v: string }[];
+  // Photo under the diagram on the featured card.
+  photo?: { src: string; alt: string; caption: string };
+  // Drawn picture on the featured card, for projects with no diagram to show.
+  illustration?: "satellite";
   links?: ProjectLink[];
 };
 
@@ -53,7 +55,7 @@ export const projects: Project[] = [
     role:
       "Point person for the full onboard stack except distance mode and the FastAPI API layer (those were built by teammates).",
     blurb:
-      "Onboard Raspberry Pi software that fires a GoPro, pairs each photo with Pixhawk GPS/attitude data on a single clock, and streams geotagged imagery to the ground mid-flight: 1,300+ images per 45-minute flight, flown at SUAS 2026.",
+      "The software that gets photos off our plane while it's still in the air. A Raspberry Pi fires the GoPro, pairs every photo with the closest Pixhawk GPS/attitude reading (both stamped on the Pi's own clock, since the GoPro's drifts), and sends them down over the radio link. I ran it from the flightline at SUAS 2026.",
     description:
       "Mini Plane System (MPS) is onboard flight software for CUAir's mini aircraft. It runs on a Raspberry Pi, controls a GoPro Hero 11 over USB, reads telemetry from a Pixhawk flight controller via MAVLink, and uploads each image with a JSON metadata payload (GPS, altitude, yaw, timestamps) to a ground server. I was the point person for the core pipeline: camera capture/download/upload, Pixhawk integration, telemetry buffering and time-alignment, the field CLI, Pi deployment, and operational tooling. Distance mode (geo-fenced capture) and the HTTP API were developed separately by teammates.",
     problem:
@@ -165,12 +167,11 @@ export const projects: Project[] = [
     status: "shipped",
     featured: true,
     diagram: "/diagrams/mps-system-architecture.drawio.svg",
-    statusChips: [
-      { k: "capture", v: "continuous" },
-      { k: "telemetry", v: "MAVLink ok" },
-      { k: "pairing", v: "nearest-neighbor" },
-      { k: "upload", v: "geotagged" },
-    ],
+    photo: {
+      src: "/images/suas-2026/web/dsc03861.jpg",
+      alt: "Hermes, CUAir's aircraft, flying against a clear blue sky.",
+      caption: "Hermes over Skyway Range at SUAS 2026, with MPS on board.",
+    },
     links: [
       {
         label: "GitHub",
@@ -196,7 +197,8 @@ export const projects: Project[] = [
     role:
       "Flight Dynamics Software Developer Intern. Designed the serverless infrastructure in TypeScript CDK and wrote the Java Lambda handlers for triggering, running, and triaging jobs.",
     blurb:
-      "A serverless service that runs engineers' analysis scripts automatically, on a schedule or the moment an upstream event lands, and routes any failure to the right person. Designed, built, and shipped to production during my internship.",
+      "Engineers hand it an analysis script and a small config, and it runs the script for them, on a schedule or the moment an upstream event lands. When a run breaks, it works out whether the script or the platform is at fault and notifies the right person. I designed and built it over my 12-week internship, and it was in production before I left.",
+    illustration: "satellite",
     description:
       "An automated analytics platform: engineers write an analysis script and a small config, and the platform runs it for them on a schedule or in response to events, stores the results, and tickets the right owner when something breaks.",
     stack: [
@@ -216,12 +218,6 @@ export const projects: Project[] = [
     readTime: "5 min",
     status: "shipped",
     featured: true,
-    statusChips: [
-      { k: "triggers", v: "events + schedules" },
-      { k: "infra", v: "TypeScript CDK" },
-      { k: "orchestration", v: "Step Functions" },
-      { k: "failures", v: "auto-routed" },
-    ],
   },
   {
     slug: "birdsong-synthesizer",
@@ -230,7 +226,7 @@ export const projects: Project[] = [
     org: "ECE 4760 · Cornell University",
     role: "Embedded developer on a team of 3.",
     blurb:
-      "A synthesizer on a Raspberry Pi Pico 2 that recreates northern cardinal calls. A timer interrupt computes every audio sample at 200 kHz, measured at 3.04 µs out of a 5 µs budget, and a keypad records, plays back and chains slider sweeps at 10× speed.",
+      "A synthesizer on a Raspberry Pi Pico 2 that tries to sound like a northern cardinal. A timer interrupt computes every audio sample at 200 kHz (3.04 µs on the scope, out of a 5 µs budget). You can't move a slider as fast as a bird sings, so the keypad records your slow sweeps and plays them back 10× faster.",
     description:
       "A birdsong synthesizer for ECE 4760 (Digital Systems Design Using Microcontrollers). A slide potentiometer sets the pitch from 0 to 10 kHz, the RP2350 generates a sine wave with direct digital synthesis at 200,000 samples a second, and an SPI DAC drives a speaker. A 12-key keypad records slider movements onto keys 1–9, plays them back at 10× speed, and chains recordings into a song.",
     stack: ["C", "RP2350 (Cortex-M33)", "Pico SDK", "Timer interrupts", "SPI", "ADC", "MCP4822 DAC", "Protothreads", "Oscilloscope"],
@@ -273,22 +269,22 @@ export const projects: Project[] = [
     slug: "hao-shi-guang",
     title: "Hao Shi Guang — Restaurant Website",
     subtitle:
-      "A website for a Chinese restaurant in Allston, MA — designed and shipped solo.",
+      "A website for a Chinese restaurant in Allston, MA, designed and built solo.",
     org: "Hao Shi Guang Restaurant · Allston, MA",
     role:
-      "Sole designer + developer. My first real-client engagement — scoped, designed, built, and deployed end-to-end.",
+      "Sole designer and developer. My first real client.",
     blurb:
-      "Built the full website for a family-owned Chinese restaurant in Allston — my first real client project, working directly with the owner.",
+      "The website for a family-owned Chinese restaurant on Harvard Ave. My first real client: menus, MongoDB reservations and Toast ordering, and it's been live since June 2025.",
     description:
-      "I designed and built the entire website for Hao Shi Guang, a Chinese restaurant on Harvard Ave in Allston. Menu pages, gallery, hours, reservations, contact — all of it. The fun part wasn't just the code; it was meeting with the manager, figuring out what they actually needed, and turning those conversations into a real, deployed site. It was the first time I felt like I was building for a real client, and it ended up being one of the most rewarding projects I've done.",
+      "I designed and built the whole website for Hao Shi Guang, a Chinese restaurant on Harvard Ave in Allston: menu pages, a gallery, hours, reservations and contact. A lot of the work wasn't code. It was meeting with the manager, figuring out what they actually needed, and turning those conversations into pages. It was the first time I'd built something for a real client, and I still maintain it.",
     outcomes: [
       "Live site shipped and in active use by the restaurant.",
-      "Designed the full UI and built every page solo — no template, no team.",
+      "Designed the UI and built every page myself, with no template.",
       "Worked directly with the owner from scoping through launch and ongoing maintenance.",
     ],
     learnings: [
       "Translating ambiguous client needs into a concrete design.",
-      "Communicating with a non-technical stakeholder — when to ask vs. just show a mock.",
+      "Talking with a non-technical client: when to ask, and when to just show a mock.",
       "What it actually takes to ship something real users depend on, every day.",
     ],
     tags: ["Full-stack", "Design", "Client Work", "Restaurant", "Freelance"],
@@ -350,7 +346,7 @@ export const projects: Project[] = [
     role:
       "Owned the model architecture and training pipeline: adapting a pretrained ViViT backbone with QLoRA fine-tuning, building the temporal reducer, and writing the multi-mouse training loop.",
     blurb:
-      "A fine-tuned Video Vision Transformer (ViViT + QLoRA) that predicts the spiking activity of tens of thousands of neurons in mouse V1 from the natural video the mice were watching — built for the NeurIPS 2023 Sensorium Competition.",
+      "A fine-tuned Video Vision Transformer (ViViT + QLoRA) that predicts the spiking activity of tens of thousands of neurons in mouse V1 from the natural video the mice were watching. Built for the NeurIPS 2023 Sensorium Competition.",
     description:
       "A fine-tuned Video Vision Transformer (ViViT) that predicts spiking activity of tens of thousands of neurons in mouse primary visual cortex (V1) from the natural video stimuli the mice were watching. Built as a submission for the NeurIPS 2023 Sensorium Competition.",
     problem:
