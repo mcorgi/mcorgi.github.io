@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
+import { MpsScene } from "@/components/Illustrations";
 import type { Project } from "@/data/projects";
 import { mpsSections } from "@/data/siteMap";
 import { Callout, Code, Diagram, LinkList, Pre, Prose, Section, SectionNav, Stat, Steps, Table } from "./Parts";
@@ -48,6 +49,15 @@ export default function MiniPlaneSystem({ project: p }: { project: Project }) {
           )}
         </div>
       </Reveal>
+
+      <figure className="mt-8">
+        <MpsScene className="border-[1.5px] border-line" />
+        <figcaption className="mt-2 font-mono text-[11.5px] opacity-60">
+          Roughly how it works: the GoPro shoots, the Pi pairs each photo with the Pixhawk&apos;s
+          position, and the pair goes down to the ground over the radio. The rest of this page is
+          the long version.
+        </figcaption>
+      </figure>
 
       <Reveal>
         <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">

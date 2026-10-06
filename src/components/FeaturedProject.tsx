@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Project } from "@/data/projects";
-import { SatelliteScene } from "@/components/Illustrations";
+import { MpsScene, SatelliteScene } from "@/components/Illustrations";
 
 export default function FeaturedProject({ project }: { project: Project }) {
   return (
@@ -30,6 +30,16 @@ export default function FeaturedProject({ project }: { project: Project }) {
         >
           read the case study
         </Link>
+
+        {project.illustration === "mps" && (
+          <figure className="mt-10">
+            <MpsScene className="border-[1.5px] border-line" />
+            <figcaption className="mt-2 font-mono text-[11.5px] opacity-60">
+              Roughly how it works: the GoPro shoots, the Pi pairs each photo with the
+              Pixhawk&apos;s position, and the pair goes down to the ground over the radio.
+            </figcaption>
+          </figure>
+        )}
       </div>
 
       <div className="space-y-5">

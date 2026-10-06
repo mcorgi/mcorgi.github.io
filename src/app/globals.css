@@ -205,8 +205,12 @@ html {
 @keyframes spin { to { transform: rotate(360deg); } }
 .spin-slow { animation: spin 8s linear infinite; }
 
+/* data moving along a dashed line */
+@keyframes dash-flow { to { stroke-dashoffset: -20; } }
+.dash-flow { animation: dash-flow 1.2s linear infinite; }
+
 @media (prefers-reduced-motion: reduce) {
-  .twinkle, .drift, .eq-bar, .spin-slow { animation: none; }
+  .twinkle, .drift, .eq-bar, .spin-slow, .dash-flow { animation: none; }
 }
 
 /* Music page: warm concert-program palette instead of the site's blue. */

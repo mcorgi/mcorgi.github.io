@@ -42,7 +42,7 @@ export type Project = {
   // Photo under the diagram on the featured card.
   photo?: { src: string; alt: string; caption: string };
   // Drawn picture on the featured card, for projects with no diagram to show.
-  illustration?: "satellite";
+  illustration?: "satellite" | "mps";
   links?: ProjectLink[];
 };
 
@@ -167,6 +167,7 @@ export const projects: Project[] = [
     status: "shipped",
     featured: true,
     diagram: "/diagrams/mps-system-architecture.drawio.svg",
+    illustration: "mps",
     photo: {
       src: "/images/suas-2026/web/dsc03861.jpg",
       alt: "Hermes, CUAir's aircraft, flying against a clear blue sky.",
