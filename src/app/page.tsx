@@ -1,10 +1,11 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import TerminalView from "@/components/terminal/TerminalView";
 import { BirdIcon, Bubble, CameraIcon, Float, SatelliteIcon } from "@/components/HeroLinks";
-import { FlyingPlane } from "@/components/Illustrations";
+import { FlyingPlane, GrillScene } from "@/components/Illustrations";
 import FeaturedProject from "@/components/FeaturedProject";
 import { featuredProjects, visibleProjects } from "@/data/projects";
 import { contact } from "@/data/siteMap";
@@ -173,6 +174,69 @@ export default function Home() {
         </div>
       </section>
 
+      {/* NEWEST PROJECT: BBQ Land, in its page's ember palette */}
+      <section className="mx-auto max-w-6xl px-5 mt-24">
+        <h2 className="display text-3xl sm:text-4xl mb-8">
+          My newest project, just launched.
+        </h2>
+        <div className="theme-ember relative rounded-2xl">
+          <div aria-hidden className="absolute inset-0 translate-x-2.5 translate-y-2.5 rounded-2xl bg-pink" />
+          <div className="relative grid lg:grid-cols-[1.15fr_1fr] gap-10 rounded-2xl border-[1.5px] border-line bg-cream p-6 sm:p-10">
+            <div>
+              <div className="flex flex-wrap items-center gap-2 font-mono text-[11px] uppercase tracking-widest">
+                <span className="inline-flex items-center gap-2 rounded-full border-[1.5px] border-line bg-cream-2 px-3 py-1">
+                  <span aria-hidden className="h-2 w-2 rounded-full bg-accent" /> live
+                </span>
+                <OpeningCountdown />
+              </div>
+              <h3 className="display text-[40px] sm:text-[56px] leading-[0.95] mt-5">
+                <Link href="/projects/bbq-land" className="hover:text-accent transition-colors">
+                  BBQ Land<span className="text-pink">.</span>
+                </Link>
+              </h3>
+              <p className="mt-4 font-display text-xl sm:text-2xl leading-snug">
+                A new restaurant had no website. Now it has one, and I built it from scratch.
+              </p>
+              <p className="mt-4 max-w-xl font-mono text-[13.5px] leading-relaxed text-ink-soft">
+                BBQ Land is a modern Asian yakiniku restaurant in Shrewsbury, MA. I designed and
+                built the site, took the photos, turned the printed menu into a searchable one,
+                and launched it on its own domain during soft opening.
+              </p>
+              <div className="mt-7 flex flex-wrap items-center gap-3">
+                <a
+                  href="https://www.bbqlandma.com"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="inline-flex items-center gap-2 rounded-lg border-[1.5px] border-line bg-accent px-4 py-2 font-mono text-sm text-cream shadow-[3px_3px_0_0_var(--line)] transition-[transform,box-shadow] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[1px_1px_0_0_var(--line)]"
+                >
+                  visit bbqlandma.com ↗
+                </a>
+                <Link
+                  href="/projects/bbq-land"
+                  className="inline-flex items-center gap-2 rounded-lg border-[1.5px] border-line px-4 py-2 font-mono text-sm hover:bg-ink hover:text-cream transition-colors"
+                >
+                  how I built it →
+                </Link>
+              </div>
+            </div>
+            <div>
+              <GrillScene className="border-[1.5px] border-line" />
+              <dl className="mt-5 font-mono text-[13px] leading-relaxed">
+                {[
+                  ["OCT 2026", "Soft opening. The site goes live on bbqlandma.com."],
+                  ["OCT 21", "Grand opening."],
+                ].map(([when, what]) => (
+                  <div key={when} className="grid grid-cols-[84px_1fr] gap-3 py-2.5 border-t border-line/15">
+                    <dt className="text-pink-ink tracking-widest text-[11.5px] pt-0.5">{when}</dt>
+                    <dd className="text-ink-soft">{what}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* MORE PROJECTS, as a directory listing */}
       <section className="mx-auto max-w-6xl px-5 mt-24">
         <p className="font-mono text-[15px] sm:text-[17px]">
@@ -274,6 +338,25 @@ export default function Home() {
       </section>
     </div>
   );
+}
+
+// Same rule as the banner on bbqlandma.com: whole days to the grand opening,
+// counted in Eastern time. Worked out after mount so the static HTML doesn't
+// freeze the build day's count.
+function OpeningCountdown() {
+  const [text, setText] = useState<string | null>(null);
+  useEffect(() => {
+    const today = new Intl.DateTimeFormat("en-CA", { timeZone: "America/New_York" }).format(new Date());
+    const days = Math.round((Date.parse("2026-10-21") - Date.parse(today)) / 86400000);
+    setText(
+      days > 1 ? `${days} days to grand opening`
+      : days === 1 ? "grand opening tomorrow"
+      : days === 0 ? "grand opening today!"
+      : "now open",
+    );
+  }, []);
+  if (!text) return null;
+  return <span className="text-pink-ink">{text}</span>;
 }
 
 // SUAS 2026, one line per day. Every entry is from the /suas-2026 page.

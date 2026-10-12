@@ -16,6 +16,7 @@ const facts = [
 const nowList = [
   "Leading the Intelligence subteam at CUAir (Cornell UAS)",
   "Freelance web dev for Hao Shi Guang Restaurant",
+  "Just launched the website for BBQ Land, a new restaurant in Shrewsbury, MA",
   "Taking embedded systems courses (ECE 4760 and ECE 5725)",
   "Writing violin and piano duets, and recording both parts myself",
 ];
@@ -70,7 +71,11 @@ export default function AboutPage() {
             building a service that runs engineers&apos; analysis scripts on its own. I&apos;ve
             also been a backend engineering intern at Data Legion AI, a software engineer at
             Cornell Engineering World Health, and a freelance web developer for a family-owned
-            restaurant. Earlier on, I did computer vision research and built a handwriting
+            restaurant. Most recently, I built the first website for{" "}
+            <Link href="/projects/bbq-land" className={link}>
+              BBQ Land
+            </Link>
+            , a new restaurant in Shrewsbury, MA. Earlier on, I did computer vision research and built a handwriting
             recognition system.
           </p>
           <p>
@@ -161,6 +166,14 @@ export default function AboutPage() {
               kind: "work",
               what: "Lead a subteam of 15 engineers owning the onboard imaging and telemetry pipeline for an autonomous UAV end to end. It aligns 1,300+ GoPro images per 45-minute flight to their GPS and attitude samples within 125 ms, timestamping everything against one onboard clock, and runs on a Raspberry Pi bridged to the ground over a Ubiquiti Rocket and NanoStation link. Every change goes up a staged test ladder (bench, ground rig, test drone, competition aircraft), with a preflight check before each flight. I review the subteam's code, onboard new members each semester, and own the data interface with the Autopilot subteam.",
               link: { href: "/projects/mini-plane-system", label: "read the case study" },
+            },
+            {
+              when: "Oct 2026",
+              role: "Sole Designer & Developer",
+              where: "BBQ Land, Asian Grill & Barbecue · Shrewsbury, MA",
+              kind: "work",
+              what: "Built the first website for a new restaurant from scratch and launched it during soft opening, before the grand opening: six pages in plain HTML, CSS, and JavaScript on Vercel, a searchable menu transcribed from the printed one, an Open now badge computed in Eastern time, a self-updating grand-opening countdown, and schema.org structured data. Took and optimized the photos too.",
+              link: { href: "/projects/bbq-land", label: "case study" },
             },
             {
               when: "Fall 2026",

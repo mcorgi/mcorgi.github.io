@@ -6,6 +6,7 @@ import MiniPlaneSystem from "@/components/case-study/MiniPlaneSystem";
 import CamelBenchmark from "@/components/case-study/CamelBenchmark";
 import AnalyticsPlatform from "@/components/case-study/AnalyticsPlatform";
 import BirdsongSynth from "@/components/case-study/BirdsongSynth";
+import BbqLand from "@/components/case-study/BbqLand";
 import { LinkList } from "@/components/case-study/Parts";
 
 // Projects with a hand-built long-form page instead of the generic template.
@@ -14,6 +15,7 @@ const caseStudies = {
   "camel-benchmark": CamelBenchmark,
   "automated-analytics": AnalyticsPlatform,
   "birdsong-synthesizer": BirdsongSynth,
+  "bbq-land": BbqLand,
 } as const;
 
 export function generateStaticParams() {

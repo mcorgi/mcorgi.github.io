@@ -49,6 +49,15 @@ export const analyticsSections: SectionLink[] = [
   { id: "takeaways", label: "takeaways" },
 ];
 
+export const bbqSections: SectionLink[] = [
+  { id: "overview", label: "overview" },
+  { id: "menu", label: "the menu" },
+  { id: "self-updating", label: "self-updating" },
+  { id: "photos", label: "photos" },
+  { id: "details", label: "details" },
+  { id: "launch", label: "launch" },
+];
+
 export const suasSections: SectionLink[] = [
   { id: "mission", label: "the mission" },
   { id: "role", label: "my role" },

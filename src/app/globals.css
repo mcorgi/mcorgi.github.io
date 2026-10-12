@@ -175,6 +175,28 @@ html {
 }
 .theme-violet ::selection { background: var(--accent-2); color: var(--ink); }
 
+/* Charcoal-and-ember theme for the BBQ Land page and its home-page card. */
+.theme-ember {
+  --cream: #fdf7f1;        /* page background: warm paper */
+  --cream-2: #f6e6d6;      /* panels */
+  --ink: #2a1712;          /* text: charcoal */
+  --ink-soft: #5c3e33;     /* body text */
+  --accent: #c2410c;       /* ember orange */
+  --accent-2: #f0a23b;     /* flame amber */
+  --accent-3: #8f5b3a;     /* wood smoke */
+  --pink: #ef7d3c;         /* offset shadows + callout bar */
+  --pink-ink: #b33a12;     /* deep ember for small text */
+  --pink-soft: #fde8d8;    /* callout fill */
+  --line: #2a1712;
+  color: var(--ink);
+  background-color: var(--cream);
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(194, 65, 12, 0.11) 1px, transparent 0),
+    radial-gradient(ellipse 70% 40% at 80% 0%, rgba(240, 162, 59, 0.16), transparent 70%);
+  background-size: 22px 22px, 100% 100%;
+}
+.theme-ember ::selection { background: var(--accent-2); color: var(--ink); }
+
 /* Illustrations: animate normally, hold still for reduced motion */
 .still-only { display: none; }
 @media (prefers-reduced-motion: reduce) {

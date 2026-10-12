@@ -2,6 +2,7 @@ import { visibleProjects } from "@/data/projects";
 import {
   camelSections,
   analyticsSections,
+  bbqSections,
   birdsongSections,
   mpsSections,
   suasSections,
@@ -24,6 +25,7 @@ const projectSections: Record<string, SectionLink[]> = {
   "camel-benchmark": camelSections,
   "automated-analytics": analyticsSections,
   "birdsong-synthesizer": birdsongSections,
+  "bbq-land": bbqSections,
 };
 
 const sectionDirs = (base: string, sections: SectionLink[]): FsNode[] =>

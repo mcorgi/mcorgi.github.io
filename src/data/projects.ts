@@ -221,6 +221,45 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    slug: "bbq-land",
+    title: "BBQ Land — Restaurant Website",
+    subtitle: "The first website for a new Asian grill & barbecue restaurant in Shrewsbury, MA",
+    org: "BBQ Land, Asian Grill & Barbecue · Shrewsbury, MA",
+    role:
+      "Sole designer and developer. Planned, built, photographed, and launched the site, working directly with the restaurant's management on content and review.",
+    blurb:
+      "A brand-new yakiniku restaurant had no website, so I built one from scratch: six pages in plain HTML, CSS, and JavaScript, with a searchable menu, a live \"Open now\" badge, and a grand-opening countdown that updates itself. I took the photos too. It went live on bbqlandma.com during soft opening, before the October 21 grand opening.",
+    description:
+      "A six-page marketing site (Home, Menu, Drinks, About, Savenor's, Visit) for BBQ Land, a modern Asian yakiniku restaurant at 31 Boston Turnpike in Shrewsbury, MA. Plain HTML/CSS/JavaScript with no framework and no build step, deployed on Vercel from GitHub on a custom domain.",
+    stack: [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Vercel",
+      "GitHub",
+      "Google Search Console",
+      "schema.org",
+    ],
+    tags: ["Web", "Client Work", "Restaurant", "Freelance", "Photography", "SEO"],
+    year: "Oct 2026",
+    readTime: "3 min",
+    status: "shipped",
+    href: "https://www.bbqlandma.com",
+    repo: "https://github.com/mcorgi/bbqland",
+    links: [
+      {
+        label: "Live site",
+        href: "https://www.bbqlandma.com",
+        note: "bbqlandma.com",
+      },
+      {
+        label: "Source on GitHub",
+        href: "https://github.com/mcorgi/bbqland",
+        note: "mcorgi/bbqland",
+      },
+    ],
+  },
+  {
     slug: "birdsong-synthesizer",
     title: "Birdsong Synthesizer",
     subtitle: "Real-time audio synthesis in C on an RP2350, played with a slider and a keypad",

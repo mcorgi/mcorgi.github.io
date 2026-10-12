@@ -7,7 +7,7 @@ export default function ProjectsPage() {
     <div className="mx-auto max-w-6xl px-5 pt-14 pb-24">
       <h1 className="display text-5xl sm:text-7xl">Things I built.</h1>
       <p className="mt-4 max-w-2xl font-mono text-[14.5px] leading-relaxed text-ink-soft">
-        The two big ones first, then class projects, a paper, and a restaurant website.
+        The two big ones first, then class projects, a paper, and two restaurant websites, newest first.
       </p>
 
       <section className="mt-12 space-y-12">

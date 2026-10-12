@@ -302,3 +302,80 @@ export function MpsScene({ className = "" }: { className?: string }) {
     </svg>
   );
 }
+
+// Fixed so server and client render the same embers: [x, start y, size, seconds, delay].
+const EMBERS: [number, number, number, number, number][] = [
+  [150, 170, 2.2, 3.2, 0], [182, 166, 1.6, 2.6, 0.8], [214, 172, 2.6, 3.6, 1.6],
+  [246, 168, 1.8, 2.9, 0.4], [268, 174, 2, 3.4, 2.1], [132, 176, 1.4, 2.7, 1.2],
+  [200, 160, 1.8, 3.1, 2.6], [228, 178, 1.3, 2.5, 0.2], [164, 180, 2.4, 3.8, 1.9],
+];
+
+// A tabletop yakiniku grill with embers rising off it. For the BBQ Land card.
+export function GrillScene({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 400 300"
+      role="img"
+      aria-label="A cartoon tabletop grill with meat and vegetables on the grate and embers rising off it"
+      className={`block w-full h-auto rounded-lg ${className}`}
+    >
+      <defs>
+        <radialGradient id="grill-glow" cx="50%" cy="55%" r="55%">
+          <stop offset="0%" stopColor="#f0a23b" stopOpacity="0.55" />
+          <stop offset="100%" stopColor="#f0a23b" stopOpacity="0" />
+        </radialGradient>
+        <radialGradient id="grill-coals" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#ffd27a" />
+          <stop offset="55%" stopColor="#ef7d3c" />
+          <stop offset="100%" stopColor="#7a2408" />
+        </radialGradient>
+      </defs>
+
+      <rect width="400" height="300" fill="#2a1712" />
+      <ellipse cx="200" cy="190" rx="190" ry="120" fill="url(#grill-glow)" />
+
+      {/* table */}
+      <path d="M0 244 H400 V300 H0Z" fill="#3a2219" />
+      <path d="M0 244 H400" stroke="#5c3e33" strokeWidth="2" />
+
+      {/* grill: body, coals, grate */}
+      <ellipse cx="200" cy="232" rx="118" ry="22" fill="#1a0e0a" />
+      <path d="M86 196 V228 A114 22 0 0 0 314 228 V196Z" fill="#4a2c20" stroke="#fdf7f1" strokeWidth="1.5" />
+      <ellipse cx="200" cy="196" rx="114" ry="30" fill="url(#grill-coals)" stroke="#fdf7f1" strokeWidth="1.5">
+        <animate attributeName="opacity" values="1;0.82;1" dur="2.4s" repeatCount="indefinite" />
+      </ellipse>
+      <g stroke="#2a1712" strokeWidth="3" strokeLinecap="round">
+        {[-84, -56, -28, 0, 28, 56, 84].map((dx) => {
+          const half = 30 * Math.sqrt(1 - (dx / 114) ** 2);
+          return <line key={dx} x1={200 + dx} y1={196 - half} x2={200 + dx} y2={196 + half} />;
+        })}
+      </g>
+
+      {/* on the grate: sliced meat, a mushroom, a pepper */}
+      <g stroke="#2a1712" strokeWidth="1.5" strokeLinejoin="round">
+        <path d="M128 188 q20 -14 44 -4 q-6 14 -26 14 q-14 0 -18 -10z" fill="#b8574a" />
+        <path d="M136 189 q14 -6 30 -2" fill="none" stroke="#f6e6d6" strokeWidth="1.4" />
+        <path d="M188 200 q22 -12 46 -2 q-6 14 -28 13 q-14 -1 -18 -11z" fill="#a8473c" />
+        <path d="M196 202 q14 -6 30 -1" fill="none" stroke="#f6e6d6" strokeWidth="1.4" />
+        <ellipse cx="250" cy="182" rx="16" ry="9" fill="#d9b48a" />
+        <path d="M262 206 q12 -10 26 -4 q-2 8 -14 9 q-8 1 -12 -5z" fill="#5f8f3a" />
+      </g>
+
+      {/* embers */}
+      <g className="motion-only">
+        {EMBERS.map(([x, y, r, dur, delay], i) => (
+          <circle key={i} cx={x} cy={y} r={r} fill={i % 2 ? "#ffd27a" : "#ef7d3c"} opacity="0">
+            <animate attributeName="cy" values={`${y};${y - 140}`} dur={`${dur}s`} begin={`${delay}s`} repeatCount="indefinite" />
+            <animate attributeName="cx" values={`${x};${x + (i % 3 - 1) * 14};${x}`} dur={`${dur}s`} begin={`${delay}s`} repeatCount="indefinite" />
+            <animate attributeName="opacity" values="0;1;0.8;0" keyTimes="0;0.15;0.7;1" dur={`${dur}s`} begin={`${delay}s`} repeatCount="indefinite" />
+          </circle>
+        ))}
+      </g>
+      <g className="still-only">
+        {EMBERS.map(([x, y, r], i) => (
+          <circle key={i} cx={x} cy={y - 30 - (i % 4) * 26} r={r} fill={i % 2 ? "#ffd27a" : "#ef7d3c"} opacity="0.8" />
+        ))}
+      </g>
+    </svg>
+  );
+}
