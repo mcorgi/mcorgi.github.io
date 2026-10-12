@@ -5,6 +5,7 @@ import {
   bbqSections,
   birdsongSections,
   mpsSections,
+  songSaverSections,
   suasSections,
   type SectionLink,
 } from "@/data/siteMap";
@@ -26,6 +27,7 @@ const projectSections: Record<string, SectionLink[]> = {
   "automated-analytics": analyticsSections,
   "birdsong-synthesizer": birdsongSections,
   "bbq-land": bbqSections,
+  "song-saver": songSaverSections,
 };
 
 const sectionDirs = (base: string, sections: SectionLink[]): FsNode[] =>

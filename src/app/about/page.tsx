@@ -17,6 +17,7 @@ const nowList = [
   "Leading the Intelligence subteam at CUAir (Cornell UAS)",
   "Freelance web dev for Hao Shi Guang Restaurant",
   "Just launched the website for BBQ Land, a new restaurant in Shrewsbury, MA",
+  "Built Song Saver, a private MP3 app for my aunt's iPhone",
   "Taking embedded systems courses (ECE 4760 and ECE 5725)",
   "Writing violin and piano duets, and recording both parts myself",
 ];
@@ -166,6 +167,14 @@ export default function AboutPage() {
               kind: "work",
               what: "Lead a subteam of 15 engineers owning the onboard imaging and telemetry pipeline for an autonomous UAV end to end. It aligns 1,300+ GoPro images per 45-minute flight to their GPS and attitude samples within 125 ms, timestamping everything against one onboard clock, and runs on a Raspberry Pi bridged to the ground over a Ubiquiti Rocket and NanoStation link. Every change goes up a staged test ladder (bench, ground rig, test drone, competition aircraft), with a preflight check before each flight. I review the subteam's code, onboard new members each semester, and own the data interface with the Autopilot subteam.",
               link: { href: "/projects/mini-plane-system", label: "read the case study" },
+            },
+            {
+              when: "Oct 2026",
+              role: "Song Saver",
+              where: "Personal project · Python · Flask · iOS web app",
+              kind: "project",
+              what: "A private home-screen web app that turns YouTube links and phone videos into MP3s for my aunt, without the ads and fake buttons of converter sites. A Flask server on my PC runs yt-dlp and ffmpeg, her iPhone reaches it over Tailscale, uploads resume in 4 MB chunks, and the MP3 goes to the iOS share sheet.",
+              link: { href: "/projects/song-saver", label: "case study" },
             },
             {
               when: "Oct 2026",

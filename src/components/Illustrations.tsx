@@ -331,20 +331,20 @@ export function GrillScene({ className = "" }: { className?: string }) {
         </radialGradient>
       </defs>
 
-      <rect width="400" height="300" fill="#2a1712" />
+      <rect width="400" height="300" fill="#161412" />
       <ellipse cx="200" cy="190" rx="190" ry="120" fill="url(#grill-glow)" />
 
       {/* table */}
-      <path d="M0 244 H400 V300 H0Z" fill="#3a2219" />
-      <path d="M0 244 H400" stroke="#5c3e33" strokeWidth="2" />
+      <path d="M0 244 H400 V300 H0Z" fill="#1e1b18" />
+      <path d="M0 244 H400" stroke="#2e2a26" strokeWidth="2" />
 
       {/* grill: body, coals, grate */}
-      <ellipse cx="200" cy="232" rx="118" ry="22" fill="#1a0e0a" />
-      <path d="M86 196 V228 A114 22 0 0 0 314 228 V196Z" fill="#4a2c20" stroke="#fdf7f1" strokeWidth="1.5" />
-      <ellipse cx="200" cy="196" rx="114" ry="30" fill="url(#grill-coals)" stroke="#fdf7f1" strokeWidth="1.5">
+      <ellipse cx="200" cy="232" rx="118" ry="22" fill="#0a0908" />
+      <path d="M86 196 V228 A114 22 0 0 0 314 228 V196Z" fill="#2b2724" stroke="#f5f2ed" strokeWidth="1.5" />
+      <ellipse cx="200" cy="196" rx="114" ry="30" fill="url(#grill-coals)" stroke="#f5f2ed" strokeWidth="1.5">
         <animate attributeName="opacity" values="1;0.82;1" dur="2.4s" repeatCount="indefinite" />
       </ellipse>
-      <g stroke="#2a1712" strokeWidth="3" strokeLinecap="round">
+      <g stroke="#0e0d0c" strokeWidth="3" strokeLinecap="round">
         {[-84, -56, -28, 0, 28, 56, 84].map((dx) => {
           const half = 30 * Math.sqrt(1 - (dx / 114) ** 2);
           return <line key={dx} x1={200 + dx} y1={196 - half} x2={200 + dx} y2={196 + half} />;
@@ -352,7 +352,7 @@ export function GrillScene({ className = "" }: { className?: string }) {
       </g>
 
       {/* on the grate: sliced meat, a mushroom, a pepper */}
-      <g stroke="#2a1712" strokeWidth="1.5" strokeLinejoin="round">
+      <g stroke="#0e0d0c" strokeWidth="1.5" strokeLinejoin="round">
         <path d="M128 188 q20 -14 44 -4 q-6 14 -26 14 q-14 0 -18 -10z" fill="#b8574a" />
         <path d="M136 189 q14 -6 30 -2" fill="none" stroke="#f6e6d6" strokeWidth="1.4" />
         <path d="M188 200 q22 -12 46 -2 q-6 14 -28 13 q-14 -1 -18 -11z" fill="#a8473c" />

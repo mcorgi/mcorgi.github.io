@@ -31,6 +31,7 @@
   --font-display: var(--font-display);
   --font-mono: var(--font-mono);
   --font-retro: var(--font-retro);
+  --font-hand: var(--font-hand);
 }
 
 * {
@@ -175,27 +176,79 @@ html {
 }
 .theme-violet ::selection { background: var(--accent-2); color: var(--ink); }
 
-/* Charcoal-and-ember theme for the BBQ Land page and its home-page card. */
-.theme-ember {
-  --cream: #fdf7f1;        /* page background: warm paper */
-  --cream-2: #f6e6d6;      /* panels */
-  --ink: #2a1712;          /* text: charcoal */
-  --ink-soft: #5c3e33;     /* body text */
-  --accent: #c2410c;       /* ember orange */
-  --accent-2: #f0a23b;     /* flame amber */
-  --accent-3: #8f5b3a;     /* wood smoke */
-  --pink: #ef7d3c;         /* offset shadows + callout bar */
-  --pink-ink: #b33a12;     /* deep ember for small text */
-  --pink-soft: #fde8d8;    /* callout fill */
-  --line: #2a1712;
+/* BBQ Land, in bbqlandma.com's own palette: paper, charcoal, red, and brass.
+   The site's red is a touch light for small text on paper, so text uses its
+   deeper red. */
+.theme-bbq {
+  --cream: #f2efe9;        /* the site's paper */
+  --cream-2: #e8e3da;
+  --ink: #0e0d0c;          /* the site's charcoal */
+  --ink-soft: #4d4741;
+  --accent: #a8161b;       /* deep red: links, numbers, buttons */
+  --accent-2: #c4a46a;     /* brass */
+  --accent-3: #8a6d36;     /* brass, darkened for text */
+  --pink: #d62328;         /* the site's red: offset shadows, callout bar */
+  --pink-ink: #a8161b;
+  --pink-soft: #f6dcd9;
+  --line: #0e0d0c;
   color: var(--ink);
   background-color: var(--cream);
   background-image:
-    radial-gradient(circle at 1px 1px, rgba(194, 65, 12, 0.11) 1px, transparent 0),
-    radial-gradient(ellipse 70% 40% at 80% 0%, rgba(240, 162, 59, 0.16), transparent 70%);
+    radial-gradient(circle at 1px 1px, rgba(14, 13, 12, 0.08) 1px, transparent 0),
+    radial-gradient(ellipse 70% 40% at 80% 0%, rgba(214, 35, 40, 0.07), transparent 70%);
   background-size: 22px 22px, 100% 100%;
 }
-.theme-ember ::selection { background: var(--accent-2); color: var(--ink); }
+.theme-bbq ::selection { background: var(--pink); color: #fff; }
+
+/* The same palette at night, like the site's hero: for the home-page card. */
+.theme-bbq-night {
+  --cream: #0e0d0c;
+  --cream-2: #1e1b18;
+  --ink: #f5f2ed;
+  --ink-soft: #aaa39a;
+  --accent: #ec3b40;       /* the site's bright red, readable on charcoal */
+  --accent-2: #c4a46a;
+  --accent-3: #ff7a3d;     /* ember */
+  --pink: #d62328;
+  --pink-ink: #ec3b40;
+  --pink-soft: #2a1514;
+  --line: #3a3531;
+  color: var(--ink);
+}
+
+/* Song Saver: the app's own warm cream and orange, with a soft rose blush.
+   The app's orange is too light for small text, so text uses a deeper one. */
+.theme-cozy {
+  --cream: #fdf6ef;        /* the app's background */
+  --cream-2: #f8e9dc;      /* panels, tags */
+  --ink: #3a2a22;          /* warm brown text */
+  --ink-soft: #6b5248;     /* body text */
+  --accent: #b5401d;       /* deep orange: links, headings */
+  --accent-2: #e4572e;     /* the app's button orange */
+  --accent-3: #1f8a5b;     /* the app's "Save to my phone" green */
+  --pink: #f0a39a;         /* rose: offset shadows, callout bar, hearts */
+  --pink-ink: #b5404f;     /* deep rose for small text */
+  --pink-soft: #fde9e4;    /* blush fill */
+  --line: #3a2a22;
+  color: var(--ink);
+  background-color: var(--cream);
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(181, 64, 29, 0.08) 1px, transparent 0),
+    radial-gradient(ellipse 60% 35% at 85% 0%, rgba(240, 163, 154, 0.22), transparent 70%),
+    radial-gradient(ellipse 50% 30% at 0% 60%, rgba(228, 87, 46, 0.07), transparent 70%);
+  background-size: 22px 22px, 100% 100%, 100% 100%;
+}
+.theme-cozy ::selection { background: var(--pink); color: var(--ink); }
+
+/* A strip of washi tape holding a note down. */
+.tape {
+  position: absolute;
+  width: 92px;
+  height: 22px;
+  background: rgba(240, 163, 154, 0.55);
+  border-left: 1px dashed rgba(58, 42, 34, 0.15);
+  border-right: 1px dashed rgba(58, 42, 34, 0.15);
+}
 
 /* Illustrations: animate normally, hold still for reduced motion */
 .still-only { display: none; }

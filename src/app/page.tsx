@@ -174,12 +174,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* NEWEST PROJECT: BBQ Land, in its page's ember palette */}
+      {/* NEWEST PROJECT: BBQ Land, dark like bbqlandma.com's hero */}
       <section className="mx-auto max-w-6xl px-5 mt-24">
         <h2 className="display text-3xl sm:text-4xl mb-8">
           My newest project, just launched.
         </h2>
-        <div className="theme-ember relative rounded-2xl">
+        <div className="theme-bbq-night relative rounded-2xl">
           <div aria-hidden className="absolute inset-0 translate-x-2.5 translate-y-2.5 rounded-2xl bg-pink" />
           <div className="relative grid lg:grid-cols-[1.15fr_1fr] gap-10 rounded-2xl border-[1.5px] border-line bg-cream p-6 sm:p-10">
             <div>
@@ -207,7 +207,7 @@ export default function Home() {
                   href="https://www.bbqlandma.com"
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="inline-flex items-center gap-2 rounded-lg border-[1.5px] border-line bg-accent px-4 py-2 font-mono text-sm text-cream shadow-[3px_3px_0_0_var(--line)] transition-[transform,box-shadow] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[1px_1px_0_0_var(--line)]"
+                  className="inline-flex items-center gap-2 rounded-lg border-[1.5px] border-pink bg-pink px-4 py-2 font-mono text-sm text-white shadow-[3px_3px_0_0_var(--line)] transition-[transform,box-shadow] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[1px_1px_0_0_var(--line)]"
                 >
                   visit bbqlandma.com ↗
                 </a>
@@ -232,6 +232,75 @@ export default function Home() {
                   </div>
                 ))}
               </dl>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SMALLER PERSONAL PROJECT: Song Saver, as a scrapbook page in its cozy palette */}
+      <section className="mx-auto max-w-6xl px-5 mt-20">
+        <h2 className="display text-2xl sm:text-3xl mb-6">
+          A smaller personal project.
+        </h2>
+        <div className="theme-cozy relative overflow-hidden rounded-[28px] border-[1.5px] border-line px-5 py-10 sm:px-12 sm:py-14">
+          {/* hearts and notes scattered in the background */}
+          {[
+            ["♥", "left-[6%] top-[8%] -rotate-12 text-[28px]"],
+            ["♪", "left-[44%] top-[6%] rotate-6 text-[32px]"],
+            ["♥", "right-[5%] top-[10%] rotate-12 text-[22px]"],
+            ["♫", "left-[3%] bottom-[8%] -rotate-6 text-[30px]"],
+            ["♥", "right-[38%] bottom-[5%] rotate-6 text-[24px]"],
+          ].map(([ch, pos]) => (
+            <span key={pos} aria-hidden className={`absolute font-hand text-pink ${pos}`}>
+              {ch}
+            </span>
+          ))}
+
+          <div className="relative grid md:grid-cols-[1.25fr_1fr] gap-12 md:gap-8 items-center">
+            {/* the note */}
+            <div className="relative -rotate-1 rounded-sm border-[1.5px] border-line bg-white px-6 pt-9 pb-7 shadow-[5px_5px_0_0_var(--pink)] sm:px-9">
+              <span aria-hidden className="tape -top-3 left-8 -rotate-3" />
+              <p className="font-hand text-[26px] sm:text-[30px] leading-none text-pink-ink">
+                for my aunt, with love <span aria-hidden>♥</span>
+              </p>
+              <h3 className="display text-[34px] sm:text-[44px] leading-[0.95] mt-4">
+                <Link href="/projects/song-saver" className="hover:text-accent transition-colors">
+                  Song Saver<span className="text-pink">.</span>
+                </Link>
+              </h3>
+              <p className="mt-4 font-mono text-[13.5px] leading-relaxed text-ink-soft">
+                She isn&apos;t comfortable with technology, and YouTube-to-MP3 sites are full of
+                pop-ups and fake Download buttons. So I made her an app of her own, right on her
+                home screen: paste a link, wait, save.
+              </p>
+              <Link href="/projects/song-saver" className="mt-6 arrow-link text-sm font-mono">
+                read the story
+              </Link>
+            </div>
+
+            {/* her actual start screen, tucked in at an angle */}
+            <div className="relative mx-auto w-[200px] sm:w-[230px]">
+              <div className="rotate-3 overflow-hidden rounded-[30px] border-[1.5px] border-line bg-white shadow-[6px_6px_0_0_var(--line)] aspect-[9/16]">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/song-saver/start.png"
+                  alt="Song Saver's start screen on an iPhone, with a big Paste link button and numbered instructions."
+                  loading="lazy"
+                  className="block w-full h-full object-cover object-top"
+                />
+              </div>
+              {/* the app icon, cropped from a photo of her home screen */}
+              <div className="absolute -right-6 -top-6 h-16 w-16 -rotate-6 overflow-hidden rounded-[22%] shadow-[3px_3px_0_0_var(--pink)]">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/song-saver/icon.jpg"
+                  alt=""
+                  className="absolute left-[-7%] top-[-3%] w-[122%] max-w-none"
+                />
+              </div>
+              <p className="absolute -left-10 bottom-6 -rotate-6 rounded-sm bg-pink-soft px-4 py-2 font-hand text-[24px] leading-none text-ink shadow-[3px_3px_0_0_var(--pink)]">
+                paste, wait, save <span aria-hidden>♪</span>
+              </p>
             </div>
           </div>
         </div>

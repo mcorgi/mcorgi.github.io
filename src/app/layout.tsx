@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, JetBrains_Mono, VT323 } from "next/font/google";
+import { Space_Grotesk, JetBrains_Mono, VT323, Caveat } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -22,6 +22,13 @@ const retro = VT323({
   weight: "400",
 });
 
+// Handwriting, for the little notes on the Song Saver page and card.
+const hand = Caveat({
+  variable: "--font-hand",
+  subsets: ["latin"],
+  preload: false,
+});
+
 export const metadata: Metadata = {
   title: "Sandra Tang",
   description:
@@ -36,7 +43,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${grotesk.variable} ${mono.variable} ${retro.variable} h-full antialiased`}
+      className={`${grotesk.variable} ${mono.variable} ${retro.variable} ${hand.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-cream text-ink">
         <TerminalProvider>

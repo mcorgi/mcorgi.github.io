@@ -221,6 +221,38 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    slug: "song-saver",
+    title: "Song Saver",
+    subtitle: "A private YouTube-to-MP3 app, built for one person: my aunt",
+    org: "Personal project · for my aunt",
+    role: "Sole designer and developer.",
+    blurb:
+      "My aunt needs MP3s from YouTube videos, and the converter sites she'd find are built to trick people: pop-ups, fake Download buttons, redirects. So I built her an app with one job: paste a link, wait, save. It lives on her iPhone's home screen and talks to a Flask server on my PC over Tailscale.",
+    description:
+      "A private home-screen web app for my aunt's iPhone and iPad that turns YouTube links and her own phone videos into MP3s. A Flask server on my Windows PC runs yt-dlp and ffmpeg, her devices reach it over Tailscale, and the finished file goes straight to the iOS share sheet so she can tap Save to Files.",
+    stack: [
+      "Python",
+      "Flask",
+      "Waitress",
+      "yt-dlp",
+      "ffmpeg",
+      "Node.js",
+      "Vanilla JS",
+      "Web Share API",
+      "Tailscale",
+    ],
+    tags: ["Python", "Flask", "Web App", "iOS", "Accessibility", "Personal"],
+    year: "Oct 2026",
+    readTime: "6 min",
+    status: "shipped",
+    links: [
+      {
+        label: "Source code",
+        note: "private repo",
+      },
+    ],
+  },
+  {
     slug: "bbq-land",
     title: "BBQ Land — Restaurant Website",
     subtitle: "The first website for a new Asian grill & barbecue restaurant in Shrewsbury, MA",

@@ -58,6 +58,15 @@ export const bbqSections: SectionLink[] = [
   { id: "launch", label: "launch" },
 ];
 
+export const songSaverSections: SectionLink[] = [
+  { id: "story", label: "the story" },
+  { id: "design", label: "designing for one person" },
+  { id: "how", label: "how it works" },
+  { id: "problems", label: "problems i hit" },
+  { id: "stack", label: "under the hood" },
+  { id: "next", label: "what's next" },
+];
+
 export const suasSections: SectionLink[] = [
   { id: "mission", label: "the mission" },
   { id: "role", label: "my role" },

@@ -1,17 +1,15 @@
-import fs from "node:fs";
-import path from "node:path";
 import Link from "next/link";
-import { ReactNode } from "react";
 import Reveal from "@/components/Reveal";
 import type { Project } from "@/data/projects";
 import { bbqSections } from "@/data/siteMap";
 import { Callout, Card, Code, LinkList, Prose, Section, SectionNav, Stat, Steps, Table } from "./Parts";
+import Screenshot from "./Screenshot";
 
 const LIVE = "https://www.bbqlandma.com";
 
 export default function BbqLand({ project: p }: { project: Project }) {
   return (
-    <div className="theme-ember">
+    <div className="theme-bbq">
       <div className="mx-auto max-w-5xl px-5 pt-10 pb-24">
         <Reveal>
           <div className="flex items-center gap-2 font-mono text-xs opacity-70">
@@ -67,6 +65,7 @@ export default function BbqLand({ project: p }: { project: Project }) {
 
         <div className="mt-10">
           <Screenshot
+            dir="images/bbq-land"
             name="home-hero-desktop"
             label="(a) desktop · home page hero"
             size="1440 × 900 browser window"
@@ -151,6 +150,7 @@ export default function BbqLand({ project: p }: { project: Project }) {
           </div>
           <div className="grid md:grid-cols-[1fr_240px] gap-6 items-start">
             <Screenshot
+              dir="images/bbq-land"
               name="menu-desktop"
               label="(b) menu page"
               size="1440 × 900 browser window"
@@ -159,6 +159,7 @@ export default function BbqLand({ project: p }: { project: Project }) {
               caption="The menu, scrolled to Beef: the sticky tabs highlight the section you're in."
             />
             <Screenshot
+              dir="images/bbq-land"
               name="home-phone"
               label="(c) phone width"
               size="390 × 844 phone"
@@ -293,61 +294,5 @@ export default function BbqLand({ project: p }: { project: Project }) {
         </div>
       </div>
     </div>
-  );
-}
-
-const SHOT_DIR = "images/bbq-land";
-
-// A screenshot from public/images/bbq-land/. Until the file is added, a
-// labeled placeholder shows where it goes. Checked at build time.
-function Screenshot({
-  name,
-  label,
-  size,
-  aspect,
-  alt,
-  caption,
-}: {
-  name: string;
-  label: string;
-  size: string;
-  aspect: string;
-  alt: string;
-  caption: ReactNode;
-}) {
-  const file = [".png", ".jpg", ".webp"]
-    .map((ext) => `${SHOT_DIR}/${name}${ext}`)
-    .find((f) => fs.existsSync(path.join(process.cwd(), "public", f)));
-
-  return (
-    <Reveal>
-      <figure>
-        {file ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={`/${file}`}
-            alt={alt}
-            loading="lazy"
-            className="block w-full h-auto rounded-lg border-[1.5px] border-line bg-white"
-          />
-        ) : (
-          <div
-            className={`${aspect} flex flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed border-accent bg-cream-2 p-4 text-center font-mono`}
-          >
-            <span className="text-[10.5px] uppercase tracking-widest text-pink-ink">
-              screenshot placeholder
-            </span>
-            <span className="font-display text-lg leading-tight">{label}</span>
-            <span className="text-[11.5px] text-ink-soft break-all">
-              public/{SHOT_DIR}/{name}.png
-            </span>
-            <span className="text-[11px] opacity-60">{size}</span>
-          </div>
-        )}
-        <figcaption className="mt-2 font-mono text-[12px] leading-relaxed text-ink-soft">
-          {caption}
-        </figcaption>
-      </figure>
-    </Reveal>
   );
 }
