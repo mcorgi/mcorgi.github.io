@@ -9,7 +9,6 @@ import { BirdIcon, Bubble, CameraIcon, Float, SatelliteIcon } from "@/components
 import { FlyingPlane, GrillScene } from "@/components/Illustrations";
 import FeaturedProject from "@/components/FeaturedProject";
 import Reveal from "@/components/Reveal";
-import { PiTftSnapshot } from "@/components/case-study/RobotDemo";
 import { featuredProjects, visibleProjects } from "@/data/projects";
 import { contact } from "@/data/siteMap";
 
@@ -150,6 +149,53 @@ export default function Home() {
             </Reveal>
           ))}
 
+          {/* Embedded projects: two class labs sharing one box, split down the middle */}
+          <Reveal className="py-12">
+            <div className="lift">
+              <div className="relative">
+                <div aria-hidden className="absolute inset-0 translate-x-2.5 translate-y-2.5 rounded-2xl bg-accent-3" />
+                <div className="relative rounded-2xl border-[1.5px] border-line bg-cream">
+                  <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b-[1.5px] border-line px-6 py-5 sm:px-10">
+                    <h3 className="display text-[30px] sm:text-[38px] leading-none">
+                      Embedded projects<span className="text-accent-3">.</span>
+                    </h3>
+                    <span className="font-mono text-[14px] text-muted">
+                      two labs this semester: bare-metal C, and embedded Linux
+                    </span>
+                  </div>
+                  <div className="grid md:grid-cols-2 divide-y-[1.5px] md:divide-y-0 md:divide-x-[1.5px] divide-line">
+                    {embedded.map((e) => (
+                      <article key={e.href} className="flex flex-col p-6 sm:p-8">
+                        <Link href={e.href} className="block overflow-hidden rounded-lg border-[1.5px] border-line">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={e.img}
+                            alt={e.alt}
+                            loading="lazy"
+                            className={`block w-full aspect-[4/3] object-cover ${e.imgPos} transition-transform duration-500 hover:scale-[1.03]`}
+                          />
+                        </Link>
+                        <span className="mt-5 self-start inline-flex items-center rounded-full border-[1.5px] border-line bg-cream-2 px-3 py-1 font-mono text-[14px]">
+                          {e.course}
+                        </span>
+                        <h4 className="display text-[28px] sm:text-[34px] leading-[0.95] mt-4">
+                          <Link href={e.href} className="hover:text-accent transition-colors">
+                            {e.title}
+                            <span className="text-accent-3">.</span>
+                          </Link>
+                        </h4>
+                        <p className="mt-3 font-sans text-[17px] leading-relaxed text-ink-soft">{e.blurb}</p>
+                        <Link href={`${e.href}#play`} className="mt-auto pt-6 self-start">
+                          <span className="arrow-link text-sm font-mono">{e.cta}</span>
+                        </Link>
+                      </article>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+
           {/* BBQ Land, dark like bbqlandma.com's hero */}
           <Reveal className="py-12">
             <div className="lift">
@@ -282,41 +328,6 @@ export default function Home() {
                     <p className="absolute -left-10 bottom-6 -rotate-6 rounded-sm bg-pink-soft px-4 py-2 font-hand text-[24px] leading-none text-ink shadow-[3px_3px_0_0_var(--pink)]">
                       paste, wait, save <span aria-hidden>♪</span>
                     </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Reveal>
-
-          {/* Raspberry Pi Robot, next to its control panel */}
-          <Reveal className="py-12">
-            <div className="lift">
-              <div className="relative">
-                <div aria-hidden className="absolute inset-0 translate-x-2.5 translate-y-2.5 rounded-2xl bg-accent-3" />
-                <div className="relative grid md:grid-cols-[1.15fr_1fr] gap-10 items-center rounded-2xl border-[1.5px] border-line bg-cream p-6 sm:p-10">
-                  <div>
-                    <span className="inline-flex items-center rounded-full border-[1.5px] border-line bg-cream-2 px-3 py-1 font-mono text-[14px]">
-                      a class project · ECE 5725
-                    </span>
-                    <h3 className="display text-[34px] sm:text-[44px] leading-[0.95] mt-5">
-                      <Link href="/projects/pi-robot" className="hover:text-accent transition-colors">
-                        Raspberry Pi Robot<span className="text-accent-3">.</span>
-                      </Link>
-                    </h3>
-                    <p className="mt-4 font-display text-xl sm:text-2xl leading-snug">
-                      Power it on, press START, and it drives itself until you hit the red button.
-                    </p>
-                    <p className="mt-4 max-w-[60ch] font-sans text-[17px] leading-relaxed text-ink-soft">
-                      Two motors, a motor driver and a Raspberry Pi with a little touchscreen, all on
-                      their own batteries. It boots into a control panel I wrote in pygame and runs a
-                      test pattern that a panic stop can pause mid-move.
-                    </p>
-                    <Link href="/projects/pi-robot#play" className="mt-6 arrow-link text-sm font-mono">
-                      drive it in your browser
-                    </Link>
-                  </div>
-                  <div className="rounded-xl border-[1.5px] border-line bg-navy p-3 shadow-[4px_4px_0_0_var(--line)]">
-                    <PiTftSnapshot />
                   </div>
                 </div>
               </div>
@@ -477,6 +488,32 @@ export default function Home() {
     </div>
   );
 }
+
+// The two class labs in the shared Embedded projects box on the home page.
+const embedded = [
+  {
+    href: "/projects/birdsong-synthesizer",
+    title: "Birdsong Synthesizer",
+    course: "ECE 4760 · C · RP2350",
+    blurb:
+      "A synthesizer that sounds like a northern cardinal. A timer interrupt computes every audio sample at 200 kHz, in 3.04 µs out of a 5 µs budget, and a keypad records slow slider sweeps and plays them back 10× faster.",
+    cta: "play it in your browser",
+    img: "/images/birdsong/build.jpg",
+    imgPos: "object-center",
+    alt: "The birdsong synthesizer on a breadboard: a Raspberry Pi Pico 2 and DAC wired to a 12-key keypad, a slide potentiometer and speakers.",
+  },
+  {
+    href: "/projects/pi-robot",
+    title: "Raspberry Pi Robot",
+    course: "ECE 5725 · Python · Raspberry Pi",
+    blurb:
+      "Power it on, press START, and it drives itself until you hit the red button. It boots into a touchscreen control panel I wrote in pygame, and a panic stop can pause its test pattern mid-move.",
+    cta: "drive it in your browser",
+    img: "/images/pi-robot/robot.jpg",
+    imgPos: "object-[50%_35%]",
+    alt: "The robot from above: a Raspberry Pi with a touchscreen showing the control panel, two wheels, and a breadboard with the motor driver.",
+  },
+];
 
 // Whole days to the grand opening, counted in Eastern time like bbqlandma.com
 // does. Worked out after mount so the static HTML doesn't
