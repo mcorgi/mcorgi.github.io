@@ -85,7 +85,7 @@ export default function PiRobot({ project: p }: { project: Project }) {
       <SectionNav items={robotSections} />
 
       {/* OVERVIEW */}
-      <Section id="overview" eyebrow="what it is" title="From one LED to a robot that runs itself.">
+      <Section id="overview" eyebrow="what it is" title="From one LED to a robot that runs itself">
         <Prose>
           <p>
             Lab 3 of Cornell&apos;s ECE 5725 (Design with Embedded Operating Systems) builds a robot
@@ -135,7 +135,7 @@ export default function PiRobot({ project: p }: { project: Project }) {
       <Section
         id="play"
         eyebrow="try it"
-        title="Drive it here."
+        title="Drive it here"
         intro={
           <>
             A browser version of run_test.py, written for this page. Press START and the robot runs
@@ -152,7 +152,7 @@ export default function PiRobot({ project: p }: { project: Project }) {
       <Section
         id="hardware"
         eyebrow="hardware"
-        title="What's on the chassis."
+        title="What's on the chassis"
         intro="Everything rides on one acrylic base: the Pi and piTFT over the two motors, a breadboard with the motor driver in the middle, and a caster at the far end. A ribbon cable carries the Pi's GPIO pins down to the breadboard."
       >
         <div className="grid sm:grid-cols-2 gap-4">
@@ -205,7 +205,7 @@ export default function PiRobot({ project: p }: { project: Project }) {
       <Section
         id="stop"
         eyebrow="the tricky part"
-        title="Stopping isn't 0%."
+        title="Stopping isn't 0%"
         intro="The obvious way to stop a PWM-driven motor is to set the duty cycle to zero. On the TB6612, that's a different command."
       >
         <Prose>
@@ -264,7 +264,7 @@ export default function PiRobot({ project: p }: { project: Project }) {
       <Section
         id="buttons"
         eyebrow="input"
-        title="Two buttons, six commands."
+        title="Two buttons, six commands"
         intro="two_wheel.py had to give each motor clockwise, stop and counter-clockwise: six commands. The lab hinted that it didn't need six buttons."
       >
         <Reveal>
@@ -302,7 +302,7 @@ export default function PiRobot({ project: p }: { project: Project }) {
       <Section
         id="screen"
         eyebrow="the interface"
-        title="A control panel on a 320×240 screen."
+        title="A control panel on a 320×240 screen"
         intro="rolling_control.py puts the motors on the piTFT. Each motor's state is across the top, and under it the three most recent changes, with the second each one happened, counted from when the program started."
       >
         <Reveal>
@@ -351,7 +351,7 @@ export default function PiRobot({ project: p }: { project: Project }) {
       <Section
         id="loop"
         eyebrow="the real-time part"
-        title="A loop that never sleeps through a stop."
+        title="A loop that never sleeps through a stop"
         intro="run_test.py drives the assembled robot through a fixed pattern at 99% duty cycle, over and over, with the same control panel on top. The simplest version is a list of moves with time.sleep() between them."
       >
         <Pre title="the obvious version">{`forward();     time.sleep(2)
@@ -408,7 +408,7 @@ def run_sequence():
       <Section
         id="boot"
         eyebrow="embedded linux"
-        title="Power on, robot starts."
+        title="Power on, robot starts"
         intro="The finished robot has nothing plugged in: no power cord, network cable, keyboard, mouse or monitor. So run_test.py has to start by itself when the Pi boots."
       >
         <div className="grid md:grid-cols-2 gap-6 [&>*]:min-w-0">
@@ -441,7 +441,7 @@ cd /home/pi/lab3
       </Section>
 
       {/* LEARNED */}
-      <Section id="learned" eyebrow="takeaways" title="What I learned.">
+      <Section id="learned" eyebrow="takeaways" title="What I learned">
         <div className="grid sm:grid-cols-2 gap-4">
           <Card title="Read the truth table">
             <p>
@@ -475,7 +475,7 @@ cd /home/pi/lab3
         </Callout>
       </Section>
 
-      <Section id="stack" eyebrow="built with" title="Stack.">
+      <Section id="stack" eyebrow="built with" title="Stack">
         <div className="flex flex-wrap gap-2">
           {p.stack?.map((s) => (
             <span key={s} className="tag font-mono">

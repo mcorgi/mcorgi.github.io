@@ -112,7 +112,7 @@ export default async function ProjectDetailPage({
       {/* Problem / Solution */}
       {(p.problem || p.solution) && (
         <section className="mt-16">
-          <H2>The why, then the what.</H2>
+          <H2>The why, then the what</H2>
           <div className="mt-6 grid md:grid-cols-2 gap-10 font-sans text-[17px] leading-relaxed">
             {p.problem && (
               <div>
@@ -133,7 +133,7 @@ export default async function ProjectDetailPage({
       {/* Architecture */}
       {p.architecture && (
         <section className="mt-16">
-          <H2>How the pieces fit.</H2>
+          <H2>How the pieces fit</H2>
           <pre className="mt-6 rounded-lg bg-navy text-cream p-6 sm:p-8 text-[13px] leading-[1.65] font-mono whitespace-pre overflow-x-auto">
             {p.architecture}
           </pre>
@@ -143,7 +143,7 @@ export default async function ProjectDetailPage({
       {/* Features */}
       {p.features && p.features.length > 0 && (
         <section className="mt-16">
-          <H2>What it actually does.</H2>
+          <H2>What it actually does</H2>
           <dl className="mt-6 grid sm:grid-cols-2 gap-x-10 gap-y-6">
             {primaryFeatures.map((f) => (
               <div key={f.name} className="border-t-[1.5px] border-line pt-3">
@@ -171,7 +171,7 @@ export default async function ProjectDetailPage({
       {/* Technical highlight */}
       {p.technicalHighlight && (
         <section className="mt-16">
-          <H2>The tricky part.</H2>
+          <H2>The tricky part</H2>
           <p className="mt-6 max-w-3xl font-sans text-[17px] leading-[1.75] text-ink-soft">
             {p.technicalHighlight}
           </p>
@@ -183,7 +183,7 @@ export default async function ProjectDetailPage({
         <section className="mt-16 grid md:grid-cols-2 gap-10">
           {p.outcomes && (
             <div>
-              <H2>What came of it.</H2>
+              <H2>What came of it</H2>
               <ul className="mt-5 space-y-2.5">
                 {p.outcomes.map((o) => (
                   <li key={o} className="flex gap-2 font-sans text-[16px] leading-relaxed">
@@ -196,7 +196,7 @@ export default async function ProjectDetailPage({
           )}
           {p.learnings && (
             <div>
-              <H2>What I learned.</H2>
+              <H2>What I learned</H2>
               <ul className="mt-5 space-y-2.5">
                 {p.learnings.map((l) => (
                   <li key={l} className="flex gap-2 font-sans text-[16px] leading-relaxed">

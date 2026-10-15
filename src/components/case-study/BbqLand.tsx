@@ -30,7 +30,7 @@ export default function BbqLand({ project: p }: { project: Project }) {
               <span>· {p.year}</span>
             </div>
             <h1 className="display text-[44px] sm:text-[72px] leading-[0.95]">
-              BBQ Land<span className="text-pink">.</span>
+              BBQ Land
             </h1>
             <p className="mt-3 font-display text-xl sm:text-2xl text-ink-soft max-w-3xl">
               A website for a restaurant that didn&apos;t have one.
@@ -87,7 +87,7 @@ export default function BbqLand({ project: p }: { project: Project }) {
         <SectionNav items={bbqSections} />
 
         {/* OVERVIEW */}
-        <Section id="overview" eyebrow="overview" title="What it is.">
+        <Section id="overview" eyebrow="overview" title="What it is">
           <Prose>
             <p>
               BBQ Land, Asian Grill &amp; Barbecue is a modern Asian yakiniku restaurant, where you
@@ -130,7 +130,7 @@ export default function BbqLand({ project: p }: { project: Project }) {
         <Section
           id="menu"
           eyebrow="the menu"
-          title="Printed menus up top, a clickable list below."
+          title="Printed menus up top, a clickable list below"
           intro="I rebuilt the menu page around two things: the restaurant's own printed menus, and a list where every dish goes straight to ordering."
         >
           <div className="grid sm:grid-cols-2 gap-5">
@@ -194,7 +194,7 @@ export default function BbqLand({ project: p }: { project: Project }) {
         <Section
           id="self-updating"
           eyebrow="self-updating"
-          title="Parts that keep themselves current."
+          title="Parts that keep themselves current"
           intro="Hours and the grand opening are the details most likely to go stale, so the site works them out on its own."
         >
           <Steps
@@ -225,7 +225,7 @@ export default function BbqLand({ project: p }: { project: Project }) {
         <Section
           id="photos"
           eyebrow="photos & video"
-          title="Professional photos, ready for the web."
+          title="Professional photos, ready for the web"
           intro="The redesign uses the restaurant's professional food photos and clean interior shots. My part was getting them, the logo, and the hero video ready for the site."
         >
           <div className="grid sm:grid-cols-2 gap-5">
@@ -265,7 +265,7 @@ export default function BbqLand({ project: p }: { project: Project }) {
         <Section
           id="design"
           eyebrow="design direction"
-          title="High-end and minimal."
+          title="High-end and minimal"
           intro="The owner asked for a &quot;high-end, minimalist&quot; look, so the first version's effects came out: the rising embers, the word-by-word manifesto, the 3D tilt cards, the magnetic buttons, and the count-up numbers."
         >
           <div className="grid md:grid-cols-[1fr_240px] gap-8 items-start">
@@ -341,7 +341,7 @@ export default function BbqLand({ project: p }: { project: Project }) {
         <Section
           id="feedback"
           eyebrow="round two"
-          title="Round two: client feedback."
+          title="Round two: client feedback"
           intro="The day after launch, the owner sent written feedback and a mockup of the layout they wanted. I took the site down to a maintenance page and redesigned it the same day. Here's what they asked for, and what I changed."
         >
           <Table
@@ -390,7 +390,7 @@ export default function BbqLand({ project: p }: { project: Project }) {
         <Section
           id="launch"
           eyebrow="launch"
-          title="Getting it online."
+          title="Getting it online"
           intro="I handled the launch too: the domain, deployment, and getting the site set up on Google search."
         >
           <Steps

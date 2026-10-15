@@ -123,7 +123,7 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
       <SectionNav items={birdsongSections} />
 
       {/* OVERVIEW */}
-      <Section id="overview" eyebrow="what it is" title="A synthesizer you play with a slider.">
+      <Section id="overview" eyebrow="what it is" title="A synthesizer you play with a slider">
         <Prose>
           <p>
             Birdsong Synthesizer was the first lab in Cornell&apos;s ECE 4760 (Digital Systems Design
@@ -188,7 +188,7 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
       <Section
         id="play"
         eyebrow="try it"
-        title="Play it here."
+        title="Play it here"
         intro={
           <>
             A browser version of how the board behaves, written for this page. The slider runs 0 to
@@ -211,7 +211,7 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
       <Section
         id="hardware"
         eyebrow="hardware"
-        title="What's on the breadboard."
+        title="What's on the breadboard"
         intro="A Pico 2, a 12-bit DAC, a keypad, a slider and a pair of speakers. The oscilloscope is part of the design too: one pin exists only so we could measure timing."
       >
         <Diagram
@@ -252,7 +252,7 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
       <Section
         id="software"
         eyebrow="software"
-        title="One interrupt, three threads."
+        title="One interrupt, three threads"
         intro="Everything runs on one core. A hardware timer interrupt produces every audio sample. Three cooperative threads (protothreads) handle everything that isn't time-critical, and they talk to the interrupt through shared variables, mainly the current slider value."
       >
         <Diagram
@@ -302,7 +302,7 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
       <Section
         id="realtime"
         eyebrow="the real-time constraint"
-        title="Every sample has 5 microseconds."
+        title="Every sample has 5 microseconds"
         intro="Pitch depends on samples leaving at an exact, constant rate, and ears notice when they don't. So the waveform is generated inside the timer interrupt, which re-arms itself 5 µs ahead each time, and the work inside it has to be tiny."
       >
         <Prose>
@@ -393,7 +393,7 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
       <Section
         id="input"
         eyebrow="input"
-        title="One press means one press."
+        title="One press means one press"
         intro="Mechanical keys bounce: the contacts open and close several times before settling, which looks like several presses."
       >
         <div className="grid lg:grid-cols-[1.2fr_1fr] gap-8 items-start [&>*]:min-w-0">
@@ -438,7 +438,7 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
       <Section
         id="results"
         eyebrow="results"
-        title="Slow hands, fast birds."
+        title="Slow hands, fast birds"
         intro="A cardinal's chirp sweeps faster than anyone can move a slider. Recording at 100 Hz and playing back at 1 kHz compresses a slow, careful sweep 10× into a real-sounding call."
       >
         <div className="grid md:grid-cols-2 gap-6 [&>*]:min-w-0">
@@ -479,7 +479,7 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
       <Section
         id="problems"
         eyebrow="what went wrong"
-        title="Problems, and what we did about them."
+        title="Problems, and what we did about them"
       >
         <Table
           head={["Problem", "Cause", "Fix"]}
@@ -516,7 +516,7 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
         </Callout>
       </Section>
 
-      <Section id="stack" eyebrow="built with" title="Stack.">
+      <Section id="stack" eyebrow="built with" title="Stack">
         <div className="flex flex-wrap gap-2">
           {p.stack?.map((s) => (
             <span key={s} className="tag font-mono">

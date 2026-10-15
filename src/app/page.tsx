@@ -84,7 +84,7 @@ export default function Home() {
           <h1 className="arrive display text-[58px] sm:text-[88px] md:text-[112px]">
             sandra
             <br />
-            <span className="text-accent">tang.</span>
+            <span className="text-accent">tang</span>
           </h1>
 
           <p className="arrive arrive-2 mt-6 max-w-xl font-sans text-[20px] leading-snug text-ink-soft">
@@ -132,7 +132,7 @@ export default function Home() {
           it's here. */}
       <section className="mx-auto max-w-6xl px-5 mt-8">
         <h2 className="display text-3xl sm:text-4xl pb-6 border-b-[1.5px] border-line">
-          Projects.
+          Projects
         </h2>
         <div className="divide-y-[1.5px] divide-line">
           <Reveal className="py-12">
@@ -157,7 +157,7 @@ export default function Home() {
                 <div className="relative rounded-2xl border-[1.5px] border-line bg-cream">
                   <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b-[1.5px] border-line px-6 py-5 sm:px-10">
                     <h3 className="display text-[30px] sm:text-[38px] leading-none">
-                      Embedded projects<span className="text-accent-3">.</span>
+                      Embedded projects
                     </h3>
                     <span className="font-mono text-[14px] text-muted">
                       two labs this semester: bare-metal C, and embedded Linux
@@ -181,7 +181,6 @@ export default function Home() {
                         <h4 className="display text-[28px] sm:text-[34px] leading-[0.95] mt-4">
                           <Link href={e.href} className="hover:text-accent transition-colors">
                             {e.title}
-                            <span className="text-accent-3">.</span>
                           </Link>
                         </h4>
                         <p className="mt-3 font-sans text-[17px] leading-relaxed text-ink-soft">{e.blurb}</p>
@@ -214,7 +213,7 @@ export default function Home() {
                     </div>
                     <h3 className="display text-[40px] sm:text-[56px] leading-[0.95] mt-5">
                       <Link href="/projects/bbq-land" className="hover:text-accent transition-colors">
-                        BBQ Land<span className="text-pink">.</span>
+                        BBQ Land
                       </Link>
                     </h3>
                     <p className="mt-4 font-display text-xl sm:text-2xl leading-snug">
@@ -292,7 +291,7 @@ export default function Home() {
                     </p>
                     <h3 className="display text-[34px] sm:text-[44px] leading-[0.95] mt-4">
                       <Link href="/projects/song-saver" className="hover:text-accent transition-colors">
-                        Song Saver<span className="text-pink">.</span>
+                        Song Saver
                       </Link>
                     </h3>
                     <p className="mt-4 font-sans text-[17px] leading-relaxed text-ink-soft">
@@ -340,7 +339,7 @@ export default function Home() {
       <Reveal>
       <section className="mx-auto max-w-6xl px-5 mt-24">
         <h2 className="display text-3xl sm:text-4xl mb-8">
-          On the flightline at SUAS 2026.
+          On the flightline at SUAS 2026
         </h2>
         <div className="relative">
           <div aria-hidden className="absolute inset-0 translate-x-2.5 translate-y-2.5 rounded-2xl bg-pink" />
@@ -425,7 +424,7 @@ export default function Home() {
 
           <div className="md:col-span-3">
             <h2 className="display text-3xl sm:text-4xl mb-4">
-              Hi, I&apos;m Sandra.
+              Hi, I&apos;m Sandra
             </h2>
             <p className="prose-text text-ink-soft">
               I study computer science at Cornell Engineering. On the side, I lead CUAir&apos;s
@@ -453,7 +452,7 @@ export default function Home() {
       {/* CONTACT: same thing `cat contact.txt` prints */}
       <Reveal>
       <section id="contact" className="mx-auto max-w-6xl px-5 mt-28 scroll-mt-24">
-        <h2 className="display text-4xl sm:text-6xl">Let&apos;s talk<span className="text-pink">.</span></h2>
+        <h2 className="display text-4xl sm:text-6xl">Let&apos;s talk</h2>
         <p className="mt-4 prose-text text-ink-soft">
           For an internship, a project, or just to talk about music:
         </p>

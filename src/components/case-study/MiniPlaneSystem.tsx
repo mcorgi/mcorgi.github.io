@@ -71,7 +71,7 @@ export default function MiniPlaneSystem({ project: p }: { project: Project }) {
       <SectionNav items={nav} />
 
       {/* 01 */}
-      <Section id="what" eyebrow="01 · what it is" title="The software that flies with the plane.">
+      <Section id="what" eyebrow="01 · what it is" title="The software that flies with the plane">
         <Prose>
           <p>
             The Mini Plane System (MPS) is the software that runs onboard CUAir&apos;s aircraft,
@@ -126,7 +126,7 @@ export default function MiniPlaneSystem({ project: p }: { project: Project }) {
       <Section
         id="hardware"
         eyebrow="02 · hardware"
-        title="What's in the air, and what's on the ground."
+        title="What's in the air, and what's on the ground"
       >
         <Diagram
           src="/images/mps/hardware-data-flow.png"
@@ -188,7 +188,7 @@ export default function MiniPlaneSystem({ project: p }: { project: Project }) {
       </Section>
 
       {/* 03 */}
-      <Section id="software" eyebrow="03 · software" title="One program, four jobs at once.">
+      <Section id="software" eyebrow="03 · software" title="One program, four jobs at once">
         <Prose>
           <p>
             MPS runs as a single program, <Code>mps</Code>. When you start it you get an
@@ -217,7 +217,7 @@ export default function MiniPlaneSystem({ project: p }: { project: Project }) {
       </Section>
 
       {/* 04 */}
-      <Section id="photo" eyebrow="04 · one photo" title="What happens to every photo.">
+      <Section id="photo" eyebrow="04 · one photo" title="What happens to every photo">
         <Diagram
           src="/diagrams/mps-pipeline.drawio.svg"
           alt="Per-image pipeline: fire shutter, detect new file, download, pair telemetry from the TelemetryBuffer, write JSON, upload. If the nearest telemetry sample is more than 2 seconds away, the upload is skipped."
@@ -320,7 +320,7 @@ export default function MiniPlaneSystem({ project: p }: { project: Project }) {
       <Section
         id="concurrency"
         eyebrow="06 · concurrency"
-        title="Why asyncio, and where threads come in."
+        title="Why asyncio, and where threads come in"
       >
         <Prose>
           <p>
@@ -376,7 +376,7 @@ ok = await asyncio.to_thread(self.capture)`}</Pre>
       <Section
         id="distance-mode"
         eyebrow="07 · distance mode (teammate-led)"
-        title="Only shoot over the search area."
+        title="Only shoot over the search area"
       >
         <Prose>
           <p>
@@ -394,7 +394,7 @@ ok = await asyncio.to_thread(self.capture)`}</Pre>
       </Section>
 
       {/* 08 */}
-      <Section id="failures" eyebrow="08 · when things break" title="What breaks, and what still works.">
+      <Section id="failures" eyebrow="08 · when things break" title="What breaks, and what still works">
         <Prose>
           <p>
             Honestly, the hardest part of this project was hardware: Rocket
@@ -417,7 +417,7 @@ ok = await asyncio.to_thread(self.capture)`}</Pre>
       </Section>
 
       {/* 09 */}
-      <Section id="testing" eyebrow="09 · testing" title="Bench → ground → drone → plane.">
+      <Section id="testing" eyebrow="09 · testing" title="Bench → ground → drone → plane">
         <Prose>
           <p>
             Each stage needs more hardware and more people, so the goal is to catch problems at the
@@ -449,7 +449,7 @@ ok = await asyncio.to_thread(self.capture)`}</Pre>
       </Section>
 
       {/* 10 */}
-      <Section id="timeline" eyebrow="10 · timeline" title="How it got built.">
+      <Section id="timeline" eyebrow="10 · timeline" title="How it got built">
         <Reveal>
           <div className="max-w-3xl relative pl-6 border-l-2 border-line">
             {milestones.map((m) => (
@@ -474,7 +474,7 @@ ok = await asyncio.to_thread(self.capture)`}</Pre>
       </Section>
 
       {/* 11 */}
-      <Section id="learned" eyebrow="11 · what i learned" title="Takeaways.">
+      <Section id="learned" eyebrow="11 · what i learned" title="Takeaways">
         <Steps
           items={[
             <>

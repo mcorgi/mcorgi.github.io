@@ -31,7 +31,7 @@ export default function AnalyticsPlatform({ project: p }: { project: Project }) 
               <span>· {p.readTime}</span>
             </div>
             <h1 className="display text-[44px] sm:text-[72px] leading-[0.95]">
-              Automated Analytics Platform<span className="text-pink">.</span>
+              Automated Analytics Platform
             </h1>
             <p className="mt-3 font-display text-xl sm:text-2xl text-ink-soft max-w-3xl">
               You write the analysis. The platform runs it.
@@ -57,7 +57,7 @@ export default function AnalyticsPlatform({ project: p }: { project: Project }) 
         <SectionNav items={analyticsSections} />
 
         {/* OVERVIEW */}
-        <Section id="overview" eyebrow="overview" title="What it is.">
+        <Section id="overview" eyebrow="overview" title="What it is">
           <Prose>
             <p>
               Engineers write analysis scripts: check how accurate the latest estimate was, compare
@@ -104,7 +104,7 @@ export default function AnalyticsPlatform({ project: p }: { project: Project }) 
         <Section
           id="skills"
           eyebrow="what i learned"
-          title="The AWS toolbox I got hands-on with."
+          title="The AWS toolbox I got hands-on with"
           intro="Over the summer I designed, deployed and debugged a production system across all of these public AWS services, most of it defined in code. Here's what I did with each one."
         >
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -158,7 +158,7 @@ export default function AnalyticsPlatform({ project: p }: { project: Project }) 
         <Section
           id="design"
           eyebrow="the core design choice"
-          title="Put the orchestration in a state machine."
+          title="Put the orchestration in a state machine"
           intro="Every run goes through one AWS Step Functions workflow. It was the biggest piece of the project to figure out, and the major design choice I made was to put the orchestration and all of the error handling inside it."
         >
           <Table
@@ -236,7 +236,7 @@ export default function AnalyticsPlatform({ project: p }: { project: Project }) 
                   </span>
                 </div>
                 <h2 className="display text-4xl sm:text-5xl mt-4">
-                  space weather is a <span className="text-pink-ink">&quot;drag&quot;</span>.
+                  space weather is a <span className="text-pink-ink">&quot;drag&quot;</span>
                 </h2>
                 <p className="mt-3 max-w-3xl font-sans text-[16px] leading-relaxed text-ink-soft">
                   A textbook example from orbital mechanics, to show why engineers want analyses
@@ -307,7 +307,7 @@ export default function AnalyticsPlatform({ project: p }: { project: Project }) 
         <Section
           id="lifecycle"
           eyebrow="how a script runs"
-          title="From config to results."
+          title="From config to results"
           intro="From the script author's side, it's four stages. Only the first one is their job."
         >
           <Steps
@@ -335,7 +335,7 @@ export default function AnalyticsPlatform({ project: p }: { project: Project }) 
         </Section>
 
         {/* IMPACT */}
-        <Section id="impact" eyebrow="impact" title="What it changed.">
+        <Section id="impact" eyebrow="impact" title="What it changed">
           <Steps
             items={[
               <>
@@ -356,7 +356,7 @@ export default function AnalyticsPlatform({ project: p }: { project: Project }) 
         </Section>
 
         {/* TAKEAWAYS */}
-        <Section id="takeaways" eyebrow="takeaways" title="What I took away.">
+        <Section id="takeaways" eyebrow="takeaways" title="What I took away">
           <div className="grid md:grid-cols-3 gap-5">
             {[
               ["01", "Build for change", "Not just making it work, but building it to grow without breaking. Clean, readable code with abstractions where they earn their place, following the team's existing standards."],

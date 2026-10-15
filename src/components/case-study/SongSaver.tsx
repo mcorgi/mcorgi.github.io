@@ -45,7 +45,7 @@ export default function SongSaver({ project: p }: { project: Project }) {
                 />
               </div>
               <h1 className="display text-[44px] sm:text-[72px] leading-[0.95]">
-                Song Saver<span className="text-pink">.</span>
+                Song Saver
               </h1>
             </div>
             <p className="mt-4 font-display text-xl sm:text-2xl text-ink-soft max-w-3xl">
@@ -68,7 +68,7 @@ export default function SongSaver({ project: p }: { project: Project }) {
         <SectionNav items={songSaverSections} />
 
         {/* STORY */}
-        <Section id="story" eyebrow="the story" title="Made for one person.">
+        <Section id="story" eyebrow="the story" title="Made for one person">
           <Prose>
             <p>
               This whole app is just for her. She regularly needs to turn
@@ -106,7 +106,7 @@ export default function SongSaver({ project: p }: { project: Project }) {
         <Section
           id="design"
           eyebrow="designing for one person"
-          title="Every choice, made with her in mind."
+          title="Every choice, made with her in mind"
           intro="Every screen had to pass the same test: could she do it alone?"
         >
           <div className="grid sm:grid-cols-2 gap-5">
@@ -215,7 +215,7 @@ export default function SongSaver({ project: p }: { project: Project }) {
         <Section
           id="how"
           eyebrow="how it works"
-          title="Her phone, my PC, and a private link between them."
+          title="Her phone, my PC, and a private link between them"
         >
           <Pre title="the whole path, from her tap to a saved MP3">{`Her iPhone/iPad (home-screen web app)
    → private network link (Tailscale)
@@ -238,10 +238,10 @@ export default function SongSaver({ project: p }: { project: Project }) {
         <Section
           id="problems"
           eyebrow="problems i hit"
-          title="Four things that were harder than they looked."
+          title="Four things that were harder than they looked"
           intro="The parts she never has to see."
         >
-          <Problem n="01" title="Cloud hosting doesn't work for this.">
+          <Problem n="01" title="Cloud hosting doesn't work for this">
             <p>
               YouTube blocks requests from cloud and datacenter IPs (Vercel, AWS, and so on) with
               &quot;confirm you&apos;re not a bot&quot; errors. Serverless platforms also time out
@@ -254,7 +254,7 @@ export default function SongSaver({ project: p }: { project: Project }) {
             </p>
           </Problem>
 
-          <Problem n="02" title="YouTube changed the rules while I was building.">
+          <Problem n="02" title="YouTube changed the rules while I was building">
             <p>
               Partway through, yt-dlp started needing a JavaScript runtime to unlock most of
               YouTube&apos;s video formats. I wired in Node.js and the <Code>yt-dlp-ejs</Code>{" "}
@@ -267,7 +267,7 @@ export default function SongSaver({ project: p }: { project: Project }) {
             </p>
           </Problem>
 
-          <Problem n="03" title="Saving a file on iOS is harder than it sounds.">
+          <Problem n="03" title="Saving a file on iOS is harder than it sounds">
             <p>
               Plain download links are unreliable inside a home-screen web app on iPhone. Instead,
               the page fetches the finished MP3 into memory first. When she taps{" "}
@@ -276,7 +276,7 @@ export default function SongSaver({ project: p }: { project: Project }) {
             </p>
           </Problem>
 
-          <Problem n="04" title="Uploading big phone videos over a weak cell signal.">
+          <Problem n="04" title="Uploading big phone videos over a weak cell signal">
             <p>
               Phone videos can be hundreds of MB. Uploads go in 4 MB chunks, with offset-based
               resume:
@@ -300,7 +300,7 @@ export default function SongSaver({ project: p }: { project: Project }) {
         <Section
           id="stack"
           eyebrow="under the hood"
-          title="The stack."
+          title="The stack"
           intro="One Python server, one HTML file, and a handful of tools that each do one job."
         >
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -341,7 +341,7 @@ export default function SongSaver({ project: p }: { project: Project }) {
         </Section>
 
         {/* WHAT'S NEXT */}
-        <Section id="next" eyebrow="what's next" title="Handing it over.">
+        <Section id="next" eyebrow="what's next" title="Handing it over">
           {/* TODO(Sandra): replace with how my aunt reacted and how she uses it, once she's tried it. */}
           {process.env.NODE_ENV === "development" && (
             <Reveal>

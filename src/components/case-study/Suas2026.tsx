@@ -112,7 +112,7 @@ export default function Suas2026() {
                   <span>Cornell Unmanned Air Systems (CUAir)</span>
                 </div>
                 <h1 className="display mt-3 text-[48px] sm:text-[80px] lg:text-[96px] leading-[0.9]">
-                  SUAS 2026<span className="text-pink">.</span>
+                  SUAS 2026
                 </h1>
                 <p className="mt-3 font-display text-xl sm:text-3xl">Intelligence operator on the flightline</p>
               </div>
@@ -145,7 +145,7 @@ export default function Suas2026() {
         <Section
           id="mission"
           eyebrow="the mission"
-          title="Storm response, in 45 minutes."
+          title="Storm response, in 45 minutes"
           intro="The 2026 scenario is a storm response. A team gets 45 minutes, starting from nothing powered on, to set up, fly, find what matters on the ground, deliver supplies, and hand in a map."
         >
           <Reveal>
@@ -177,7 +177,7 @@ export default function Suas2026() {
         </Section>
 
         {/* ROLE */}
-        <Section id="role" eyebrow="my role" title="Intelligence operator.">
+        <Section id="role" eyebrow="my role" title="Intelligence operator">
           <div className="grid lg:grid-cols-[1.25fr_1fr] gap-8 items-start [&>*]:min-w-0">
             <Reveal>
               <Figure photo={photos.nanostation} />
@@ -236,7 +236,7 @@ export default function Suas2026() {
         <Section
           id="flightline"
           eyebrow="a mission, start to finish"
-          title="On the clock."
+          title="On the clock"
           intro="Nothing can be powered on before the judges start the clock, and setup counts against the same 45 minutes as the flight. So the whole sequence follows a written runbook and one launch script instead of steps from memory."
         >
           <Diagram
@@ -269,7 +269,7 @@ export default function Suas2026() {
         </Section>
 
         {/* WEEK */}
-        <Section id="week" eyebrow="the week" title="Five days in Tulsa.">
+        <Section id="week" eyebrow="the week" title="Five days in Tulsa">
           <div className="relative pl-6 border-l-2 border-line space-y-2">
             {week.map((d) => (
               <Reveal key={d.day}>
@@ -299,7 +299,7 @@ export default function Suas2026() {
         </Section>
 
         {/* RESULTS */}
-        <Section id="results" eyebrow="results" title="How it went.">
+        <Section id="results" eyebrow="results" title="How it went">
           <Reveal>
             <div className="grid grid-cols-3 gap-4">
               <Stat value="4th" label="best website" />
@@ -346,7 +346,7 @@ export default function Suas2026() {
         </Section>
 
         {/* NEXT */}
-        <Section id="next" eyebrow="what's next" title="On to SUAS 2027.">
+        <Section id="next" eyebrow="what's next" title="On to SUAS 2027">
           <Steps
             items={[
               <>
@@ -373,7 +373,7 @@ export default function Suas2026() {
         </Section>
 
         {/* PHOTOS */}
-        <Section id="photos" eyebrow="photos" title="More from the field.">
+        <Section id="photos" eyebrow="photos" title="More from the field">
           <div className="columns-1 sm:columns-2 gap-5 [&>*]:mb-5 [&>*]:break-inside-avoid">
             {gallery.map((ph) => (
               <Figure key={ph.src} photo={ph} />

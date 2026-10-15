@@ -43,7 +43,7 @@ export default function AboutPage() {
   return (
     <div className="mx-auto max-w-5xl px-5 pt-14 pb-24">
       <h1 className="display text-5xl sm:text-7xl">
-        Hi, I&apos;m <span className="text-accent">Sandra</span>.
+        Hi, I&apos;m <span className="text-accent">Sandra</span>
       </h1>
 
       <div className="mt-10 grid md:grid-cols-5 gap-12">
@@ -132,7 +132,7 @@ export default function AboutPage() {
       {/* Timeline */}
       <section className="mt-20">
         <Reveal>
-          <h2 className="display text-3xl sm:text-4xl">How I got here.</h2>
+          <h2 className="display text-3xl sm:text-4xl">How I got here</h2>
         </Reveal>
 
         <div className="mt-8 relative pl-6 border-l-2 border-line">
@@ -328,7 +328,7 @@ export default function AboutPage() {
 
       {/* Skills, from the resume */}
       <section className="mt-20">
-        <h2 className="display text-3xl sm:text-4xl">Stuff I work with.</h2>
+        <h2 className="display text-3xl sm:text-4xl">Stuff I work with</h2>
         <div className="mt-8 grid sm:grid-cols-3 gap-x-10 gap-y-8">
           {skills.map((g) => (
             <div key={g.title} className="border-t-[1.5px] border-line pt-3">

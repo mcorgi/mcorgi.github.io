@@ -196,7 +196,7 @@ export default function CamelBenchmark({ project: p }: { project: Project }) {
       <SectionNav items={camelSections} />
 
       {/* OVERVIEW */}
-      <Section id="overview" eyebrow="the project" title="Five games, one camel.">
+      <Section id="overview" eyebrow="the project" title="Five games, one camel">
         <Prose>
           <p>
             Camel Benchmark is the final project for Cornell&apos;s CS 3110 (Functional
@@ -235,7 +235,7 @@ export default function CamelBenchmark({ project: p }: { project: Project }) {
       <Section
         id="role"
         eyebrow="my contributions"
-        title="What I owned."
+        title="What I owned"
         intro="I built Verbal Memory from scratch, rebuilt it so its logic is fully separate from I/O, and did much of the terminal UI and bug fixing across the app."
       >
         <Steps
@@ -269,7 +269,7 @@ export default function CamelBenchmark({ project: p }: { project: Project }) {
       <Section
         id="architecture"
         eyebrow="how it works"
-        title="Pure logic inside, I/O outside."
+        title="Pure logic inside, I/O outside"
         intro="The game modules decide what happens. The I/O layer reads keys, runs timers and prints. Tests talk to the game modules directly, without a terminal."
       >
         <Diagram
@@ -320,7 +320,7 @@ export default function CamelBenchmark({ project: p }: { project: Project }) {
       <Section
         id="verbal"
         eyebrow="inside my module"
-        title="Verbal memory as a state machine."
+        title="Verbal memory as a state machine"
         intro="The game has two states and four kinds of input. Every rule lives in one place, and the compiler checks that each case is handled."
       >
         <Diagram
@@ -348,7 +348,7 @@ export default function CamelBenchmark({ project: p }: { project: Project }) {
       <Section
         id="play"
         eyebrow="try it"
-        title="Play verbal memory here."
+        title="Play verbal memory here"
         intro="A JavaScript version written for this site, with the same rules and word list. Repeats come up a bit more often than in the original, so it gets harder sooner. Any other key counts as invalid input: the word and your lives stay the same, just like in the terminal version."
       >
         <div className="max-w-2xl">
@@ -360,7 +360,7 @@ export default function CamelBenchmark({ project: p }: { project: Project }) {
       <Section
         id="challenges"
         eyebrow="hard parts"
-        title="Challenges, and how I solved them."
+        title="Challenges, and how I solved them"
         intro="An interactive program that reads raw keystrokes, runs timers and redraws the screen is hard to write in a functional language. These were the hardest problems I worked on."
       >
         <div className="border-t border-line/30">
@@ -389,7 +389,7 @@ export default function CamelBenchmark({ project: p }: { project: Project }) {
       </Section>
 
       {/* TIMELINE */}
-      <Section id="timeline" eyebrow="from my commit history" title="How my work progressed.">
+      <Section id="timeline" eyebrow="from my commit history" title="How my work progressed">
         <Reveal>
           <div className="max-w-3xl relative pl-6 border-l-2 border-line">
             {timeline.map((t) => (
@@ -407,7 +407,7 @@ export default function CamelBenchmark({ project: p }: { project: Project }) {
       </Section>
 
       {/* TEAM + STACK */}
-      <Section id="team" eyebrow="team · group 16" title="Who built what.">
+      <Section id="team" eyebrow="team · group 16" title="Who built what">
         <div className="grid lg:grid-cols-[1.3fr_1fr] gap-10 [&>*]:min-w-0">
           <Reveal>
             <div className="border-t border-line/30">

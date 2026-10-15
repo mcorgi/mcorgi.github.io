@@ -43,7 +43,7 @@ export default function MusicPage() {
 
       <div className="relative mx-auto max-w-4xl px-5 pt-14 pb-40">
         <h1 className="display text-5xl sm:text-7xl">
-          Duets <span className="text-accent">&amp;</span> solos.
+          Duets <span className="text-accent">&amp;</span> solos
         </h1>
         <p className="mt-5 max-w-2xl font-sans text-[17px] leading-relaxed text-ink-soft">
           Piano and violin, and every duet here is me playing both parts. I take a piece that
