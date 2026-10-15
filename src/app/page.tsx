@@ -199,8 +199,9 @@ export default function Home() {
               </p>
               <p className="mt-4 max-w-xl font-mono text-[13.5px] leading-relaxed text-ink-soft">
                 BBQ Land is a modern Asian yakiniku restaurant in Shrewsbury, MA. I designed and
-                built the site, took the photos, turned the printed menu into a searchable one,
-                and launched it on its own domain during soft opening.
+                built the site, launched it during soft opening, and redesigned it the next day
+                from the owner&apos;s feedback. Now almost every dish on the menu links straight
+                to Toast for ordering.
               </p>
               <div className="mt-7 flex flex-wrap items-center gap-3">
                 <a
@@ -223,8 +224,9 @@ export default function Home() {
               <GrillScene className="border-[1.5px] border-line" />
               <dl className="mt-5 font-mono text-[13px] leading-relaxed">
                 {[
-                  ["OCT 2026", "Soft opening. The site goes live on bbqlandma.com."],
-                  ["OCT 21", "Grand opening."],
+                  ["OCT 11", "The first version goes live on bbqlandma.com."],
+                  ["OCT 12", "Redesigned the same day, from the owner's feedback."],
+                  ["NOV 16", "Grand opening."],
                 ].map(([when, what]) => (
                   <div key={when} className="grid grid-cols-[84px_1fr] gap-3 py-2.5 border-t border-line/15">
                     <dt className="text-pink-ink tracking-widest text-[11.5px] pt-0.5">{when}</dt>
@@ -409,14 +411,14 @@ export default function Home() {
   );
 }
 
-// Same rule as the banner on bbqlandma.com: whole days to the grand opening,
-// counted in Eastern time. Worked out after mount so the static HTML doesn't
+// Whole days to the grand opening, counted in Eastern time like bbqlandma.com
+// does. Worked out after mount so the static HTML doesn't
 // freeze the build day's count.
 function OpeningCountdown() {
   const [text, setText] = useState<string | null>(null);
   useEffect(() => {
     const today = new Intl.DateTimeFormat("en-CA", { timeZone: "America/New_York" }).format(new Date());
-    const days = Math.round((Date.parse("2026-10-21") - Date.parse(today)) / 86400000);
+    const days = Math.round((Date.parse("2026-11-16") - Date.parse(today)) / 86400000);
     setText(
       days > 1 ? `${days} days to grand opening`
       : days === 1 ? "grand opening tomorrow"

@@ -258,11 +258,11 @@ export const projects: Project[] = [
     subtitle: "The first website for a new Asian grill & barbecue restaurant in Shrewsbury, MA",
     org: "BBQ Land, Asian Grill & Barbecue · Shrewsbury, MA",
     role:
-      "Sole designer and developer. Planned, built, photographed, and launched the site, working directly with the restaurant's management on content and review.",
+      "Sole designer and developer. Planned, built, redesigned, and launched the site, working directly with the restaurant's owner on content and review.",
     blurb:
-      "A brand-new yakiniku restaurant had no website, so I built one from scratch: six pages in plain HTML, CSS, and JavaScript, with a searchable menu, a live \"Open now\" badge, and a grand-opening countdown that updates itself. I took the photos too. It went live on bbqlandma.com during soft opening, before the October 21 grand opening.",
+      "A brand-new yakiniku restaurant had no website, so I built one from scratch in plain HTML, CSS, and JavaScript and launched it during soft opening. The next day the owner sent feedback, and I redesigned it the same day: a grilling-video hero, the printed menus, and a dish list where 75 of 76 dishes link straight to Toast for ordering. The grand opening is November 16.",
     description:
-      "A six-page marketing site (Home, Menu, Drinks, About, Savenor's, Visit) for BBQ Land, a modern Asian yakiniku restaurant at 31 Boston Turnpike in Shrewsbury, MA. Plain HTML/CSS/JavaScript with no framework and no build step, deployed on Vercel from GitHub on a custom domain.",
+      "A four-page site (Home, Menu, Reservations, About) for BBQ Land, a modern Asian yakiniku restaurant at 31 Boston Turnpike in Shrewsbury, MA. Plain HTML/CSS/JavaScript with no framework and no build step, deployed on Vercel from GitHub on a custom domain.",
     stack: [
       "HTML",
       "CSS",
@@ -271,8 +271,10 @@ export const projects: Project[] = [
       "GitHub",
       "Google Search Console",
       "schema.org",
+      "Toast",
+      "ImageMagick",
     ],
-    tags: ["Web", "Client Work", "Restaurant", "Freelance", "Photography", "SEO"],
+    tags: ["Web", "Client Work", "Restaurant", "Freelance", "Redesign", "SEO"],
     year: "Oct 2026",
     readTime: "3 min",
     status: "shipped",

@@ -53,8 +53,9 @@ export const bbqSections: SectionLink[] = [
   { id: "overview", label: "overview" },
   { id: "menu", label: "the menu" },
   { id: "self-updating", label: "self-updating" },
-  { id: "photos", label: "photos" },
-  { id: "details", label: "details" },
+  { id: "photos", label: "photos & video" },
+  { id: "design", label: "design direction" },
+  { id: "feedback", label: "round two" },
   { id: "launch", label: "launch" },
 ];
 

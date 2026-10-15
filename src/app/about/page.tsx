@@ -181,7 +181,7 @@ export default function AboutPage() {
               role: "Sole Designer & Developer",
               where: "BBQ Land, Asian Grill & Barbecue · Shrewsbury, MA",
               kind: "work",
-              what: "Built the first website for a new restaurant from scratch and launched it during soft opening, before the grand opening: six pages in plain HTML, CSS, and JavaScript on Vercel, a searchable menu transcribed from the printed one, an Open now badge computed in Eastern time, a self-updating grand-opening countdown, and schema.org structured data. Took and optimized the photos too.",
+              what: "Built the first website for a new restaurant from scratch, launched it during soft opening, and redesigned it the next day from the owner's written feedback and mockup: a grilling-video hero, the printed menus, a dish list where 75 of 76 dishes link to Toast for ordering, an Open now line computed in Eastern time, and schema.org structured data. Plain HTML, CSS, and JavaScript on Vercel.",
               link: { href: "/projects/bbq-land", label: "case study" },
             },
             {
