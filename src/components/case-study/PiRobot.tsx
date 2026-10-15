@@ -60,12 +60,14 @@ export default function PiRobot({ project: p }: { project: Project }) {
 
         <Reveal delay={0.08}>
           <figure>
-            <div className="rounded-xl border-[1.5px] border-line bg-navy p-3 shadow-[6px_6px_0_0_var(--accent-3)]">
-              <PiTftSnapshot />
-            </div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/pi-robot/robot.jpg"
+              alt="The robot from above: a Raspberry Pi with a piTFT touchscreen showing the control panel, two yellow gearmotors with black wheels, and a breadboard with the red TB6612 motor driver, resistors and a lit blue LED, on a clear acrylic base."
+              className="block w-full aspect-[4/5] object-cover object-[50%_35%] rounded-lg border-[1.5px] border-line shadow-[6px_6px_0_0_var(--accent-3)]"
+            />
             <figcaption className="mt-3 font-sans text-[15px] text-muted">
-              The control panel 9 seconds into a test run, redrawn from run_test.py&apos;s own screen
-              coordinates.
+              On the bench, 115 seconds after run_test.py started: it has just finished backing up.
             </figcaption>
           </figure>
         </Reveal>
@@ -151,7 +153,7 @@ export default function PiRobot({ project: p }: { project: Project }) {
         id="hardware"
         eyebrow="hardware"
         title="What's on the chassis."
-        intro="Everything rides on one acrylic base: two motors and a caster underneath, a breadboard with the motor driver on top, and the Pi stacked on its own battery over the caster."
+        intro="Everything rides on one acrylic base: the Pi and piTFT over the two motors, a breadboard with the motor driver in the middle, and a caster at the far end. A ribbon cable carries the Pi's GPIO pins down to the breadboard."
       >
         <div className="grid sm:grid-cols-2 gap-4">
           <Card title="Raspberry Pi + piTFT" tag="brain">
@@ -303,6 +305,17 @@ export default function PiRobot({ project: p }: { project: Project }) {
         title="A control panel on a 320×240 screen."
         intro="rolling_control.py puts the motors on the piTFT. Each motor's state is across the top, and under it the three most recent changes, with the second each one happened, counted from when the program started."
       >
+        <Reveal>
+          <figure className="max-w-md">
+            <div className="rounded-xl border-[1.5px] border-line bg-navy p-3 shadow-[6px_6px_0_0_var(--accent-3)]">
+              <PiTftSnapshot />
+            </div>
+            <figcaption className="mt-3 font-sans text-[15px] text-muted">
+              The screen 9 seconds into a test run, redrawn from run_test.py&apos;s own 320×240
+              coordinates.
+            </figcaption>
+          </figure>
+        </Reveal>
         <div className="grid sm:grid-cols-2 gap-4">
           <Card title="Panic stop" tag="red → green">
             <p>
