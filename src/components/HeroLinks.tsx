@@ -61,7 +61,7 @@ export function BirdIcon({ className = "" }: { className?: string }) {
 // Small label that appears under a bubble on hover / keyboard focus.
 function HoverLabel({ children }: { children: ReactNode }) {
   return (
-    <span className="pointer-events-none absolute left-1/2 top-full mt-3 -translate-x-1/2 whitespace-nowrap rounded-md border border-line bg-ink px-2 py-0.5 font-mono text-[11px] text-cream opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">
+    <span className="pointer-events-none absolute left-1/2 top-full mt-3 -translate-x-1/2 whitespace-nowrap rounded-md border border-line bg-navy px-2 py-0.5 font-mono text-[14px] text-cream opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">
       {children}
     </span>
   );

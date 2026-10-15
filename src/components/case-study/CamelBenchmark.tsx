@@ -105,7 +105,7 @@ export default function CamelBenchmark({ project: p }: { project: Project }) {
   return (
     <div className="mx-auto max-w-5xl px-5 pt-10 pb-24">
       <Reveal>
-        <div className="flex items-center gap-2 font-mono text-xs opacity-70">
+        <div className="flex items-center gap-2 font-mono text-[14px] text-muted">
           <Link href="/projects" className="hover:text-accent">
             ← projects
           </Link>
@@ -117,8 +117,8 @@ export default function CamelBenchmark({ project: p }: { project: Project }) {
       {/* HERO */}
       <div className="mt-6 grid lg:grid-cols-[1.05fr_1fr] gap-10 items-center [&>*]:min-w-0">
         <Reveal>
-          <div className="font-mono text-[11px] uppercase tracking-widest opacity-70 mb-3 flex flex-wrap items-center gap-2">
-            <span className="tag !py-0.5 !px-2 text-[10px]">shipped</span>
+          <div className="font-mono text-[14px] text-muted mb-3 flex flex-wrap items-center gap-2">
+            <span className="tag !py-0.5 !px-2 text-[14px]">shipped</span>
             <span>· {p.org}</span>
             <span>· {p.year}</span>
             <span>· {p.readTime}</span>
@@ -126,12 +126,12 @@ export default function CamelBenchmark({ project: p }: { project: Project }) {
           <h1 className="display text-[44px] sm:text-[68px] leading-[0.95]">
             Camel <span className="text-accent">Benchmark</span>
           </h1>
-          <p className="mt-4 max-w-xl font-mono text-[15px] leading-relaxed text-ink-soft">
+          <p className="mt-4 max-w-xl font-sans text-[17px] leading-relaxed text-ink-soft">
             Five cognitive games that run in the terminal, inspired by Human Benchmark: a typing
             test, number and verbal memory, reaction time and a Stroop test, plus logins and a
             leaderboard that keeps scores between sessions.
           </p>
-          <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-1 font-mono text-[13px]">
+          <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-1 font-mono text-[14px]">
             <li><span className="text-accent">▸</span> software engineer, team of 4</li>
             <li><span className="text-accent">▸</span> owner of Verbal Memory</li>
             <li><span className="text-accent">▸</span> terminal UI + bug fixing</li>
@@ -141,7 +141,7 @@ export default function CamelBenchmark({ project: p }: { project: Project }) {
               href="https://www.youtube.com/watch?v=VpvceHyf-n0"
               target="_blank"
               rel="noreferrer noopener"
-              className="arrow-link text-sm font-mono !bg-ink !text-cream"
+              className="arrow-link text-sm font-mono !bg-navy !text-cream"
             >
               ▶ watch the demo
             </a>
@@ -154,8 +154,7 @@ export default function CamelBenchmark({ project: p }: { project: Project }) {
         <Reveal delay={0.08}>
           <div>
             <pre
-              style={{ background: "var(--ink)" }}
-              className="rounded-lg text-cream p-5 font-mono text-[12px] leading-[1.6] overflow-x-auto"
+              className="surface-dark rounded-lg text-cream p-5 font-mono text-[13px] leading-[1.6] overflow-x-auto"
             >
               <span className="text-[#5FD4E6] font-bold">{`╔══════════════════════════════════╗
 ║   WELCOME TO CAMEL BENCHMARK     ║
@@ -180,7 +179,7 @@ export default function CamelBenchmark({ project: p }: { project: Project }) {
               <span className="text-[#5FD4E6] font-bold">====================</span>
               {"\n"}Choose an option: 3<span className="cursor-blink" aria-hidden />
             </pre>
-            <div className="mt-2 font-mono text-[12px] text-ink-soft">The main menu, in a terminal.</div>
+            <div className="mt-2 font-mono text-[14px] text-ink-soft">The main menu, in a terminal.</div>
           </div>
         </Reveal>
       </div>
@@ -220,9 +219,9 @@ export default function CamelBenchmark({ project: p }: { project: Project }) {
                 className="grid sm:grid-cols-[190px_1fr_auto] gap-x-6 gap-y-1 py-4 border-b border-line/30 items-baseline"
               >
                 <h3 className="font-display text-lg">{g.name}</h3>
-                <p className="font-mono text-[13.5px] leading-relaxed text-ink-soft">{g.what}</p>
+                <p className="font-sans text-[16px] leading-relaxed text-ink-soft">{g.what}</p>
                 <span
-                  className={`tag font-mono !text-[10px] justify-self-start ${g.mine ? "!bg-accent !text-cream" : ""}`}
+                  className={`tag font-mono !text-[14px] justify-self-start ${g.mine ? "!bg-accent !text-cream" : ""}`}
                 >
                   {g.who}
                 </span>
@@ -279,7 +278,7 @@ export default function CamelBenchmark({ project: p }: { project: Project }) {
         />
         <Reveal>
           <div className="border-t-[1.5px] border-line pt-4">
-            <div className="flex flex-wrap gap-4 font-mono text-[12px] text-ink-soft mb-4">
+            <div className="flex flex-wrap gap-4 font-mono text-[14px] text-ink-soft mb-4">
               <span className="inline-flex items-center gap-2">
                 <i className="inline-block h-3.5 w-3.5 rounded-sm border-[1.5px] border-[#0a7c92] bg-[#ddf1f5]" />
                 I/O layer (side effects)
@@ -289,7 +288,7 @@ export default function CamelBenchmark({ project: p }: { project: Project }) {
                 Verbal Memory logic (pure)
               </span>
             </div>
-            <div className="flex flex-wrap items-center gap-2.5 font-mono text-[12.5px]">
+            <div className="flex flex-wrap items-center gap-2.5 font-mono text-[14px]">
               {[
                 ["print", "clear screen, show word + lives", false],
                 ["read", "wait for the player", false],
@@ -302,13 +301,13 @@ export default function CamelBenchmark({ project: p }: { project: Project }) {
                     className={`rounded-md border-[1.5px] px-3 py-2 ${pure ? "border-[#b0226a] bg-[#f7e3ee]" : "border-[#0a7c92] bg-[#ddf1f5]"}`}
                   >
                     <span className="block">{t}</span>
-                    <span className="block text-[10.5px] opacity-75">{s}</span>
+                    <span className="block text-[14px] text-muted">{s}</span>
                   </span>
-                  <span className="opacity-60">{i === arr.length - 1 ? "↺" : "→"}</span>
+                  <span className="text-muted">{i === arr.length - 1 ? "↺" : "→"}</span>
                 </span>
               ))}
             </div>
-            <p className="mt-4 font-mono text-[12.5px] text-ink-soft">
+            <p className="mt-4 font-mono text-[14px] text-ink-soft">
               <strong className="text-ink">One turn of Verbal Memory.</strong>{" "}Only the two cyan
               steps touch the terminal. Everything in magenta is a plain function you can call in a
               test.
@@ -338,7 +337,7 @@ export default function CamelBenchmark({ project: p }: { project: Project }) {
             ].map(([t, b]) => (
               <div key={t} className="border-t-[1.5px] border-line pt-3">
                 <h3 className="font-display text-lg leading-tight">{t}</h3>
-                <p className="mt-1.5 font-mono text-[13px] leading-relaxed text-ink-soft">{b}</p>
+                <p className="mt-1.5 font-sans text-[16px] leading-relaxed text-ink-soft">{b}</p>
               </div>
             ))}
           </div>
@@ -369,10 +368,10 @@ export default function CamelBenchmark({ project: p }: { project: Project }) {
             <Reveal key={c.title}>
               <div className="grid md:grid-cols-[230px_1fr] gap-x-9 gap-y-3 py-7 border-b border-line/30">
                 <div>
-                  <div className="font-mono text-[11.5px] text-accent-3">{c.where}</div>
+                  <div className="font-mono text-[14px] text-accent-3">{c.where}</div>
                   <h3 className="font-display text-xl leading-tight mt-1">{c.title}</h3>
                 </div>
-                <div className="max-w-3xl space-y-3 font-mono text-[13.5px] leading-relaxed text-ink-soft">
+                <div className="max-w-3xl space-y-3 font-sans text-[16px] leading-relaxed text-ink-soft">
                   {c.body.map((b) => (
                     <p key={b}>{b}</p>
                   ))}
@@ -398,9 +397,9 @@ export default function CamelBenchmark({ project: p }: { project: Project }) {
                 <span
                   className={`absolute -left-[31px] top-4 inline-block h-3 w-3 rounded-full border-2 ${t.key ? "border-accent bg-accent" : "border-line bg-cream"}`}
                 />
-                <div className="font-mono text-[11px] uppercase tracking-widest opacity-60">{t.when}</div>
+                <div className="font-mono text-[14px] text-muted">{t.when}</div>
                 <div className="font-display text-lg leading-snug">{t.what}</div>
-                <div className="font-mono text-[13px] text-ink-soft">{t.note}</div>
+                <div className="font-mono text-[14px] text-ink-soft">{t.note}</div>
               </div>
             ))}
           </div>
@@ -420,10 +419,10 @@ export default function CamelBenchmark({ project: p }: { project: Project }) {
               ].map(([n, w], i) => (
                 <div key={n} className="py-3.5 border-b border-line/30">
                   <div className={`font-display text-lg ${i === 0 ? "text-accent" : ""}`}>{n}</div>
-                  <div className="font-mono text-[13px] text-ink-soft leading-relaxed">{w}</div>
+                  <div className="font-sans text-[16px] text-ink-soft leading-relaxed">{w}</div>
                 </div>
               ))}
-              <p className="mt-3 font-mono text-[12px] opacity-60">
+              <p className="mt-3 font-mono text-[14px] text-muted">
                 Each of us logged about 15 hours between the last two milestones.
               </p>
             </div>

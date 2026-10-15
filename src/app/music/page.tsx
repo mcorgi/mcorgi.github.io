@@ -45,7 +45,7 @@ export default function MusicPage() {
         <h1 className="display text-5xl sm:text-7xl">
           Duets <span className="text-accent">&amp;</span> solos.
         </h1>
-        <p className="mt-5 max-w-2xl font-mono text-[14.5px] leading-relaxed text-ink-soft">
+        <p className="mt-5 max-w-2xl font-sans text-[17px] leading-relaxed text-ink-soft">
           Piano and violin, and every duet here is me playing both parts. I take a piece that
           usually only has one melody, write a second part that sounds the way I want it to, then
           record the two and put them together. That last step is the part that excites me most.
@@ -54,20 +54,20 @@ export default function MusicPage() {
 
         {/* now playing */}
         <div className="mt-10 flex items-center gap-5 border-y border-line/20 py-5">
-          <div className="spin-slow relative h-16 w-16 shrink-0 rounded-full bg-ink text-cream flex items-center justify-center">
+          <div className="spin-slow relative h-16 w-16 shrink-0 rounded-full bg-navy text-cream flex items-center justify-center">
             <span className="text-2xl" style={serif}>
               ♫
             </span>
             <span className="absolute inset-[6px] rounded-full border border-cream/15" />
           </div>
           <div className="min-w-0">
-            <div className="font-mono text-[11px] uppercase tracking-widest opacity-60">
+            <div className="font-mono text-[14px] text-muted">
               Currently working on
             </div>
             <div className="text-xl" style={serif}>
               A new violin + piano duet
             </div>
-            <div className="font-mono text-[12px] opacity-70 mt-0.5">Recording coming soon.</div>
+            <div className="font-mono text-[14px] text-muted mt-0.5">Recording coming soon.</div>
           </div>
           <div aria-hidden className="ml-auto hidden sm:flex items-end gap-1 h-10">
             {Array.from({ length: 14 }).map((_, i) => (
@@ -89,9 +89,9 @@ export default function MusicPage() {
           style={serif}
         >
           <div className="text-center">
-            <div className="text-[12px] uppercase tracking-[0.35em] opacity-70">Program</div>
+            <div className="text-[14px] text-muted">Program</div>
             <div className="mt-2 text-[22px] italic">Sandra Tang, violin &amp; piano</div>
-            <div className="mt-1 text-[13px] italic text-ink-soft">(both parts)</div>
+            <div className="mt-1 text-[14px] italic text-ink-soft">(both parts)</div>
             <div className="mx-auto mt-4 h-px w-16 bg-line/40" />
           </div>
           <ol className="mt-8 space-y-5">
@@ -105,7 +105,7 @@ export default function MusicPage() {
               </li>
             ))}
           </ol>
-          <p className="mt-10 text-center text-[13px] italic text-ink-soft">
+          <p className="mt-10 text-center text-[14px] italic text-ink-soft">
             Please silence your phones.
           </p>
         </div>
@@ -114,7 +114,7 @@ export default function MusicPage() {
         <section className="mt-20 grid sm:grid-cols-2 gap-x-8 gap-y-12">
           {videos.map((v) => (
             <figure key={v.youtubeId} id={anchor(v.title)} className="scroll-mt-24 min-w-0">
-              <div className="relative aspect-video w-full bg-ink border border-line rounded-sm overflow-hidden">
+              <div className="relative aspect-video w-full bg-navy border border-line rounded-sm overflow-hidden">
                 <iframe
                   src={`https://www.youtube.com/embed/${v.youtubeId}`}
                   title={v.title}
@@ -134,7 +134,7 @@ export default function MusicPage() {
                   href={`https://youtu.be/${v.youtubeId}`}
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="shrink-0 font-mono text-[11.5px] opacity-60 hover:opacity-100 hover:text-accent"
+                  className="shrink-0 font-mono text-[14px] text-muted hover:opacity-100 hover:text-accent"
                   aria-label={`Watch ${v.title} on YouTube`}
                 >
                   youtube ↗

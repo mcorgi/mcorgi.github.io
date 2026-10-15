@@ -15,7 +15,7 @@ function Figure({ photo, className = "" }: { photo: Photo; className?: string })
         className="block w-full aspect-[3/2] object-cover rounded-lg border-[1.5px] border-line"
       />
       {photo.caption && (
-        <figcaption className="mt-2 font-mono text-[12px] leading-snug text-ink-soft">
+        <figcaption className="mt-2 font-sans text-[15px] leading-snug text-muted">
           {photo.caption}
         </figcaption>
       )}
@@ -81,7 +81,7 @@ export default function Suas2026() {
       {/* HERO: the photo is the title card */}
       <div className="mx-auto max-w-6xl px-5 pt-8">
         <Reveal>
-          <div className="flex items-center gap-2 font-mono text-xs opacity-70 mb-4">
+          <div className="flex items-center gap-2 font-mono text-[14px] text-muted mb-4">
             <Link href="/" className="hover:text-accent">
               ← home
             </Link>
@@ -107,7 +107,7 @@ export default function Suas2026() {
                 style={{ background: "linear-gradient(180deg, rgba(18,33,66,0) 30%, rgba(18,33,66,0.85) 100%)" }}
               />
               <div className="absolute inset-x-0 bottom-0 p-6 sm:p-10 text-cream">
-                <div className="font-mono text-[11px] uppercase tracking-widest opacity-90 flex flex-wrap items-center gap-2">
+                <div className="font-mono text-[14px] opacity-90 flex flex-wrap items-center gap-2">
                   <span className="rounded-full border border-cream/70 px-2 py-0.5">highlight</span>
                   <span>Cornell Unmanned Air Systems (CUAir)</span>
                 </div>
@@ -131,7 +131,7 @@ export default function Suas2026() {
           </div>
         </Reveal>
         <Reveal>
-          <p className="mt-8 max-w-3xl font-mono text-[15px] leading-relaxed text-ink-soft">
+          <p className="mt-8 max-w-3xl font-sans text-[17px] leading-relaxed text-ink-soft">
             SUAS is RoboNation&apos;s international Student Unmanned Aerial Systems competition.
             University teams fly autonomous aircraft through a search-and-rescue mission. In 2026 I
             went as CUAir&apos;s Intelligence operator: on the flightline during each mission, I was
@@ -157,11 +157,11 @@ export default function Suas2026() {
                 >
                   <div>
                     <h3 className="font-display text-lg leading-tight">{t.name}</h3>
-                    {t.pts && <div className="font-mono text-[11px] opacity-60">{t.pts}</div>}
+                    {t.pts && <div className="font-mono text-[14px] text-muted">{t.pts}</div>}
                   </div>
-                  <p className="font-mono text-[13.5px] leading-relaxed text-ink-soft">{t.what}</p>
+                  <p className="font-sans text-[16px] leading-relaxed text-ink-soft">{t.what}</p>
                   {t.intel ? (
-                    <span className="tag font-mono !text-[10px] !bg-pink-soft justify-self-start">runs on my pipeline</span>
+                    <span className="tag font-mono !text-[14px] !bg-pink-soft justify-self-start">runs on my pipeline</span>
                   ) : (
                     <span />
                   )}
@@ -215,11 +215,11 @@ export default function Suas2026() {
                 ["after landing", "Nothing gets lost", "Anything that didn't make it down over the link is still saved on the Pi and the GoPro's card, ready to recover and hand in before mission time ends."],
               ].map(([when, title, body], i) => (
                 <div key={when} className="border-t-[1.5px] border-line pt-4 h-full">
-                  <div className="font-mono text-[11px] uppercase tracking-widest text-pink-ink">
+                  <div className="font-mono text-[14px] text-pink-ink">
                     {String(i + 1).padStart(2, "0")} · {when}
                   </div>
                   <h3 className="font-display text-xl mt-1">{title}</h3>
-                  <p className="mt-2 font-mono text-[13px] leading-relaxed text-ink-soft">{body}</p>
+                  <p className="mt-2 font-sans text-[16px] leading-relaxed text-ink-soft">{body}</p>
                 </div>
               ))}
             </div>
@@ -275,9 +275,9 @@ export default function Suas2026() {
               <Reveal key={d.day}>
                 <div className="relative pl-4 py-4">
                   <span className="absolute -left-[31px] top-6 inline-block h-3 w-3 rounded-full border-2 border-line bg-pink" />
-                  <div className="font-mono text-[11px] uppercase tracking-widest text-pink-ink">{d.day}</div>
+                  <div className="font-mono text-[14px] text-pink-ink">{d.day}</div>
                   <h3 className="font-display text-2xl leading-tight mt-0.5">{d.title}</h3>
-                  <ul className="mt-3 max-w-3xl space-y-2 font-mono text-[13.5px] leading-relaxed text-ink-soft">
+                  <ul className="mt-3 max-w-3xl space-y-2 font-sans text-[16px] leading-relaxed text-ink-soft">
                     {d.points.map((pt) => (
                       <li key={pt} className="flex gap-2">
                         <span className="text-accent shrink-0">›</span>
@@ -326,8 +326,8 @@ export default function Suas2026() {
             </Prose>
             <Reveal>
               <div className="border-t-[1.5px] border-line pt-4 h-full">
-                <div className="font-mono text-[11px] uppercase tracking-widest text-pink-ink mb-3">firsts for CUAir</div>
-                <ul className="space-y-2 font-mono text-[13.5px] leading-relaxed">
+                <div className="font-mono text-[14px] text-pink-ink mb-3">firsts for CUAir</div>
+                <ul className="space-y-2 font-sans text-[16px] leading-relaxed">
                   {[
                     "First autonomous takeoff sequence at a competition",
                     "First successful autonomous horizontal flight since SUAS 2024",

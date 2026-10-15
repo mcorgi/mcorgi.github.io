@@ -23,7 +23,7 @@ export default function MiniPlaneSystem({ project: p }: { project: Project }) {
   return (
     <div className="mx-auto max-w-5xl px-5 pt-10 pb-24">
       <Reveal>
-        <div className="flex items-center gap-2 font-mono text-xs opacity-70">
+        <div className="flex items-center gap-2 font-mono text-[14px] text-muted">
           <Link href="/projects" className="hover:text-accent">
             ← projects
           </Link>
@@ -35,8 +35,8 @@ export default function MiniPlaneSystem({ project: p }: { project: Project }) {
       {/* HERO */}
       <Reveal>
         <div className="mt-6">
-          <div className="font-mono text-[11px] uppercase tracking-widest opacity-70 mb-3 flex flex-wrap items-center gap-2">
-            <span className="tag !py-0.5 !px-2 text-[10px]">flight-tested</span>
+          <div className="font-mono text-[14px] text-muted mb-3 flex flex-wrap items-center gap-2">
+            <span className="tag !py-0.5 !px-2 text-[14px]">flight-tested</span>
             {p.org && <span>· {p.org}</span>}
             <span>· {p.year}</span>
             <span>· {p.readTime}</span>
@@ -52,7 +52,7 @@ export default function MiniPlaneSystem({ project: p }: { project: Project }) {
 
       <figure className="mt-8">
         <MpsScene className="border-[1.5px] border-line" />
-        <figcaption className="mt-2 font-mono text-[11.5px] opacity-60">
+        <figcaption className="mt-2 font-sans text-[15px] text-muted">
           Roughly how it works: the GoPro shoots, the Pi pairs each photo with the Pixhawk&apos;s
           position, and the pair goes down to the ground over the radio. The rest of this page is
           the long version.
@@ -174,7 +174,7 @@ export default function MiniPlaneSystem({ project: p }: { project: Project }) {
         />
         <Reveal>
           <details className="max-w-3xl border-y-[1.5px] border-line">
-            <summary className="cursor-pointer px-5 py-3 font-mono text-[13px] hover:bg-cream-2/60">
+            <summary className="cursor-pointer px-5 py-3 font-mono text-[14px] hover:bg-cream-2/60">
               see the original sketch from my notebook
             </summary>
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -455,7 +455,7 @@ ok = await asyncio.to_thread(self.capture)`}</Pre>
             {milestones.map((m) => (
               <div key={m.title} className="relative pl-4 py-2.5">
                 <span className="absolute -left-[31px] top-4 inline-block h-3 w-3 rounded-full border-2 border-line bg-accent" />
-                <div className="font-mono text-[11px] uppercase tracking-widest opacity-60">
+                <div className="font-mono text-[14px] text-muted">
                   {m.when}
                 </div>
                 <div className="font-mono text-[14px] leading-snug mt-0.5">

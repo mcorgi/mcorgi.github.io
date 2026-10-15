@@ -3,7 +3,7 @@ const RESUME_PATH = "/resume.pdf";
 export default function ResumePage() {
   return (
     <div className="mx-auto max-w-5xl px-5 pt-10 pb-16">
-      <div className="flex items-baseline justify-between gap-4 mb-4 font-mono text-[13px]">
+      <div className="flex items-baseline justify-between gap-4 mb-4 font-mono text-[14px]">
         <h1 className="display text-3xl sm:text-4xl">Resume</h1>
         <a
           href={RESUME_PATH}

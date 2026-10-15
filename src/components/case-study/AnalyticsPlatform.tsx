@@ -13,7 +13,7 @@ export default function AnalyticsPlatform({ project: p }: { project: Project }) 
     <div className="theme-violet">
       <div className="mx-auto max-w-5xl px-5 pt-10 pb-24">
         <Reveal>
-          <div className="flex items-center gap-2 font-mono text-xs opacity-70">
+          <div className="flex items-center gap-2 font-mono text-[14px] text-muted">
             <Link href="/projects" className="hover:text-accent">
               ← projects
             </Link>
@@ -25,8 +25,8 @@ export default function AnalyticsPlatform({ project: p }: { project: Project }) 
         {/* HERO */}
         <Reveal>
           <div className="mt-6">
-            <div className="font-mono text-[11px] uppercase tracking-widest opacity-70 mb-3 flex flex-wrap items-center gap-2">
-              <span className="tag !py-0.5 !px-2 text-[10px]">in production</span>
+            <div className="font-mono text-[14px] text-muted mb-3 flex flex-wrap items-center gap-2">
+              <span className="tag !py-0.5 !px-2 text-[14px]">in production</span>
               <span>· {p.org}</span>
               <span>· {p.readTime}</span>
             </div>
@@ -36,7 +36,7 @@ export default function AnalyticsPlatform({ project: p }: { project: Project }) 
             <p className="mt-3 font-display text-xl sm:text-2xl text-ink-soft max-w-3xl">
               You write the analysis. The platform runs it.
             </p>
-            <p className="mt-5 max-w-3xl font-mono text-[15px] leading-relaxed text-ink-soft">
+            <p className="mt-5 max-w-3xl font-sans text-[17px] leading-relaxed text-ink-soft">
               A serverless service I designed and built during my internship on Amazon Leo&apos;s
               flight dynamics software team. It runs engineers&apos; analysis scripts on its own, on
               a schedule or the moment an upstream event lands, so they get results delivered
@@ -123,19 +123,19 @@ export default function AnalyticsPlatform({ project: p }: { project: Project }) 
                 <div className="border-t-[1.5px] border-line pt-4 h-full">
                   <div className="flex items-start justify-between gap-3">
                     <h3 className="font-display text-xl leading-tight text-accent">{name}</h3>
-                    <span className="tag font-mono !text-[9.5px] shrink-0">{kind}</span>
+                    <span className="tag font-mono !text-[14px] shrink-0">{kind}</span>
                   </div>
-                  <p className="mt-2 font-mono text-[13px] leading-relaxed text-ink-soft">{what}</p>
+                  <p className="mt-2 font-sans text-[16px] leading-relaxed text-ink-soft">{what}</p>
                 </div>
               </Reveal>
             ))}
           </div>
           <Reveal>
             <div className="border-y-[1.5px] border-line py-6">
-              <div className="font-mono text-[11px] uppercase tracking-widest text-pink-ink mb-4">
+              <div className="font-mono text-[14px] text-pink-ink mb-4">
                 beyond the services
               </div>
-              <div className="grid sm:grid-cols-2 gap-x-10 gap-y-4 font-mono text-[13.5px] leading-relaxed">
+              <div className="grid sm:grid-cols-2 gap-x-10 gap-y-4 font-sans text-[16px] leading-relaxed">
                 {[
                   ["Designing for scale", "Making \"add a script\" a config change, not an infrastructure change, so the platform grows without new code."],
                   ["Event-driven architecture", "Decoupling producers from consumers with queues and event routing, so upstream teams don't need to change anything."],
@@ -191,9 +191,9 @@ export default function AnalyticsPlatform({ project: p }: { project: Project }) 
           <Reveal>
             <div className="grid md:grid-cols-2 gap-5">
               <div className="border-t-[1.5px] border-line pt-4 h-full">
-                <div className="font-mono text-[11px] uppercase tracking-widest text-accent-3">user error</div>
+                <div className="font-mono text-[14px] text-accent-3">user error</div>
                 <h3 className="font-display text-xl mt-1">Something in the script went wrong</h3>
-                <ul className="mt-3 space-y-1.5 font-mono text-[13px] leading-relaxed text-ink-soft">
+                <ul className="mt-3 space-y-1.5 font-sans text-[16px] leading-relaxed text-ink-soft">
                   <li>› the script&apos;s container reports that the script itself failed</li>
                   <li>› the job is recorded as failed, with the reason</li>
                   <li>› the <strong className="text-ink">script&apos;s owner</strong> is notified</li>
@@ -201,9 +201,9 @@ export default function AnalyticsPlatform({ project: p }: { project: Project }) 
                 </ul>
               </div>
               <div className="border-t-[1.5px] border-line pt-4 h-full">
-                <div className="font-mono text-[11px] uppercase tracking-widest text-accent">infrastructure failure</div>
+                <div className="font-mono text-[14px] text-accent">infrastructure failure</div>
                 <h3 className="font-display text-xl mt-1">The platform couldn&apos;t run it</h3>
-                <ul className="mt-3 space-y-1.5 font-mono text-[13px] leading-relaxed text-ink-soft">
+                <ul className="mt-3 space-y-1.5 font-sans text-[16px] leading-relaxed text-ink-soft">
                   <li>› anything that isn&apos;t the script&apos;s fault</li>
                   <li>› the job is recorded as failed, with the reason</li>
                   <li>› the <strong className="text-ink">platform team</strong> is notified</li>
@@ -228,17 +228,17 @@ export default function AnalyticsPlatform({ project: p }: { project: Project }) 
                 style={{ background: "linear-gradient(160deg, #fff1f7 0%, #fde4ef 100%)" }}
               >
                 <div className="flex flex-wrap items-center gap-3">
-                  <span className="inline-flex items-center gap-2 rounded-full border-[1.5px] border-line bg-white px-3 py-1 font-mono text-[11px] uppercase tracking-widest">
+                  <span className="inline-flex items-center gap-2 rounded-full border-[1.5px] border-line bg-white px-3 py-1 font-mono text-[14px]">
                     <span aria-hidden className="text-pink-ink">✦</span> an example
                   </span>
-                  <span className="font-mono text-[11px] uppercase tracking-widest opacity-60">
+                  <span className="font-mono text-[14px] text-muted">
                     the kind of analysis it runs
                   </span>
                 </div>
                 <h2 className="display text-4xl sm:text-5xl mt-4">
                   space weather is a <span className="text-pink-ink">&quot;drag&quot;</span>.
                 </h2>
-                <p className="mt-3 max-w-3xl font-mono text-[13.5px] leading-relaxed text-ink-soft">
+                <p className="mt-3 max-w-3xl font-sans text-[16px] leading-relaxed text-ink-soft">
                   A textbook example from orbital mechanics, to show why engineers want analyses
                   like this to run on their own.
                 </p>
@@ -251,9 +251,9 @@ export default function AnalyticsPlatform({ project: p }: { project: Project }) 
                   ].map(([k, t, b], i) => (
                     <div key={k} className="contents">
                       <div className="rounded-[14px] border-[1.5px] border-line bg-white p-5 shadow-[4px_4px_0_0_var(--line)]">
-                        <div className="font-mono text-[11px] uppercase tracking-widest text-pink-ink">{k}</div>
+                        <div className="font-mono text-[14px] text-pink-ink">{k}</div>
                         <h3 className="font-display text-xl mt-1">{t}</h3>
-                        <p className="mt-2 font-mono text-[13px] leading-relaxed text-ink-soft">{b}</p>
+                        <p className="mt-2 font-sans text-[16px] leading-relaxed text-ink-soft">{b}</p>
                       </div>
                       {i < 2 && (
                         <div aria-hidden className="hidden md:flex items-center font-display text-3xl text-pink-ink">
@@ -266,11 +266,11 @@ export default function AnalyticsPlatform({ project: p }: { project: Project }) 
 
                 <div className="mt-6 grid md:grid-cols-[1.2fr_1fr] gap-6 items-center rounded-[14px] border-[1.5px] border-line bg-white p-5 sm:p-6">
                   <div>
-                    <div className="font-mono text-[11px] uppercase tracking-widest text-pink-ink">the question</div>
+                    <div className="font-mono text-[14px] text-pink-ink">the question</div>
                     <p className="mt-2 font-display text-2xl leading-snug">
                       &quot;Did the forecast dip line up with what we saw?&quot;
                     </p>
-                    <p className="mt-3 font-mono text-[13px] leading-relaxed text-ink-soft">
+                    <p className="mt-3 font-sans text-[16px] leading-relaxed text-ink-soft">
                       Answering it means plotting each day&apos;s forecast over a rolling window and
                       spotting the dip. By hand, that&apos;s a notebook someone has to remember to run
                       every single day.
@@ -287,13 +287,13 @@ export default function AnalyticsPlatform({ project: p }: { project: Project }) 
                       <text x="165" y="140" textAnchor="middle" fontSize="12" fontFamily="monospace" fill="#c9407c" fontWeight="bold">day 4 dip</text>
                       <text x="20" y="20" fontSize="11" fontFamily="monospace" fill="#4d4580">7-day forecast</text>
                     </svg>
-                    <figcaption className="font-mono text-[10.5px] opacity-60 text-center">illustrative, not real data</figcaption>
+                    <figcaption className="font-sans text-[14px] text-muted text-center">illustrative, not real data</figcaption>
                   </figure>
                 </div>
 
                 <div className="mt-6 rounded-[14px] border-[1.5px] border-line px-5 py-4 sm:px-6 sm:py-5 text-cream" style={{ background: "var(--ink)" }}>
                   <span className="font-display text-xl">Enter the platform.</span>{" "}
-                  <span className="font-mono text-[13.5px] leading-relaxed opacity-90">
+                  <span className="font-sans text-[16px] leading-relaxed opacity-90">
                     Write that analysis once. The platform runs it automatically and drops the
                     results wherever you define, so nobody has to run a notebook by hand every day.
                   </span>
@@ -365,9 +365,9 @@ export default function AnalyticsPlatform({ project: p }: { project: Project }) 
             ].map(([n, t, b], i) => (
               <Reveal key={n} delay={i * 0.05}>
                 <div className="border-t-[1.5px] border-line pt-4 h-full">
-                  <div className="font-mono text-[12px] text-pink-ink">{n}</div>
+                  <div className="font-mono text-[14px] text-pink-ink">{n}</div>
                   <h3 className="font-display text-xl mt-1">{t}</h3>
-                  <p className="mt-2 font-mono text-[13px] leading-relaxed text-ink-soft">{b}</p>
+                  <p className="mt-2 font-sans text-[16px] leading-relaxed text-ink-soft">{b}</p>
                 </div>
               </Reveal>
             ))}

@@ -60,7 +60,7 @@ export default async function ProjectDetailPage({
   return (
     <div className="mx-auto max-w-5xl px-5 pt-10 pb-24">
       {/* breadcrumb */}
-      <div className="flex items-center gap-2 font-mono text-xs opacity-70">
+      <div className="flex items-center gap-2 font-mono text-[14px] text-muted">
         <Link href="/projects" className="hover:text-accent">
           ← projects
         </Link>
@@ -70,7 +70,7 @@ export default async function ProjectDetailPage({
 
       {/* HERO */}
       <div className="mt-6">
-        <div className="font-mono text-[12px] opacity-70 mb-3">
+        <div className="font-mono text-[14px] text-muted mb-3">
           {[p.org, p.year].filter(Boolean).join(" · ")}
         </div>
         <h1 className="display text-[44px] sm:text-[68px] leading-[0.95]">{p.title}</h1>
@@ -79,7 +79,7 @@ export default async function ProjectDetailPage({
             {p.subtitle}
           </p>
         )}
-        <p className="mt-5 max-w-2xl font-mono text-[15px] leading-relaxed text-ink-soft">
+        <p className="mt-5 max-w-2xl font-sans text-[17px] leading-relaxed text-ink-soft">
           {p.blurb}
         </p>
       </div>
@@ -88,14 +88,14 @@ export default async function ProjectDetailPage({
       <div className="mt-10 grid md:grid-cols-3 gap-8 border-t-[1.5px] border-line pt-6">
         {p.role && (
           <div className="md:col-span-2">
-            <div className="font-mono text-[11px] uppercase tracking-widest opacity-60 mb-2">My role</div>
-            <p className="font-mono text-[14px] leading-relaxed">{p.role}</p>
+            <div className="font-mono text-[14px] text-muted mb-2">My role</div>
+            <p className="font-sans text-[17px] leading-relaxed">{p.role}</p>
           </div>
         )}
         {p.stack && (
           <div>
-            <div className="font-mono text-[11px] uppercase tracking-widest opacity-60 mb-2">Built with</div>
-            <p className="font-mono text-[13px] leading-relaxed text-ink-soft">{p.stack.join(" · ")}</p>
+            <div className="font-mono text-[14px] text-muted mb-2">Built with</div>
+            <p className="font-sans text-[16px] leading-relaxed text-ink-soft">{p.stack.join(" · ")}</p>
           </div>
         )}
       </div>
@@ -103,7 +103,7 @@ export default async function ProjectDetailPage({
       {/* If no rich content, show a simple description */}
       {!p.problem && !p.features && (
         <section className="mt-12">
-          <p className="max-w-3xl font-mono text-[14.5px] leading-[1.75]">{p.description}</p>
+          <p className="max-w-3xl font-sans text-[17px] leading-[1.75]">{p.description}</p>
         </section>
       )}
 
@@ -111,16 +111,16 @@ export default async function ProjectDetailPage({
       {(p.problem || p.solution) && (
         <section className="mt-16">
           <H2>The why, then the what.</H2>
-          <div className="mt-6 grid md:grid-cols-2 gap-10 font-mono text-[14px] leading-relaxed">
+          <div className="mt-6 grid md:grid-cols-2 gap-10 font-sans text-[17px] leading-relaxed">
             {p.problem && (
               <div>
-                <div className="text-accent text-xs uppercase tracking-widest mb-2">Problem</div>
+                <div className="text-accent text-[14px] mb-2">Problem</div>
                 <p className="text-ink-soft">{p.problem}</p>
               </div>
             )}
             {p.solution && (
               <div>
-                <div className="text-accent text-xs uppercase tracking-widest mb-2">Solution</div>
+                <div className="text-accent text-[14px] mb-2">Solution</div>
                 <p className="text-ink-soft">{p.solution}</p>
               </div>
             )}
@@ -132,7 +132,7 @@ export default async function ProjectDetailPage({
       {p.architecture && (
         <section className="mt-16">
           <H2>How the pieces fit.</H2>
-          <pre className="mt-6 rounded-lg bg-ink text-cream p-6 sm:p-8 text-[11px] sm:text-[13px] leading-[1.65] font-mono whitespace-pre overflow-x-auto">
+          <pre className="mt-6 rounded-lg bg-navy text-cream p-6 sm:p-8 text-[13px] leading-[1.65] font-mono whitespace-pre overflow-x-auto">
             {p.architecture}
           </pre>
         </section>
@@ -146,18 +146,18 @@ export default async function ProjectDetailPage({
             {primaryFeatures.map((f) => (
               <div key={f.name} className="border-t-[1.5px] border-line pt-3">
                 <dt className="font-display text-lg leading-tight">{f.name}</dt>
-                <dd className="mt-1.5 font-mono text-[13px] leading-relaxed text-ink-soft">{f.description}</dd>
+                <dd className="mt-1.5 font-sans text-[16px] leading-relaxed text-ink-soft">{f.description}</dd>
               </div>
             ))}
           </dl>
           {teamFeatures.length > 0 && (
             <>
-              <div className="mt-10 font-mono text-[12px] opacity-60">Also part of the system, built by teammates:</div>
+              <div className="mt-10 font-mono text-[14px] text-muted">Also part of the system, built by teammates:</div>
               <dl className="mt-3 grid sm:grid-cols-2 gap-x-10 gap-y-6">
                 {teamFeatures.map((f) => (
                   <div key={f.name} className="border-t border-line/40 pt-3">
                     <dt className="font-display text-lg leading-tight">{f.name}</dt>
-                    <dd className="mt-1.5 font-mono text-[13px] leading-relaxed text-ink-soft">{f.description}</dd>
+                    <dd className="mt-1.5 font-sans text-[16px] leading-relaxed text-ink-soft">{f.description}</dd>
                   </div>
                 ))}
               </dl>
@@ -170,7 +170,7 @@ export default async function ProjectDetailPage({
       {p.technicalHighlight && (
         <section className="mt-16">
           <H2>The tricky part.</H2>
-          <p className="mt-6 max-w-3xl font-mono text-[14.5px] leading-[1.75] text-ink-soft">
+          <p className="mt-6 max-w-3xl font-sans text-[17px] leading-[1.75] text-ink-soft">
             {p.technicalHighlight}
           </p>
         </section>
@@ -184,7 +184,7 @@ export default async function ProjectDetailPage({
               <H2>What came of it.</H2>
               <ul className="mt-5 space-y-2.5">
                 {p.outcomes.map((o) => (
-                  <li key={o} className="flex gap-2 font-mono text-[13.5px] leading-relaxed">
+                  <li key={o} className="flex gap-2 font-sans text-[16px] leading-relaxed">
                     <span className="text-accent shrink-0">›</span>
                     <span>{o}</span>
                   </li>
@@ -197,7 +197,7 @@ export default async function ProjectDetailPage({
               <H2>What I learned.</H2>
               <ul className="mt-5 space-y-2.5">
                 {p.learnings.map((l) => (
-                  <li key={l} className="flex gap-2 font-mono text-[13.5px] leading-relaxed">
+                  <li key={l} className="flex gap-2 font-sans text-[16px] leading-relaxed">
                     <span className="text-pink-ink shrink-0">›</span>
                     <span>{l}</span>
                   </li>

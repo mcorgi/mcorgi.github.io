@@ -45,17 +45,17 @@ export default function Screenshot({
           <div
             className={`${aspect} flex flex-col items-center justify-center gap-2 ${corners} border-2 border-dashed border-accent bg-cream-2 p-4 text-center font-mono`}
           >
-            <span className="text-[10.5px] uppercase tracking-widest text-pink-ink">
+            <span className="text-[14px] text-pink-ink">
               screenshot placeholder
             </span>
             <span className="font-display text-lg leading-tight">{label}</span>
-            <span className="text-[11.5px] text-ink-soft break-all">
+            <span className="text-[14px] text-ink-soft break-all">
               public/{dir}/{name}.png
             </span>
-            <span className="text-[11px] opacity-60">{size}</span>
+            <span className="text-[14px] text-muted">{size}</span>
           </div>
         )}
-        <figcaption className="mt-2 font-mono text-[12px] leading-relaxed text-ink-soft">
+        <figcaption className="mt-2 font-sans text-[15px] leading-relaxed text-muted">
           {caption}
         </figcaption>
       </figure>

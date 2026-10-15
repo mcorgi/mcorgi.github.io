@@ -14,7 +14,7 @@ export default function SongSaver({ project: p }: { project: Project }) {
     <div className="theme-cozy">
       <div className="mx-auto max-w-5xl px-5 pt-10 pb-24">
         <Reveal>
-          <div className="flex items-center gap-2 font-mono text-xs opacity-70">
+          <div className="flex items-center gap-2 font-mono text-[14px] text-muted">
             <Link href="/projects" className="hover:text-accent">
               ← projects
             </Link>
@@ -26,8 +26,8 @@ export default function SongSaver({ project: p }: { project: Project }) {
         {/* HERO */}
         <Reveal>
           <div className="mt-6">
-            <div className="font-mono text-[11px] uppercase tracking-widest opacity-70 mb-3 flex flex-wrap items-center gap-2">
-              <span className="tag !py-0.5 !px-2 text-[10px]">private</span>
+            <div className="font-mono text-[14px] text-muted mb-3 flex flex-wrap items-center gap-2">
+              <span className="tag !py-0.5 !px-2 text-[14px]">private</span>
               <span>· {p.org}</span>
               <span>· {p.year}</span>
             </div>
@@ -51,14 +51,14 @@ export default function SongSaver({ project: p }: { project: Project }) {
             <p className="mt-4 font-display text-xl sm:text-2xl text-ink-soft max-w-3xl">
               A little app I made for my aunt.
             </p>
-            <p className="mt-5 max-w-3xl font-mono text-[15px] leading-relaxed text-ink-soft">
+            <p className="mt-5 max-w-3xl font-sans text-[17px] leading-relaxed text-ink-soft">
               She isn&apos;t comfortable with technology, but she regularly needs to turn YouTube
               videos into MP3s so she can listen to them. The websites that do that are built to
               trick people, and I didn&apos;t want her getting stuck on one. So I made her an app
               of her own: paste a link, wait, save. It lives on her iPhone and iPad home screen as
               an orange music-note icon.
             </p>
-            <p className="mt-6 inline-flex items-center gap-2 rounded-full border-[1.5px] border-line bg-white px-4 py-1.5 font-mono text-[12px]">
+            <p className="mt-6 inline-flex items-center gap-2 rounded-full border-[1.5px] border-line bg-white px-4 py-1.5 font-mono text-[14px]">
               <span aria-hidden className="text-pink-ink">♥</span>
               It&apos;s just for her, so there&apos;s no public link. This page is the story behind it.
             </p>
@@ -92,7 +92,7 @@ export default function SongSaver({ project: p }: { project: Project }) {
           <Reveal>
             <div className="relative mx-auto mt-4 max-w-xl -rotate-1 rounded-sm border-[1.5px] border-line bg-white px-6 pt-8 pb-6 shadow-[5px_5px_0_0_var(--pink)] sm:px-10">
               <span aria-hidden className="tape -top-3 left-1/2 -translate-x-1/2 rotate-2" />
-              <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">
+              <p className="font-mono text-[14px] text-ink-soft">
                 the question behind every decision
               </p>
               <p className="mt-2 font-hand text-[34px] sm:text-[40px] leading-[1.05] text-ink">
@@ -140,7 +140,7 @@ export default function SongSaver({ project: p }: { project: Project }) {
                 ["if my PC can’t be reached", "Can’t reach Song Saver right now. The computer it runs on may be off."],
               ].map(([when, msg]) => (
                 <figure key={when}>
-                  <figcaption className="mb-2 font-mono text-[11px] uppercase tracking-widest text-ink-soft">
+                  <figcaption className="mb-2 font-mono text-[14px] text-muted">
                     {when}
                   </figcaption>
                   <blockquote className="rounded-2xl rounded-bl-sm border-[1.5px] border-line bg-white px-4 py-3 font-display text-[17px] leading-snug shadow-[3px_3px_0_0_var(--pink)]">
@@ -345,8 +345,8 @@ export default function SongSaver({ project: p }: { project: Project }) {
           {/* TODO(Sandra): replace with how my aunt reacted and how she uses it, once she's tried it. */}
           {process.env.NODE_ENV === "development" && (
             <Reveal>
-              <div className="max-w-3xl rounded-lg border-2 border-dashed border-accent bg-cream-2 px-5 py-4 font-mono text-[13px] leading-relaxed">
-                <span className="text-[10.5px] uppercase tracking-widest text-pink-ink">
+              <div className="max-w-3xl rounded-lg border-2 border-dashed border-accent bg-cream-2 px-5 py-4 font-sans text-[16px] leading-relaxed">
+                <span className="text-[14px] text-pink-ink">
                   TODO (only shows in local dev)
                 </span>
                 <br />
@@ -389,9 +389,9 @@ function Problem({ n, title, children }: { n: string; title: string; children: R
   return (
     <Reveal>
       <div className="max-w-3xl border-t-[1.5px] border-line pt-4">
-        <div className="font-mono text-[12px] text-pink-ink">{n}</div>
+        <div className="font-mono text-[14px] text-pink-ink">{n}</div>
         <h3 className="font-display text-xl sm:text-2xl mt-1">{title}</h3>
-        <div className="mt-3 space-y-3 font-mono text-[14px] leading-[1.75] text-ink-soft [&_strong]:text-ink [&_strong]:font-semibold">
+        <div className="mt-3 space-y-3 font-sans text-[17px] leading-[1.75] text-ink-soft [&_strong]:text-ink [&_strong]:font-semibold">
           {children}
         </div>
       </div>

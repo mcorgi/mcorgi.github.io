@@ -123,7 +123,7 @@ export default function VerbalDemo() {
       <div className="window-title">
         <span className="truncate">verbal memory · click here, then press n / s / q</span>
       </div>
-      <div style={{ background: "var(--ink)" }} className="text-cream">
+      <div className="surface-dark text-cream">
         <pre
           aria-live="polite"
           className="min-h-[230px] p-5 font-mono text-[13px] leading-[1.7] whitespace-pre-wrap"
@@ -137,11 +137,11 @@ export default function VerbalDemo() {
                   {state.lastMsg}
                 </span>
               ) : (
-                <span className="opacity-60">Type &apos;n&apos; if the word is NEW and &apos;s&apos; if you&apos;ve SEEN it.</span>
+                <span className="text-muted">Type &apos;n&apos; if the word is NEW and &apos;s&apos; if you&apos;ve SEEN it.</span>
               )}
               {"\n"}Lives: <span className="text-[#F27BBE] font-bold">{"♥ ".repeat(state.lives).trim()}</span>
               {"   "}
-              <span className="opacity-60">score {state.score}</span>
+              <span className="text-muted">score {state.score}</span>
               {"\n\n"}Word: <span className="text-[#5FD4E6] font-bold text-[17px]">{state.word}</span>
               {"\n\n"}Have you seen this word before? (n/new, s/seen, q/quit):
               {invalid && (
@@ -156,11 +156,11 @@ export default function VerbalDemo() {
               <span className="text-[#F27BBE] font-bold">Game Over!</span>
               {"\n"}You scored {state.score} points and had {state.livesLeft} lives left.
               {"\n\n"}
-              <span className="opacity-60">Score saved to leaderboard!{"\n\n"}Press restart to play again.</span>
+              <span className="text-muted">Score saved to leaderboard!{"\n\n"}Press restart to play again.</span>
             </>
           )}
         </pre>
-        <div className="flex flex-wrap gap-2 px-5 pb-5 font-mono text-[13px]">
+        <div className="flex flex-wrap gap-2 px-5 pb-5 font-mono text-[14px]">
           {[
             ["n", "new"],
             ["s", "seen"],

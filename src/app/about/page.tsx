@@ -47,7 +47,7 @@ export default function AboutPage() {
       </h1>
 
       <div className="mt-10 grid md:grid-cols-5 gap-12">
-        <div className="md:col-span-3 space-y-5 font-mono text-[15px] leading-relaxed">
+        <div className="md:col-span-3 space-y-5 font-sans text-[17px] leading-relaxed">
           <p>
             I&apos;m a computer science major at Cornell Engineering, class of 2028. I grew up
             between keyboards: a piano one since I was little, and a laptop one not long after.
@@ -95,10 +95,10 @@ export default function AboutPage() {
         </div>
 
         <aside className="md:col-span-2 space-y-12">
-          <dl className="border-t-[1.5px] border-line font-mono text-[13px] leading-relaxed">
+          <dl className="border-t-[1.5px] border-line font-sans text-[16px] leading-relaxed">
             {facts.map((f) => (
               <div key={f.k} className="grid grid-cols-[84px_1fr] gap-3 py-2 border-b border-line/15">
-                <dt className="opacity-55">{f.k}</dt>
+                <dt className="text-muted">{f.k}</dt>
                 <dd className="min-w-0 [overflow-wrap:anywhere]">
                   {f.href ? (
                     <a href={f.href} className={link}>
@@ -115,9 +115,9 @@ export default function AboutPage() {
           <div>
             <div className="flex items-baseline justify-between">
               <h2 className="font-display text-2xl">Right now</h2>
-              <span className="font-mono text-[11.5px] opacity-55">Fall 2026</span>
+              <span className="font-mono text-[14px] text-muted">Fall 2026</span>
             </div>
-            <ul className="mt-3 space-y-2 font-mono text-[13px] leading-relaxed">
+            <ul className="mt-3 space-y-2 font-sans text-[16px] leading-relaxed">
               {nowList.map((n) => (
                 <li key={n} className="flex gap-2">
                   <span className="text-pink-ink">›</span>
@@ -268,23 +268,23 @@ export default function AboutPage() {
                     className={`absolute -left-[31px] top-7 inline-block h-3 w-3 rounded-full border-2 border-line ${dotColor}`}
                   />
                   <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                    <span className="font-mono text-[10.5px] uppercase tracking-widest opacity-60">
+                    <span className="font-mono text-[14px] text-muted">
                       {row.when}
                     </span>
                   </div>
                   <div className="mt-1.5 font-display text-lg leading-tight">
                     {row.role}
                   </div>
-                  <div className="font-mono text-[12px] opacity-70 mt-0.5">
+                  <div className="font-mono text-[14px] text-muted mt-0.5">
                     {row.where}
                   </div>
-                  <div className="mt-2 font-mono text-[13.5px] leading-relaxed max-w-3xl">
+                  <div className="mt-2 font-sans text-[16px] leading-relaxed max-w-3xl">
                     {row.what}
                   </div>
                   {row.link && (
                     <Link
                       href={row.link.href}
-                      className="mt-2 inline-block font-mono text-[12px] underline decoration-pink underline-offset-2 hover:text-accent"
+                      className="mt-2 inline-block font-mono text-[14px] underline decoration-pink underline-offset-2 hover:text-accent"
                     >
                       {row.link.label} →
                     </Link>
@@ -297,7 +297,7 @@ export default function AboutPage() {
 
         {/* Legend */}
         <Reveal delay={0.1}>
-          <div className="mt-6 flex flex-wrap gap-4 font-mono text-[11px] opacity-70">
+          <div className="mt-6 flex flex-wrap gap-4 font-mono text-[14px] text-muted">
             <span className="flex items-center gap-1.5">
               <span className="inline-block h-2 w-2 rounded-full bg-accent" />
               work
@@ -324,8 +324,8 @@ export default function AboutPage() {
         <div className="mt-8 grid sm:grid-cols-3 gap-x-10 gap-y-8">
           {skills.map((g) => (
             <div key={g.title} className="border-t-[1.5px] border-line pt-3">
-              <h3 className="font-mono text-[11px] uppercase tracking-widest opacity-60">{g.title}</h3>
-              <ul className="mt-3 space-y-1 font-mono text-[13.5px] leading-relaxed">
+              <h3 className="font-mono text-[14px] text-muted">{g.title}</h3>
+              <ul className="mt-3 space-y-1 font-sans text-[16px] leading-relaxed">
                 {g.items.map((it) => (
                   <li key={it}>{it}</li>
                 ))}

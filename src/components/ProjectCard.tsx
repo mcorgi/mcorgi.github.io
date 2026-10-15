@@ -4,7 +4,7 @@ import type { Project } from "@/data/projects";
 export default function ProjectCard({ project }: { project: Project }) {
   return (
     <article className="group h-full border-t-[1.5px] border-line pt-4">
-      <div className="flex items-baseline justify-between gap-3 font-mono text-[11.5px] opacity-60">
+      <div className="flex items-baseline justify-between gap-3 font-mono text-[14px] text-muted">
         <span className="truncate">{project.org}</span>
         <span className="shrink-0">{project.year}</span>
       </div>
@@ -16,12 +16,12 @@ export default function ProjectCard({ project }: { project: Project }) {
           {project.title}
         </Link>
       </h3>
-      <p className="mt-2 font-mono text-[14px] leading-relaxed text-ink-soft">
+      <p className="mt-2 font-sans text-[17px] leading-relaxed text-ink-soft">
         {project.blurb}
       </p>
       <Link
         href={`/projects/${project.slug}`}
-        className="mt-4 inline-block font-mono text-[13px] underline decoration-pink underline-offset-4 hover:text-accent"
+        className="mt-4 inline-block font-mono text-[14px] underline decoration-pink underline-offset-4 hover:text-accent"
       >
         read more
       </Link>

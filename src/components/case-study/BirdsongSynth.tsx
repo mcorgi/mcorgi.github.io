@@ -58,7 +58,7 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
   return (
     <div className="mx-auto max-w-5xl px-5 pt-10 pb-24">
       <Reveal>
-        <div className="flex items-center gap-2 font-mono text-xs opacity-70">
+        <div className="flex items-center gap-2 font-mono text-[14px] text-muted">
           <Link href="/projects" className="hover:text-accent">
             ← projects
           </Link>
@@ -70,8 +70,8 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
       {/* HERO */}
       <div className="mt-6 grid lg:grid-cols-[1.1fr_1fr] gap-10 items-center [&>*]:min-w-0">
         <Reveal>
-          <div className="font-mono text-[11px] uppercase tracking-widest opacity-70 mb-3 flex flex-wrap items-center gap-2">
-            <span className="tag !py-0.5 !px-2 text-[10px]">demoed</span>
+          <div className="font-mono text-[14px] text-muted mb-3 flex flex-wrap items-center gap-2">
+            <span className="tag !py-0.5 !px-2 text-[14px]">demoed</span>
             <span>· {p.org}</span>
             <span>· {p.year}</span>
             <span>· {p.readTime}</span>
@@ -79,17 +79,17 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
           <h1 className="display text-[44px] sm:text-[68px] leading-[0.95]">
             Birdsong <span className="text-accent">Synthesizer</span>
           </h1>
-          <p className="mt-4 max-w-xl font-mono text-[15px] leading-relaxed text-ink-soft">
+          <p className="mt-4 max-w-xl font-sans text-[17px] leading-relaxed text-ink-soft">
             Real-time audio synthesis in C on a Raspberry Pi Pico 2. You play it with a slider and a
             keypad, and the goal was to recreate the call of a northern cardinal.
           </p>
-          <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-1 font-mono text-[13px]">
+          <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-1 font-mono text-[14px]">
             <li><span className="text-accent">▸</span> team of 3, with Nathaniel Su and Benson Zhuo</li>
             <li><span className="text-accent">▸</span> RP2350 · C · Pico SDK</li>
             <li><span className="text-accent">▸</span> 3 weeks</li>
           </ul>
           <div className="mt-6 flex flex-wrap gap-3">
-            <a href="#play" className="arrow-link text-sm font-mono !bg-ink !text-cream">
+            <a href="#play" className="arrow-link text-sm font-mono !bg-navy !text-cream">
               ▶ play it in your browser
             </a>
             <a href="#realtime" className="arrow-link text-sm font-mono">
@@ -106,7 +106,7 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
               alt="The finished build on a breadboard: a Raspberry Pi Pico 2 and DAC wired to a 12-key keypad, a slide potentiometer and two speakers, next to a laptop."
               className="block w-full aspect-[4/3.4] object-cover rounded-lg border-[1.5px] border-line"
             />
-            <figcaption className="mt-2 font-mono text-[12px] text-ink-soft">The finished build.</figcaption>
+            <figcaption className="mt-2 font-sans text-[15px] text-muted">The finished build.</figcaption>
           </figure>
         </Reveal>
       </div>
@@ -155,8 +155,7 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
         <Reveal>
           <div className="grid md:grid-cols-[auto_1fr] gap-8 items-start [&>*]:min-w-0">
             <div
-              className="mx-auto md:mx-0 rounded-2xl border-[1.5px] border-line p-4 shadow-[6px_6px_0_0_var(--line)]"
-              style={{ background: "var(--ink)" }}
+              className="surface-dark mx-auto md:mx-0 rounded-2xl border-[1.5px] border-line p-4 shadow-[6px_6px_0_0_var(--line)]"
               aria-label="The 4 by 3 keypad"
             >
               <div className="grid grid-cols-3 gap-2.5">
@@ -177,7 +176,7 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
                     <i className={`inline-block h-3.5 w-3.5 rounded-sm border-[1.5px] border-line ${keyStyle[h.role]}`} />
                     <h3 className="font-display text-lg leading-tight">{h.title}</h3>
                   </div>
-                  <p className="mt-1.5 font-mono text-[13px] leading-relaxed text-ink-soft">{h.body}</p>
+                  <p className="mt-1.5 font-sans text-[16px] leading-relaxed text-ink-soft">{h.body}</p>
                 </div>
               ))}
             </div>
@@ -218,7 +217,7 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
         <Diagram
           src={img("hardware-diagram.png")}
           alt="Hardware block diagram: the keypad connects to Pico pins 12 to 20 through 330 ohm resistors, the slide potentiometer to the ADC on pin 32, the MCP4822 DAC over SPI on pins 7, 9 and 10, the DAC output to a 3.5 mm audio socket and speaker, and an ISR timing pin to the oscilloscope."
-          caption={<span className="text-[11px] opacity-70">Diagram by Benson Zhuo.</span>}
+          caption={<span className="text-[14px] text-muted">Diagram by Benson Zhuo.</span>}
         />
         <div className="grid sm:grid-cols-2 gap-4">
           <Card title="Slider → ADC" tag="input">
@@ -263,7 +262,7 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
             <>
               Threads on the left and bottom, the interrupt at the top right. Blue boxes yield to each
               other; the orange one interrupts all of them.{" "}
-              <span className="text-[11px] opacity-70">Diagram by me.</span>
+              <span className="text-[14px] text-muted">Diagram by me.</span>
             </>
           }
         />
@@ -278,18 +277,18 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
         />
         <Reveal>
           <div className="border-t-[1.5px] border-line pt-4 max-w-3xl">
-            <div className="flex items-baseline justify-between font-mono text-[12px] mb-2">
+            <div className="flex items-baseline justify-between font-mono text-[14px] mb-2">
               <span className="text-ink">RP2350 on-chip SRAM</span>
               <span className="text-ink-soft">520 KB</span>
             </div>
-            <div className="flex h-8 rounded-md border-[1.5px] border-line overflow-hidden font-mono text-[11px]">
+            <div className="flex h-8 rounded-md border-[1.5px] border-line overflow-hidden font-mono text-[14px]">
               <div className="bg-accent text-cream flex items-center px-2 whitespace-nowrap" style={{ width: "34%" }}>
                 <span className="sm:hidden">176 KB</span>
                 <span className="hidden sm:inline">9 recordings · 176 KB</span>
               </div>
               <div className="flex-1 bg-cream-2 flex items-center px-2 text-ink-soft">free</div>
             </div>
-            <p className="mt-3 font-mono text-[13px] leading-relaxed text-ink-soft">
+            <p className="mt-3 font-sans text-[16px] leading-relaxed text-ink-soft">
               <strong className="text-ink">Recording slider positions, not audio, keeps memory small.</strong>{" "}
               9 buffers of 10,000 two-byte samples is 176 KB, about a third of the chip. That&apos;s
               100 seconds per key. Storing the 200 kHz audio itself would fill all of the SRAM in about
@@ -318,8 +317,8 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
 
         <Reveal>
           <div className="border-t-[1.5px] border-line pt-4">
-            <div className="font-mono text-[12px] text-ink mb-3">one sample, every 5 µs</div>
-            <div className="flex flex-wrap items-center gap-2.5 font-mono text-[12.5px]">
+            <div className="font-mono text-[14px] text-ink mb-3">one sample, every 5 µs</div>
+            <div className="flex flex-wrap items-center gap-2.5 font-mono text-[14px]">
               {[
                 ["slider value", "0 – 4095"],
                 ["step size", "∝ pitch"],
@@ -333,9 +332,9 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
                     className={`rounded-md border-[1.5px] px-3 py-2 ${i === 2 ? "border-accent bg-accent/10" : "border-line bg-cream"}`}
                   >
                     <span className="block text-ink">{t}</span>
-                    <span className="block text-[10.5px] opacity-70">{s}</span>
+                    <span className="block text-[14px] text-muted">{s}</span>
                   </span>
-                  {i < arr.length - 1 && <span className="opacity-60">→</span>}
+                  {i < arr.length - 1 && <span className="text-muted">→</span>}
                 </span>
               ))}
             </div>
@@ -344,12 +343,12 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
 
         <Reveal>
           <div className="border-t-[1.5px] border-line pt-4">
-            <div className="flex items-baseline justify-between font-mono text-[12px] mb-2">
+            <div className="flex items-baseline justify-between font-mono text-[14px] mb-2">
               <span className="text-ink">one sample period</span>
               <span className="text-ink-soft">5.00 µs</span>
             </div>
-            <div className="flex h-10 rounded-md border-[1.5px] border-line overflow-hidden font-mono text-[11.5px]">
-              <div className="bg-ink text-cream flex items-center px-3 whitespace-nowrap" style={{ width: "60.8%" }}>
+            <div className="flex h-10 rounded-md border-[1.5px] border-line overflow-hidden font-mono text-[14px]">
+              <div className="bg-navy text-cream flex items-center px-3 whitespace-nowrap" style={{ width: "60.8%" }}>
                 <span className="sm:hidden">ISR 3.04 µs</span>
                 <span className="hidden sm:inline">interrupt · 3.04 µs</span>
               </div>
@@ -358,7 +357,7 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
                 <span className="hidden sm:inline">threads · 1.96 µs</span>
               </div>
             </div>
-            <p className="mt-3 font-mono text-[13px] leading-relaxed text-ink-soft">
+            <p className="mt-3 font-sans text-[16px] leading-relaxed text-ink-soft">
               Worst case measured on the scope: the interrupt uses about 61% of every period, and it
               never overran the next alarm.
             </p>
@@ -372,7 +371,7 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
             caption="The timing pin on the scope: 3.04 µs inside the interrupt, out of every 5 µs."
           />
           <Reveal>
-            <div className="space-y-4 font-mono text-[13.5px] leading-relaxed text-ink-soft">
+            <div className="space-y-4 font-sans text-[16px] leading-relaxed text-ink-soft">
               <p>
                 <strong className="text-ink">Measured, not assumed.</strong>{" "}We started at 50 kHz
                 (a sample every 20 µs). Before cutting the period to 5 µs for 200 kHz, we scoped the
@@ -404,7 +403,7 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
             caption={
               <>
                 The four-state debouncer.{" "}
-                <span className="text-[11px] opacity-70">
+                <span className="text-[14px] text-muted">
                   Adapted from V. Hunter Adams&apos;s{" "}
                   <CreditLink href="https://vanhunteradams.com/Pico/Keypad/Keypad.html">
                     keypad page
@@ -415,7 +414,7 @@ export default function BirdsongSynth({ project: p }: { project: Project }) {
             }
           />
           <Reveal>
-            <div className="space-y-4 font-mono text-[13.5px] leading-relaxed text-ink-soft">
+            <div className="space-y-4 font-sans text-[16px] leading-relaxed text-ink-soft">
               <p>
                 A four-state machine (not pressed, maybe pressed, pressed, maybe not pressed) only
                 accepts a press or a release after a second scan agrees, with a{" "}
@@ -548,7 +547,7 @@ function Shot({ src, alt, caption }: { src: string; alt: string; caption: ReactN
       <figure>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={src} alt={alt} className="block w-full h-auto bg-white rounded-lg border-[1.5px] border-line" />
-        <figcaption className="mt-2 font-mono text-[12px] leading-relaxed text-ink-soft">
+        <figcaption className="mt-2 font-sans text-[15px] leading-relaxed text-muted">
           {caption}
         </figcaption>
       </figure>
@@ -560,7 +559,7 @@ function Shot({ src, alt, caption }: { src: string; alt: string; caption: ReactN
 function Credit({ children }: { children: ReactNode }) {
   return (
     <Reveal>
-      <p className="max-w-3xl font-mono text-[11.5px] leading-relaxed opacity-70">{children}</p>
+      <p className="max-w-3xl font-mono text-[14px] leading-relaxed text-muted">{children}</p>
     </Reveal>
   );
 }

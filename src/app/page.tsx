@@ -4,11 +4,19 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import TerminalView from "@/components/terminal/TerminalView";
+import TerminalTitleBar from "@/components/terminal/TerminalTitleBar";
 import { BirdIcon, Bubble, CameraIcon, Float, SatelliteIcon } from "@/components/HeroLinks";
 import { FlyingPlane, GrillScene } from "@/components/Illustrations";
 import FeaturedProject from "@/components/FeaturedProject";
+import Reveal from "@/components/Reveal";
 import { featuredProjects, visibleProjects } from "@/data/projects";
 import { contact } from "@/data/siteMap";
+
+const proudest = featuredProjects.find((p) => p.slug === "mini-plane-system") ?? featuredProjects[0];
+const otherFeatured = featuredProjects.filter((p) => p !== proudest);
+const featuredTags: Record<string, string> = {
+  "automated-analytics": "shipped to prod",
+};
 
 export default function Home() {
   return (
@@ -73,26 +81,27 @@ export default function Home() {
         </Float>
 
         <div className="md:pr-[400px] lg:pr-[440px]">
-          <h1 className="display text-[58px] sm:text-[88px] md:text-[112px]">
+          <h1 className="arrive display text-[58px] sm:text-[88px] md:text-[112px]">
             sandra
             <br />
             <span className="text-accent">tang.</span>
           </h1>
 
-          <p className="mt-6 max-w-xl font-mono text-[15px] leading-relaxed text-ink-soft">
+          <p className="arrive arrive-2 mt-6 max-w-xl font-sans text-[20px] leading-snug text-ink-soft">
             CS @ Cornell Engineering · Class of 2028.
           </p>
 
-          <div className="mt-8 max-w-2xl">
-            <div className="mb-2 font-mono text-[12px] opacity-60">
+          <div className="arrive arrive-3 mt-8 max-w-2xl">
+            <div className="mb-2 font-mono text-[14px] text-muted">
               this terminal is real, type in it ↓
             </div>
-            <div className="window scanlines">
+            <div className="window terminal-window">
+              <TerminalTitleBar />
               <TerminalView heightClass="h-[230px]" />
             </div>
           </div>
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="arrive arrive-3 mt-8 flex flex-wrap gap-3">
             <Link href="/projects" className="arrow-link text-sm font-mono">
               see my projects
             </Link>
@@ -119,27 +128,176 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FEATURED PROJECT */}
+      {/* PROJECTS: each on its own card, divided by lines, with a tag saying why
+          it's here. */}
       <section className="mx-auto max-w-6xl px-5 mt-8">
-        <h2 className="display text-3xl sm:text-4xl mb-6">
-          What I&apos;m most proud of.
+        <h2 className="display text-3xl sm:text-4xl pb-6 border-b-[1.5px] border-line">
+          Projects.
         </h2>
+        <div className="divide-y-[1.5px] divide-line">
+          <Reveal className="py-12">
+            <div className="lift">
+              <FeaturedProject project={proudest} badge="★ my proudest project" />
+            </div>
+          </Reveal>
 
-        <div className="space-y-16">
-          {featuredProjects.map((fp) => (
-            <FeaturedProject key={fp.slug} project={fp} />
+          {otherFeatured.map((fp) => (
+            <Reveal key={fp.slug} className="py-12">
+              <div className="lift">
+                <FeaturedProject project={fp} badge={featuredTags[fp.slug]} />
+              </div>
+            </Reveal>
           ))}
+
+          {/* BBQ Land, dark like bbqlandma.com's hero */}
+          <Reveal className="py-12">
+            <div className="lift">
+              <div className="theme-bbq-night relative rounded-2xl">
+                <div aria-hidden className="absolute inset-0 translate-x-2.5 translate-y-2.5 rounded-2xl bg-pink" />
+                <div className="relative grid lg:grid-cols-[1.15fr_1fr] gap-10 rounded-2xl border-[1.5px] border-line bg-cream p-6 sm:p-10">
+                  <div>
+                    <div className="flex flex-wrap items-center gap-3 font-mono text-[14px]">
+                      <span className="inline-flex items-center rounded-full bg-pink px-3 py-1 text-white">
+                        newest, just launched
+                      </span>
+                      <span className="inline-flex items-center gap-2 rounded-full border-[1.5px] border-line bg-cream-2 px-3 py-1">
+                        <span aria-hidden className="h-2 w-2 rounded-full bg-accent" /> live
+                      </span>
+                      <OpeningCountdown />
+                    </div>
+                    <h3 className="display text-[40px] sm:text-[56px] leading-[0.95] mt-5">
+                      <Link href="/projects/bbq-land" className="hover:text-accent transition-colors">
+                        BBQ Land<span className="text-pink">.</span>
+                      </Link>
+                    </h3>
+                    <p className="mt-4 font-display text-xl sm:text-2xl leading-snug">
+                      A new restaurant had no website. Now it has one, and I built it from scratch.
+                    </p>
+                    <p className="mt-4 max-w-[60ch] font-sans text-[17px] leading-relaxed text-ink-soft">
+                      BBQ Land is a modern Asian yakiniku restaurant in Shrewsbury, MA. I designed and
+                      built the site, launched it during soft opening, and redesigned it the next day
+                      from the owner&apos;s feedback. Now almost every dish on the menu links straight
+                      to Toast for ordering.
+                    </p>
+                    <div className="mt-7 flex flex-wrap items-center gap-3">
+                      <a
+                        href="https://www.bbqlandma.com"
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        className="inline-flex items-center gap-2 rounded-lg border-[1.5px] border-pink bg-pink px-4 py-2 font-mono text-sm text-white shadow-[3px_3px_0_0_var(--line)] transition-[transform,box-shadow] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[1px_1px_0_0_var(--line)]"
+                      >
+                        visit bbqlandma.com ↗
+                      </a>
+                      <Link
+                        href="/projects/bbq-land"
+                        className="inline-flex items-center gap-2 rounded-lg border-[1.5px] border-line px-4 py-2 font-mono text-sm hover:bg-navy hover:text-cream transition-colors"
+                      >
+                        how I built it →
+                      </Link>
+                    </div>
+                  </div>
+                  <div>
+                    <GrillScene className="border-[1.5px] border-line" />
+                    <dl className="mt-5 font-sans text-[16px] leading-relaxed">
+                      {[
+                        ["OCT 11", "The first version goes live on bbqlandma.com."],
+                        ["OCT 12", "Redesigned the same day, from the owner's feedback."],
+                        ["NOV 16", "Grand opening."],
+                      ].map(([when, what]) => (
+                        <div key={when} className="grid grid-cols-[84px_1fr] gap-3 py-2.5 border-t border-line/15">
+                          <dt className="font-mono text-pink-ink tracking-widest text-[14px] pt-0.5">{when}</dt>
+                          <dd className="text-ink-soft">{what}</dd>
+                        </div>
+                      ))}
+                    </dl>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+
+          {/* Song Saver, as a scrapbook page in its cozy palette */}
+          <Reveal className="py-12">
+            <div className="lift">
+              <div className="theme-cozy relative overflow-hidden rounded-[28px] border-[1.5px] border-line px-5 py-10 sm:px-12 sm:py-14">
+                {/* hearts and notes scattered in the background */}
+                {[
+                  ["♥", "left-[6%] top-[8%] -rotate-12 text-[28px]"],
+                  ["♪", "left-[44%] top-[6%] rotate-6 text-[32px]"],
+                  ["♥", "right-[5%] top-[10%] rotate-12 text-[22px]"],
+                  ["♫", "left-[3%] bottom-[8%] -rotate-6 text-[30px]"],
+                  ["♥", "right-[38%] bottom-[5%] rotate-6 text-[24px]"],
+                ].map(([ch, pos]) => (
+                  <span key={pos} aria-hidden className={`absolute font-hand text-pink ${pos}`}>
+                    {ch}
+                  </span>
+                ))}
+
+                <div className="relative grid md:grid-cols-[1.25fr_1fr] gap-12 md:gap-8 items-center">
+                  {/* the note */}
+                  <div className="relative -rotate-1 rounded-sm border-[1.5px] border-line bg-white px-6 pt-9 pb-7 shadow-[5px_5px_0_0_var(--pink)] sm:px-9">
+                    <span aria-hidden className="tape -top-3 left-8 -rotate-3" />
+                    <span className="inline-flex items-center rounded-full border-[1.5px] border-pink bg-pink-soft px-3 py-1 font-mono text-[14px] text-pink-ink">
+                      a smaller personal project
+                    </span>
+                    <p className="mt-5 font-hand text-[26px] sm:text-[30px] leading-none text-pink-ink">
+                      for my aunt, with love <span aria-hidden>♥</span>
+                    </p>
+                    <h3 className="display text-[34px] sm:text-[44px] leading-[0.95] mt-4">
+                      <Link href="/projects/song-saver" className="hover:text-accent transition-colors">
+                        Song Saver<span className="text-pink">.</span>
+                      </Link>
+                    </h3>
+                    <p className="mt-4 font-sans text-[17px] leading-relaxed text-ink-soft">
+                      She isn&apos;t comfortable with technology, and YouTube-to-MP3 sites are full of
+                      pop-ups and fake Download buttons. So I made her an app of her own, right on her
+                      home screen: paste a link, wait, save.
+                    </p>
+                    <Link href="/projects/song-saver" className="mt-6 arrow-link text-sm font-mono">
+                      read the story
+                    </Link>
+                  </div>
+
+                  {/* her actual start screen, tucked in at an angle */}
+                  <div className="relative mx-auto w-[200px] sm:w-[230px]">
+                    <div className="rotate-3 overflow-hidden rounded-[30px] border-[1.5px] border-line bg-white shadow-[6px_6px_0_0_var(--line)] aspect-[9/16]">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src="/images/song-saver/start.png"
+                        alt="Song Saver's start screen on an iPhone, with a big Paste link button and numbered instructions."
+                        loading="lazy"
+                        className="block w-full h-full object-cover object-top"
+                      />
+                    </div>
+                    {/* the app icon, cropped from a photo of her home screen */}
+                    <div className="absolute -right-6 -top-6 h-16 w-16 -rotate-6 overflow-hidden rounded-[22%] shadow-[3px_3px_0_0_var(--pink)]">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src="/images/song-saver/icon.jpg"
+                        alt=""
+                        className="absolute left-[-7%] top-[-3%] w-[122%] max-w-none"
+                      />
+                    </div>
+                    <p className="absolute -left-10 bottom-6 -rotate-6 rounded-sm bg-pink-soft px-4 py-2 font-hand text-[24px] leading-none text-ink shadow-[3px_3px_0_0_var(--pink)]">
+                      paste, wait, save <span aria-hidden>♪</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 
       {/* SUAS: dark panel, with a plane flying laps behind the text */}
+      <Reveal>
       <section className="mx-auto max-w-6xl px-5 mt-24">
         <h2 className="display text-3xl sm:text-4xl mb-8">
           On the flightline at SUAS 2026.
         </h2>
         <div className="relative">
           <div aria-hidden className="absolute inset-0 translate-x-2.5 translate-y-2.5 rounded-2xl bg-pink" />
-          <div className="relative overflow-hidden rounded-2xl border-[1.5px] border-line text-cream" style={{ background: "var(--ink)" }}>
+          <div className="surface-dark relative overflow-hidden rounded-2xl border-[1.5px] border-line text-cream">
             <FlyingPlane className="absolute inset-0 h-full w-full" />
             <div className="relative grid lg:grid-cols-[1fr_1.2fr] gap-10 p-6 sm:p-10">
               <div>
@@ -147,7 +305,7 @@ export default function Home() {
                   I was CUAir&apos;s Intelligence operator, the one person running our imaging
                   pipeline during live missions.
                 </p>
-                <p className="mt-4 max-w-xl font-mono text-[13.5px] leading-relaxed opacity-80">
+                <p className="mt-4 max-w-[60ch] font-sans text-[17px] leading-relaxed opacity-90">
                   Bring-up, launch, watching every photo land on the ground over the radio link,
                   and stepping in when something stalled. It didn&apos;t all go well.
                 </p>
@@ -158,13 +316,13 @@ export default function Home() {
                   the whole week →
                 </Link>
               </div>
-              <dl className="font-mono text-[13px] leading-relaxed">
-                <div className="mb-3 text-[11px] uppercase tracking-[0.2em] opacity-60">
+              <dl className="font-sans text-[16px] leading-relaxed">
+                <div className="mb-3 font-mono text-[14px] opacity-80">
                   Skyway Range, Tulsa · Sep 14–17, 2026
                 </div>
                 {flightLog.map(([day, entry]) => (
-                  <div key={day} className="grid grid-cols-[52px_1fr] gap-3 py-2.5 border-t border-cream/15">
-                    <dt className="text-pink tracking-widest text-[11.5px] pt-0.5">{day}</dt>
+                  <div key={day} className="grid grid-cols-[56px_1fr] gap-3 py-3 border-t border-cream/15">
+                    <dt className="font-mono text-pink tracking-widest text-[14px] pt-0.5">{day}</dt>
                     <dd className="opacity-90">{entry}</dd>
                   </div>
                 ))}
@@ -173,167 +331,37 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* NEWEST PROJECT: BBQ Land, dark like bbqlandma.com's hero */}
-      <section className="mx-auto max-w-6xl px-5 mt-24">
-        <h2 className="display text-3xl sm:text-4xl mb-8">
-          My newest project, just launched.
-        </h2>
-        <div className="theme-bbq-night relative rounded-2xl">
-          <div aria-hidden className="absolute inset-0 translate-x-2.5 translate-y-2.5 rounded-2xl bg-pink" />
-          <div className="relative grid lg:grid-cols-[1.15fr_1fr] gap-10 rounded-2xl border-[1.5px] border-line bg-cream p-6 sm:p-10">
-            <div>
-              <div className="flex flex-wrap items-center gap-2 font-mono text-[11px] uppercase tracking-widest">
-                <span className="inline-flex items-center gap-2 rounded-full border-[1.5px] border-line bg-cream-2 px-3 py-1">
-                  <span aria-hidden className="h-2 w-2 rounded-full bg-accent" /> live
-                </span>
-                <OpeningCountdown />
-              </div>
-              <h3 className="display text-[40px] sm:text-[56px] leading-[0.95] mt-5">
-                <Link href="/projects/bbq-land" className="hover:text-accent transition-colors">
-                  BBQ Land<span className="text-pink">.</span>
-                </Link>
-              </h3>
-              <p className="mt-4 font-display text-xl sm:text-2xl leading-snug">
-                A new restaurant had no website. Now it has one, and I built it from scratch.
-              </p>
-              <p className="mt-4 max-w-xl font-mono text-[13.5px] leading-relaxed text-ink-soft">
-                BBQ Land is a modern Asian yakiniku restaurant in Shrewsbury, MA. I designed and
-                built the site, launched it during soft opening, and redesigned it the next day
-                from the owner&apos;s feedback. Now almost every dish on the menu links straight
-                to Toast for ordering.
-              </p>
-              <div className="mt-7 flex flex-wrap items-center gap-3">
-                <a
-                  href="https://www.bbqlandma.com"
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="inline-flex items-center gap-2 rounded-lg border-[1.5px] border-pink bg-pink px-4 py-2 font-mono text-sm text-white shadow-[3px_3px_0_0_var(--line)] transition-[transform,box-shadow] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[1px_1px_0_0_var(--line)]"
-                >
-                  visit bbqlandma.com ↗
-                </a>
-                <Link
-                  href="/projects/bbq-land"
-                  className="inline-flex items-center gap-2 rounded-lg border-[1.5px] border-line px-4 py-2 font-mono text-sm hover:bg-ink hover:text-cream transition-colors"
-                >
-                  how I built it →
-                </Link>
-              </div>
-            </div>
-            <div>
-              <GrillScene className="border-[1.5px] border-line" />
-              <dl className="mt-5 font-mono text-[13px] leading-relaxed">
-                {[
-                  ["OCT 11", "The first version goes live on bbqlandma.com."],
-                  ["OCT 12", "Redesigned the same day, from the owner's feedback."],
-                  ["NOV 16", "Grand opening."],
-                ].map(([when, what]) => (
-                  <div key={when} className="grid grid-cols-[84px_1fr] gap-3 py-2.5 border-t border-line/15">
-                    <dt className="text-pink-ink tracking-widest text-[11.5px] pt-0.5">{when}</dt>
-                    <dd className="text-ink-soft">{what}</dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SMALLER PERSONAL PROJECT: Song Saver, as a scrapbook page in its cozy palette */}
-      <section className="mx-auto max-w-6xl px-5 mt-20">
-        <h2 className="display text-2xl sm:text-3xl mb-6">
-          A smaller personal project.
-        </h2>
-        <div className="theme-cozy relative overflow-hidden rounded-[28px] border-[1.5px] border-line px-5 py-10 sm:px-12 sm:py-14">
-          {/* hearts and notes scattered in the background */}
-          {[
-            ["♥", "left-[6%] top-[8%] -rotate-12 text-[28px]"],
-            ["♪", "left-[44%] top-[6%] rotate-6 text-[32px]"],
-            ["♥", "right-[5%] top-[10%] rotate-12 text-[22px]"],
-            ["♫", "left-[3%] bottom-[8%] -rotate-6 text-[30px]"],
-            ["♥", "right-[38%] bottom-[5%] rotate-6 text-[24px]"],
-          ].map(([ch, pos]) => (
-            <span key={pos} aria-hidden className={`absolute font-hand text-pink ${pos}`}>
-              {ch}
-            </span>
-          ))}
-
-          <div className="relative grid md:grid-cols-[1.25fr_1fr] gap-12 md:gap-8 items-center">
-            {/* the note */}
-            <div className="relative -rotate-1 rounded-sm border-[1.5px] border-line bg-white px-6 pt-9 pb-7 shadow-[5px_5px_0_0_var(--pink)] sm:px-9">
-              <span aria-hidden className="tape -top-3 left-8 -rotate-3" />
-              <p className="font-hand text-[26px] sm:text-[30px] leading-none text-pink-ink">
-                for my aunt, with love <span aria-hidden>♥</span>
-              </p>
-              <h3 className="display text-[34px] sm:text-[44px] leading-[0.95] mt-4">
-                <Link href="/projects/song-saver" className="hover:text-accent transition-colors">
-                  Song Saver<span className="text-pink">.</span>
-                </Link>
-              </h3>
-              <p className="mt-4 font-mono text-[13.5px] leading-relaxed text-ink-soft">
-                She isn&apos;t comfortable with technology, and YouTube-to-MP3 sites are full of
-                pop-ups and fake Download buttons. So I made her an app of her own, right on her
-                home screen: paste a link, wait, save.
-              </p>
-              <Link href="/projects/song-saver" className="mt-6 arrow-link text-sm font-mono">
-                read the story
-              </Link>
-            </div>
-
-            {/* her actual start screen, tucked in at an angle */}
-            <div className="relative mx-auto w-[200px] sm:w-[230px]">
-              <div className="rotate-3 overflow-hidden rounded-[30px] border-[1.5px] border-line bg-white shadow-[6px_6px_0_0_var(--line)] aspect-[9/16]">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/images/song-saver/start.png"
-                  alt="Song Saver's start screen on an iPhone, with a big Paste link button and numbered instructions."
-                  loading="lazy"
-                  className="block w-full h-full object-cover object-top"
-                />
-              </div>
-              {/* the app icon, cropped from a photo of her home screen */}
-              <div className="absolute -right-6 -top-6 h-16 w-16 -rotate-6 overflow-hidden rounded-[22%] shadow-[3px_3px_0_0_var(--pink)]">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/images/song-saver/icon.jpg"
-                  alt=""
-                  className="absolute left-[-7%] top-[-3%] w-[122%] max-w-none"
-                />
-              </div>
-              <p className="absolute -left-10 bottom-6 -rotate-6 rounded-sm bg-pink-soft px-4 py-2 font-hand text-[24px] leading-none text-ink shadow-[3px_3px_0_0_var(--pink)]">
-                paste, wait, save <span aria-hidden>♪</span>
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      </Reveal>
 
       {/* MORE PROJECTS, as a directory listing */}
+      <Reveal>
       <section className="mx-auto max-w-6xl px-5 mt-24">
         <p className="font-mono text-[15px] sm:text-[17px]">
           <span className="text-pink-ink">sandra@cornell</span>:
           <span className="text-accent">~</span>$ ls -l projects/
         </p>
-        <div className="mt-4 font-mono text-[13px] sm:text-[13.5px]">
+        <div className="mt-4 font-mono text-[14px]">
           {visibleProjects.map((p) => (
             <Link
               key={p.slug}
               href={`/projects/${p.slug}`}
-              className="group grid sm:grid-cols-[96px_150px_250px_1fr] gap-x-5 py-2 border-b border-line/15 hover:bg-cream-2"
+              className="group grid sm:grid-cols-[100px_150px_250px_1fr] gap-x-5 py-2.5 border-b border-line/15 hover:bg-cream-2"
             >
-              <span className="hidden sm:block opacity-40">drwxr-xr-x</span>
-              <span className="opacity-60 order-2 sm:order-none text-[12px] sm:text-[13px]">{p.year}</span>
+              <span className="hidden sm:block text-muted">drwxr-xr-x</span>
+              <span className="text-muted order-2 sm:order-none">{p.year}</span>
               <span className="text-accent group-hover:underline underline-offset-2 truncate">{p.slug}/</span>
               <span className="hidden sm:block text-ink-soft truncate">{p.subtitle}</span>
             </Link>
           ))}
         </div>
       </section>
+      </Reveal>
 
       {/* SMALL ABOUT TEASER */}
+      <Reveal>
       <section className="mx-auto max-w-6xl px-5 mt-28">
         <div className="grid md:grid-cols-5 gap-10 items-start">
-          <dl className="md:col-span-2 border-t-[1.5px] border-line font-mono text-[13px] leading-relaxed">
+          <dl className="md:col-span-2 border-t-[1.5px] border-line font-mono text-[14px] leading-relaxed">
             {[
               ["Name", "Sandra Tang"],
               ["School", "Cornell Engineering"],
@@ -341,8 +369,8 @@ export default function Home() {
               ["Class", "2028"],
               ["Likes", "CS, embedded systems, piano + violin duets"],
             ].map(([k, v]) => (
-              <div key={k} className="grid grid-cols-[72px_1fr] gap-3 py-2 border-b border-line/15">
-                <dt className="opacity-55">{k}</dt>
+              <div key={k} className="grid grid-cols-[76px_1fr] gap-3 py-2.5 border-b border-line/15">
+                <dt className="text-muted">{k}</dt>
                 <dd>{v}</dd>
               </div>
             ))}
@@ -352,7 +380,7 @@ export default function Home() {
             <h2 className="display text-3xl sm:text-4xl mb-4">
               Hi, I&apos;m Sandra.
             </h2>
-            <p className="font-mono text-[15px] leading-relaxed text-ink-soft">
+            <p className="prose-text text-ink-soft">
               I study computer science at Cornell Engineering. On the side, I lead CUAir&apos;s
               Intelligence subteam, which owns the{" "}
               <Link
@@ -366,18 +394,20 @@ export default function Home() {
               of code I play piano and violin, and write duets where I play both parts.
             </p>
             <div className="mt-5">
-              <Link href="/about" className="arrow-link text-xs font-mono">
+              <Link href="/about" className="arrow-link text-sm font-mono">
                 more about me
               </Link>
             </div>
           </div>
         </div>
       </section>
+      </Reveal>
 
       {/* CONTACT: same thing `cat contact.txt` prints */}
+      <Reveal>
       <section id="contact" className="mx-auto max-w-6xl px-5 mt-28 scroll-mt-24">
         <h2 className="display text-4xl sm:text-6xl">Let&apos;s talk<span className="text-pink">.</span></h2>
-        <p className="mt-4 max-w-2xl font-mono text-[15px] leading-relaxed text-ink-soft">
+        <p className="mt-4 prose-text text-ink-soft">
           For an internship, a project, or just to talk about music:
         </p>
         <dl className="mt-6 font-mono text-[15px] sm:text-[18px] leading-loose">
@@ -388,7 +418,7 @@ export default function Home() {
             { k: "github", v: "github.com/mcorgi", href: contact.github, external: true },
           ].map((c) => (
             <div key={c.k} className="grid grid-cols-[84px_1fr] sm:grid-cols-[120px_1fr]">
-              <dt className="opacity-50">{c.k}</dt>
+              <dt className="text-muted">{c.k}</dt>
               <dd className="min-w-0 [overflow-wrap:anywhere]">
                 <a
                   href={c.href}
@@ -402,11 +432,12 @@ export default function Home() {
             </div>
           ))}
         </dl>
-        <p className="mt-6 font-mono text-[12.5px] opacity-60">
-          (Or type <span className="text-accent">cat contact.txt</span> in the terminal up top.
+        <p className="mt-6 font-sans text-[15px] text-muted">
+          (Or type <span className="font-mono text-accent">cat contact.txt</span> in the terminal up top.
           Same thing.)
         </p>
       </section>
+      </Reveal>
     </div>
   );
 }

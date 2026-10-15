@@ -5,12 +5,13 @@ import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 import { useTerminal } from "./TerminalProvider";
 import TerminalView from "./TerminalView";
+import TerminalTitleBar from "./TerminalTitleBar";
 
 // The home page has the terminal inline. Everywhere else it lives in a
 // corner so `cd ..` and friends keep working as you move around.
 export default function FloatingTerminal() {
   const pathname = usePathname();
-  const { floatingOpen, setFloatingOpen, prompt } = useTerminal();
+  const { floatingOpen, setFloatingOpen } = useTerminal();
   const onHome = (pathname.replace(/\/+$/, "") || "/") === "/";
 
   // ` toggles the terminal (when you're not typing somewhere else).
@@ -42,21 +43,10 @@ export default function FloatingTerminal() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.98 }}
             transition={{ duration: 0.2 }}
-            className="pointer-events-auto w-full sm:w-[540px] window"
+            className="pointer-events-auto w-full sm:w-[540px] window terminal-window"
           >
-            <div className="window-title">
-              <span className="truncate">sandra@cornell: {prompt}</span>
-              <button
-                type="button"
-                onClick={() => setFloatingOpen(false)}
-                className="ml-auto text-[11px] opacity-70 hover:opacity-100"
-              >
-                minimize ✕
-              </button>
-            </div>
-            <div className="scanlines">
-              <TerminalView heightClass="h-[240px] sm:h-[280px]" autoFocus />
-            </div>
+            <TerminalTitleBar onClose={() => setFloatingOpen(false)} />
+            <TerminalView heightClass="h-[240px] sm:h-[280px]" autoFocus />
           </motion.div>
         )}
       </AnimatePresence>

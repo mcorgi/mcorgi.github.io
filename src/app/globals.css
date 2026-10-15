@@ -4,8 +4,9 @@
   /* cool blue retro palette */
   --cream: #f5f8fd;        /* near-white, very subtle cool tint — primary bg */
   --cream-2: #e3ecf7;      /* light blue-gray — secondary bg / cards */
-  --ink: #122142;          /* deep navy — text / borders */
-  --ink-soft: #3d4f74;     /* medium slate blue — body text */
+  --ink: #111111;          /* near-black — headings, text */
+  --ink-soft: #262626;     /* body text */
+  --navy: #122142;         /* deep navy — dark panels, code blocks, the nav pill */
   --accent: #2a5fd0;       /* rich royal blue — primary accent */
   --accent-2: #5fa0d6;     /* lighter sky blue — secondary */
   --accent-3: #54b6bf;     /* cool teal — tertiary for variety */
@@ -13,6 +14,10 @@
   --pink-ink: #c9407c;     /* deeper pink for text on light backgrounds */
   --pink-soft: #fbe4ef;    /* pale pink for fills */
   --line: #122142;
+  --muted: #5c5f66;        /* secondary text: 6.0:1 on the page, 5.4:1 on cream-2 */
+  --ok: #2e7d32;           /* terminal output: success, error, warning */
+  --err: #c0392b;
+  --warn: #b7791f;
 }
 
 @theme inline {
@@ -20,6 +25,7 @@
   --color-cream-2: var(--cream-2);
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
+  --color-navy: var(--navy);
   --color-accent: var(--accent);
   --color-accent-2: var(--accent-2);
   --color-accent-3: var(--accent-3);
@@ -27,7 +33,9 @@
   --color-pink-ink: var(--pink-ink);
   --color-pink-soft: var(--pink-soft);
   --color-line: var(--line);
+  --color-muted: var(--muted);
 
+  --font-sans: var(--font-sans);
   --font-display: var(--font-display);
   --font-mono: var(--font-mono);
   --font-retro: var(--font-retro);
@@ -46,10 +54,64 @@ body {
   background-color: var(--cream);
   color: var(--ink);
   font-family: var(--font-mono), ui-monospace, monospace;
-  /* dot-grid notebook paper; anything sitting on the page gets a solid background */
-  background-image:
-    radial-gradient(circle at 1px 1px, rgba(18, 33, 66, 0.08) 1px, transparent 0);
+}
+
+/* Dot-grid notebook paper, on its own layer so it can stay in the margins and
+   clear out of the content column (max-w-6xl), where the text is. On narrow
+   screens there's no margin, so the page is plain. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: radial-gradient(circle at 1px 1px, rgba(18, 33, 66, 0.08) 1px, transparent 0);
   background-size: 22px 22px;
+  --clear: linear-gradient(90deg, #000 calc(50% - 640px), transparent calc(50% - 580px), transparent calc(50% + 580px), #000 calc(50% + 640px));
+  -webkit-mask-image: var(--clear);
+  mask-image: var(--clear);
+}
+
+/* Dark navy panels: text inside them flips to light, including muted text. */
+.surface-dark {
+  --ink: #f5f8fd;
+  --ink-soft: #d5dcea;
+  --muted: #aeb9d1;        /* 8:1 on navy */
+  background-color: var(--navy);
+  color: var(--ink);
+}
+
+/* Reading text: a sans-serif, sized and measured for paragraphs. */
+.prose-text {
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  max-width: 65ch;
+}
+
+/* Projects lift and grow a touch on hover. */
+@media (prefers-reduced-motion: no-preference) {
+  .lift { transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1); }
+  .lift:hover { transform: translateY(-4px) scale(1.012); }
+}
+
+/* Motion, kept subtle. The hero arrives on load; sections drift up 8px as they
+   scroll in (Reveal adds .reveal-pending only to things below the fold, so
+   nothing is hidden if JavaScript never runs). Reduced motion turns it all off. */
+@keyframes arrive {
+  from { opacity: 0.45; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .arrive { animation: arrive 0.65s cubic-bezier(0.22, 0.61, 0.36, 1) both; }
+  .arrive-2 { animation-delay: 0.12s; }
+  .arrive-3 { animation-delay: 0.24s; }
+  .reveal {
+    transition: opacity 0.6s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+  .reveal-pending { opacity: 0; transform: translateY(8px); }
+  .reveal img { transition: transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1); }
+  .reveal-pending img { transform: scale(0.985); }
 }
 
 /* frame for the terminals and the in-page demos (the only boxed things left) */
@@ -81,9 +143,8 @@ body {
   padding: 4px 10px;
   border: 1.2px solid var(--line);
   border-radius: 999px;
-  font-size: 11px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.01em;
   background: var(--cream);
 }
 
@@ -126,24 +187,56 @@ body {
   color: var(--accent);
 }
 
-/* scanline accent for retro feel */
-.scanlines {
-  position: relative;
+/* The terminal: a navy window with a soft shadow. It re-points the palette,
+   so the prompt, output colors and chips inside all follow. */
+.terminal-window {
+  --cream: #122142;
+  --cream-2: #1d2d55;
+  --ink: #eef3fb;
+  --ink-soft: #c3cde2;
+  --muted: #9fadc9;
+  --accent: #8db4ff;
+  --accent-2: #9ad0f5;
+  --pink: #f08cb5;
+  --pink-ink: #f39bc2;
+  --line: #0a1328;
+  --ok: #7ee2a0;
+  --err: #ff8a80;
+  --warn: #f6c56b;
+  background: var(--cream);
+  color: var(--ink);
+  box-shadow: 0 14px 32px -12px rgba(18, 33, 66, 0.45);
 }
-.scanlines::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(18, 33, 66, 0.04) 0px,
-    rgba(18, 33, 66, 0.04) 1px,
-    transparent 1px,
-    transparent 3px
-  );
-  border-radius: inherit;
+
+/* Its title bar: close, minimize and maximize buttons, then the title. */
+.term-titlebar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 9px 14px;
+  background: #0e1a36;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 14px;
 }
+.term-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 11px;
+  line-height: 1;
+}
+.term-btn--close {
+  background: var(--pink);
+  color: #122142;
+}
+button.term-btn--close:hover { filter: brightness(1.1); }
 
 /* selection */
 ::selection {
@@ -167,6 +260,7 @@ html {
   --accent-2: #9b87f5;     /* light violet */
   --accent-3: #d06bb8;     /* orchid */
   --line: #2b2166;         /* indigo outlines + offset shadows */
+  --muted: #5e5689;
   color: var(--ink);
   background-color: var(--cream);
   background-image:
@@ -191,6 +285,7 @@ html {
   --pink-ink: #a8161b;
   --pink-soft: #f6dcd9;
   --line: #0e0d0c;
+  --muted: #655e57;
   color: var(--ink);
   background-color: var(--cream);
   background-image:
@@ -213,6 +308,7 @@ html {
   --pink-ink: #ec3b40;
   --pink-soft: #2a1514;
   --line: #3a3531;
+  --muted: #9a938a;
   color: var(--ink);
 }
 
@@ -230,6 +326,7 @@ html {
   --pink-ink: #b5404f;     /* deep rose for small text */
   --pink-soft: #fde9e4;    /* blush fill */
   --line: #3a2a22;
+  --muted: #735a50;
   color: var(--ink);
   background-color: var(--cream);
   background-image:
@@ -300,6 +397,7 @@ html {
   --pink: #d7849a;
   --pink-ink: #a93a5c;
   --line: #3b1520;
+  --muted: #744c54;
   color: var(--ink);
   background-color: var(--cream);
   background-image: radial-gradient(circle at 1px 1px, rgba(59, 21, 32, 0.08) 1px, transparent 0);

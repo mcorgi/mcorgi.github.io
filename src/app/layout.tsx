@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, JetBrains_Mono, VT323, Caveat } from "next/font/google";
+import { Space_Grotesk, JetBrains_Mono, VT323, Caveat, Instrument_Sans } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -8,6 +8,12 @@ import FloatingTerminal from "@/components/terminal/FloatingTerminal";
 
 const grotesk = Space_Grotesk({
   variable: "--font-display",
+  subsets: ["latin"],
+});
+
+// Reading text: paragraphs, captions, card copy.
+const sans = Instrument_Sans({
+  variable: "--font-sans",
   subsets: ["latin"],
 });
 
@@ -43,7 +49,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${grotesk.variable} ${mono.variable} ${retro.variable} ${hand.variable} h-full antialiased`}
+      className={`${grotesk.variable} ${sans.variable} ${mono.variable} ${retro.variable} ${hand.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-cream text-ink">
         <TerminalProvider>

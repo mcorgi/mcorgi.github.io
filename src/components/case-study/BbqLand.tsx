@@ -12,7 +12,7 @@ export default function BbqLand({ project: p }: { project: Project }) {
     <div className="theme-bbq">
       <div className="mx-auto max-w-5xl px-5 pt-10 pb-24">
         <Reveal>
-          <div className="flex items-center gap-2 font-mono text-xs opacity-70">
+          <div className="flex items-center gap-2 font-mono text-[14px] text-muted">
             <Link href="/projects" className="hover:text-accent">
               ← projects
             </Link>
@@ -24,8 +24,8 @@ export default function BbqLand({ project: p }: { project: Project }) {
         {/* HERO */}
         <Reveal>
           <div className="mt-6">
-            <div className="font-mono text-[11px] uppercase tracking-widest opacity-70 mb-3 flex flex-wrap items-center gap-2">
-              <span className="tag !py-0.5 !px-2 text-[10px]">live</span>
+            <div className="font-mono text-[14px] text-muted mb-3 flex flex-wrap items-center gap-2">
+              <span className="tag !py-0.5 !px-2 text-[14px]">live</span>
               <span>· {p.org}</span>
               <span>· {p.year}</span>
             </div>
@@ -35,7 +35,7 @@ export default function BbqLand({ project: p }: { project: Project }) {
             <p className="mt-3 font-display text-xl sm:text-2xl text-ink-soft max-w-3xl">
               A website for a restaurant that didn&apos;t have one.
             </p>
-            <p className="mt-5 max-w-3xl font-mono text-[15px] leading-relaxed text-ink-soft">
+            <p className="mt-5 max-w-3xl font-sans text-[17px] leading-relaxed text-ink-soft">
               BBQ Land is a new Asian grill &amp; barbecue restaurant in Shrewsbury, MA. It had no
               web presence at all, so I designed and built its website from scratch and launched
               it during soft opening. The next day the owner sent feedback, and I redesigned the
@@ -55,7 +55,7 @@ export default function BbqLand({ project: p }: { project: Project }) {
                 href={p.repo}
                 target="_blank"
                 rel="noreferrer noopener"
-                className="font-mono text-[13px] underline decoration-pink underline-offset-4 hover:text-accent"
+                className="font-mono text-[14px] underline decoration-pink underline-offset-4 hover:text-accent"
               >
                 source on GitHub ↗
               </a>
@@ -111,14 +111,14 @@ export default function BbqLand({ project: p }: { project: Project }) {
             </p>
           </Prose>
           <Reveal>
-            <div className="flex flex-wrap gap-2 font-mono text-[13px]">
+            <div className="flex flex-wrap gap-2 font-mono text-[14px]">
               {["Home", "Menu", "Reservations", "About"].map((page) => (
                 <span key={page} className="rounded-md border-[1.5px] border-line bg-cream-2 px-3 py-1">
                   {page}
                 </span>
               ))}
             </div>
-            <p className="mt-3 max-w-3xl font-mono text-[12.5px] text-ink-soft">
+            <p className="mt-3 max-w-3xl font-mono text-[14px] text-ink-soft">
               The old Contact, Drinks, and Savenor&apos;s pages redirect to Reservations, the
               menu&apos;s drinks section, and About, so existing links and Google results still
               work.
@@ -184,7 +184,7 @@ export default function BbqLand({ project: p }: { project: Project }) {
               caption="Further down: every dish has an Order link to its own Toast page."
             />
           </div>
-          <p className="max-w-3xl font-mono text-[12.5px] text-ink-soft">
+          <p className="max-w-3xl font-mono text-[14px] text-ink-soft">
             Gone from the first version: live search, the filters, the per-person price toggle,
             and the lightbox.
           </p>
@@ -255,7 +255,7 @@ export default function BbqLand({ project: p }: { project: Project }) {
               </p>
             </Card>
           </div>
-          <p className="max-w-3xl font-mono text-[12.5px] text-ink-soft">
+          <p className="max-w-3xl font-mono text-[14px] text-ink-soft">
             Gone from the first version: the masonry gallery, its lightbox, and the
             hover-to-swap favorites.
           </p>
@@ -288,8 +288,8 @@ export default function BbqLand({ project: p }: { project: Project }) {
                         className="h-7 w-7 rounded-md border-[1.5px] border-line"
                         style={{ background: hex }}
                       />
-                      <span className="text-[11.5px]">
-                        {name} <span className="opacity-60">{hex}</span>
+                      <span className="text-[14px]">
+                        {name} <span className="text-muted">{hex}</span>
                       </span>
                     </div>
                   ))}

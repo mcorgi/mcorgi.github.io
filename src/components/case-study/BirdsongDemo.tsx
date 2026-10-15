@@ -175,18 +175,18 @@ export default function BirdsongDemo() {
     <div className="window">
       <div className="window-title">
         <span className="truncate">birdsong.synth — in your browser</span>
-        <span className="ml-auto text-[11px] opacity-70 hidden sm:inline">turn your volume down a little</span>
+        <span className="ml-auto text-[14px] text-muted hidden sm:inline">turn your volume down a little</span>
       </div>
 
       <div className="p-5 sm:p-6 space-y-5 bg-cream">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
-            <div className="font-mono text-[11px] uppercase tracking-widest opacity-60">pitch</div>
+            <div className="font-mono text-[14px] text-muted">pitch</div>
             <div className="display text-4xl sm:text-5xl tabular-nums text-accent">
               {hz.toLocaleString()} <span className="text-2xl">Hz</span>
             </div>
           </div>
-          <div className="font-mono text-[12px] text-ink-soft text-right">
+          <div className="font-mono text-[14px] text-ink-soft text-right">
             <span
               className={`inline-block h-2.5 w-2.5 rounded-full mr-2 align-middle ${
                 mode === "recording"
@@ -221,14 +221,14 @@ export default function BirdsongDemo() {
             onPointerDown={() => audio()}
             className="w-full accent-[var(--accent)] h-8 cursor-pointer disabled:opacity-50"
           />
-          <div className="flex justify-between font-mono text-[10.5px] opacity-60">
+          <div className="flex justify-between font-mono text-[14px] text-muted">
             <span>0 Hz (silent)</span>
             <span>5 kHz</span>
             <span>10 kHz</span>
           </div>
         </label>
 
-        <div className="flex flex-wrap gap-2.5 font-mono text-[13px]">
+        <div className="flex flex-wrap gap-2.5 font-mono text-[14px]">
           <button
             type="button"
             onClick={() => {
@@ -258,7 +258,7 @@ export default function BirdsongDemo() {
             type="button"
             onClick={() => play(rec)}
             disabled={mode !== "idle" || rec.length === 0}
-            className="arrow-link !bg-ink !text-cream disabled:opacity-40"
+            className="arrow-link !bg-navy !text-cream disabled:opacity-40"
           >
             <Key dark>1</Key> ▶ play back at 10×
           </button>
@@ -278,7 +278,7 @@ export default function BirdsongDemo() {
 
         <Trace samples={rec} playhead={playhead} />
 
-        <p className="font-mono text-[12px] leading-relaxed text-ink-soft">
+        <p className="font-mono text-[14px] leading-relaxed text-ink-soft">
           {rec.length > 0 ? (
             <>
               {rec.length.toLocaleString()} samples · recorded over{" "}
@@ -300,7 +300,7 @@ function Key({ children, dark = false }: { children: string; dark?: boolean }) {
   return (
     <span
       aria-hidden
-      className={`inline-flex h-5 min-w-5 items-center justify-center rounded border px-1 text-[11px] mr-1.5 ${
+      className={`inline-flex h-5 min-w-5 items-center justify-center rounded border px-1 text-[14px] mr-1.5 ${
         dark ? "border-cream/50" : "border-line/60 bg-cream-2"
       }`}
     >
@@ -338,7 +338,7 @@ function Trace({ samples, playhead }: { samples: number[]; playhead: number | nu
             key={i}
             points={pts}
             fill="none"
-            stroke="var(--ink)"
+            stroke="var(--navy)"
             strokeWidth={2.5}
             strokeLinejoin="round"
             vectorEffect="non-scaling-stroke"

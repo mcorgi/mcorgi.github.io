@@ -5,13 +5,13 @@ import Typewriter from "@/components/Typewriter";
 import { Seg, Tone, useTerminal } from "./TerminalProvider";
 
 const toneClass: Record<Tone, string> = {
-  dim: "opacity-60",
+  dim: "text-muted",
   accent: "text-accent",
   accent2: "text-accent-2",
   pink: "text-pink-ink",
-  ok: "text-[#2e7d32]",
-  err: "text-[#c0392b]",
-  warn: "text-[#b7791f]",
+  ok: "text-[var(--ok)]",
+  err: "text-[var(--err)]",
+  warn: "text-[var(--warn)]",
   bold: "font-semibold",
 };
 
@@ -145,7 +145,7 @@ export default function TerminalView({
                 e.stopPropagation();
                 submit(c);
               }}
-              className="rounded-md border border-line/40 bg-cream-2/70 px-2 py-0.5 text-[11.5px] hover:bg-ink hover:text-cream transition-colors"
+              className="rounded-md border border-ink/25 bg-cream-2/70 px-2.5 py-0.5 text-[14px] hover:bg-ink hover:text-cream transition-colors"
             >
               {c}
             </button>
