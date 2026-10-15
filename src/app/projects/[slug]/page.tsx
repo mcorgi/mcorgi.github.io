@@ -8,6 +8,7 @@ import AnalyticsPlatform from "@/components/case-study/AnalyticsPlatform";
 import BirdsongSynth from "@/components/case-study/BirdsongSynth";
 import BbqLand from "@/components/case-study/BbqLand";
 import SongSaver from "@/components/case-study/SongSaver";
+import PiRobot from "@/components/case-study/PiRobot";
 import { LinkList } from "@/components/case-study/Parts";
 
 // Projects with a hand-built long-form page instead of the generic template.
@@ -18,6 +19,7 @@ const caseStudies = {
   "birdsong-synthesizer": BirdsongSynth,
   "bbq-land": BbqLand,
   "song-saver": SongSaver,
+  "pi-robot": PiRobot,
 } as const;
 
 export function generateStaticParams() {

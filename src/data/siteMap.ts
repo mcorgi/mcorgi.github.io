@@ -39,6 +39,18 @@ export const birdsongSections: SectionLink[] = [
   { id: "problems", label: "what went wrong" },
 ];
 
+export const robotSections: SectionLink[] = [
+  { id: "overview", label: "overview" },
+  { id: "play", label: "drive it" },
+  { id: "hardware", label: "hardware" },
+  { id: "stop", label: "stopping" },
+  { id: "buttons", label: "buttons" },
+  { id: "screen", label: "screen" },
+  { id: "loop", label: "the loop" },
+  { id: "boot", label: "boot" },
+  { id: "learned", label: "learned" },
+];
+
 export const analyticsSections: SectionLink[] = [
   { id: "overview", label: "overview" },
   { id: "skills", label: "what i learned" },

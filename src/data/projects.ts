@@ -294,6 +294,28 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: "pi-robot",
+    title: "Raspberry Pi Robot",
+    subtitle: "A two-wheeled robot that boots straight into a touchscreen control panel",
+    org: "ECE 5725 · Cornell University",
+    role: "Wired and assembled the robot and wrote its Python control software, from a blinking LED up to the boot-time test program.",
+    blurb:
+      "Two DC motors, a TB6612 motor driver and a Raspberry Pi with a 320×240 touchscreen, on an acrylic chassis with its own batteries. It boots into a control panel, runs a forward, back and pivot test loop at full speed, and stops the moment you hit the red panic button, then picks up where it left off.",
+    description:
+      "Lab 3 of ECE 5725 (Design with Embedded Operating Systems): a self-contained robot built on a Raspberry Pi. Python drives two DC gearmotors through a TB6612FNG dual motor driver with PWM from RPi.GPIO, a pygame interface on the piTFT shows each motor's state and recent history with panic stop, resume and quit buttons, and cron launches the test program at boot so the robot runs with no cables attached.",
+    stack: ["Python", "RPi.GPIO", "PWM", "pygame", "piTFT", "TB6612FNG", "Raspberry Pi", "cron", "bash"],
+    tags: ["Embedded", "Python", "Robotics", "Raspberry Pi", "Embedded Linux"],
+    year: "Oct 2026",
+    readTime: "5 min",
+    status: "shipped",
+    links: [
+      {
+        label: "Source code",
+        note: "course code, not public",
+      },
+    ],
+  },
+  {
     slug: "birdsong-synthesizer",
     title: "Birdsong Synthesizer",
     subtitle: "Real-time audio synthesis in C on an RP2350, played with a slider and a keypad",

@@ -185,6 +185,14 @@ export default function AboutPage() {
               link: { href: "/projects/bbq-land", label: "case study" },
             },
             {
+              when: "Oct 2026",
+              role: "Raspberry Pi Robot",
+              where: "ECE 5725 · Python · Raspberry Pi",
+              kind: "project",
+              what: "A battery-powered two-wheeled robot driven through a TB6612FNG motor driver with PWM from RPi.GPIO. A pygame control panel on the piTFT touchscreen shows each motor's state and history with panic stop and resume, the test pattern runs as a table checked by a 50 ms main loop so a stop is never blocked by a sleep, and cron launches it at boot.",
+              link: { href: "/projects/pi-robot", label: "case study" },
+            },
+            {
               when: "Fall 2026",
               role: "Birdsong Synthesizer",
               where: "ECE 4760 · C · RP2350",

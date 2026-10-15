@@ -9,6 +9,7 @@ import { BirdIcon, Bubble, CameraIcon, Float, SatelliteIcon } from "@/components
 import { FlyingPlane, GrillScene } from "@/components/Illustrations";
 import FeaturedProject from "@/components/FeaturedProject";
 import Reveal from "@/components/Reveal";
+import { PiTftSnapshot } from "@/components/case-study/RobotDemo";
 import { featuredProjects, visibleProjects } from "@/data/projects";
 import { contact } from "@/data/siteMap";
 
@@ -281,6 +282,41 @@ export default function Home() {
                     <p className="absolute -left-10 bottom-6 -rotate-6 rounded-sm bg-pink-soft px-4 py-2 font-hand text-[24px] leading-none text-ink shadow-[3px_3px_0_0_var(--pink)]">
                       paste, wait, save <span aria-hidden>♪</span>
                     </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+
+          {/* Raspberry Pi Robot, next to its control panel */}
+          <Reveal className="py-12">
+            <div className="lift">
+              <div className="relative">
+                <div aria-hidden className="absolute inset-0 translate-x-2.5 translate-y-2.5 rounded-2xl bg-accent-3" />
+                <div className="relative grid md:grid-cols-[1.15fr_1fr] gap-10 items-center rounded-2xl border-[1.5px] border-line bg-cream p-6 sm:p-10">
+                  <div>
+                    <span className="inline-flex items-center rounded-full border-[1.5px] border-line bg-cream-2 px-3 py-1 font-mono text-[14px]">
+                      a class project · ECE 5725
+                    </span>
+                    <h3 className="display text-[34px] sm:text-[44px] leading-[0.95] mt-5">
+                      <Link href="/projects/pi-robot" className="hover:text-accent transition-colors">
+                        Raspberry Pi Robot<span className="text-accent-3">.</span>
+                      </Link>
+                    </h3>
+                    <p className="mt-4 font-display text-xl sm:text-2xl leading-snug">
+                      Power it on, press START, and it drives itself until you hit the red button.
+                    </p>
+                    <p className="mt-4 max-w-[60ch] font-sans text-[17px] leading-relaxed text-ink-soft">
+                      Two motors, a motor driver and a Raspberry Pi with a little touchscreen, all on
+                      their own batteries. It boots into a control panel I wrote in pygame and runs a
+                      test pattern that a panic stop can pause mid-move.
+                    </p>
+                    <Link href="/projects/pi-robot#play" className="mt-6 arrow-link text-sm font-mono">
+                      drive it in your browser
+                    </Link>
+                  </div>
+                  <div className="rounded-xl border-[1.5px] border-line bg-navy p-3 shadow-[4px_4px_0_0_var(--line)]">
+                    <PiTftSnapshot />
                   </div>
                 </div>
               </div>

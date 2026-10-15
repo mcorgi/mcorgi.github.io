@@ -5,6 +5,7 @@ import {
   bbqSections,
   birdsongSections,
   mpsSections,
+  robotSections,
   songSaverSections,
   suasSections,
   type SectionLink,
@@ -28,6 +29,7 @@ const projectSections: Record<string, SectionLink[]> = {
   "birdsong-synthesizer": birdsongSections,
   "bbq-land": bbqSections,
   "song-saver": songSaverSections,
+  "pi-robot": robotSections,
 };
 
 const sectionDirs = (base: string, sections: SectionLink[]): FsNode[] =>
