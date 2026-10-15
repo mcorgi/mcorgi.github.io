@@ -68,48 +68,32 @@ export function SatelliteScene({ className = "" }: { className?: string }) {
   );
 }
 
-// A plane flying laps around a dashed course. Background for the SUAS block.
-export function FlyingPlane({ className = "" }: { className?: string }) {
-  const course = "M 170 70 H 630 A 110 110 0 0 1 630 290 H 170 A 110 110 0 0 1 170 70 Z";
-  // Top-down plane, nose pointing +x so rotate="auto" follows the path.
-  const plane = (
-    <g fill="#f5f8fd" transform="scale(1.7)">
-      <path d="M15 0 L9 -2.2 L-12 -2 L-15 0 L-12 2 L9 2.2 Z" />
-      <path d="M3 -2 L-3 -17 L-8 -17 L-5 -2 Z" />
-      <path d="M3 2 L-3 17 L-8 17 L-5 2 Z" />
-      <path d="M-10 -2 L-14 -7.5 L-16.5 -7.5 L-14.5 -2 Z" />
-      <path d="M-10 2 L-14 7.5 L-16.5 7.5 L-14.5 2 Z" />
-    </g>
-  );
-
+// A plane towing a flag across the full width of the SUAS banner, left to
+// right, leaving a dashed trail. Parked mid-flight for reduced motion (see
+// .fly-across in globals.css).
+export function PlaneBanner({ flag }: { flag: string }) {
   return (
-    <svg
-      viewBox="0 0 800 360"
-      preserveAspectRatio="xMidYMid slice"
-      aria-hidden
-      className={`pointer-events-none ${className}`}
-    >
-      <path d={course} fill="none" stroke="#f5f8fd" strokeOpacity="0.1" strokeWidth="2" strokeDasharray="6 10" />
-      {[
-        [170, 70],
-        [630, 70],
-        [740, 180],
-        [630, 290],
-        [170, 290],
-        [60, 180],
-      ].map(([x, y]) => (
-        <circle key={`${x}-${y}`} cx={x} cy={y} r="4" fill="#e0679a" opacity="0.7" />
-      ))}
-      <g opacity="0.35">
-        <g className="motion-only">
-          {plane}
-          <animateMotion dur="16s" repeatCount="indefinite" path={course} rotate="auto" />
-        </g>
-        <g className="still-only" transform="translate(420 70)">
-          {plane}
-        </g>
-      </g>
-    </svg>
+    <div aria-hidden className="pointer-events-none relative h-12 overflow-hidden border-b border-dashed border-cream/15">
+      <div className="fly-across absolute inset-y-0 left-0 w-full">
+        <div className="absolute right-full top-1/2 flex -translate-y-1/2 items-center">
+          <span className="absolute right-full top-1/2 w-screen border-t-2 border-dashed border-cream/20" />
+          <span className="whitespace-nowrap rounded-sm bg-pink px-3 py-0.5 font-mono text-[13px] tracking-wide text-white shadow-[2px_2px_0_0_var(--line)]">
+            {flag}
+          </span>
+          <span className="w-8 border-t border-cream/60" />
+          {/* top-down plane, nose pointing right */}
+          <svg viewBox="-18 -18 36 36" className="h-10 w-10 shrink-0">
+            <g fill="#f5f8fd">
+              <path d="M15 0 L9 -2.2 L-12 -2 L-15 0 L-12 2 L9 2.2 Z" />
+              <path d="M3 -2 L-3 -17 L-8 -17 L-5 -2 Z" />
+              <path d="M3 2 L-3 17 L-8 17 L-5 2 Z" />
+              <path d="M-10 -2 L-14 -7.5 L-16.5 -7.5 L-14.5 -2 Z" />
+              <path d="M-10 2 L-14 7.5 L-16.5 7.5 L-14.5 2 Z" />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
   );
 }
 

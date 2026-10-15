@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import TerminalView from "@/components/terminal/TerminalView";
 import TerminalTitleBar from "@/components/terminal/TerminalTitleBar";
 import { BirdIcon, Bubble, CameraIcon, Float, SatelliteIcon } from "@/components/HeroLinks";
-import { FlyingPlane, GrillScene } from "@/components/Illustrations";
+import { GrillScene, PlaneBanner } from "@/components/Illustrations";
 import FeaturedProject from "@/components/FeaturedProject";
 import Reveal from "@/components/Reveal";
 import { featuredProjects, visibleProjects } from "@/data/projects";
@@ -208,7 +208,50 @@ export default function Home() {
               </div>
             </div>
           </Reveal>
+        </div>
+      </section>
 
+      {/* SUAS 2026: a thin banner across the whole page, tilted a little, with a
+          plane towing a flag from left to right along the top */}
+      <Reveal>
+        <section aria-labelledby="suas-banner" className="relative my-14 overflow-x-clip py-5">
+          <div className="relative -mx-6 -rotate-[1.2deg]">
+            <div aria-hidden className="absolute inset-0 translate-y-2.5 bg-pink" />
+            <div className="surface-dark relative border-y-[1.5px] border-line text-cream">
+              <PlaneBanner flag="CUAir · SUAS 2026" />
+              <div className="mx-auto grid max-w-6xl gap-8 px-11 py-7 lg:grid-cols-[1fr_1.9fr] lg:items-start">
+                <div>
+                  <div className="font-mono text-[14px] opacity-80">Skyway Range, Tulsa · Sep 14–17, 2026</div>
+                  <h2 id="suas-banner" className="display mt-2 text-3xl sm:text-4xl">
+                    On the flightline at SUAS 2026
+                  </h2>
+                  <p className="mt-3 max-w-[48ch] font-sans text-[16px] leading-relaxed opacity-90">
+                    I was CUAir&apos;s Intelligence operator, the one person running our imaging
+                    pipeline during live missions. It didn&apos;t all go well.
+                  </p>
+                  <Link
+                    href="/suas-2026"
+                    className="mt-5 inline-flex items-center gap-2 rounded-lg border-[1.5px] border-cream px-4 py-2 font-mono text-sm hover:bg-cream hover:text-ink transition-colors"
+                  >
+                    the whole week →
+                  </Link>
+                </div>
+                <dl className="grid grid-cols-2 gap-x-6 gap-y-5 font-sans text-[15px] leading-snug sm:grid-cols-4">
+                  {flightLog.map(([day, entry]) => (
+                    <div key={day} className="border-t border-cream/20 pt-3">
+                      <dt className="font-mono text-[14px] tracking-widest text-pink">{day}</dt>
+                      <dd className="mt-1.5 opacity-90">{entry}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            </div>
+          </div>
+        </section>
+      </Reveal>
+
+      <section className="mx-auto max-w-6xl px-5">
+        <div className="divide-y-[1.5px] divide-line">
           {/* BBQ Land, dark like bbqlandma.com's hero */}
           <Reveal className="py-12">
             <div className="lift">
@@ -348,50 +391,6 @@ export default function Home() {
           </Reveal>
         </div>
       </section>
-
-      {/* SUAS: dark panel, with a plane flying laps behind the text */}
-      <Reveal>
-      <section className="mx-auto max-w-6xl px-5 mt-24">
-        <h2 className="display text-3xl sm:text-4xl mb-8">
-          On the flightline at SUAS 2026
-        </h2>
-        <div className="relative">
-          <div aria-hidden className="absolute inset-0 translate-x-2.5 translate-y-2.5 rounded-2xl bg-pink" />
-          <div className="surface-dark relative overflow-hidden rounded-2xl border-[1.5px] border-line text-cream">
-            <FlyingPlane className="absolute inset-0 h-full w-full" />
-            <div className="relative grid lg:grid-cols-[1fr_1.2fr] gap-10 p-6 sm:p-10">
-              <div>
-                <p className="font-display text-2xl sm:text-3xl leading-tight">
-                  I was CUAir&apos;s Intelligence operator, the one person running our imaging
-                  pipeline during live missions.
-                </p>
-                <p className="mt-4 max-w-[60ch] font-sans text-[17px] leading-relaxed opacity-90">
-                  Bring-up, launch, watching every photo land on the ground over the radio link,
-                  and stepping in when something stalled. It didn&apos;t all go well.
-                </p>
-                <Link
-                  href="/suas-2026"
-                  className="mt-6 inline-flex items-center gap-2 rounded-lg border-[1.5px] border-cream px-4 py-2 font-mono text-sm hover:bg-cream hover:text-ink transition-colors"
-                >
-                  the whole week →
-                </Link>
-              </div>
-              <dl className="font-sans text-[16px] leading-relaxed">
-                <div className="mb-3 font-mono text-[14px] opacity-80">
-                  Skyway Range, Tulsa · Sep 14–17, 2026
-                </div>
-                {flightLog.map(([day, entry]) => (
-                  <div key={day} className="grid grid-cols-[56px_1fr] gap-3 py-3 border-t border-cream/15">
-                    <dt className="font-mono text-pink tracking-widest text-[14px] pt-0.5">{day}</dt>
-                    <dd className="opacity-90">{entry}</dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-          </div>
-        </div>
-      </section>
-      </Reveal>
 
       {/* MORE PROJECTS, as a directory listing */}
       <Reveal>
@@ -633,7 +632,7 @@ function OpeningCountdown() {
 // SUAS 2026, one line per day. Every entry is from the /suas-2026 page.
 const flightLog: [string, string][] = [
   ["MON", "Safety inspection. Passed on the first try, at 34.9 lb."],
-  ["TUE", "Flight 1. Hooking up the pipeline and autopilot pushed takeoff to T+7. Then our first autonomous takeoff at a competition: 4 laps, almost 950 ft, 96 mph. Then the tail came off."],
-  ["WED", "Flight 2. Setup in 3:00, our record. Tipped onto the front-left prop on auto-takeoff: a taped XT60 under the wing had come loose."],
-  ["THU", "Awards. 4th for website, 11th for design report, 38th in the mission."],
+  ["TUE", "Our first autonomous takeoff at a competition: 4 laps at 96 mph. Then the tail came off."],
+  ["WED", "Setup in 3:00, our record. Then it tipped onto a prop on auto-takeoff."],
+  ["THU", "Awards: 4th for website, 11th for design report, 38th in the mission."],
 ];

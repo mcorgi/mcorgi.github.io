@@ -347,6 +347,17 @@ html {
   border-right: 1px dashed rgba(58, 42, 34, 0.15);
 }
 
+/* SUAS banner: the plane starts just off the left edge and flies until it's
+   past the right one (the flag and plane together are under 300px wide) */
+@keyframes fly-across {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(100% + 300px)); }
+}
+.fly-across { transform: translateX(70%); }
+@media (prefers-reduced-motion: no-preference) {
+  .fly-across { animation: fly-across 14s linear infinite; }
+}
+
 /* Illustrations: animate normally, hold still for reduced motion */
 .still-only { display: none; }
 @media (prefers-reduced-motion: reduce) {
