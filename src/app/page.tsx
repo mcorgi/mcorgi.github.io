@@ -149,24 +149,33 @@ export default function Home() {
             </Reveal>
           ))}
 
-          {/* Embedded projects: two class labs sharing one box, split down the middle */}
+          {/* Embedded projects: two class labs on one circuit board, split down the middle */}
           <Reveal className="py-12">
             <div className="lift">
-              <div className="relative">
-                <div aria-hidden className="absolute inset-0 translate-x-2.5 translate-y-2.5 rounded-2xl bg-accent-3" />
-                <div className="relative rounded-2xl border-[1.5px] border-line bg-cream">
-                  <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b-[1.5px] border-line px-6 py-5 sm:px-10">
-                    <h3 className="display text-[30px] sm:text-[38px] leading-none">
-                      Embedded projects
-                    </h3>
-                    <span className="font-mono text-[14px] text-muted">
-                      two labs this semester: bare-metal C, and embedded Linux
-                    </span>
+              <div className="relative rounded-2xl border-[1.5px] border-line bg-[#0e5c45] px-3 sm:px-5 shadow-[6px_6px_0_0_var(--line)] [background-image:repeating-linear-gradient(45deg,rgba(255,255,255,0.035)_0_2px,transparent_2px_9px)]">
+                {/* mounting holes */}
+                {["left-3 top-3", "right-3 top-3", "left-3 bottom-3", "right-3 bottom-3"].map((pos) => (
+                  <MountingHole key={pos} className={pos} />
+                ))}
+
+                <PcbEdge label="EMB-01 · REV F26" />
+
+                <div className="rounded-lg border-[1.5px] border-line bg-cream">
+                  <div className="flex items-start gap-4 border-b-[1.5px] border-line px-6 py-6 sm:px-10">
+                    <ChipIcon className="mt-1 h-9 w-9 shrink-0 text-accent-3" />
+                    <div>
+                      <h3 className="display text-[30px] sm:text-[38px] leading-none">
+                        Embedded projects
+                      </h3>
+                      <p className="mt-2 font-mono text-[14px] text-muted">
+                        two labs this semester: bare-metal C, and embedded Linux
+                      </p>
+                    </div>
                   </div>
                   <div className="grid md:grid-cols-2 divide-y-[1.5px] md:divide-y-0 md:divide-x-[1.5px] divide-line">
                     {embedded.map((e) => (
                       <article key={e.href} className="flex flex-col p-6 sm:p-8">
-                        <Link href={e.href} className="block overflow-hidden rounded-lg border-[1.5px] border-line">
+                        <Link href={e.href} className="relative block overflow-hidden rounded-lg border-[1.5px] border-line">
                           {/* eslint-disable-next-line @next/next/no-img-element */}
                           <img
                             src={e.img}
@@ -174,6 +183,9 @@ export default function Home() {
                             loading="lazy"
                             className={`block w-full aspect-[4/3] object-cover ${e.imgPos} transition-transform duration-500 hover:scale-[1.03]`}
                           />
+                          <span aria-hidden className="absolute left-2 top-2 rounded border border-[#f4f1e6]/70 bg-[#0e5c45] px-1.5 py-0.5 font-mono text-[12px] tracking-widest text-[#f4f1e6]">
+                            {e.refdes}
+                          </span>
                         </Link>
                         <span className="mt-5 self-start inline-flex items-center rounded-full border-[1.5px] border-line bg-cream-2 px-3 py-1 font-mono text-[14px]">
                           {e.course}
@@ -191,6 +203,8 @@ export default function Home() {
                     ))}
                   </div>
                 </div>
+
+                <PcbEdge label="ECE 4760 + ECE 5725" flip />
               </div>
             </div>
           </Reveal>
@@ -492,6 +506,7 @@ export default function Home() {
 const embedded = [
   {
     href: "/projects/birdsong-synthesizer",
+    refdes: "U1",
     title: "Birdsong Synthesizer",
     course: "ECE 4760 · C · RP2350",
     blurb:
@@ -503,6 +518,7 @@ const embedded = [
   },
   {
     href: "/projects/pi-robot",
+    refdes: "U2",
     title: "Raspberry Pi Robot",
     course: "ECE 5725 · Python · Raspberry Pi",
     blurb:
@@ -513,6 +529,87 @@ const embedded = [
     alt: "The robot from above: a Raspberry Pi with a touchscreen showing the control panel, two wheels, and a breadboard with the motor driver.",
   },
 ];
+
+// The Embedded projects box is drawn as a circuit board: green solder mask,
+// gold traces and mounting holes, white silkscreen.
+const GOLD = "#d9b45a";
+const BOARD = "#0e5c45";
+const TOP = 3; // the two trace tracks in an edge strip, in px from its top
+const BOTTOM = 11;
+
+function MountingHole({ className }: { className: string }) {
+  return <span aria-hidden className={`absolute h-5 w-5 rounded-full border-[3px] border-[#d9b45a] bg-[#062c21] ${className}`} />;
+}
+
+function Via({ y }: { y: number }) {
+  return (
+    <svg width={8} height={14} className="shrink-0">
+      <line x1={4} x2={8} y1={y} y2={y} stroke={GOLD} strokeWidth={2} />
+      <circle cx={4} cy={y} r={3.2} fill={BOARD} stroke={GOLD} strokeWidth={1.8} />
+    </svg>
+  );
+}
+
+function Trace({ y, grow }: { y: number; grow: number }) {
+  return (
+    <span
+      className="h-[2px] min-w-2"
+      style={{
+        flex: `${grow} 1 0`,
+        background: GOLD,
+        alignSelf: y === TOP ? "flex-start" : "flex-end",
+        margin: y === TOP ? "2px 0 0" : "0 0 2px",
+      }}
+    />
+  );
+}
+
+// Via, trace, a 45° jog to the other track, trace, via.
+function TraceRun({ from, reverse = false }: { from: number; reverse?: boolean }) {
+  const to = from === TOP ? BOTTOM : TOP;
+  return (
+    <span className={`flex h-[14px] min-w-0 flex-1 ${reverse ? "-scale-x-100" : ""}`}>
+      <Via y={from} />
+      <Trace y={from} grow={2} />
+      <svg width={8} height={14} className="shrink-0">
+        <path d={`M0 ${from} L8 ${to}`} stroke={GOLD} strokeWidth={2} fill="none" />
+      </svg>
+      <Trace y={to} grow={3} />
+      <Via y={to} />
+    </span>
+  );
+}
+
+// A strip along the top or bottom edge of the board: traces either side of a silkscreen label.
+function PcbEdge({ label, flip = false }: { label: string; flip?: boolean }) {
+  const from = flip ? BOTTOM : TOP;
+  return (
+    <div aria-hidden className="flex h-10 items-center gap-3 px-7 font-mono text-[11px] sm:text-[12px] tracking-[0.2em] text-[#f4f1e6]/85">
+      <TraceRun from={from} />
+      <span className="shrink-0 whitespace-nowrap">{label}</span>
+      <TraceRun from={from} reverse />
+    </div>
+  );
+}
+
+function ChipIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 36 36" aria-hidden className={className}>
+      <g stroke="var(--line)" strokeWidth={1.5}>
+        {[13, 18, 23].map((v) => (
+          <g key={v}>
+            <line x1={3} x2={8} y1={v} y2={v} />
+            <line x1={28} x2={33} y1={v} y2={v} />
+            <line y1={3} y2={8} x1={v} x2={v} />
+            <line y1={28} y2={33} x1={v} x2={v} />
+          </g>
+        ))}
+        <rect x={8} y={8} width={20} height={20} rx={2} fill="currentColor" />
+      </g>
+      <circle cx={12.5} cy={12.5} r={1.6} fill="var(--line)" />
+    </svg>
+  );
+}
 
 // Whole days to the grand opening, counted in Eastern time like bbqlandma.com
 // does. Worked out after mount so the static HTML doesn't
