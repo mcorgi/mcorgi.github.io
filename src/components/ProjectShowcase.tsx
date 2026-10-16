@@ -311,7 +311,7 @@ const flightLog: [string, string][] = [
 ];
 
 // SUAS 2026: a thin banner across the whole page, with a plane towing a flag
-// from left to right along the top. Used on the home page and /projects.
+// from left to right along the top.
 export function SuasBanner() {
   return (
     <Reveal>

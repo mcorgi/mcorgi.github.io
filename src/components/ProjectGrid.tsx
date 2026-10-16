@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ReactNode } from "react";
 import { GrillScene, SatelliteScene } from "@/components/Illustrations";
 import { ChipIcon, MountingHole, PcbEdge } from "@/components/Pcb";
-import { OpeningCountdown, SuasBanner, embedded } from "@/components/ProjectShowcase";
+import { OpeningCountdown, embedded } from "@/components/ProjectShowcase";
 import Reveal from "@/components/Reveal";
 import VerbalTerminal from "@/components/VerbalTerminal";
 import { projects } from "@/data/projects";
@@ -13,100 +13,92 @@ const mps = projects.find((p) => p.slug === "mini-plane-system");
 
 // /projects: the same projects as the home page, as smaller cards three to a
 // row, so more of them fit on screen at once. Each keeps its home page look.
+// (The SUAS banner is home page only.)
 export default function ProjectGrid() {
   return (
-    <>
-      <section className="mx-auto max-w-6xl px-5 mt-10">
-        <div className="grid gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-3 [&>*]:min-w-0">
-          <Card
-            href="/projects/mini-plane-system"
-            shadow="bg-accent"
-            badge={<Pill className="bg-accent text-cream">★ my proudest project</Pill>}
-            kicker="CUAir · 2025 – present"
-            title="Mini Plane System (MPS)"
-            blurb="The software that gets photos off our plane while it's still in the air, each one paired with GPS and attitude from the Pixhawk. I ran it from the flightline at SUAS 2026."
-            cta="read the case study"
-            visual={
-              mps?.photo && (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={mps.photo.src}
-                  alt={mps.photo.alt}
-                  loading="lazy"
-                  className="block h-full w-full object-cover scale-[2.2]"
-                  style={{ objectPosition: "46% 45%" }}
-                />
-              )
-            }
-          />
-          <Card
-            href="/projects/automated-analytics"
-            shadow="bg-[#9b87f5]"
-            theme="theme-violet"
-            badge={<Pill className="bg-accent text-cream">shipped to prod</Pill>}
-            kicker="Amazon Leo · Summer 2026"
-            title="Automated Analytics Platform"
-            blurb="A serverless service that runs engineers' analysis scripts on a schedule or when an event lands, and tickets the right person when a run breaks. In production before my internship ended."
-            cta="read the case study"
-            visual={<SatelliteScene className="!rounded-none" />}
-          />
-          <EmbeddedCard />
-        </div>
-      </section>
-
-      <SuasBanner />
-
-      <section className="mx-auto max-w-6xl px-5">
-        <div className="grid gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-3 [&>*]:min-w-0">
-          <Card
-            href="/projects/bbq-land"
-            shadow="bg-pink"
-            theme="theme-bbq-night"
-            badge={
-              <span className="flex flex-wrap items-center gap-2 font-mono text-[14px]">
-                <Pill className="bg-pink text-white">live</Pill>
-                <OpeningCountdown />
-              </span>
-            }
-            kicker="Client website · Oct 2026"
-            title="BBQ Land"
-            blurb="The first website for a new yakiniku restaurant in Shrewsbury, MA. Launched during soft opening, then redesigned the next day from the owner's feedback."
-            cta="how I built it"
-            visual={<GrillScene className="!rounded-none" />}
-          />
-          <Card
-            href="/projects/song-saver"
-            shadow="bg-pink"
-            theme="theme-cozy"
-            kicker="Personal project · for my aunt"
-            title="Song Saver"
-            blurb="YouTube-to-MP3 sites are full of pop-ups and fake Download buttons, so I made her an app of her own, right on her home screen: paste a link, wait, save."
-            cta="read the story"
-            visual={
-              <div className="flex h-full items-center justify-center bg-pink-soft">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/images/song-saver/start.png"
-                  alt="Song Saver's start screen on an iPhone, with a big Paste link button."
-                  loading="lazy"
-                  className="h-[86%] w-auto rotate-3 rounded-[16px] border-[1.5px] border-line bg-white object-cover object-top shadow-[4px_4px_0_0_var(--pink)]"
-                />
-              </div>
-            }
-          />
-          <Card
-            href="/projects/camel-benchmark"
-            shadow="bg-accent"
-            kicker="CS 3110 · OCaml · Fall 2025"
-            title="Camel Benchmark"
-            blurb="Five brain games that run in the terminal, with logins and a leaderboard. I built Verbal Memory and rebuilt it as a pure state machine, tested by 47 tests."
-            cta="play verbal memory"
-            ctaHref="/projects/camel-benchmark#play"
-            visual={<VerbalTerminal className="h-full" />}
-          />
-        </div>
-      </section>
-    </>
+    <section className="mx-auto max-w-6xl px-5 mt-10">
+      <div className="grid gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-3 [&>*]:min-w-0">
+        <Card
+          href="/projects/mini-plane-system"
+          shadow="bg-accent"
+          badge={<Pill className="bg-accent text-cream">★ my proudest project</Pill>}
+          kicker="CUAir · 2025 – present"
+          title="Mini Plane System (MPS)"
+          blurb="The software that gets photos off our plane while it's still in the air, each one paired with GPS and attitude from the Pixhawk. I ran it from the flightline at SUAS 2026."
+          cta="read the case study"
+          visual={
+            mps?.photo && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={mps.photo.src}
+                alt={mps.photo.alt}
+                loading="lazy"
+                className="block h-full w-full object-cover scale-[2.2]"
+                style={{ objectPosition: "46% 45%" }}
+              />
+            )
+          }
+        />
+        <Card
+          href="/projects/automated-analytics"
+          shadow="bg-[#9b87f5]"
+          theme="theme-violet"
+          badge={<Pill className="bg-accent text-cream">shipped to prod</Pill>}
+          kicker="Amazon Leo · Summer 2026"
+          title="Automated Analytics Platform"
+          blurb="A serverless service that runs engineers' analysis scripts on a schedule or when an event lands, and tickets the right person when a run breaks. In production before my internship ended."
+          cta="read the case study"
+          visual={<SatelliteScene className="!rounded-none" />}
+        />
+        <EmbeddedCard />
+        <Card
+          href="/projects/bbq-land"
+          shadow="bg-pink"
+          theme="theme-bbq-night"
+          badge={
+            <span className="flex flex-wrap items-center gap-2 font-mono text-[14px]">
+              <Pill className="bg-pink text-white">live</Pill>
+              <OpeningCountdown />
+            </span>
+          }
+          kicker="Client website · Oct 2026"
+          title="BBQ Land"
+          blurb="The first website for a new yakiniku restaurant in Shrewsbury, MA. Launched during soft opening, then redesigned the next day from the owner's feedback."
+          cta="how I built it"
+          visual={<GrillScene className="!rounded-none" />}
+        />
+        <Card
+          href="/projects/song-saver"
+          shadow="bg-pink"
+          theme="theme-cozy"
+          kicker="Personal project · for my aunt"
+          title="Song Saver"
+          blurb="YouTube-to-MP3 sites are full of pop-ups and fake Download buttons, so I made her an app of her own, right on her home screen: paste a link, wait, save."
+          cta="read the story"
+          visual={
+            <div className="flex h-full items-center justify-center bg-pink-soft">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/song-saver/start.png"
+                alt="Song Saver's start screen on an iPhone, with a big Paste link button."
+                loading="lazy"
+                className="h-[86%] w-auto rotate-3 rounded-[16px] border-[1.5px] border-line bg-white object-cover object-top shadow-[4px_4px_0_0_var(--pink)]"
+              />
+            </div>
+          }
+        />
+        <Card
+          href="/projects/camel-benchmark"
+          shadow="bg-accent"
+          kicker="CS 3110 · OCaml · Fall 2025"
+          title="Camel Benchmark"
+          blurb="Five brain games that run in the terminal, with logins and a leaderboard. I built Verbal Memory and rebuilt it as a pure state machine, tested by 47 tests."
+          cta="play verbal memory"
+          ctaHref="/projects/camel-benchmark#play"
+          visual={<VerbalTerminal className="h-full" />}
+        />
+    </div>
+    </section>
   );
 }
 
