@@ -1,20 +1,11 @@
 import Link from "next/link";
 import type { Project } from "@/data/projects";
-import { MpsScene, SatelliteScene } from "@/components/Illustrations";
+import { MpsScene } from "@/components/Illustrations";
 
-// Offset-shadow color for each card.
-const shadows: Record<string, string> = {
-  "mini-plane-system": "bg-accent",
-  "automated-analytics": "bg-[#9b87f5]",
-};
-
-// Cards that take on their case study's page theme instead of plain white.
-const themes: Record<string, string> = {
-  "automated-analytics": "theme-violet",
-};
-
-// A big project block on a card with an offset shadow. `badge` adds a pill
-// above the title, colored by `badgeClass`.
+// A big project block on a card with an offset shadow (the home page's MPS
+// card). The animated sketch sits top right, above the photo; the system
+// diagram sits under the text. `badge` adds a pill above the title, colored
+// by `badgeClass`.
 export default function FeaturedProject({
   project,
   badge,
@@ -26,11 +17,8 @@ export default function FeaturedProject({
 }) {
   return (
     <section className="relative">
-      <div
-        aria-hidden
-        className={`absolute inset-0 translate-x-2.5 translate-y-2.5 rounded-2xl ${shadows[project.slug] ?? "bg-accent"}`}
-      />
-      <div className={`relative grid lg:grid-cols-[1.15fr_1fr] gap-10 rounded-2xl border-[1.5px] border-line p-6 sm:p-10 ${themes[project.slug] ?? "bg-white"}`}>
+      <div aria-hidden className="absolute inset-0 translate-x-2.5 translate-y-2.5 rounded-2xl bg-accent" />
+      <div className="relative grid lg:grid-cols-[1.15fr_1fr] gap-10 rounded-2xl border-[1.5px] border-line p-6 sm:p-10 bg-white">
         <div>
           {badge && (
             <span className={`mb-5 inline-flex items-center rounded-full px-3 py-1 font-mono text-[14px] ${badgeClass}`}>
@@ -62,21 +50,8 @@ export default function FeaturedProject({
             read the case study
           </Link>
 
-          {project.illustration === "mps" && (
-            <figure className="mt-10">
-              <MpsScene className="border-[1.5px] border-line" />
-              <figcaption className="mt-2 font-sans text-[14px] text-muted lg:min-h-[3lh]">
-                Roughly how it works: the GoPro shoots, the Pi pairs each photo with the
-                Pixhawk&apos;s position, and the pair goes down to the ground over the radio.
-              </figcaption>
-            </figure>
-          )}
-        </div>
-
-        {/* On wide screens the photo stretches so its bottom lines up with the left column. */}
-        <div className="flex flex-col gap-5">
           {project.diagram && (
-            <figure>
+            <figure className="mt-10">
               <a href={project.diagram} target="_blank" rel="noreferrer noopener" title="Open full size">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -87,6 +62,19 @@ export default function FeaturedProject({
               </a>
               <figcaption className="mt-2 font-sans text-[14px] text-muted">
                 The system diagram. Click for full size.
+              </figcaption>
+            </figure>
+          )}
+        </div>
+
+        {/* On wide screens the photo stretches so its bottom lines up with the left column. */}
+        <div className="flex flex-col gap-5">
+          {project.illustration === "mps" && (
+            <figure>
+              <MpsScene className="border-[1.5px] border-line" />
+              <figcaption className="mt-2 font-sans text-[14px] text-muted">
+                Roughly how it works: the GoPro shoots, the Pi pairs each photo with the
+                Pixhawk&apos;s position, and the pair goes down to the ground over the radio.
               </figcaption>
             </figure>
           )}
@@ -103,14 +91,10 @@ export default function FeaturedProject({
                   style={{ objectPosition: "46% 45%" }}
                 />
               </div>
-              <figcaption className={`mt-2 font-sans text-[14px] text-muted ${project.illustration === "mps" ? "lg:min-h-[3lh]" : ""}`}>
+              <figcaption className="mt-2 font-sans text-[14px] text-muted">
                 {project.photo.caption}
               </figcaption>
             </figure>
-          )}
-
-          {project.illustration === "satellite" && (
-            <SatelliteScene className="border-[1.5px] border-line" />
           )}
         </div>
       </div>

@@ -1,8 +1,7 @@
-// The Embedded projects box is drawn as a circuit board: green solder mask,
-// gold traces and mounting holes, white silkscreen. Shared by the full-size
-// box and the compact card on /projects.
+// The Embedded projects card is drawn as a circuit board: green solder mask,
+// gold traces and mounting holes, white silkscreen.
 const GOLD = "#d9b45a";
-export const BOARD = "#0e5c45";
+const BOARD = "#0e5c45";
 const TOP = 3; // the two trace tracks in an edge strip, in px from its top
 const BOTTOM = 11;
 

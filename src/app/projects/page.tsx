@@ -1,5 +1,12 @@
 import ProjectCard from "@/components/ProjectCard";
-import ProjectGrid from "@/components/ProjectGrid";
+import {
+  AnalyticsCard,
+  BbqCard,
+  CamelCard,
+  EmbeddedCard,
+  MpsCard,
+  SongSaverCard,
+} from "@/components/ProjectCards";
 import { visibleProjects, type Project } from "@/data/projects";
 
 // Everything else gets its own card in the grid; these stay as plain cards.
@@ -18,7 +25,17 @@ export default function ProjectsPage() {
         </p>
       </div>
 
-      <ProjectGrid />
+      {/* every project as a compact card, three to a row */}
+      <section className="mx-auto max-w-6xl px-5 mt-10">
+        <div className="grid gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-3 [&>*]:min-w-0">
+          <MpsCard />
+          <AnalyticsCard />
+          <EmbeddedCard />
+          <BbqCard />
+          <SongSaverCard />
+          <CamelCard />
+        </div>
+      </section>
 
       <section className="mx-auto max-w-6xl px-5 mt-20">
         <h2 className="display text-3xl sm:text-4xl mb-8">Other work</h2>
