@@ -577,4 +577,3 @@ export const projects: Project[] = [
 export const visibleProjects = projects.filter((p) => !p.hidden);
 export const featuredProjects = visibleProjects.filter((p) => p.featured);
 export const featuredProject = featuredProjects[0] ?? projects[0];
-export const otherProjects = visibleProjects.filter((p) => !p.featured);
