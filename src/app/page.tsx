@@ -211,15 +211,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SUAS 2026: a thin banner across the whole page, tilted a little, with a
-          plane towing a flag from left to right along the top */}
+      {/* SUAS 2026: a thin banner across the whole page, with a plane towing a
+          flag from left to right along the top */}
       <Reveal>
-        <section aria-labelledby="suas-banner" className="relative my-14 overflow-x-clip py-5">
-          <div className="relative -mx-6 -rotate-[1.2deg]">
+        <section aria-labelledby="suas-banner" className="relative my-14 py-5">
+          <div className="relative">
             <div aria-hidden className="absolute inset-0 translate-y-2.5 bg-pink" />
             <div className="surface-dark relative border-y-[1.5px] border-line text-cream">
               <PlaneBanner flag="CUAir · SUAS 2026" />
-              <div className="mx-auto grid max-w-6xl gap-8 px-11 py-7 lg:grid-cols-[1fr_1.9fr] lg:items-start">
+              <div className="mx-auto grid max-w-6xl gap-8 px-5 py-7 lg:grid-cols-[1fr_1.9fr] lg:items-start">
                 <div>
                   <div className="font-mono text-[14px] opacity-80">Skyway Range, Tulsa · Sep 14–17, 2026</div>
                   <h2 id="suas-banner" className="display mt-2 text-3xl sm:text-4xl">
