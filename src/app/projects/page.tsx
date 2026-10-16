@@ -1,9 +1,8 @@
 import ProjectCard from "@/components/ProjectCard";
-import ProjectShowcase from "@/components/ProjectShowcase";
-import CamelCard from "@/components/CamelCard";
+import ProjectGrid from "@/components/ProjectGrid";
 import { visibleProjects, type Project } from "@/data/projects";
 
-// Everything else gets its own card in the showcase; these stay as plain cards.
+// Everything else gets its own card in the grid; these stay as plain cards.
 const otherWork = ["mice-video-classification", "hao-shi-guang"]
   .map((slug) => visibleProjects.find((p) => p.slug === slug))
   .filter((p): p is Project => Boolean(p));
@@ -19,7 +18,7 @@ export default function ProjectsPage() {
         </p>
       </div>
 
-      <ProjectShowcase heading={false} more={<CamelCard />} />
+      <ProjectGrid />
 
       <section className="mx-auto max-w-6xl px-5 mt-20">
         <h2 className="display text-3xl sm:text-4xl mb-8">Other work</h2>
